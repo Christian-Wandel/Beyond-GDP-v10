@@ -7,6 +7,15 @@
 //   - URL param helpers (getCountryFromURL / setCountryInURL)
 //   - Environment pillar render functions (renderCo2, renderCh4, renderFootprint,
 //     renderBii, renderGhgTotal, renderPm25, renderProducedCapital)
+//   - Opportunity pillar render functions (renderSchooling, renderLu4, renderNeet,
+//     renderLearningOutcomes) + updateOppTooltips
+//   - Income pillar render functions (renderWage, renderProd, renderPoverty,
+//     renderPovertySocietal) + updateIncomeTooltips
+//   - Necessities pillar render functions (renderMpi, renderMatFp,
+//     renderDrinkingWater) + updateNecessitiesTooltips
+//   - Security pillar render functions (renderHale, renderUhc, renderHouseholdIncome,
+//     renderLbw, renderGini, renderHomicide, renderLifeSatisfaction, renderWvsTrust,
+//     renderWvsGovConfidence) + updateSecurityTooltips
 // =============================================================================
 
 // ── Theme tokens for ECharts (read live from CSS vars) ───────────────────────
@@ -489,6 +498,17 @@ function initSelector() {
 }
 
 // ── URL param helpers ─────────────────────────────────────────────────────────
+// Rewrite every cross-page link with `?country=<iso3>` so country state
+// survives navigation. Targets pillar pages, aggregate, and index by .html ref.
+function propagateCountryParam(iso3) {
+  if (!iso3) return;
+  const sel = 'a.left-nav-item[href*=".html"], a.left-nav-link[href*=".html"]';
+  document.querySelectorAll(sel).forEach(a => {
+    const base = a.getAttribute('href').split('?')[0].split('#')[0];
+    a.setAttribute('href', `${base}?country=${iso3}`);
+  });
+}
+
 function getCountryFromURL() {
   return new URLSearchParams(location.search).get('country') || 'DNK';
 }
@@ -894,4 +914,1163 @@ function updateEnvTooltips(iso3, name) {
       capEl.innerHTML = `<strong>${name}'s</strong> net produced capital stock is <strong>${fmtGni(v)} per person</strong> — the value of machinery, infrastructure, and built assets (World Bank CWON 2021). Higher produced capital enables productivity and income. Threshold: below $10k/person = low base; above $50k = adequate${cap.year ? `; data year: ${cap.year}` : ''}.`;
     } else { capEl.textContent = 'No produced capital data available for this country.'; }
   }
+}
+
+// =============================================================================
+// Opportunity pillar render functions
+// Ported verbatim from index.html (renderSchooling 2492-2513, renderLu4 2515-2539,
+// renderNeet 2541-2562). renderLearningOutcomes is new (Tier I #8).
+// =============================================================================
+
+function renderSchooling(hdiEntry) {
+  const el = document.getElementById('gauge-schooling');
+  if (!el) return;
+  if (!hdiEntry || hdiEntry.mean_schooling == null) {
+    showNoData(el, window.chartSchooling);
+    setStatus('schooling-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = hdiEntry.mean_schooling;
+  const maxScale = 16;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 8, color: '#ef4444' }, { maxVal: 12, color: '#f59e0b' },
+    { maxVal: 15, color: '#86efac' }, { maxVal: maxScale, color: '#22c55e' },
+  ]);
+  const level = val >= 12 ? 'green' : val >= 8 ? 'amber' : 'red';
+  const schlPct = Math.round((1 - val / 12) * 100);
+  setStatus('schooling-status', level, level === 'green' ? null : `${schlPct}% below target`);
+  const vsText  = val >= 12 ? 'on target' : `${fmt(val / 12 * 100, 0)}% of target`;
+  const vsColor = val >= 12 ? '#22c55e' : val >= 8 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: 'mean years of school', formatFn: v => fmt(v, 1) + ' yrs', vsText, vsColor });
+  window.chartSchooling.setOption(option, true);
+}
+
+function renderLu4(lu4Entry) {
+  const el = document.getElementById('gauge-lu4');
+  if (!el) return;
+  if (!lu4Entry || lu4Entry.value == null) {
+    showNoData(el, window.chartLu4);
+    setStatus('lu4-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = lu4Entry.value;
+  const maxScale = 60;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 5, color: '#22c55e' }, { maxVal: 10, color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 5 ? 'green' : val <= 10 ? 'amber' : 'red';
+  const lu4Pct = Math.round((val / 5 - 1) * 100);
+  setStatus('lu4-status', level, level === 'green' ? null : `${lu4Pct}% above target`);
+  const vsText  = val <= 5 ? 'safe zone' : `${fmt(val / 10 * 100, 0)}% of danger threshold`;
+  const vsColor = val <= 5 ? '#22c55e' : val <= 10 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: '% labour underutilized', formatFn: v => fmt(v, 1) + '%', vsText, vsColor, dangerMarkLine: 10 });
+  window.chartLu4.setOption(option, true);
+  if (lu4Entry.year) {
+    const footer = document.querySelector('[data-card="lu4"] .limit-label span');
+    if (footer) footer.textContent = `Danger: 10% (lower is better; ${lu4Entry.year})`;
+  }
+}
+
+function renderNeet(neetEntry) {
+  const el = document.getElementById('gauge-neet');
+  if (!el) return;
+  if (!neetEntry || neetEntry.value == null) {
+    showNoData(el, window.chartNeet);
+    setStatus('neet-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = neetEntry.value;
+  const maxScale = 60;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 10, color: '#22c55e' }, { maxVal: 15, color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 10 ? 'green' : val <= 15 ? 'amber' : 'red';
+  const neetPct = Math.round((val / 10 - 1) * 100);
+  setStatus('neet-status', level, level === 'green' ? null : `${neetPct}% above target`);
+  const vsText  = val <= 10 ? 'safe zone' : `${fmt(val / 15 * 100, 0)}% of danger threshold`;
+  const vsColor = val <= 10 ? '#22c55e' : val <= 15 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: '% youth NEET (15–24)', formatFn: v => fmt(v, 1) + '%', vsText, vsColor, dangerMarkLine: 15 });
+  window.chartNeet.setOption(option, true);
+}
+
+// New Tier I #8 — World Bank HCI Harmonized Test Scores (proxy for SDG 4.1.1)
+// Scale 300-625; embedded thresholds: red <420, amber <490.
+function renderLearningOutcomes(loEntry) {
+  const el = document.getElementById('gauge-learning');
+  if (!el) return;
+  if (!loEntry || loEntry.value == null) {
+    showNoData(el, window.chartLearning);
+    setStatus('learning-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = loEntry.value;
+  const minScale = 300, maxScale = 625;
+  const zones = makeZones(minScale, maxScale, [
+    { maxVal: 420, color: '#ef4444' },
+    { maxVal: 490, color: '#f59e0b' },
+    { maxVal: 550, color: '#86efac' },
+    { maxVal: maxScale, color: '#22c55e' },
+  ]);
+  const level = val >= 490 ? 'green' : val >= 420 ? 'amber' : 'red';
+  const loPct = Math.round((1 - val / 490) * 100);
+  setStatus('learning-status', level, level === 'green' ? null : `${loPct}% below benchmark`);
+  const vsText  = val >= 490 ? 'above OECD benchmark' : val >= 420 ? `${fmt(val / 490 * 100, 0)}% of benchmark` : 'below minimum proficiency';
+  const vsColor = val >= 490 ? '#22c55e' : val >= 420 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({
+    value: Math.max(minScale, Math.min(val, maxScale)),
+    min: minScale, max: maxScale, zones,
+    unitLabel: 'harmonized test score',
+    formatFn: v => fmt(v, 0),
+    vsText, vsColor,
+    dangerMarkLine: 420,
+  });
+  window.chartLearning.setOption(option, true);
+}
+
+// ── Tooltip content for opportunity pillar ────────────────────────────────────
+function updateOppTooltips(iso3, name) {
+  const hdi = Cache.hdi?.data?.[iso3];
+  const lu4 = Cache.lu4?.data?.[iso3];
+  const neet = Cache.neet?.data?.[iso3];
+  const lo = Cache.learning_outcomes?.data?.[iso3];
+
+  const schoolingEl = document.getElementById('tooltip-schooling-body');
+  if (schoolingEl) {
+    if (hdi?.mean_schooling != null) {
+      const v = hdi.mean_schooling;
+      schoolingEl.innerHTML = `<strong>${name}'s</strong> population averages <strong>${fmt(v, 1)} years of schooling</strong> among adults aged 25+. The MLSI target is 12 years (upper secondary completion). This is one of the three components driving Pillar O (Opportunity) scores. Source: UNDP Human Development Report 2025.`;
+    } else { schoolingEl.textContent = 'No data available.'; }
+  }
+
+  const lu4El = document.getElementById('tooltip-lu4-body');
+  if (lu4El) {
+    if (lu4?.value != null) {
+      const v = lu4.value;
+      lu4El.innerHTML = `<strong>${name}</strong> has <strong>${fmt(v, 1)}%</strong> of its workforce that is unemployed, underemployed, or discouraged — the ILO composite LU4 measure. This is broader than headline unemployment: it captures workers who want more hours and those who stopped looking. The MLSI danger threshold is 10%${lu4.year ? `; data year: ${lu4.year}` : ''}. Source: ILOSTAT.`;
+    } else { lu4El.textContent = 'No data available.'; }
+  }
+
+  const neetEl = document.getElementById('tooltip-neet-body');
+  if (neetEl) {
+    if (neet?.value != null) {
+      const v = neet.value;
+      neetEl.innerHTML = `<strong>${name}</strong> has <strong>${fmt(v, 1)}%</strong> of youth aged 15–24 not in employment, education, or training (NEET). High NEET rates signal a generation at risk of skill stagnation and long-term unemployment. The MLSI danger threshold is 15%${neet.year ? `; data year: ${neet.year}` : ''}. Source: ILOSTAT.`;
+    } else { neetEl.textContent = 'No data available.'; }
+  }
+
+  const loEl = document.getElementById('tooltip-learning-body');
+  if (loEl) {
+    if (lo?.value != null) {
+      const v = lo.value;
+      const yr = lo.year ? `; data year: ${lo.year}` : '';
+      let context;
+      if (v >= 490)      context = `${name} is above the OECD lower benchmark (490). Pupils on average meet minimum proficiency in reading and mathematics.`;
+      else if (v >= 420) context = `${name} is in the caution zone (420–490): substantial share of pupils below minimum proficiency.`;
+      else               context = `${name} is below 420 — most pupils have not reached minimum proficiency in foundational reading and maths.`;
+      loEl.innerHTML = `<strong>${name}'s</strong> harmonized learning score is <strong>${fmt(v, 0)}</strong> on the 300–625 World Bank HCI scale${yr}. The score synthesises PISA, TIMSS, PIRLS, and national assessments — a proxy for SDG 4.1.1 minimum proficiency in reading and mathematics.<br><br>${context}`;
+    } else { loEl.textContent = 'No learning outcomes data available for this country.'; }
+  }
+}
+
+// =============================================================================
+// Income pillar render functions
+// renderWage / renderProd / renderPoverty ported verbatim from index.html
+// (lines 2564-2635). renderPovertySocietal is new (Tier I #15, $6.85/day).
+// =============================================================================
+
+function renderWage(wageEntry) {
+  const el = document.getElementById('gauge-wage');
+  if (!el) return;
+  if (!wageEntry || wageEntry.value == null) {
+    showNoData(el, window.chartWage);
+    setStatus('wage-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = wageEntry.value;
+  const maxScale = 80000;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 15000, color: '#ef4444' }, { maxVal: 35000, color: '#f59e0b' },
+    { maxVal: 60000, color: '#86efac' }, { maxVal: maxScale, color: '#22c55e' },
+  ]);
+  const level = val >= 35000 ? 'green' : val >= 15000 ? 'amber' : 'red';
+  const wagePct = Math.round((1 - val / 35000) * 100);
+  setStatus('wage-status', level, level === 'green' ? null : `${wagePct}% below target`);
+  const vsText  = val >= 35000 ? 'above target' : val >= 15000 ? `${fmt(val / 35000 * 100, 0)}% of target` : 'below $15k';
+  const vsColor = val >= 35000 ? '#22c55e' : val >= 15000 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: 'avg annual wage (USD)', formatFn: () => fmtGni(val), vsText, vsColor });
+  window.chartWage.setOption(option, true);
+}
+
+function renderProd(prodEntry) {
+  const el = document.getElementById('gauge-prod');
+  if (!el) return;
+  if (!prodEntry || prodEntry.value == null) {
+    showNoData(el, window.chartProd);
+    setStatus('prod-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = prodEntry.value;
+  const maxScale = 200000;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 30000, color: '#ef4444' }, { maxVal: 70000, color: '#f59e0b' },
+    { maxVal: 120000, color: '#86efac' }, { maxVal: maxScale, color: '#22c55e' },
+  ]);
+  const level = val >= 70000 ? 'green' : val >= 30000 ? 'amber' : 'red';
+  const prodPct = Math.round((1 - val / 70000) * 100);
+  setStatus('prod-status', level, level === 'green' ? null : `${prodPct}% below target`);
+  const vsText  = val >= 70000 ? 'above target' : val >= 30000 ? `${fmt(val / 70000 * 100, 0)}% of target` : 'below $30k';
+  const vsColor = val >= 70000 ? '#22c55e' : val >= 30000 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: 'output/worker (2021 PPP)', formatFn: () => fmtGni(val), vsText, vsColor });
+  window.chartProd.setOption(option, true);
+}
+
+function renderPoverty(povEntry) {
+  const el = document.getElementById('gauge-poverty');
+  if (!el) return;
+  if (!povEntry || povEntry.value == null) {
+    showNoData(el, window.chartPoverty);
+    setStatus('poverty-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = povEntry.value;
+  const maxScale = 100;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 10, color: '#22c55e' }, { maxVal: 20, color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 10 ? 'green' : val <= 20 ? 'amber' : 'red';
+  const povPct = Math.round((val / 10 - 1) * 100);
+  setStatus('poverty-status', level, level === 'green' ? null : `${povPct}% above target`);
+  const vsText  = val <= 10 ? 'below 10% target' : `${fmt(val / 20 * 100, 0)}% of danger threshold`;
+  const vsColor = val <= 10 ? '#22c55e' : val <= 20 ? '#f59e0b' : '#ef4444';
+  const line = povEntry.poverty_line;
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: line ? `% below $${line}/day` : '% below poverty line',
+    formatFn: v => fmt(v, 1) + '%', vsText, vsColor, dangerMarkLine: 20 });
+  window.chartPoverty.setOption(option, true);
+  const lbl = document.getElementById('poverty-limit-label');
+  if (lbl && line) lbl.textContent = `Danger: 20% (line: $${line}/day)`;
+}
+
+// New Tier I #15 — World Bank societal poverty line ($6.85/day PPP)
+// Embedded thresholds in JSON meta: red 20.0, amber 10.0 (% population below line).
+function renderPovertySocietal(psEntry) {
+  const el = document.getElementById('gauge-poverty-societal');
+  if (!el) return;
+  if (!psEntry || psEntry.value == null) {
+    showNoData(el, window.chartPovertySocietal);
+    setStatus('poverty-societal-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = psEntry.value;
+  const maxScale = 100;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 10, color: '#22c55e' }, { maxVal: 20, color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 10 ? 'green' : val <= 20 ? 'amber' : 'red';
+  const psPct = Math.round((val / 10 - 1) * 100);
+  setStatus('poverty-societal-status', level, level === 'green' ? null : `${psPct}% above target`);
+  const vsText  = val <= 10 ? 'below 10% target' : `${fmt(val / 20 * 100, 0)}% of danger threshold`;
+  const vsColor = val <= 10 ? '#22c55e' : val <= 20 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: '% below $6.85/day (societal)',
+    formatFn: v => fmt(v, 1) + '%', vsText, vsColor, dangerMarkLine: 20 });
+  window.chartPovertySocietal.setOption(option, true);
+}
+
+// ── Tooltip content for income pillar ─────────────────────────────────────────
+function updateIncomeTooltips(iso3, name) {
+  const wage = Cache.wage?.data?.[iso3];
+  const prod = Cache.productivity?.data?.[iso3];
+  const pov  = Cache.poverty_rate?.data?.[iso3];
+  const ps   = Cache.poverty_societal?.data?.[iso3];
+
+  const wageEl = document.getElementById('tooltip-wage-body');
+  if (wageEl) {
+    if (wage?.value != null) {
+      const v = wage.value;
+      wageEl.innerHTML = `<strong>${name}'s</strong> average annual wage is <strong>${fmtGni(v)}</strong> (nominal USD). This measures mean gross earnings per employee across the economy. The MLSI minimum threshold is $15,000/year; the comfort target is $35,000/year${wage.year ? `; data year: ${wage.year}` : ''}. Source: ILOSTAT.`;
+    } else { wageEl.textContent = 'No data available.'; }
+  }
+
+  const prodEl = document.getElementById('tooltip-prod-body');
+  if (prodEl) {
+    if (prod?.value != null) {
+      const v = prod.value;
+      prodEl.innerHTML = `<strong>${name}'s</strong> labour productivity is <strong>${fmtGni(v)}</strong> output per worker (2021 PPP). Higher productivity enables higher wages without inflation and reflects technology, capital, and education. The MLSI minimum is $30,000/worker; the target is $70,000${prod.year ? `; data year: ${prod.year}` : ''}. Source: ILOSTAT.`;
+    } else { prodEl.textContent = 'No data available.'; }
+  }
+
+  const povertyEl = document.getElementById('tooltip-poverty-body');
+  if (povertyEl) {
+    if (pov?.value != null) {
+      const v = pov.value; const line = pov.poverty_line;
+      povertyEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> population lives below ${line ? `$${line}/day` : 'the national poverty line'}. The poverty line is tiered by income group so comparisons are meaningful across development levels. The MLSI danger threshold is 20%; below 10% is safe${pov.year ? `; data year: ${pov.year}` : ''}. Source: World Bank PIP.`;
+    } else { povertyEl.textContent = 'No poverty data available (common for conflict-affected or high-income states).'; }
+  }
+
+  const psEl = document.getElementById('tooltip-poverty-societal-body');
+  if (psEl) {
+    if (ps?.value != null) {
+      const v = ps.value;
+      const yr = ps.year ? `; data year: ${ps.year}` : '';
+      psEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> population lives below the World Bank societal poverty line ($6.85/day PPP) — a single cross-country comparable line (HLEG Tier I #15). Unlike the tiered national poverty line, this stays fixed across income groups, so direct comparisons between countries are meaningful. Danger threshold: 20%; safe below 10%${yr}. Source: World Bank Open Data (SI.POV.SOPO).`;
+    } else { psEl.textContent = 'No societal poverty data available for this country.'; }
+  }
+}
+
+// =============================================================================
+// Necessities pillar render functions
+// renderMpi / renderMatFp ported verbatim from index.html (lines 2637-2682).
+// renderDrinkingWater is new (Tier I #13).
+// =============================================================================
+
+function renderMpi(mpiEntry) {
+  const el = document.getElementById('gauge-mpi');
+  if (!el) return;
+  if (!mpiEntry || mpiEntry.mpi == null) {
+    showNoData(el, window.chartMpi);
+    setStatus('mpi-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = mpiEntry.mpi;
+  const maxScale = 0.4;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 0.01, color: '#22c55e' }, { maxVal: 0.1, color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 0.01 ? 'green' : val <= 0.1 ? 'amber' : 'red';
+  const mpiPct = Math.round((val / 0.01 - 1) * 100);
+  setStatus('mpi-status', level, level === 'green' ? null : `${mpiPct}% above target`);
+  const vsText  = val <= 0.01 ? 'safe zone' : `${fmt(val / 0.1 * 100, 0)}% of danger threshold`;
+  const vsColor = val <= 0.01 ? '#22c55e' : val <= 0.1 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: 'MPI score (0–1)', formatFn: v => Number(v).toFixed(3), vsText, vsColor });
+  window.chartMpi.setOption(option, true);
+}
+
+function renderMatFp(matFpEntry) {
+  const el = document.getElementById('gauge-matfp');
+  if (!el) return;
+  if (!matFpEntry || matFpEntry.mf_per_capita_t == null) {
+    showNoData(el, window.chartMatFp);
+    setStatus('matfp-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = matFpEntry.mf_per_capita_t;
+  const maxScale = 50;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 8, color: '#22c55e' }, { maxVal: 16, color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 8 ? 'green' : val <= 16 ? 'amber' : 'red';
+  const matfpPct = Math.round((val / 8 - 1) * 100);
+  setStatus('matfp-status', level, level === 'green' ? null : `${matfpPct}% above target`);
+  const ratio   = (val / 8).toFixed(1);
+  const vsText  = val <= 8 ? 'within safe range' : `×${ratio} above safe range`;
+  const vsColor = val <= 8 ? '#22c55e' : val <= 16 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: 't material / person', formatFn: v => fmt(v, 1) + ' t', vsText, vsColor, dangerMarkLine: 30 });
+  window.chartMatFp.setOption(option, true);
+}
+
+// New Tier I #13 — WHO/UNICEF JMP SDG 6.1.1 safely managed drinking water
+// Embedded thresholds: red 60.0, amber 85.0 (% population coverage).
+function renderDrinkingWater(dwEntry) {
+  const el = document.getElementById('gauge-water');
+  if (!el) return;
+  if (!dwEntry || dwEntry.value == null) {
+    showNoData(el, window.chartWater);
+    setStatus('water-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = dwEntry.value;
+  const zones = makeZones(0, 100, [
+    { maxVal: 60,  color: '#ef4444' },
+    { maxVal: 85,  color: '#f59e0b' },
+    { maxVal: 95,  color: '#86efac' },
+    { maxVal: 100, color: '#22c55e' },
+  ]);
+  const level = val >= 85 ? 'green' : val >= 60 ? 'amber' : 'red';
+  const waterPct = Math.round((1 - val / 85) * 100);
+  setStatus('water-status', level, level === 'green' ? null : `${waterPct}% below target`);
+  const vsText  = val >= 85 ? 'above target' : val >= 60 ? `${fmt(val / 85 * 100, 0)}% of target` : 'low coverage';
+  const vsColor = val >= 85 ? '#22c55e' : val >= 60 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
+    unitLabel: '% safely managed drinking water',
+    formatFn: v => fmt(v, 1) + '%', vsText, vsColor });
+  window.chartWater.setOption(option, true);
+}
+
+// ── Tooltip content for necessities pillar ────────────────────────────────────
+function updateNecessitiesTooltips(iso3, name) {
+  const mpi = Cache.mpi?.data?.[iso3];
+  const matfp = Cache.material_footprint?.data?.[iso3];
+  const water = Cache.drinking_water?.data?.[iso3];
+
+  const mpiEl = document.getElementById('tooltip-mpi-body');
+  if (mpiEl) {
+    if (mpi?.mpi != null) {
+      const v = mpi.mpi; const hp = mpi.headcount_pct;
+      mpiEl.innerHTML = `<strong>${name}'s</strong> Multidimensional Poverty Index is <strong>${Number(v).toFixed(3)}</strong>${hp != null ? ` — <strong>${fmt(hp, 1)}%</strong> of the population is multidimensionally poor` : ''}. The MPI captures deprivations in health, education, and living standards simultaneously, beyond income alone. Danger threshold: 0.10. Note: MPI data is only available for developing countries. Source: UNDP/OPHI.`;
+    } else { mpiEl.textContent = 'No MPI data available — this indicator covers developing countries only.'; }
+  }
+
+  const matFpEl = document.getElementById('tooltip-matfp-body');
+  if (matFpEl) {
+    if (matfp?.mf_per_capita_t != null) {
+      const v = matfp.mf_per_capita_t;
+      const ratio = (v / 8).toFixed(1);
+      matFpEl.innerHTML = `<strong>${name}'s</strong> material footprint is <strong>${fmt(v, 1)} t/person</strong>. The UNEP safe range is 8 t/person; the danger threshold is 16 t/person${v > 8 ? ` — this is <strong>${ratio}×</strong> the safe range` : ''}. Material footprint includes all biomass, fossil fuels, metals, and non-metallic minerals embodied in domestic final demand. Source: UNEP.`;
+    } else { matFpEl.textContent = 'No material footprint data available.'; }
+  }
+
+  const waterEl = document.getElementById('tooltip-water-body');
+  if (waterEl) {
+    if (water?.value != null) {
+      const v = water.value;
+      const yr = water.year ? `; data year: ${water.year}` : '';
+      let context;
+      if (v >= 95)      context = `Universal safely managed drinking water is essentially achieved.`;
+      else if (v >= 85) context = `Most of the population has safely managed services; remaining gaps tend to concentrate in rural or marginalised areas.`;
+      else if (v >= 60) context = `Substantial coverage gap — a significant minority lack safely managed services.`;
+      else              context = `Low coverage — the majority of the population lacks safely managed drinking water (SDG 6.1.1 indicator).`;
+      waterEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> population uses safely managed drinking water services (SDG 6.1.1, HLEG Tier I #13)${yr}.<br><br>${context} Source: WHO/UNICEF JMP 2025.`;
+    } else { waterEl.textContent = 'No drinking water coverage data available for this country.'; }
+  }
+}
+
+// =============================================================================
+// Security pillar render functions
+// renderHale / renderUhc ported verbatim from index.html lines 2684-2728.
+// renderHouseholdIncome + six Tier I renders are new.
+// =============================================================================
+
+function renderHale(haleEntry) {
+  const el = document.getElementById('gauge-hale');
+  if (!el) return;
+  if (!haleEntry || haleEntry.value == null) {
+    showNoData(el, window.chartHale);
+    setStatus('hale-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = haleEntry.value;
+  const minScale = 40; const maxScale = 80;
+  const zones = makeZones(minScale, maxScale, [
+    { maxVal: 60, color: '#ef4444' }, { maxVal: 70, color: '#f59e0b' },
+    { maxVal: 75, color: '#86efac' }, { maxVal: maxScale, color: '#22c55e' },
+  ]);
+  const level = val >= 70 ? 'green' : val >= 60 ? 'amber' : 'red';
+  const halePct = Math.round((1 - val / 70) * 100);
+  setStatus('hale-status', level, level === 'green' ? null : `${halePct}% below target`);
+  const vsText  = val >= 70 ? 'above target' : `${fmt(val / 70 * 100, 0)}% of 70-yr target`;
+  const vsColor = val >= 70 ? '#22c55e' : val >= 60 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({
+    value: Math.min(Math.max(val, minScale), maxScale), min: minScale, max: maxScale, zones,
+    unitLabel: 'healthy life years', formatFn: v => fmt(v, 1) + ' yrs', vsText, vsColor });
+  window.chartHale.setOption(option, true);
+}
+
+function renderUhc(uhcEntry) {
+  const el = document.getElementById('gauge-uhc');
+  if (!el) return;
+  if (!uhcEntry || uhcEntry.value == null) {
+    showNoData(el, window.chartUhc);
+    setStatus('uhc-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = uhcEntry.value;
+  const zones = makeZones(0, 100, [
+    { maxVal: 70, color: '#ef4444' }, { maxVal: 90, color: '#f59e0b' },
+    { maxVal: 95, color: '#86efac' }, { maxVal: 100, color: '#22c55e' },
+  ]);
+  const level = val >= 90 ? 'green' : val >= 70 ? 'amber' : 'red';
+  const uhcPct = Math.round((1 - val / 90) * 100);
+  setStatus('uhc-status', level, level === 'green' ? null : `${uhcPct}% below target`);
+  const vsText  = val >= 90 ? 'above target' : `${fmt(val / 90 * 100, 0)}% of 90% target`;
+  const vsColor = val >= 90 ? '#22c55e' : val >= 70 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
+    unitLabel: 'UHC coverage index', formatFn: v => fmt(v, 0) + '%', vsText, vsColor });
+  window.chartUhc.setOption(option, true);
+}
+
+// Tier I #4 — Household disposable income per capita (GDP/capita proxy via UNSD AMA)
+// Embedded thresholds: red 5000, amber 20000 USD/person.
+function renderHouseholdIncome(hhEntry) {
+  const el = document.getElementById('gauge-hhinc');
+  if (!el) return;
+  if (!hhEntry || hhEntry.value == null) {
+    showNoData(el, window.chartHhinc);
+    setStatus('hhinc-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = hhEntry.value;
+  const maxScale = 100000;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 5000,     color: '#ef4444' },
+    { maxVal: 20000,    color: '#f59e0b' },
+    { maxVal: 50000,    color: '#86efac' },
+    { maxVal: maxScale, color: '#22c55e' },
+  ]);
+  const level = val >= 20000 ? 'green' : val >= 5000 ? 'amber' : 'red';
+  const hhPct = Math.round((1 - val / 20000) * 100);
+  setStatus('hhinc-status', level, level === 'green' ? null : `${hhPct}% below target`);
+  const vsText  = val >= 20000 ? 'above $20k' : val >= 5000 ? `${fmt(val / 20000 * 100, 0)}% of target` : 'below $5k';
+  const vsColor = val >= 20000 ? '#22c55e' : val >= 5000 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({
+    value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: 'income / person (USD, GDP proxy)',
+    formatFn: () => fmtGni(val),
+    vsText, vsColor,
+  });
+  window.chartHhinc.setOption(option, true);
+}
+
+// Tier I #7 — Low birthweight (% of live births). Red >15, amber 7-15, green <=7.
+function renderLbw(lbwEntry) {
+  const el = document.getElementById('gauge-lbw');
+  if (!el) return;
+  if (!lbwEntry || lbwEntry.value == null) {
+    showNoData(el, window.chartLbw);
+    setStatus('lbw-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = lbwEntry.value;
+  const maxScale = 30;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 7,        color: '#22c55e' },
+    { maxVal: 15,       color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 7 ? 'green' : val <= 15 ? 'amber' : 'red';
+  const lbwPct = Math.round((val / 7 - 1) * 100);
+  setStatus('lbw-status', level, level === 'green' ? null : `${lbwPct}% above target`);
+  const vsText  = val <= 7 ? 'safe zone' : `${fmt(val / 15 * 100, 0)}% of danger threshold`;
+  const vsColor = val <= 7 ? '#22c55e' : val <= 15 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: '% low-birthweight births', formatFn: v => fmt(v, 1) + '%', vsText, vsColor, dangerMarkLine: 15 });
+  window.chartLbw.setOption(option, true);
+}
+
+// Tier I #14 — Gini index of income inequality. Red >=45, amber 35-45, green <35.
+function renderGini(giniEntry) {
+  const el = document.getElementById('gauge-gini');
+  if (!el) return;
+  if (!giniEntry || giniEntry.value == null) {
+    showNoData(el, window.chartGini);
+    setStatus('gini-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = giniEntry.value;
+  const maxScale = 70;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 35,       color: '#22c55e' },
+    { maxVal: 45,       color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val < 35 ? 'green' : val < 45 ? 'amber' : 'red';
+  setStatus('gini-status', level);
+  const vsText  = val < 35 ? 'low inequality' : val < 45 ? 'moderate inequality' : 'high inequality';
+  const vsColor = val < 35 ? '#22c55e' : val < 45 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: 'Gini index (0=equal, 100=unequal)', formatFn: v => fmt(v, 1), vsText, vsColor, dangerMarkLine: 45 });
+  window.chartGini.setOption(option, true);
+}
+
+// Tier I #9 — Intentional homicides per 100,000 (WHO GHO as SDG 16.1.1 fallback).
+// Embedded thresholds: red 10.0, amber 3.0.
+function renderHomicide(hmEntry) {
+  const el = document.getElementById('gauge-homicide');
+  if (!el) return;
+  if (!hmEntry || hmEntry.value == null) {
+    showNoData(el, window.chartHomicide);
+    setStatus('homicide-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = hmEntry.value;
+  const maxScale = 30;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 3,        color: '#22c55e' },
+    { maxVal: 10,       color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 3 ? 'green' : val <= 10 ? 'amber' : 'red';
+  setStatus('homicide-status', level);
+  const vsText  = val <= 3 ? 'low rate' : val <= 10 ? 'elevated rate' : 'high rate';
+  const vsColor = val <= 3 ? '#22c55e' : val <= 10 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({
+    value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: 'homicides per 100k',
+    formatFn: v => fmt(v, 1),
+    vsText, vsColor,
+    overflow: val > maxScale,
+    dangerMarkLine: 10,
+  });
+  window.chartHomicide.setOption(option, true);
+}
+
+// Tier I #10 — Life satisfaction (Cantril ladder 0–10, WHR 2025).
+// Embedded thresholds: red <5.0, amber <6.5.
+function renderLifeSatisfaction(lsEntry) {
+  const el = document.getElementById('gauge-lifesat');
+  if (!el) return;
+  if (!lsEntry || lsEntry.value == null) {
+    showNoData(el, window.chartLifesat);
+    setStatus('lifesat-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = lsEntry.value;
+  const zones = makeZones(0, 10, [
+    { maxVal: 5,    color: '#ef4444' },
+    { maxVal: 6.5,  color: '#f59e0b' },
+    { maxVal: 8,    color: '#86efac' },
+    { maxVal: 10,   color: '#22c55e' },
+  ]);
+  const level = val >= 6.5 ? 'green' : val >= 5 ? 'amber' : 'red';
+  setStatus('lifesat-status', level);
+  const vsText  = val >= 6.5 ? 'above benchmark' : val >= 5 ? `${fmt(val / 6.5 * 100, 0)}% of target` : 'below threshold';
+  const vsColor = val >= 6.5 ? '#22c55e' : val >= 5 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: val, min: 0, max: 10, zones,
+    unitLabel: 'Cantril ladder (0–10)', formatFn: v => fmt(v, 2), vsText, vsColor });
+  window.chartLifesat.setOption(option, true);
+}
+
+// Tier I #20 — Generalised social trust (WVS Wave 7). Red <20, amber <40, green >=40.
+function renderWvsTrust(trustEntry) {
+  const el = document.getElementById('gauge-trust');
+  if (!el) return;
+  if (!trustEntry || trustEntry.value == null) {
+    showNoData(el, window.chartTrust);
+    setStatus('trust-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = trustEntry.value;
+  const zones = makeZones(0, 100, [
+    { maxVal: 20,  color: '#ef4444' },
+    { maxVal: 40,  color: '#f59e0b' },
+    { maxVal: 70,  color: '#86efac' },
+    { maxVal: 100, color: '#22c55e' },
+  ]);
+  const level = val >= 40 ? 'green' : val >= 20 ? 'amber' : 'red';
+  setStatus('trust-status', level);
+  const vsText  = val >= 40 ? 'high trust' : val >= 20 ? 'moderate trust' : 'low trust';
+  const vsColor = val >= 40 ? '#22c55e' : val >= 20 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
+    unitLabel: '% "most people can be trusted"', formatFn: v => fmt(v, 1) + '%', vsText, vsColor });
+  window.chartTrust.setOption(option, true);
+}
+
+// Tier I #19 — Confidence in civil services (WVS Wave 7). Red <30, amber <50, green >=50.
+function renderWvsGovConfidence(gcEntry) {
+  const el = document.getElementById('gauge-govconf');
+  if (!el) return;
+  if (!gcEntry || gcEntry.value == null) {
+    showNoData(el, window.chartGovconf);
+    setStatus('govconf-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = gcEntry.value;
+  const zones = makeZones(0, 100, [
+    { maxVal: 30,  color: '#ef4444' },
+    { maxVal: 50,  color: '#f59e0b' },
+    { maxVal: 75,  color: '#86efac' },
+    { maxVal: 100, color: '#22c55e' },
+  ]);
+  const level = val >= 50 ? 'green' : val >= 30 ? 'amber' : 'red';
+  setStatus('govconf-status', level);
+  const vsText  = val >= 50 ? 'high confidence' : val >= 30 ? 'moderate confidence' : 'low confidence';
+  const vsColor = val >= 50 ? '#22c55e' : val >= 30 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
+    unitLabel: '% confidence in civil services', formatFn: v => fmt(v, 1) + '%', vsText, vsColor });
+  window.chartGovconf.setOption(option, true);
+}
+
+// ── Tooltip content for security pillar ───────────────────────────────────────
+function updateSecurityTooltips(iso3, name) {
+  const hale  = Cache.hale?.data?.[iso3];
+  const uhc   = Cache.uhc_coverage?.data?.[iso3];
+  const hh    = Cache.household_income?.data?.[iso3];
+  const lbw   = Cache.lbw?.data?.[iso3];
+  const gini  = Cache.gini?.data?.[iso3];
+  const hm    = Cache.homicide_rate?.data?.[iso3];
+  const ls    = Cache.life_satisfaction?.data?.[iso3];
+  const tr    = Cache.wvs_trust?.data?.[iso3];
+  const gc    = Cache.wvs_gov_confidence?.data?.[iso3];
+
+  const haleEl = document.getElementById('tooltip-hale-body');
+  if (haleEl) {
+    if (hale?.value != null) {
+      const v = hale.value;
+      haleEl.innerHTML = `<strong>${name}'s</strong> healthy life expectancy at birth is <strong>${fmt(v, 1)} years</strong>${hale.year ? ` (${hale.year})` : ''}. HALE measures the years a newborn can expect to live in full health, accounting for time lost to disability and disease. The MLSI target is 70 years; below 60 indicates serious mortality and morbidity gaps. Source: WHO GHO.`;
+    } else { haleEl.textContent = 'No HALE data available.'; }
+  }
+
+  const uhcEl = document.getElementById('tooltip-uhc-body');
+  if (uhcEl) {
+    if (uhc?.value != null) {
+      const v = uhc.value;
+      uhcEl.innerHTML = `<strong>${name}'s</strong> UHC service coverage index is <strong>${fmt(v, 0)}%</strong>${uhc.year ? ` (${uhc.year})` : ''}. SDG 3.8.1 composite of 14 tracer indicators covering reproductive, child, infectious, and noncommunicable disease services plus capacity and access. Target: 90%+. Source: WHO.`;
+    } else { uhcEl.textContent = 'No UHC data available.'; }
+  }
+
+  const hhEl = document.getElementById('tooltip-hhinc-body');
+  if (hhEl) {
+    if (hh?.value != null) {
+      const v = hh.value;
+      const yr = hh.year ? `; data year: ${hh.year}` : '';
+      hhEl.innerHTML = `<strong>${name}'s</strong> proxy for household disposable income per capita is <strong>${fmtGni(v)}</strong> (UNSD GDP/capita stand-in for HLEG Tier I #4)${yr}. True household sector disposable income is not exposed via the open AMA API; the GDP/capita series is used as a directional proxy. Threshold: below $5k/person = low; above $20k = adequate. Source: UN Statistics Division.`;
+    } else { hhEl.textContent = 'No household income data available.'; }
+  }
+
+  const lbwEl = document.getElementById('tooltip-lbw-body');
+  if (lbwEl) {
+    if (lbw?.value != null) {
+      const v = lbw.value;
+      const yr = lbw.year ? `; data year: ${lbw.year}` : '';
+      lbwEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> live births are low-birthweight (under 2,500 g, HLEG Tier I #7)${yr}. Low birthweight is a leading predictor of neonatal mortality, stunting, and lifelong cognitive deficits — a sensitive measure of maternal nutrition and prenatal care. Danger threshold: 15%; safe at or below 7%. Source: WHO GHO / UNICEF.`;
+    } else { lbwEl.textContent = 'No low-birthweight data available.'; }
+  }
+
+  const giniEl = document.getElementById('tooltip-gini-body');
+  if (giniEl) {
+    if (gini?.value != null) {
+      const v = gini.value;
+      const yr = gini.year ? `; data year: ${gini.year}` : '';
+      giniEl.innerHTML = `<strong>${name}'s</strong> Gini index is <strong>${fmt(v, 1)}</strong> on a 0 (perfect equality) – 100 (perfect inequality) scale (HLEG Tier I #14)${yr}. Below 35 indicates low inequality; 35–45 moderate; 45+ high. The Gini summarises the income distribution across the entire population. Source: World Bank Open Data (SI.POV.GINI).`;
+    } else { giniEl.textContent = 'No Gini data available.'; }
+  }
+
+  const hmEl = document.getElementById('tooltip-homicide-body');
+  if (hmEl) {
+    if (hm?.value != null) {
+      const v = hm.value;
+      const yr = hm.year ? `; data year: ${hm.year}` : '';
+      hmEl.innerHTML = `<strong>${name}'s</strong> intentional homicide rate is <strong>${fmt(v, 1)} per 100,000</strong> population (SDG 16.1.1, HLEG Tier I #9)${yr}. Used as a core indicator of physical security and rule-of-law strength. Threshold: at or below 3 = safe; 3–10 = elevated; above 10 = high. Source: WHO GHO (fallback for UNODC).`;
+    } else { hmEl.textContent = 'No homicide rate data available.'; }
+  }
+
+  const lsEl = document.getElementById('tooltip-lifesat-body');
+  if (lsEl) {
+    if (ls?.value != null) {
+      const v = ls.value;
+      const yr = ls.year ? `; data year: ${ls.year}` : '';
+      lsEl.innerHTML = `<strong>${name}'s</strong> mean life satisfaction is <strong>${fmt(v, 2)}</strong> on the 0–10 Cantril ladder (HLEG Tier I #10)${yr}. The Cantril ladder asks respondents to rate their current life on a scale where 0 = worst possible and 10 = best possible. Threshold: at or above 6.5 = adequate; below 5.0 indicates widespread dissatisfaction. Source: World Happiness Report 2025 (SDSN, openly available Gallup extract).`;
+    } else { lsEl.textContent = 'No life satisfaction data available.'; }
+  }
+
+  const trEl = document.getElementById('tooltip-trust-body');
+  if (trEl) {
+    if (tr?.value != null) {
+      const v = tr.value;
+      const yr = tr.year ? `; data year: ${tr.year}` : '';
+      trEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> adult population say "most people can be trusted" (HLEG Tier I #20)${yr}. Generalised social trust is one of the strongest correlates of governance quality and collective action. Threshold: 40%+ = high; below 20% = low. Coverage limited to ~66 countries (World Values Survey Wave 7, 2017–2022). Source: WVS.`;
+    } else { trEl.textContent = 'No social trust data available (WVS Wave 7 covers ~66 countries).'; }
+  }
+
+  const gcEl = document.getElementById('tooltip-govconf-body');
+  if (gcEl) {
+    if (gc?.value != null) {
+      const v = gc.value;
+      const yr = gc.year ? `; data year: ${gc.year}` : '';
+      gcEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> adult population express confidence in the civil service (HLEG Tier I #19)${yr}. Captures perceived state capacity and impartiality. Threshold: 50%+ = high; below 30% = low. Coverage limited to ~65 countries (World Values Survey Wave 7). Source: WVS.`;
+    } else { gcEl.textContent = 'No civil-service confidence data available (WVS Wave 7 covers ~65 countries).'; }
+  }
+}
+
+// =============================================================================
+// Equity pillar render functions
+// gdi: UNDP GDI (female HDI / male HDI). Parity = 1.0. Embedded threshold: 0.975 (UNDP Group 1).
+// gii: UNDP GII (0–1, lower = better). Embedded threshold_ambitious: 0.1.
+// gender_pay_ratio: female/male hourly earnings (ILO SDG 8.5.1). Embedded thresholds: red<0.80, amber<0.92.
+// ipv: SDG 5.2.1 IPV prevalence (%). Embedded thresholds: amber<=10, red>20.
+// =============================================================================
+
+function renderGdi(gdiEntry) {
+  const el = document.getElementById('gauge-gdi');
+  if (!el) return;
+  if (!gdiEntry || gdiEntry.gdi == null) {
+    showNoData(el, window.chartGdi);
+    setStatus('gdi-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = gdiEntry.gdi;
+  // UNDP Group 1 (≥0.975) = parity; scale centred on 1.0 (parity).
+  // Display range 0.80–1.20; zones: red <0.95, amber 0.95–0.975, green ≥0.975.
+  const minScale = 0.80, maxScale = 1.20;
+  const zones = makeZones(minScale, maxScale, [
+    { maxVal: 0.95,  color: '#ef4444' },
+    { maxVal: 0.975, color: '#f59e0b' },
+    { maxVal: 1.025, color: '#22c55e' },
+    { maxVal: maxScale, color: '#86efac' },
+  ]);
+  const level = val >= 0.975 ? 'green' : val >= 0.95 ? 'amber' : 'red';
+  const vsText  = val >= 0.975 ? 'gender parity' : `${((1 - val / 0.975) * 100).toFixed(1)}% below parity`;
+  const vsColor = val >= 0.975 ? '#22c55e' : val >= 0.95 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({
+    value: Math.min(Math.max(val, minScale), maxScale),
+    min: minScale, max: maxScale, zones,
+    unitLabel: 'female HDI / male HDI', formatFn: v => v.toFixed(3), vsText, vsColor,
+  });
+  setStatus('gdi-status', level);
+  window.chartGdi.setOption(option, true);
+  if (gdiEntry.year) {
+    const footer = document.querySelector('[data-card="gdi"] .limit-label span');
+    if (footer) footer.textContent = `Parity: 1.000 (UNDP Group 1 ≥0.975; ${gdiEntry.year})`;
+  }
+}
+
+function renderGii(giiEntry) {
+  const el = document.getElementById('gauge-gii');
+  if (!el) return;
+  if (!giiEntry || giiEntry.gii == null) {
+    showNoData(el, window.chartGii);
+    setStatus('gii-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = giiEntry.gii;
+  // GII: 0 = perfect equality, 1 = maximum inequality. Lower is better.
+  // UNDP ambitious target: ≤0.10. Moderate: ≤0.30. High: >0.30.
+  const maxScale = 0.80;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 0.10, color: '#22c55e' },
+    { maxVal: 0.30, color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 0.10 ? 'green' : val <= 0.30 ? 'amber' : 'red';
+  const giiPct = val <= 0.10 ? 0 : Math.round((val / 0.30) * 100);
+  setStatus('gii-status', level, level === 'green' ? null : `${giiPct}% of danger threshold`);
+  const vsText  = val <= 0.10 ? 'near equality' : `${fmt(val / 0.30 * 100, 0)}% of moderate threshold`;
+  const vsColor = val <= 0.10 ? '#22c55e' : val <= 0.30 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({
+    value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: 'gender inequality index', formatFn: v => v.toFixed(3), vsText, vsColor, dangerMarkLine: 0.30,
+  });
+  window.chartGii.setOption(option, true);
+  if (giiEntry.year) {
+    const footer = document.querySelector('[data-card="gii"] .limit-label span');
+    if (footer) footer.textContent = `Danger: 0.30 (lower is better; ${giiEntry.year})`;
+  }
+}
+
+function renderGenderPayRatio(gprEntry) {
+  const el = document.getElementById('gauge-gpr');
+  if (!el) return;
+  if (!gprEntry || gprEntry.value == null) {
+    showNoData(el, window.chartGpr);
+    setStatus('gpr-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = gprEntry.value;
+  // Ratio: 1.0 = parity (women earn same as men). Embedded: red<0.80, amber<0.92.
+  // Display range 0.50–1.30; values >1 mean women earn more.
+  const minScale = 0.50, maxScale = 1.30;
+  const zones = makeZones(minScale, maxScale, [
+    { maxVal: 0.80,  color: '#ef4444' },
+    { maxVal: 0.92,  color: '#f59e0b' },
+    { maxVal: 1.05,  color: '#22c55e' },
+    { maxVal: maxScale, color: '#86efac' },
+  ]);
+  const level = val >= 0.92 ? 'green' : val >= 0.80 ? 'amber' : 'red';
+  const vsText  = val >= 0.92 ? 'near parity' : `${((1 - val) * 100).toFixed(1)}% pay gap`;
+  const vsColor = val >= 0.92 ? '#22c55e' : val >= 0.80 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({
+    value: Math.min(Math.max(val, minScale), maxScale),
+    min: minScale, max: maxScale, zones,
+    unitLabel: 'female / male hourly earnings', formatFn: v => v.toFixed(2), vsText, vsColor,
+  });
+  setStatus('gpr-status', level);
+  window.chartGpr.setOption(option, true);
+  if (gprEntry.year) {
+    const footer = document.querySelector('[data-card="gpr"] .limit-label span');
+    if (footer) footer.textContent = `Parity: 1.00 (ILO SDG 8.5.1; ${gprEntry.year})`;
+  }
+}
+
+function renderIpv(ipvEntry) {
+  const el = document.getElementById('gauge-ipv');
+  if (!el) return;
+  if (!ipvEntry || ipvEntry.value == null) {
+    showNoData(el, window.chartIpv);
+    setStatus('ipv-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = ipvEntry.value;
+  // IPV prevalence (%): lower is better. Embedded: amber ≤10, red >20.
+  const maxScale = 50;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 10, color: '#22c55e' },
+    { maxVal: 20, color: '#f59e0b' },
+    { maxVal: maxScale, color: '#ef4444' },
+  ]);
+  const level = val <= 10 ? 'green' : val <= 20 ? 'amber' : 'red';
+  setStatus('ipv-status', level, level === 'green' ? null : `${fmt(val, 1)}% above safe threshold`);
+  const vsText  = val <= 10 ? 'below danger threshold' : `${fmt(val / 20 * 100, 0)}% of danger threshold`;
+  const vsColor = val <= 10 ? '#22c55e' : val <= 20 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({
+    value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+    unitLabel: '% women experienced IPV', formatFn: v => fmt(v, 1) + '%', vsText, vsColor, dangerMarkLine: 20,
+  });
+  window.chartIpv.setOption(option, true);
+  if (ipvEntry.year) {
+    const footer = document.querySelector('[data-card="ipv"] .limit-label span');
+    if (footer) footer.textContent = `Danger: 20% (SDG 5.2.1; lower is better; ${ipvEntry.year})`;
+  }
+}
+
+// ── Equity pillar tooltip update ──────────────────────────────────────────────
+function updateEquityTooltips(iso3, name) {
+  const gdi = Cache.gdi?.data?.[iso3];
+  const gii = Cache.gii?.data?.[iso3];
+  const gpr = Cache.gender_pay_ratio?.data?.[iso3];
+  const ipv = Cache.ipv?.data?.[iso3];
+
+  const gdiEl = document.getElementById('tooltip-gdi-body');
+  if (gdiEl) {
+    if (gdi?.gdi != null) {
+      const v = gdi.gdi;
+      const yr = gdi.year ? `; data year: ${gdi.year}` : '';
+      const group = v >= 0.975 ? 'UNDP Group 1 (near-parity)' : v >= 0.95 ? 'UNDP Group 2 (medium disparity)' : 'UNDP Group 3–5 (high disparity)';
+      gdiEl.innerHTML = `<strong>${name}'s</strong> Gender Development Index is <strong>${v.toFixed(3)}</strong> — a ratio of female to male HDI${yr}. 1.00 = perfect parity; above 1.00 = women score higher. ${name} is in ${group}. UNDP Group 1 threshold: ≥0.975. Source: UNDP Human Development Report 2023.`;
+    } else { gdiEl.textContent = 'No GDI data available.'; }
+  }
+
+  const giiEl = document.getElementById('tooltip-gii-body');
+  if (giiEl) {
+    if (gii?.gii != null) {
+      const v = gii.gii;
+      const yr = gii.year ? `; data year: ${gii.year}` : '';
+      giiEl.innerHTML = `<strong>${name}'s</strong> Gender Inequality Index is <strong>${v.toFixed(3)}</strong> on a 0 (equality) – 1 (maximum inequality) scale${yr}. The GII captures reproductive health, empowerment, and labour market gaps. Target: ≤0.10 (ambitious); ≤0.30 (moderate). Source: UNDP Human Development Report 2023.`;
+    } else { giiEl.textContent = 'No GII data available.'; }
+  }
+
+  const gprEl = document.getElementById('tooltip-gpr-body');
+  if (gprEl) {
+    if (gpr?.value != null) {
+      const v = gpr.value;
+      const yr = gpr.year ? `; data year: ${gpr.year}` : '';
+      const gap = v < 1 ? `Women earn ${((1 - v) * 100).toFixed(1)}% less per hour than men.` : `Women earn ${((v - 1) * 100).toFixed(1)}% more per hour than men.`;
+      gprEl.innerHTML = `<strong>${name}'s</strong> gender pay ratio is <strong>${v.toFixed(2)}</strong> (female / male hourly earnings, SDG 8.5.1)${yr}. ${gap} Threshold: ≥0.92 = near-parity; <0.80 = significant gap. Source: ILOSTAT.`;
+    } else { gprEl.textContent = 'No gender pay data available.'; }
+  }
+
+  const ipvEl = document.getElementById('tooltip-ipv-body');
+  if (ipvEl) {
+    if (ipv?.value != null) {
+      const v = ipv.value;
+      const yr = ipv.year ? `; data year: ${ipv.year}` : '';
+      ipvEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of ever-partnered women in <strong>${name}</strong> have experienced physical or sexual violence by an intimate partner in the past 12 months (SDG 5.2.1, HLEG Tier I #1)${yr}. Safe threshold: below 10%; danger: above 20%. Source: WHO GHO.`;
+    } else { ipvEl.textContent = 'No IPV data available.'; }
+  }
+}
+
+// =============================================================================
+// Apex bar update — used by both landing hub (index.html) and can be called
+// from any page that has #apex-gnsd / #apex-gni / #apex-gdp elements.
+// =============================================================================
+function updateApexBar(iso3) {
+  const hdi = Cache.hdi?.data?.[iso3];
+  const gdp = Cache.gdp?.data?.[iso3];
+  lastGnsdResult = computeGNSD(iso3);
+  const gnsdResult = lastGnsdResult;
+  const gnsd = gnsdResult?.gnsd ?? null;
+
+  const gnsdEl = document.getElementById('apex-gnsd');
+  if (gnsdEl) {
+    const numEl  = gnsdEl.querySelector('.gnsd-number');
+    const fillEl = gnsdEl.querySelector('.gnsd-bar-fill');
+    const ofEl   = gnsdEl.querySelector('.gnsd-of');
+    if (gnsd != null) {
+      const v = Math.round(gnsd);
+      const cls = v >= 70 ? 'gnsd-green' : v >= 40 ? 'gnsd-amber' : 'gnsd-red';
+      if (numEl)  { numEl.textContent = v; numEl.className = 'gnsd-number ' + cls; }
+      if (fillEl) { fillEl.style.width = v + '%'; fillEl.className = 'gnsd-bar-fill ' + cls; }
+      if (ofEl) {
+        const capNote  = gnsdResult.ecoCapped ? ' · ⚠ eco cap' : '';
+        const dataNote = gnsdResult.indicatorCount < gnsdResult.indicatorTotal
+          ? ` · ${gnsdResult.indicatorCount}/${gnsdResult.indicatorTotal} indicators` : '';
+        ofEl.textContent = '/ 100' + capNote + dataNote;
+      }
+    } else {
+      if (numEl)  { numEl.textContent = '—'; numEl.className = 'gnsd-number'; }
+      if (fillEl) { fillEl.style.width = '0%'; fillEl.className = 'gnsd-bar-fill'; }
+      if (ofEl)   { ofEl.textContent = 'insufficient data'; }
+    }
+  }
+  const gniEl = document.getElementById('apex-gni');
+  if (gniEl) {
+    const gni = hdi?.gni_per_capita;
+    gniEl.innerHTML = gni != null
+      ? `<div class="apex-stat-label">GNI per Capita</div><div class="apex-stat-value">${fmtGni(gni)}</div><div class="apex-stat-sub">2017 PPP</div>`
+      : `<div class="apex-stat-label">GNI per Capita</div><div class="apex-stat-value" style="color:var(--text-muted);font-size:1.5rem">—</div><div class="apex-stat-sub">no data</div>`;
+  }
+  const gdpEl = document.getElementById('apex-gdp');
+  if (gdpEl) {
+    gdpEl.innerHTML = gdp?.gdp_total_usd != null
+      ? `<div class="apex-stat-label">Total GDP</div><div class="apex-stat-value">$${fmtBillion(gdp.gdp_total_usd)}</div><div class="apex-stat-sub">${gdp.year} · current USD</div>`
+      : `<div class="apex-stat-label">Total GDP</div><div class="apex-stat-value" style="color:var(--text-muted);font-size:1.5rem">—</div><div class="apex-stat-sub">no data</div>`;
+  }
+  document.getElementById('apex-bar')?.classList.add('visible');
+}
+
+// =============================================================================
+// Landing hub: computePillarStatus
+// Returns {score, level, counted, total} for a given pillar code.
+// score: pillar mean on 0–100 scale (same as computeGNSD pillar scores).
+// level: 'green' (≥67), 'amber' (≥33), 'red' (<33), or 'gray' (<50% coverage).
+// Tercile rationale: mirrors traffic-light thresholds in PROTOTYPE_PLAN.md.
+// Pillar–indicator mapping mirrors computeGNSD normalisations above.
+// Equity pillar added here (not in computeGNSD core — it is a new Day 3 pillar).
+// =============================================================================
+function computePillarStatus(iso3, pillarCode) {
+  function normHigh(val, bad, mid, good) {
+    if (val == null || !isFinite(val)) return null;
+    if (val <= bad)  return 0;
+    if (val <= mid)  return 50 * (val - bad) / (mid - bad);
+    if (val <= good) return 50 + 50 * (val - mid) / (good - mid);
+    return 100;
+  }
+  function normLow(val, good, mid, bad) {
+    if (val == null || !isFinite(val)) return null;
+    if (val <= good) return 100;
+    if (val <= mid)  return 50 + 50 * (mid - val) / (mid - good);
+    if (val <= bad)  return 50 * (bad - val) / (bad - mid);
+    return 0;
+  }
+
+  let indicators = [];
+  switch (pillarCode) {
+    case 'O': {
+      const hdi  = Cache.hdi?.data?.[iso3];
+      const lu4  = Cache.lu4?.data?.[iso3];
+      const neet = Cache.neet?.data?.[iso3];
+      const lo   = Cache.learning_outcomes?.data?.[iso3];
+      indicators = [
+        normHigh(hdi?.mean_schooling, 8, 12, 15),
+        normLow(lu4?.value, 5, 10, 25),
+        normLow(neet?.value, 10, 15, 30),
+        normHigh(lo?.value, 420, 490, 570),
+      ];
+      break;
+    }
+    case 'I': {
+      const wage = Cache.wage?.data?.[iso3];
+      const prod = Cache.productivity?.data?.[iso3];
+      const pov  = Cache.poverty_rate?.data?.[iso3];
+      const povS = Cache.poverty_societal?.data?.[iso3];
+      indicators = [
+        normHigh(wage?.value, 15000, 35000, 60000),
+        normHigh(prod?.value, 30000, 70000, 120000),
+        normLow(pov?.value, 10, 20, 40),
+        normLow(povS?.value, 5, 15, 35),
+      ];
+      break;
+    }
+    case 'N': {
+      const mpi  = Cache.mpi?.data?.[iso3];
+      const matfp = Cache.material_footprint?.data?.[iso3];
+      const dw   = Cache.drinking_water?.data?.[iso3];
+      indicators = [
+        normLow(mpi?.mpi, 0.01, 0.1, 0.35),
+        normLow(matfp?.mf_per_capita_t, 8, 16, 30),
+        normHigh(dw?.value, 50, 75, 95),
+      ];
+      break;
+    }
+    case 'EcS': {
+      const hale = Cache.hale?.data?.[iso3];
+      const uhc  = Cache.uhc_coverage?.data?.[iso3];
+      const lbw  = Cache.lbw?.data?.[iso3];
+      const gini = Cache.gini?.data?.[iso3];
+      const hm   = Cache.homicide_rate?.data?.[iso3];
+      const ls   = Cache.life_satisfaction?.data?.[iso3];
+      const tr   = Cache.wvs_trust?.data?.[iso3];
+      const gc   = Cache.wvs_gov_confidence?.data?.[iso3];
+      indicators = [
+        normHigh(hale?.value, 60, 70, 75),
+        normHigh(uhc?.value, 70, 90, 100),
+        normLow(lbw?.value, 7, 10, 15),
+        normLow(gini?.value, 30, 40, 50),
+        normLow(hm?.value, 3, 6, 10),
+        normHigh(ls?.value, 5.0, 6.0, 7.5),
+        normHigh(tr?.value, 20, 30, 50),
+        normHigh(gc?.value, 30, 40, 60),
+      ];
+      break;
+    }
+    case 'EnS': {
+      const co2  = Cache.co2?.data?.[iso3];
+      const eod  = Cache.ecological_footprint?.data?.[iso3];
+      const bii  = Cache.bii?.data?.[iso3];
+      const ghg  = Cache.ghg_total?.data?.[iso3];
+      const pm25 = Cache.pm25?.data?.[iso3];
+      const cap  = Cache.produced_capital?.data?.[iso3];
+      const eodNorm = (eod?.ecological_footprint != null && eod?.biocapacity != null)
+        ? normLow(eod.ecological_footprint, eod.biocapacity, eod.biocapacity * 1.5, eod.biocapacity * 3) : null;
+      indicators = [
+        normLow(co2?.co2_per_capita_tco2, 2, 7, 20),
+        eodNorm,
+        normHigh(bii?.value, 70, 85, 95),
+        normLow(ghg?.value, 100, 300, 1000),
+        normLow(pm25?.value, 5, 15, 35),
+        normHigh(cap?.value, 10000, 30000, 80000),
+      ];
+      break;
+    }
+    case 'Eq': {
+      const gdi  = Cache.gdi?.data?.[iso3];
+      const gii  = Cache.gii?.data?.[iso3];
+      const gpr  = Cache.gender_pay_ratio?.data?.[iso3];
+      const ipv  = Cache.ipv?.data?.[iso3];
+      indicators = [
+        normHigh(gdi?.gdi, 0.90, 0.95, 0.975),
+        normLow(gii?.gii, 0.10, 0.25, 0.50),
+        normHigh(gpr?.value, 0.70, 0.85, 0.95),
+        normLow(ipv?.value, 5, 10, 25),
+      ];
+      break;
+    }
+    default:
+      return { score: null, level: 'gray', counted: 0, total: 0 };
+  }
+
+  const counted = indicators.filter(v => v != null).length;
+  const total   = indicators.length;
+  if (counted === 0 || counted < total * 0.5) {
+    return { score: null, level: 'gray', counted, total };
+  }
+  const score = indicators.filter(v => v != null).reduce((a, b) => a + b, 0) / counted;
+  const level = score >= 67 ? 'green' : score >= 33 ? 'amber' : 'red';
+  return { score, level, counted, total };
 }

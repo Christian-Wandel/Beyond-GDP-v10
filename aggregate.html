@@ -631,27 +631,27 @@
     <div class="left-nav-divider"></div>
     <div class="left-nav-section">
       <div class="left-nav-label">Pillars</div>
-      <a class="left-nav-item" href="index.html#panel-opportunity" data-pillar="O">
+      <a class="left-nav-item" href="opportunity.html" data-pillar="O">
         <span class="left-nav-dot"></span>
         Work & Education
       </a>
-      <a class="left-nav-item" href="index.html#panel-income" data-pillar="I">
+      <a class="left-nav-item" href="income.html" data-pillar="I">
         <span class="left-nav-dot"></span>
         Income & Poverty
       </a>
-      <a class="left-nav-item" href="index.html#panel-necessities" data-pillar="N">
+      <a class="left-nav-item" href="necessities.html" data-pillar="N">
         <span class="left-nav-dot"></span>
         Basic Needs
       </a>
-      <a class="left-nav-item" href="index.html#panel-security" data-pillar="EcS">
+      <a class="left-nav-item" href="security.html" data-pillar="EcS">
         <span class="left-nav-dot"></span>
         Health & Security
       </a>
-      <a class="left-nav-item" href="index.html#panel-environment" data-pillar="EnS">
+      <a class="left-nav-item" href="environment.html" data-pillar="EnS">
         <span class="left-nav-dot"></span>
         Planet & Nature
       </a>
-      <a class="left-nav-item" href="index.html#panel-equity" data-pillar="Eq">
+      <a class="left-nav-item" href="equity.html" data-pillar="Eq">
         <span class="left-nav-dot"></span>
         Gender & Equality
       </a>
@@ -780,16 +780,38 @@
         }
 
         document.getElementById('loading-msg').style.display = 'none';
-        // Auto-select Denmark on load
-        selectCountry('DNK');
+        // Honour ?country=ISO3 from URL; fall back to Denmark.
+        const supported = ['DNK', 'VNM', 'KEN'];
+        const fromUrl = getCountryFromURL();
+        const initial = fromUrl && supported.includes(fromUrl) ? fromUrl : 'DNK';
+        selectCountry(initial);
       } catch (err) {
         showError('Failed to load data: ' + err);
       }
     }
 
+    // ── URL + nav propagation helpers ─────────────────────────────────────
+    function getCountryFromURL() {
+      const p = new URLSearchParams(location.search).get('country');
+      return p && /^[A-Za-z]{3}$/.test(p) ? p.toUpperCase() : null;
+    }
+    function setCountryInURL(iso3) {
+      history.replaceState({}, '', `?country=${iso3}`);
+    }
+    function propagateCountryParam(iso3) {
+      if (!iso3) return;
+      const sel = 'a.left-nav-item[href*=".html"], a.left-nav-link[href*=".html"]';
+      document.querySelectorAll(sel).forEach(a => {
+        const base = a.getAttribute('href').split('?')[0].split('#')[0];
+        a.setAttribute('href', `${base}?country=${iso3}`);
+      });
+    }
+
     // ── Country selection ─────────────────────────────────────────────────
     function selectCountry(iso3) {
       activeIso3 = iso3;
+      setCountryInURL(iso3);
+      propagateCountryParam(iso3);
 
       // Update button states
       document.querySelectorAll('.country-btn').forEach(btn => {

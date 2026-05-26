@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planet &amp; Nature — Beyond GDP Dashboard</title>
+  <title>Health &amp; Security — Beyond GDP Dashboard</title>
   <!-- No-flash theme: must run before any styles paint. -->
   <script>
     (function () {
@@ -155,15 +155,15 @@
     .left-nav-item:hover { color: var(--text); background: var(--surface-2); }
     .left-nav-item.active { color: var(--text); background: var(--accent-bg); border-left-color: var(--accent); font-weight: 600; }
     .left-nav-item:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
-    .left-nav-item.active[data-pillar="EnS"] { border-left-color: #fb923c; background: rgba(251,146,60,0.10); color: #fb923c; }
-    [data-theme="light"] .left-nav-item.active[data-pillar="EnS"] { border-left-color: #c2410c; background: rgba(194,65,12,0.10); color: #c2410c; }
+    .left-nav-item.active[data-pillar="EcS"] { border-left-color: #a78bfa; background: rgba(167,139,250,0.10); color: #a78bfa; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="EcS"] { border-left-color: #6d28d9; background: rgba(109,40,217,0.10); color: #6d28d9; }
     .left-nav-dot {
       width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
       background: var(--border-strong); transition: background var(--transition-fast);
     }
     .left-nav-item.active .left-nav-dot { background: var(--accent); }
-    .left-nav-item.active[data-pillar="EnS"] .left-nav-dot { background: #fb923c; }
-    [data-theme="light"] .left-nav-item.active[data-pillar="EnS"] .left-nav-dot { background: #c2410c; }
+    .left-nav-item.active[data-pillar="EcS"] .left-nav-dot { background: #a78bfa; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="EcS"] .left-nav-dot { background: #6d28d9; }
     .left-nav-item.active[data-pillar="Eq"] { border-left-color: #e879f9; background: rgba(232,121,249,0.10); color: #e879f9; }
     [data-theme="light"] .left-nav-item.active[data-pillar="Eq"] { border-left-color: #a21caf; background: rgba(162,28,175,0.08); color: #a21caf; }
     .left-nav-item.active[data-pillar="Eq"] .left-nav-dot { background: #e879f9; }
@@ -266,6 +266,8 @@
     .metric-card:nth-child(5) { animation-delay: 160ms; }
     .metric-card:nth-child(6) { animation-delay: 200ms; }
     .metric-card:nth-child(7) { animation-delay: 240ms; }
+    .metric-card:nth-child(8) { animation-delay: 280ms; }
+    .metric-card:nth-child(9) { animation-delay: 320ms; }
     .metric-card .metric-title { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); margin-bottom: 6px; text-align: center; }
     .metric-chart { width: 100%; height: 100px; position: relative; }
     .metric-footer { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 4px; padding: 0 4px; }
@@ -339,7 +341,7 @@
       .left-nav-label { display: none; }
       .left-nav-item { border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; padding: 12px 14px 9px; }
       .left-nav-item.active { border-bottom-color: var(--accent); border-left: none; }
-      .left-nav-item.active[data-pillar="EnS"] { border-bottom-color: #fb923c; border-left: none; }
+      .left-nav-item.active[data-pillar="EcS"] { border-bottom-color: #a78bfa; border-left: none; }
       .left-nav-item.active[data-pillar="Eq"] { border-bottom-color: #e879f9; border-left: none; }
       .left-nav-dot { display: none; }
       .left-nav-divider { display: none; }
@@ -369,7 +371,7 @@
 <header>
   <div class="header-title">
     <h1>Beyond GDP Dashboard</h1>
-    <span>Planet &amp; Nature</span>
+    <span>Health &amp; Security</span>
   </div>
   <div class="header-right">
     <div class="header-badge">Data: 2020&ndash;2023</div>
@@ -417,11 +419,11 @@
       <span class="left-nav-dot"></span>
       Basic Needs
     </a>
-    <a class="left-nav-item" href="security.html" data-pillar="EcS">
+    <a class="left-nav-item active" href="security.html" data-pillar="EcS">
       <span class="left-nav-dot"></span>
       Health &amp; Security
     </a>
-    <a class="left-nav-item active" href="environment.html" data-pillar="EnS">
+    <a class="left-nav-item" href="environment.html" data-pillar="EnS">
       <span class="left-nav-dot"></span>
       Planet &amp; Nature
     </a>
@@ -456,174 +458,220 @@
         <span class="pillar-info-wrap" tabindex="0" aria-label="About this pillar">
           <span class="pillar-info-icon">ⓘ</span>
           <span class="pillar-tooltip" role="tooltip">
-            <strong class="pt-title">Planet &amp; Nature</strong>
-            <span class="pt-body">Is the country living within planetary limits? Tracks CO₂, total GHG, methane, ecological footprint, biodiversity, air quality, and produced capital — the environmental and resource stewardship dimension of sustainable development.</span>
+            <strong class="pt-title">Health &amp; Security</strong>
+            <span class="pt-body">Are people healthy, safe, and able to trust their institutions? Tracks healthy life expectancy, universal health coverage, household income, low birthweight, inequality (Gini), homicide rate, life satisfaction, and social trust — the human and institutional foundations of economic and social security.</span>
           </span>
         </span>
-        <span class="dial-title">Planet &amp; Nature</span>
-        <span class="dial-desc">Operating within planetary limits for future generations</span>
+        <span class="dial-title">Health &amp; Security</span>
+        <span class="dial-desc">Are people healthy, safe, and able to trust their institutions?</span>
       </div>
 
       <div class="metric-grid">
 
-        <!-- CO₂ per capita -->
-        <div class="metric-card" data-card="co2">
-          <div class="metric-title">CO&#8322; Emissions per Capita</div>
+        <!-- Healthy Life Expectancy (HALE) -->
+        <div class="metric-card" data-card="hale">
+          <div class="metric-title">Healthy Life Expectancy</div>
           <div class="card-corner">
-            <div id="co2-status" class="status-badge status-gray">No Data</div>
-            <button class="info-btn" data-tooltip="tooltip-co2" title="What does this mean?">i</button>
+            <div id="hale-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-hale" title="What does this mean?">i</button>
           </div>
-          <div id="gauge-co2" class="metric-chart"></div>
+          <div id="gauge-hale" class="metric-chart"></div>
           <div class="metric-footer">
             <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Danger threshold: 2.0 t (Paris 1.5&deg;C budget)</span>
+              <div class="limit-dot" style="background:var(--amber)"></div>
+              <span>Target: 70 healthy years at birth</span>
             </div>
           </div>
-          <div class="metric-tooltip" id="tooltip-co2">
+          <div class="metric-tooltip" id="tooltip-hale">
             <div class="tooltip-header">
-              <div class="tooltip-title">CO&#8322; Emissions per Capita</div>
-              <button class="tooltip-close" data-tooltip="tooltip-co2">✕</button>
+              <div class="tooltip-title">Healthy Life Expectancy</div>
+              <button class="tooltip-close" data-tooltip="tooltip-hale">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-co2-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body" id="tooltip-hale-body">Select a country to see interpretation.</div>
           </div>
         </div>
 
-        <!-- Methane per capita -->
-        <div class="metric-card" data-card="ch4">
-          <div class="metric-title">Methane Emissions per Capita</div>
+        <!-- UHC Coverage -->
+        <div class="metric-card" data-card="uhc">
+          <div class="metric-title">UHC Service Coverage</div>
           <div class="card-corner">
-            <div id="ch4-status" class="status-badge status-gray">No Data</div>
-            <button class="info-btn" data-tooltip="tooltip-ch4" title="What does this mean?">i</button>
+            <div id="uhc-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-uhc" title="What does this mean?">i</button>
           </div>
-          <div id="gauge-ch4" class="metric-chart"></div>
+          <div id="gauge-uhc" class="metric-chart"></div>
           <div class="metric-footer">
             <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Danger threshold: net zero or below (land use)</span>
+              <div class="limit-dot" style="background:var(--amber)"></div>
+              <span>SDG 3.8.1 target: 90%+ coverage</span>
             </div>
           </div>
-          <div class="metric-tooltip" id="tooltip-ch4">
+          <div class="metric-tooltip" id="tooltip-uhc">
             <div class="tooltip-header">
-              <div class="tooltip-title">Methane Emissions per Capita</div>
-              <button class="tooltip-close" data-tooltip="tooltip-ch4">✕</button>
+              <div class="tooltip-title">UHC Service Coverage</div>
+              <button class="tooltip-close" data-tooltip="tooltip-uhc">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-ch4-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body" id="tooltip-uhc-body">Select a country to see interpretation.</div>
           </div>
         </div>
 
-        <!-- Ecological Footprint -->
-        <div class="metric-card" data-card="footprint">
-          <div class="metric-title">Ecological Footprint</div>
+        <!-- Household Income proxy (Tier I #4) -->
+        <div class="metric-card" data-card="hhinc">
+          <div class="metric-title">Household Income (proxy)</div>
           <div class="card-corner">
-            <div id="footprint-status" class="status-badge status-gray">No Data</div>
-            <button class="info-btn" data-tooltip="tooltip-footprint" title="What does this mean?">i</button>
+            <div id="hhinc-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-hhinc" title="What does this mean?">i</button>
           </div>
-          <div id="gauge-footprint" class="metric-chart"></div>
+          <div id="gauge-hhinc" class="metric-chart"></div>
           <div class="metric-footer">
             <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span id="footprint-limit-label">Danger threshold: your biocapacity</span>
+              <div class="limit-dot" style="background:var(--amber)"></div>
+              <span>Target: $20k+/person (GDP/capita proxy)</span>
             </div>
           </div>
-          <div class="metric-tooltip" id="tooltip-footprint">
+          <div class="metric-tooltip" id="tooltip-hhinc">
             <div class="tooltip-header">
-              <div class="tooltip-title">Ecological Footprint</div>
-              <button class="tooltip-close" data-tooltip="tooltip-footprint">✕</button>
+              <div class="tooltip-title">Household Income (proxy)</div>
+              <button class="tooltip-close" data-tooltip="tooltip-hhinc">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-footprint-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body" id="tooltip-hhinc-body">Select a country to see interpretation.</div>
           </div>
         </div>
 
-        <!-- Biodiversity Intactness Index -->
-        <div class="metric-card" data-card="bii">
-          <div class="metric-title">Biodiversity Intactness Index</div>
+        <!-- Low Birthweight (Tier I #7) -->
+        <div class="metric-card" data-card="lbw">
+          <div class="metric-title">Low Birthweight</div>
           <div class="card-corner">
-            <div id="bii-status" class="status-badge status-gray">No Data</div>
-            <button class="info-btn" data-tooltip="tooltip-bii" title="What does this mean?">i</button>
+            <div id="lbw-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-lbw" title="What does this mean?">i</button>
           </div>
-          <div id="gauge-bii" class="metric-chart"></div>
+          <div id="gauge-lbw" class="metric-chart"></div>
           <div class="metric-footer">
             <div class="limit-label">
               <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Danger threshold: below 70 (planetary boundary)</span>
+              <span>Danger threshold: 15% of live births</span>
             </div>
           </div>
-          <div class="metric-tooltip" id="tooltip-bii">
+          <div class="metric-tooltip" id="tooltip-lbw">
             <div class="tooltip-header">
-              <div class="tooltip-title">Biodiversity Intactness Index</div>
-              <button class="tooltip-close" data-tooltip="tooltip-bii">&#x2715;</button>
+              <div class="tooltip-title">Low Birthweight</div>
+              <button class="tooltip-close" data-tooltip="tooltip-lbw">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-bii-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body" id="tooltip-lbw-body">Select a country to see interpretation.</div>
           </div>
         </div>
 
-        <!-- Total GHG Emissions -->
-        <div class="metric-card" data-card="ghg">
-          <div class="metric-title">Total GHG Emissions</div>
+        <!-- Gini Index (Tier I #14) -->
+        <div class="metric-card" data-card="gini">
+          <div class="metric-title">Gini Index (Income Inequality)</div>
           <div class="card-corner">
-            <div id="ghg-status" class="status-badge status-gray">No Data</div>
-            <button class="info-btn" data-tooltip="tooltip-ghg" title="What does this mean?">i</button>
+            <div id="gini-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-gini" title="What does this mean?">i</button>
           </div>
-          <div id="gauge-ghg" class="metric-chart"></div>
+          <div id="gauge-gini" class="metric-chart"></div>
           <div class="metric-footer">
             <div class="limit-label">
               <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Threshold: &gt;500 MtCO&#8322;e = high emitter</span>
+              <span>Danger threshold: Gini 45+ (lower = more equal)</span>
             </div>
           </div>
-          <div class="metric-tooltip" id="tooltip-ghg">
+          <div class="metric-tooltip" id="tooltip-gini">
             <div class="tooltip-header">
-              <div class="tooltip-title">Total GHG Emissions</div>
-              <button class="tooltip-close" data-tooltip="tooltip-ghg">✕</button>
+              <div class="tooltip-title">Gini Index (Income Inequality)</div>
+              <button class="tooltip-close" data-tooltip="tooltip-gini">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-ghg-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body" id="tooltip-gini-body">Select a country to see interpretation.</div>
           </div>
         </div>
 
-        <!-- PM2.5 Air Pollution -->
-        <div class="metric-card" data-card="pm25">
-          <div class="metric-title">PM2.5 Air Pollution</div>
+        <!-- Homicide Rate (Tier I #9) -->
+        <div class="metric-card" data-card="homicide">
+          <div class="metric-title">Homicide Rate</div>
           <div class="card-corner">
-            <div id="pm25-status" class="status-badge status-gray">No Data</div>
-            <button class="info-btn" data-tooltip="tooltip-pm25" title="What does this mean?">i</button>
+            <div id="homicide-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-homicide" title="What does this mean?">i</button>
           </div>
-          <div id="gauge-pm25" class="metric-chart"></div>
+          <div id="gauge-homicide" class="metric-chart"></div>
           <div class="metric-footer">
             <div class="limit-label">
               <div class="limit-dot" style="background:var(--red)"></div>
-              <span>WHO guideline: 5 &#956;g/m&#179; annual mean</span>
+              <span>Danger threshold: 10 per 100,000 (SDG 16.1.1)</span>
             </div>
           </div>
-          <div class="metric-tooltip" id="tooltip-pm25">
+          <div class="metric-tooltip" id="tooltip-homicide">
             <div class="tooltip-header">
-              <div class="tooltip-title">PM2.5 Air Pollution</div>
-              <button class="tooltip-close" data-tooltip="tooltip-pm25">✕</button>
+              <div class="tooltip-title">Homicide Rate</div>
+              <button class="tooltip-close" data-tooltip="tooltip-homicide">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-pm25-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body" id="tooltip-homicide-body">Select a country to see interpretation.</div>
           </div>
         </div>
 
-        <!-- Net Produced Capital -->
-        <div class="metric-card" data-card="capital">
-          <div class="metric-title">Net Produced Capital</div>
+        <!-- Life Satisfaction (Tier I #10) -->
+        <div class="metric-card" data-card="lifesat">
+          <div class="metric-title">Life Satisfaction (Cantril ladder)</div>
           <div class="card-corner">
-            <div id="capital-status" class="status-badge status-gray">No Data</div>
-            <button class="info-btn" data-tooltip="tooltip-capital" title="What does this mean?">i</button>
+            <div id="lifesat-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-lifesat" title="What does this mean?">i</button>
           </div>
-          <div id="gauge-capital" class="metric-chart"></div>
+          <div id="gauge-lifesat" class="metric-chart"></div>
           <div class="metric-footer">
             <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Threshold: &lt;$10k/person = low capital base</span>
+              <div class="limit-dot" style="background:var(--amber)"></div>
+              <span>Target: 6.5+ (0&ndash;10 Cantril ladder)</span>
             </div>
           </div>
-          <div class="metric-tooltip" id="tooltip-capital">
+          <div class="metric-tooltip" id="tooltip-lifesat">
             <div class="tooltip-header">
-              <div class="tooltip-title">Net Produced Capital</div>
-              <button class="tooltip-close" data-tooltip="tooltip-capital">✕</button>
+              <div class="tooltip-title">Life Satisfaction (Cantril ladder)</div>
+              <button class="tooltip-close" data-tooltip="tooltip-lifesat">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-capital-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body" id="tooltip-lifesat-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <!-- Social Trust (Tier I #20) -->
+        <div class="metric-card" data-card="trust">
+          <div class="metric-title">Social Trust (WVS)</div>
+          <div class="card-corner">
+            <div id="trust-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-trust" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-trust" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--amber)"></div>
+              <span>WVS Wave 7 — ~66 country coverage</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-trust">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Social Trust (WVS)</div>
+              <button class="tooltip-close" data-tooltip="tooltip-trust">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-trust-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <!-- Civil-Service Confidence (Tier I #19) -->
+        <div class="metric-card" data-card="govconf">
+          <div class="metric-title">Confidence in Civil Services</div>
+          <div class="card-corner">
+            <div id="govconf-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-govconf" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-govconf" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--amber)"></div>
+              <span>WVS Wave 7 — ~65 country coverage</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-govconf">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Confidence in Civil Services</div>
+              <button class="tooltip-close" data-tooltip="tooltip-govconf">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-govconf-body">Select a country to see interpretation.</div>
           </div>
         </div>
 
@@ -646,19 +694,22 @@
     document.head.appendChild(s);
   }
 
-  // ── Chart instances (environment pillar only) ─────────────────────────────
+  // ── Chart instances (security pillar only) ────────────────────────────────
   function initCharts() {
     const iv = id => echarts.init(document.getElementById(id), null, { renderer: 'svg' });
-    window.chartCo2      = iv('gauge-co2');
-    window.chartCh4      = iv('gauge-ch4');
-    window.chartFootprint = iv('gauge-footprint');
-    window.chartBii      = iv('gauge-bii');
-    window.chartGhg      = iv('gauge-ghg');
-    window.chartPm25     = iv('gauge-pm25');
-    window.chartCapital  = iv('gauge-capital');
+    window.chartHale      = iv('gauge-hale');
+    window.chartUhc       = iv('gauge-uhc');
+    window.chartHhinc     = iv('gauge-hhinc');
+    window.chartLbw       = iv('gauge-lbw');
+    window.chartGini      = iv('gauge-gini');
+    window.chartHomicide  = iv('gauge-homicide');
+    window.chartLifesat   = iv('gauge-lifesat');
+    window.chartTrust     = iv('gauge-trust');
+    window.chartGovconf   = iv('gauge-govconf');
     window.__chartInstances = [
-      window.chartCo2, window.chartCh4, window.chartFootprint,
-      window.chartBii, window.chartGhg, window.chartPm25, window.chartCapital,
+      window.chartHale, window.chartUhc, window.chartHhinc,
+      window.chartLbw, window.chartGini, window.chartHomicide,
+      window.chartLifesat, window.chartTrust, window.chartGovconf,
     ];
     window.addEventListener('resize', () => {
       window.__chartInstances.forEach(c => c && c.resize());
@@ -676,21 +727,23 @@
     setCountryInURL(iso3);
     propagateCountryParam(iso3);
 
-    renderCo2(Cache.co2?.data?.[iso3]);
-    renderCh4(Cache.methane?.data?.[iso3]);
-    renderFootprint(Cache.ecological_footprint?.data?.[iso3]);
-    renderBii(Cache.bii?.data?.[iso3]);
-    renderGhgTotal(Cache.ghg_total?.data?.[iso3]);
-    renderPm25(Cache.pm25?.data?.[iso3]);
-    renderProducedCapital(Cache.produced_capital?.data?.[iso3]);
+    renderHale(Cache.hale?.data?.[iso3]);
+    renderUhc(Cache.uhc_coverage?.data?.[iso3]);
+    renderHouseholdIncome(Cache.household_income?.data?.[iso3]);
+    renderLbw(Cache.lbw?.data?.[iso3]);
+    renderGini(Cache.gini?.data?.[iso3]);
+    renderHomicide(Cache.homicide_rate?.data?.[iso3]);
+    renderLifeSatisfaction(Cache.life_satisfaction?.data?.[iso3]);
+    renderWvsTrust(Cache.wvs_trust?.data?.[iso3]);
+    renderWvsGovConfidence(Cache.wvs_gov_confidence?.data?.[iso3]);
 
-    updateEnvTooltips(iso3, name);
+    updateSecurityTooltips(iso3, name);
   }
 
   // ── Boot ──────────────────────────────────────────────────────────────────
   async function init() {
     try {
-      await loadAll(['ghg_total', 'pm25', 'produced_capital']);
+      await loadAll(['household_income', 'lbw', 'gini', 'homicide_rate', 'life_satisfaction', 'wvs_trust', 'wvs_gov_confidence']);
     } catch (err) {
       document.getElementById('loading-overlay').innerHTML =
         `<div style="color:#ef4444;text-align:center;padding:32px;max-width:500px">
@@ -700,7 +753,7 @@
             <code style="background:#141828;padding:6px 12px;border-radius:6px;display:inline-block">
               python -m http.server 8080
             </code><br><br>
-            Then open <strong>http://localhost:8080/environment.html</strong>
+            Then open <strong>http://localhost:8080/security.html</strong>
           </div>
         </div>`;
       return;
