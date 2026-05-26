@@ -1017,6 +1017,188 @@
       pointer-events: none;
     }
     @media (max-width: 600px) { .kbd-hint { display: none; } }
+
+    /* ── App shell: left-nav + main content ─────────────────────────── */
+    .app-shell {
+      display: flex;
+      min-height: calc(100vh - 60px); /* subtract header height */
+    }
+
+    /* ── Left navigation sidebar ─────────────────────────────────────── */
+    .left-nav {
+      width: 200px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 90;
+    }
+    .left-nav-section {
+      padding: 20px 0 8px;
+    }
+    .left-nav-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      padding: 0 16px 8px;
+    }
+    .left-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      border-left: 3px solid transparent;
+      transition: color var(--transition-fast),
+                  background var(--transition-fast),
+                  border-left-color var(--transition-fast);
+      text-decoration: none;
+    }
+    .left-nav-item:hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+    .left-nav-item.active {
+      color: var(--text);
+      background: var(--accent-bg);
+      border-left-color: var(--accent);
+      font-weight: 600;
+    }
+    .left-nav-item:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: -2px;
+    }
+    /* Pillar color accents on active */
+    .left-nav-item.active[data-pillar="O"]   { border-left-color: #60a5fa; background: rgba(96,165,250,0.10);  color: #60a5fa; }
+    .left-nav-item.active[data-pillar="I"]   { border-left-color: #34d399; background: rgba(52,211,153,0.10);  color: #34d399; }
+    .left-nav-item.active[data-pillar="N"]   { border-left-color: #f472b6; background: rgba(244,114,182,0.10); color: #f472b6; }
+    .left-nav-item.active[data-pillar="EcS"] { border-left-color: #a78bfa; background: rgba(167,139,250,0.10); color: #a78bfa; }
+    .left-nav-item.active[data-pillar="EnS"] { border-left-color: #fb923c; background: rgba(251,146,60,0.10);  color: #fb923c; }
+    .left-nav-item.active[data-pillar="Eq"]  { border-left-color: #e879f9; background: rgba(232,121,249,0.10); color: #e879f9; }
+    /* Light mode pillar active colors */
+    [data-theme="light"] .left-nav-item.active[data-pillar="O"]   { border-left-color: #1d4ed8; background: rgba(29,78,216,0.10);  color: #1d4ed8; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="I"]   { border-left-color: #047857; background: rgba(4,120,87,0.10);   color: #047857; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="N"]   { border-left-color: #be185d; background: rgba(190,24,93,0.10);  color: #be185d; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="EcS"] { border-left-color: #6d28d9; background: rgba(109,40,217,0.10); color: #6d28d9; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="EnS"] { border-left-color: #c2410c; background: rgba(194,65,12,0.10);  color: #c2410c; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="Eq"]  { border-left-color: #a21caf; background: rgba(162,28,175,0.10); color: #a21caf; }
+
+    .left-nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--border-strong);
+      transition: background var(--transition-fast);
+    }
+    .left-nav-item.active .left-nav-dot       { background: var(--accent); }
+    .left-nav-item.active[data-pillar="O"]  .left-nav-dot { background: #60a5fa; }
+    .left-nav-item.active[data-pillar="I"]  .left-nav-dot { background: #34d399; }
+    .left-nav-item.active[data-pillar="N"]  .left-nav-dot { background: #f472b6; }
+    .left-nav-item.active[data-pillar="EcS"].left-nav-dot { background: #a78bfa; }
+    .left-nav-item.active[data-pillar="EnS"].left-nav-dot { background: #fb923c; }
+    .left-nav-item.active[data-pillar="Eq"] .left-nav-dot { background: #e879f9; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="O"]  .left-nav-dot { background: #1d4ed8; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="I"]  .left-nav-dot { background: #047857; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="N"]  .left-nav-dot { background: #be185d; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="EcS"].left-nav-dot { background: #6d28d9; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="EnS"].left-nav-dot { background: #c2410c; }
+    [data-theme="light"] .left-nav-item.active[data-pillar="Eq"] .left-nav-dot { background: #a21caf; }
+
+    .left-nav-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 16px;
+    }
+    .left-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: color var(--transition-fast), background var(--transition-fast);
+    }
+    .left-nav-link:hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+    .left-nav-link-icon {
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      margin-left: auto;
+    }
+    .left-nav-bottom {
+      margin-top: auto;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Main content area next to left-nav */
+    .main-content {
+      flex: 1;
+      min-width: 0;
+      overflow-x: hidden;
+    }
+
+    /* Hide panels not active */
+    .dial-panel { display: none; }
+    .dial-panel.panel-visible { display: block; }
+    /* apex bar always visible */
+    #apex-bar { display: flex; }
+
+    /* Mobile: collapse left-nav to top horizontal bar */
+    @media (max-width: 768px) {
+      .app-shell { flex-direction: column; }
+      .left-nav {
+        width: 100%;
+        height: auto;
+        position: static;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .left-nav-section { display: flex; padding: 0; flex-direction: row; }
+      .left-nav-label { display: none; }
+      .left-nav-item {
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        white-space: nowrap;
+        padding: 12px 14px 9px;
+      }
+      .left-nav-item.active { border-bottom-color: var(--accent); border-left: none; }
+      .left-nav-item.active[data-pillar="O"]   { border-bottom-color: #60a5fa; border-left: none; }
+      .left-nav-item.active[data-pillar="I"]   { border-bottom-color: #34d399; border-left: none; }
+      .left-nav-item.active[data-pillar="N"]   { border-bottom-color: #f472b6; border-left: none; }
+      .left-nav-item.active[data-pillar="EcS"] { border-bottom-color: #a78bfa; border-left: none; }
+      .left-nav-item.active[data-pillar="EnS"] { border-bottom-color: #fb923c; border-left: none; }
+      .left-nav-item.active[data-pillar="Eq"]  { border-bottom-color: #e879f9; border-left: none; }
+      .left-nav-dot { display: none; }
+      .left-nav-divider { display: none; }
+      .left-nav-bottom { margin-top: 0; padding: 0; border-top: none; }
+      .left-nav-link { padding: 12px 14px 9px; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+      .left-nav-link-icon { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -1049,19 +1231,58 @@
   </div>
 </header>
 
-<!-- Sticky context bar: pillar nav + country selector + narrative verdict -->
-<div class="sticky-top-bar">
+<!-- App shell: left-nav sidebar + main content -->
+<div class="app-shell">
 
-  <!-- Pillar jump-nav -->
-  <nav class="pillar-tabs" aria-label="Dashboard sections">
-    <button class="pillar-tab active" type="button" data-target="panel-apex">Overview</button>
-    <button class="pillar-tab" type="button" data-target="panel-opportunity">Opportunity</button>
-    <button class="pillar-tab" type="button" data-target="panel-income">Income</button>
-    <button class="pillar-tab" type="button" data-target="panel-necessities">Necessities</button>
-    <button class="pillar-tab" type="button" data-target="panel-security">Security</button>
-    <button class="pillar-tab" type="button" data-target="panel-environment">Environment</button>
-    <button class="pillar-tab" type="button" data-target="panel-equity">Equity</button>
-  </nav>
+<!-- Left navigation -->
+<aside class="left-nav" aria-label="Dashboard navigation">
+  <div class="left-nav-section">
+    <div class="left-nav-label">Overview</div>
+    <button class="left-nav-item active" type="button" data-target="panel-overview">
+      <span class="left-nav-dot"></span>
+      Overview
+    </button>
+    <a class="left-nav-link" href="aggregate.html">
+      <span class="left-nav-dot" style="background:var(--accent)"></span>
+      Aggregates
+      <span class="left-nav-link-icon">↗</span>
+    </a>
+  </div>
+  <div class="left-nav-divider"></div>
+  <div class="left-nav-section">
+    <div class="left-nav-label">Pillars</div>
+    <button class="left-nav-item" type="button" data-target="panel-opportunity" data-pillar="O">
+      <span class="left-nav-dot"></span>
+      Opportunity
+    </button>
+    <button class="left-nav-item" type="button" data-target="panel-income" data-pillar="I">
+      <span class="left-nav-dot"></span>
+      Income
+    </button>
+    <button class="left-nav-item" type="button" data-target="panel-necessities" data-pillar="N">
+      <span class="left-nav-dot"></span>
+      Necessities
+    </button>
+    <button class="left-nav-item" type="button" data-target="panel-security" data-pillar="EcS">
+      <span class="left-nav-dot"></span>
+      Security
+    </button>
+    <button class="left-nav-item" type="button" data-target="panel-environment" data-pillar="EnS">
+      <span class="left-nav-dot"></span>
+      Environment
+    </button>
+    <button class="left-nav-item" type="button" data-target="panel-equity" data-pillar="Eq">
+      <span class="left-nav-dot"></span>
+      Equity
+    </button>
+  </div>
+</aside>
+
+<!-- Main content -->
+<div class="main-content">
+
+<!-- Sticky context bar: country selector + narrative verdict -->
+<div class="sticky-top-bar">
 
   <!-- Country Selector -->
   <div class="selector-bar">
@@ -1084,11 +1305,14 @@
 
 </div>
 
-<!-- Dashboard -->
+<!-- Dashboard panels -->
 <main>
 
+  <!-- Overview panel (apex bar + scorecard) -->
+  <div id="panel-overview" class="dial-panel panel-visible">
+
   <!-- Apex stat bar -->
-  <div id="panel-apex" style="scroll-margin-top:210px"></div>
+  <div id="panel-apex"></div>
   <div id="apex-bar" class="apex-bar">
     <div class="apex-stat-cell gnsd-cell" id="apex-gnsd">
       <div class="apex-stat-label-row">
@@ -1141,6 +1365,8 @@
       </div>
     </div>
   </div>
+
+  </div><!-- /panel-overview -->
 
   <div class="dial-panels">
 
@@ -1612,6 +1838,9 @@
 
 </main>
 
+</div><!-- /main-content -->
+</div><!-- /app-shell -->
+
 <script src="lib/echarts.min.js"></script>
 <script>
   if (typeof echarts === 'undefined') {
@@ -1674,10 +1903,14 @@
     chartHale      = iv('gauge-hale');
     chartUhc       = iv('gauge-uhc');
     chartBii       = iv('gauge-bii');
+    // Register all instances for panel-switch resize
+    window.__chartInstances = [
+      chartFootprint, chartCo2, chartCh4, chartGdi, chartGii,
+      chartSchooling, chartLu4, chartNeet, chartWage, chartProd, chartPoverty,
+      chartMpi, chartMatFp, chartHale, chartUhc, chartBii
+    ];
     window.addEventListener('resize', () => {
-      [chartFootprint, chartCo2, chartCh4, chartGdi, chartGii,
-       chartSchooling, chartLu4, chartNeet, chartWage, chartProd, chartPoverty,
-       chartMpi, chartMatFp, chartHale, chartUhc, chartBii].forEach(c => c.resize());
+      window.__chartInstances.forEach(c => c.resize());
     });
   }
 
@@ -3277,6 +3510,13 @@
     initThemeToggle();
     initPillarTabs();
     initNarrativeCollapse();
+
+    // Handle deep-link from aggregate.html (e.g. index.html#panel-opportunity)
+    if (location.hash) {
+      const targetId = location.hash.slice(1); // strip #
+      const navItem = document.querySelector(`.left-nav-item[data-target="${targetId}"]`);
+      if (navItem) navItem.click();
+    }
     initKeyboardShortcuts();
 
     const countries = Cache.countries?.countries || [];
@@ -3303,41 +3543,55 @@
     });
   }
 
-  // ── Pillar tabs (jump-nav + active tracking) ────────────────────────────
+  // ── Left-nav: true show/hide tab switching ──────────────────────────────
   function initPillarTabs() {
-    const tabs = Array.from(document.querySelectorAll('.pillar-tab'));
-    if (!tabs.length) return;
+    const navItems = Array.from(document.querySelectorAll('.left-nav-item'));
+    if (!navItems.length) return;
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const targetId = tab.dataset.target;
-        const target = document.getElementById(targetId);
-        if (!target) return;
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
+    // Collect all switchable panels (not apex-bar which is always visible)
+    const allPanels = Array.from(document.querySelectorAll(
+      '#panel-overview, #panel-opportunity, #panel-income, #panel-necessities, #panel-security, #panel-environment, #panel-equity'
+    ));
+
+    function switchToPanel(targetId) {
+      // Hide all panels
+      allPanels.forEach(p => p.classList.remove('panel-visible'));
+      // Show target
+      const target = document.getElementById(targetId);
+      if (target) target.classList.add('panel-visible');
+      // Update active nav item
+      navItems.forEach(n => n.classList.remove('active'));
+      const activeItem = navItems.find(n => n.dataset.target === targetId);
+      if (activeItem) activeItem.classList.add('active');
+      // Scroll main-content to top
+      const mc = document.querySelector('.main-content');
+      if (mc) mc.scrollTop = 0;
+      // Resize any ECharts in the newly-visible panel (they need this after display:none)
+      setTimeout(() => {
+        if (window.__chartInstances) {
+          window.__chartInstances.forEach(c => { try { c.resize(); } catch(e) {} });
+        }
+      }, 50);
+    }
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        switchToPanel(item.dataset.target);
       });
     });
 
-    // Track which panel is in view and highlight its tab
-    const panelMap = new Map();
-    tabs.forEach(t => {
-      const el = document.getElementById(t.dataset.target);
-      if (el) panelMap.set(el, t);
-    });
-    const obs = new IntersectionObserver(entries => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) {
-        const tab = panelMap.get(visible.target);
-        if (tab) {
-          tabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
+    // Keyboard: arrow keys navigate between nav items
+    navItems.forEach((item, i) => {
+      item.addEventListener('keydown', e => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          navItems[(i + 1) % navItems.length].focus();
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          navItems[(i - 1 + navItems.length) % navItems.length].focus();
         }
-      }
-    }, { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.25, 0.5, 1] });
-    panelMap.forEach((_tab, el) => obs.observe(el));
+      });
+    });
   }
 
   // ── Narrative headline: collapse on scroll-down ─────────────────────────
