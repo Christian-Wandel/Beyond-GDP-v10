@@ -1,0 +1,672 @@
+{
+  "meta": {
+    "source": "UNDP/OPHI Global Multidimensional Poverty Index 2023",
+    "data_year": "2017-2022 (survey year varies by country)",
+    "unit": "index (0–1 composite)",
+    "threshold_red": 0.1,
+    "threshold_amber": 0.01,
+    "note": "Covers ~160 developing countries only. High-income countries absent by design."
+  },
+  "data": {
+    "ALB": {
+      "name": "Albania",
+      "mpi": 0.002748,
+      "headcount_pct": 0.703561,
+      "survey_year": "2017/2018"
+    },
+    "DZA": {
+      "name": "Algeria",
+      "mpi": 0.005409,
+      "headcount_pct": 1.380835,
+      "survey_year": "2018/2019"
+    },
+    "ARG": {
+      "name": "Argentina",
+      "mpi": 0.001469,
+      "headcount_pct": 0.432323,
+      "survey_year": "2019/2020"
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "mpi": 0.10406,
+      "headcount_pct": 24.640573,
+      "survey_year": "2019"
+    },
+    "BEN": {
+      "name": "Benin",
+      "mpi": 0.367675,
+      "headcount_pct": 66.798888,
+      "survey_year": "2017/2018"
+    },
+    "BDI": {
+      "name": "Burundi",
+      "mpi": 0.408861,
+      "headcount_pct": 75.097473,
+      "survey_year": "2016/2017"
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "mpi": 0.070368,
+      "headcount_pct": 16.644697,
+      "survey_year": "2021/2022"
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "mpi": 0.23206,
+      "headcount_pct": 43.591636,
+      "survey_year": "2018"
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "mpi": 0.461348,
+      "headcount_pct": 80.414178,
+      "survey_year": "2018/2019"
+    },
+    "TCD": {
+      "name": "Chad",
+      "mpi": 0.517011,
+      "headcount_pct": 84.174947,
+      "survey_year": "2019"
+    },
+    "COD": {
+      "name": "Congo (Democratic Republic of the)",
+      "mpi": 0.331189,
+      "headcount_pct": 64.51798,
+      "survey_year": "2017/2018"
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "mpi": 0.002006,
+      "headcount_pct": 0.540467,
+      "survey_year": "2018"
+    },
+    "CUB": {
+      "name": "Cuba",
+      "mpi": 0.002689,
+      "headcount_pct": 0.706432,
+      "survey_year": "2019"
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "mpi": 0.008786,
+      "headcount_pct": 2.266608,
+      "survey_year": "2019"
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "mpi": 0.007937,
+      "headcount_pct": 2.091221,
+      "survey_year": "2018"
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "mpi": 0.366604,
+      "headcount_pct": 68.736858,
+      "survey_year": "2019"
+    },
+    "FJI": {
+      "name": "Fiji",
+      "mpi": 0.005758,
+      "headcount_pct": 1.511322,
+      "survey_year": "2021"
+    },
+    "GMB": {
+      "name": "Gambia",
+      "mpi": 0.198023,
+      "headcount_pct": 41.70908,
+      "survey_year": "2019/2020"
+    },
+    "GEO": {
+      "name": "Georgia",
+      "mpi": 0.001245,
+      "headcount_pct": 0.340126,
+      "survey_year": "2018"
+    },
+    "GHA": {
+      "name": "Ghana",
+      "mpi": 0.111218,
+      "headcount_pct": 24.637101,
+      "survey_year": "2017/2018"
+    },
+    "GIN": {
+      "name": "Guinea",
+      "mpi": 0.373222,
+      "headcount_pct": 66.211102,
+      "survey_year": "2018"
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "mpi": 0.340689,
+      "headcount_pct": 64.39631,
+      "survey_year": "2018/2019"
+    },
+    "GUY": {
+      "name": "Guyana",
+      "mpi": 0.007165,
+      "headcount_pct": 1.823615,
+      "survey_year": "2019/2020"
+    },
+    "HTI": {
+      "name": "Haiti",
+      "mpi": 0.199588,
+      "headcount_pct": 41.268898,
+      "survey_year": "2016/2017"
+    },
+    "HND": {
+      "name": "Honduras",
+      "mpi": 0.051154,
+      "headcount_pct": 11.974922,
+      "survey_year": "2019"
+    },
+    "IND": {
+      "name": "India",
+      "mpi": 0.068811,
+      "headcount_pct": 16.392806,
+      "survey_year": "2019/2021"
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "mpi": 0.014011,
+      "headcount_pct": 3.619007,
+      "survey_year": "2017"
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "mpi": 0.032694,
+      "headcount_pct": 8.635419,
+      "survey_year": "2018"
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "mpi": 0.01081,
+      "headcount_pct": 2.775662,
+      "survey_year": "2018"
+    },
+    "JOR": {
+      "name": "Jordan",
+      "mpi": 0.001526,
+      "headcount_pct": 0.431203,
+      "survey_year": "2017/2018"
+    },
+    "KIR": {
+      "name": "Kiribati",
+      "mpi": 0.080157,
+      "headcount_pct": 19.802591,
+      "survey_year": "2018/2019"
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "mpi": 0.001426,
+      "headcount_pct": 0.393031,
+      "survey_year": "2018"
+    },
+    "LAO": {
+      "name": "Lao People's Democratic Republic",
+      "mpi": 0.108333,
+      "headcount_pct": 23.072346,
+      "survey_year": "2017"
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "mpi": 0.084359,
+      "headcount_pct": 19.604542,
+      "survey_year": "2018"
+    },
+    "LBR": {
+      "name": "Liberia",
+      "mpi": 0.259294,
+      "headcount_pct": 52.323075,
+      "survey_year": "2019/2020"
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "mpi": 0.385927,
+      "headcount_pct": 68.418862,
+      "survey_year": "2021"
+    },
+    "MWI": {
+      "name": "Malawi",
+      "mpi": 0.231095,
+      "headcount_pct": 49.883387,
+      "survey_year": "2019/2020"
+    },
+    "MDV": {
+      "name": "Maldives",
+      "mpi": 0.002654,
+      "headcount_pct": 0.771989,
+      "survey_year": "2016/2017"
+    },
+    "MLI": {
+      "name": "Mali",
+      "mpi": 0.376063,
+      "headcount_pct": 68.332251,
+      "survey_year": "2018"
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "mpi": 0.327037,
+      "headcount_pct": 58.448083,
+      "survey_year": "2019/2021"
+    },
+    "MEX": {
+      "name": "Mexico",
+      "mpi": 0.016492,
+      "headcount_pct": 4.069145,
+      "survey_year": "2021"
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "mpi": 0.028127,
+      "headcount_pct": 7.258449,
+      "survey_year": "2018"
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "mpi": 0.004899,
+      "headcount_pct": 1.235765,
+      "survey_year": "2018"
+    },
+    "MAR": {
+      "name": "Morocco",
+      "mpi": 0.026697,
+      "headcount_pct": 6.359701,
+      "survey_year": "2017/2018"
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "mpi": 0.371564,
+      "headcount_pct": 61.933222,
+      "survey_year": "2019/2020"
+    },
+    "NPL": {
+      "name": "Nepal",
+      "mpi": 0.074399,
+      "headcount_pct": 17.504596,
+      "survey_year": "2019"
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "mpi": 0.174817,
+      "headcount_pct": 33.044066,
+      "survey_year": "2021"
+    },
+    "MKD": {
+      "name": "North Macedonia",
+      "mpi": 0.001422,
+      "headcount_pct": 0.371857,
+      "survey_year": "2018/2019"
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "mpi": 0.198247,
+      "headcount_pct": 38.332131,
+      "survey_year": "2017/2018"
+    },
+    "PSE": {
+      "name": "Palestine, State of",
+      "mpi": 0.00198,
+      "headcount_pct": 0.566184,
+      "survey_year": "2019/2020"
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "mpi": 0.263291,
+      "headcount_pct": 56.628627,
+      "survey_year": "2016/2018"
+    },
+    "PER": {
+      "name": "Peru",
+      "mpi": 0.025803,
+      "headcount_pct": 6.630745,
+      "survey_year": "2021"
+    },
+    "PHL": {
+      "name": "Philippines",
+      "mpi": 0.024249,
+      "headcount_pct": 5.795982,
+      "survey_year": "2017"
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "mpi": 0.231002,
+      "headcount_pct": 48.822402,
+      "survey_year": "2019/2020"
+    },
+    "WSM": {
+      "name": "Samoa",
+      "mpi": 0.0246,
+      "headcount_pct": 6.288499,
+      "survey_year": "2019/2020"
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "mpi": 0.047923,
+      "headcount_pct": 11.712264,
+      "survey_year": "2019"
+    },
+    "SEN": {
+      "name": "Senegal",
+      "mpi": 0.262862,
+      "headcount_pct": 50.832378,
+      "survey_year": "2019"
+    },
+    "SRB": {
+      "name": "Serbia",
+      "mpi": 0.000433,
+      "headcount_pct": 0.113674,
+      "survey_year": "2019"
+    },
+    "SYC": {
+      "name": "Seychelles",
+      "mpi": 0.002963,
+      "headcount_pct": 0.865758,
+      "survey_year": "2019"
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "mpi": 0.292899,
+      "headcount_pct": 59.221963,
+      "survey_year": "2019"
+    },
+    "SUR": {
+      "name": "Suriname",
+      "mpi": 0.011232,
+      "headcount_pct": 2.85374,
+      "survey_year": "2018"
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "mpi": 0.029006,
+      "headcount_pct": 7.444606,
+      "survey_year": "2017"
+    },
+    "THA": {
+      "name": "Thailand",
+      "mpi": 0.002121,
+      "headcount_pct": 0.577791,
+      "survey_year": "2019"
+    },
+    "TGO": {
+      "name": "Togo",
+      "mpi": 0.179616,
+      "headcount_pct": 37.612295,
+      "survey_year": "2017"
+    },
+    "TON": {
+      "name": "Tonga",
+      "mpi": 0.003336,
+      "headcount_pct": 0.874608,
+      "survey_year": "2019"
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "mpi": 0.002888,
+      "headcount_pct": 0.791434,
+      "survey_year": "2018"
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "mpi": 0.000849,
+      "headcount_pct": 0.249407,
+      "survey_year": "2019"
+    },
+    "TUV": {
+      "name": "Tuvalu",
+      "mpi": 0.008085,
+      "headcount_pct": 2.114436,
+      "survey_year": "2019/2020"
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "mpi": 0.006104,
+      "headcount_pct": 1.729536,
+      "survey_year": "2021/2022"
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "mpi": 0.007729,
+      "headcount_pct": 1.919121,
+      "survey_year": "2020/2021"
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "mpi": 0.231685,
+      "headcount_pct": 47.906131,
+      "survey_year": "2018"
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "mpi": 0.109942,
+      "headcount_pct": 25.800038,
+      "survey_year": "2019"
+    },
+    "AFG": {
+      "name": "Afghanistan",
+      "mpi": 0.271721,
+      "headcount_pct": 55.910239,
+      "survey_year": "2015/2016"
+    },
+    "AGO": {
+      "name": "Angola",
+      "mpi": 0.282435,
+      "headcount_pct": 51.104112,
+      "survey_year": "2015/2016"
+    },
+    "ARM": {
+      "name": "Armenia",
+      "mpi": 0.00069,
+      "headcount_pct": 0.190553,
+      "survey_year": "2015/2016"
+    },
+    "BRB": {
+      "name": "Barbados",
+      "mpi": 0.008529,
+      "headcount_pct": 2.491337,
+      "survey_year": "2012"
+    },
+    "BLZ": {
+      "name": "Belize",
+      "mpi": 0.017109,
+      "headcount_pct": 4.303543,
+      "survey_year": "2015/2016"
+    },
+    "BOL": {
+      "name": "Bolivia (Plurinational State of)",
+      "mpi": 0.037754,
+      "headcount_pct": 9.060217,
+      "survey_year": "2016"
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "mpi": 0.008307,
+      "headcount_pct": 2.190133,
+      "survey_year": "2011/2012"
+    },
+    "BWA": {
+      "name": "Botswana",
+      "mpi": 0.072639,
+      "headcount_pct": 17.219296,
+      "survey_year": "2015/2016"
+    },
+    "BRA": {
+      "name": "Brazil",
+      "mpi": 0.016346,
+      "headcount_pct": 3.841927,
+      "survey_year": "2015"
+    },
+    "CHN": {
+      "name": "China",
+      "mpi": 0.016067,
+      "headcount_pct": 3.88502,
+      "survey_year": "2014"
+    },
+    "COL": {
+      "name": "Colombia",
+      "mpi": 0.019657,
+      "headcount_pct": 4.84625,
+      "survey_year": "2015/2016"
+    },
+    "COM": {
+      "name": "Comoros",
+      "mpi": 0.180771,
+      "headcount_pct": 37.264919,
+      "survey_year": "2012"
+    },
+    "COG": {
+      "name": "Congo",
+      "mpi": 0.111676,
+      "headcount_pct": 24.266835,
+      "survey_year": "2014/2015"
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "mpi": 0.235871,
+      "headcount_pct": 46.067484,
+      "survey_year": "2016"
+    },
+    "EGY": {
+      "name": "Egypt",
+      "mpi": 0.019682,
+      "headcount_pct": 5.23862,
+      "survey_year": "2014"
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "mpi": 0.032463,
+      "headcount_pct": 7.860886,
+      "survey_year": "2014"
+    },
+    "SWZ": {
+      "name": "Eswatini (Kingdom of)",
+      "mpi": 0.081271,
+      "headcount_pct": 19.213775,
+      "survey_year": "2014"
+    },
+    "GAB": {
+      "name": "Gabon",
+      "mpi": 0.069695,
+      "headcount_pct": 15.60155,
+      "survey_year": "2012"
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "mpi": 0.133518,
+      "headcount_pct": 28.881828,
+      "survey_year": "2014/2015"
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "mpi": 0.001611,
+      "headcount_pct": 0.452978,
+      "survey_year": "2015"
+    },
+    "KEN": {
+      "name": "Kenya",
+      "mpi": 0.170776,
+      "headcount_pct": 37.477145,
+      "survey_year": "2014"
+    },
+    "LBY": {
+      "name": "Libya",
+      "mpi": 0.007421,
+      "headcount_pct": 1.998519,
+      "survey_year": "2014"
+    },
+    "MDA": {
+      "name": "Moldova (Republic of)",
+      "mpi": 0.003534,
+      "headcount_pct": 0.943633,
+      "survey_year": "2012"
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "mpi": 0.175846,
+      "headcount_pct": 38.315858,
+      "survey_year": "2015/2016"
+    },
+    "NAM": {
+      "name": "Namibia",
+      "mpi": 0.184735,
+      "headcount_pct": 40.881011,
+      "survey_year": "2013"
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "mpi": 0.074495,
+      "headcount_pct": 16.4602,
+      "survey_year": "2011/2012"
+    },
+    "NER": {
+      "name": "Niger",
+      "mpi": 0.60128,
+      "headcount_pct": 90.971158,
+      "survey_year": "2012"
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "mpi": 0.018849,
+      "headcount_pct": 4.500745,
+      "survey_year": "2016"
+    },
+    "LCA": {
+      "name": "Saint Lucia",
+      "mpi": 0.007202,
+      "headcount_pct": 1.921131,
+      "survey_year": "2012"
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "mpi": 0.024891,
+      "headcount_pct": 6.256882,
+      "survey_year": "2016"
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "mpi": 0.011185,
+      "headcount_pct": 2.920718,
+      "survey_year": "2016"
+    },
+    "SDN": {
+      "name": "Sudan",
+      "mpi": 0.27944,
+      "headcount_pct": 52.328042,
+      "survey_year": "2014"
+    },
+    "TZA": {
+      "name": "Tanzania (United Republic of)",
+      "mpi": 0.284179,
+      "headcount_pct": 57.067727,
+      "survey_year": "2015/2016"
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "mpi": 0.221514,
+      "headcount_pct": 48.2537,
+      "survey_year": "2016"
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "mpi": 0.002418,
+      "headcount_pct": 0.636561,
+      "survey_year": "2011"
+    },
+    "UGA": {
+      "name": "Uganda",
+      "mpi": 0.281028,
+      "headcount_pct": 57.168485,
+      "survey_year": "2016"
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "mpi": 0.00084,
+      "headcount_pct": 0.244237,
+      "survey_year": "2012"
+    },
+    "YEM": {
+      "name": "Yemen",
+      "mpi": 0.245166,
+      "headcount_pct": 48.466429,
+      "survey_year": "2013"
+    }
+  }
+}

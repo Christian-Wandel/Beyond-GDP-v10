@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "generated": "2026-05-26",
+  "notes": "Hand-authored config for HLEG Headline Aggregate Indicators MVP. Supports Option A (inequality-adjusted income, universal) and Option B (country-custom penalization). Three focus countries: DNK, VNM, KEN. See aggregate-methodology.md for full methodology.",
+
+  "globalAnchors": {
+    "_notes": "Global medians computed from on-disk JSON files at build time 2026-05-26. Gini/HALE/PM2.5/lifeSat/povertyRate/mpi from their respective indicator JSONs. co2PerCap from co2.json (GCP 2022 fossil-fuel). All medians are base-year constants — held fixed for cross-country comparability per HLEG spec.",
+    "gini2022Median": 35.30,
+    "hale2022Median": 62.88,
+    "pm252022Median": 13.92,
+    "co2PerCap2022Median": 2.54,
+    "lifeSatisfaction2022Median": 5.83,
+    "povertyRate2022Median": 20.66,
+    "mpi2022Median": 0.04,
+    "householdIncome2022Median": 7189.60
+  },
+
+  "indicatorAnchors": {
+    "_notes": "Three-point normalization anchors (bad/mid/good for ascending, good/mid/bad for descending). Reuses same normHigh/normLow logic as computeGNSD() in index.html. Anchors chosen to match HLEG threshold intent and existing dashboard conventions.",
+    "household_income": {
+      "type": "high",
+      "bad": 1000,
+      "mid": 12000,
+      "good": 80000,
+      "unit": "USD per capita (GDP proxy)",
+      "source_field": "value",
+      "source_file": "household_income.json",
+      "note": "GDP per capita proxy — true HH disposable income not in UNSD AMA API. Anchors spread to $80k good ceiling so high-income countries don't peg at 100."
+    },
+    "gini": {
+      "type": "low",
+      "good": 25,
+      "mid": 37,
+      "bad": 55,
+      "unit": "Gini index (0=perfect equality)",
+      "source_field": "value",
+      "source_file": "gini.json"
+    },
+    "hale": {
+      "type": "high",
+      "bad": 50,
+      "mid": 65,
+      "good": 75,
+      "unit": "years",
+      "source_field": "value",
+      "source_file": "hale.json"
+    },
+    "pm25": {
+      "type": "low",
+      "good": 5,
+      "mid": 15,
+      "bad": 35,
+      "unit": "µg/m³",
+      "source_field": "value",
+      "source_file": "pm25.json"
+    },
+    "co2_per_capita": {
+      "type": "low",
+      "good": 2,
+      "mid": 7,
+      "bad": 20,
+      "unit": "tonnes CO2 per person (fossil fuel)",
+      "source_field": "co2_per_capita_tco2",
+      "source_file": "co2.json"
+    },
+    "life_satisfaction": {
+      "type": "high",
+      "bad": 3.5,
+      "mid": 5.5,
+      "good": 7.5,
+      "unit": "Cantril ladder 0–10",
+      "source_field": "value",
+      "source_file": "life_satisfaction.json"
+    },
+    "poverty_rate": {
+      "type": "low",
+      "good": 5,
+      "mid": 20,
+      "bad": 50,
+      "unit": "% population below tiered poverty line",
+      "source_field": "value",
+      "source_file": "poverty_rate.json"
+    },
+    "mpi": {
+      "type": "low",
+      "good": 0.01,
+      "mid": 0.10,
+      "bad": 0.35,
+      "unit": "MPI score 0–1 (developing countries only)",
+      "source_field": "mpi",
+      "source_file": "mpi.json",
+      "note": "Only available for ~110 developing countries — DNK has no MPI entry by design"
+    }
+  },
+
+  "optionA": {
+    "name": "Inequality-Adjusted Income",
+    "shortName": "HLEG Option A",
+    "method": "HLEG Option A — inequality-adjusted household income",
+    "source": "UN HLEG report 'Counting What Counts', Headline Aggregate Indicators section, 2026",
+    "appliesTo": "ALL",
+    "description": "Household disposable income per capita adjusted upward when inequality is below the global reference level, and downward when above it. A direct implementation of the HLEG's first illustrative headline aggregate. Cross-country comparable using a fixed 2022 global-median Gini reference.",
+    "formula": "adjustedIncome = income × (1 + (giniRef − giniCountry) / giniRef); score = normHigh(adjustedIncome, anchors)",
+    "incomeAnchors": { "bad": 1000, "mid": 12000, "good": 80000 },
+    "giniReference": 35.30
+  },
+
+  "countryAggregates": {
+
+    "DNK": {
+      "name": "Denmark — Green Welfare Composite",
+      "shortName": "DK Green Welfare",
+      "method": "HLEG Option B — expert-deliberation weights",
+      "weightSource": "Statistics Denmark sustainability indicators (dst.dk/en/Statistik/temaer/SDG/danske-maalepunkter); OECD How's Life 2024 Denmark country note; SGI Network 2024 Denmark Social Sustainability report",
+      "weightSourceNote": "Denmark developed 197 national indicators via consultation with 6,000+ stakeholders (businesses, researchers, citizens). Priorities emphasise welfare, low inequality, health, and green transition. Weights reflect Denmark's stated national emphasis on environmental transition and social welfare maintenance rather than poverty reduction (where Denmark already performs at ceiling). Editorial interpretation by dashboard authors — not official Danish government weights.",
+      "policyFraming": "Denmark's core policy tension is between its high material living standard (high income, very low inequality) and its outsized ecological footprint relative to European neighbours. The green transition is the central policy challenge. Social welfare maintenance — particularly HALE, life satisfaction — is the baseline that Denmark protects while pursuing the green shift. Poverty and MPI are excluded as Denmark operates near the ceiling on both.",
+      "dimensions": [
+        {
+          "indicator": "co2_per_capita",
+          "weight": 0.35,
+          "rationale": "Green transition is Denmark's central stated priority (Climate Act 2020: 70% GHG reduction by 2030 vs 1990). CO2/cap at ~5t is above the Paris-aligned 2t target despite Denmark's wealthy-state commitments. Highest weight reflects this as the primary structural gap."
+        },
+        {
+          "indicator": "hale",
+          "weight": 0.25,
+          "rationale": "Health system quality is a core welfare-state output. Denmark HALE of 70.1 years is at the HLEG mid-benchmark — good but not exceptional for a high-income country. Danish Statistics and SGI both flag health as a sustained priority."
+        },
+        {
+          "indicator": "life_satisfaction",
+          "weight": 0.25,
+          "rationale": "Denmark consistently leads global life-satisfaction rankings (Cantril 7.5). SGI 2024 and Statistics Denmark both track subjective well-being as a primary national output. Weight reflects its centrality to the Danish welfare model."
+        },
+        {
+          "indicator": "pm25",
+          "weight": 0.15,
+          "rationale": "Air quality (7.7 µg/m³) is below the WHO guideline of 15 µg/m³ — Denmark performs well here. Lower weight reflects this strength rather than a gap, but retained as an environmental co-indicator alongside CO2."
+        }
+      ]
+    },
+
+    "VNM": {
+      "name": "Vietnam — Inclusive Development Composite",
+      "shortName": "VN Inclusive Dev",
+      "method": "HLEG Option B — expert-deliberation weights",
+      "weightSource": "Vietnam Socio-Economic Development Strategy 2021-2030 (Communist Party of Vietnam Congress 2021); Vietnam VNR 2023 submitted to HLPF (hlpf.un.org/countries/vietnam/voluntary-national-reviews-2023); Vietnam national SDG action plan (National Action Plan for Implementation of the 2030 Agenda)",
+      "weightSourceNote": "Vietnam's SEDS 2021-2030 targets rapid growth with structural transformation, human capital development, and environmental sustainability. VNR 2023 highlights multidimensional poverty reduction (from 9.2% to 4.3% 2016–2022) and health insurance coverage (92% of population). Strategy explicitly frames human resources as the primary strategic breakthrough. Weights reflect Vietnam's dual challenge: continuing poverty/health gains while managing rapid industrialisation's environmental cost. Editorial interpretation by dashboard authors.",
+      "policyFraming": "Vietnam is a lower-middle-income country in rapid structural transition. Its policy challenge is managing growth quality: ensuring that rising incomes translate into human development gains (health, education) while avoiding the 'dirty industrialisation' path. The VNR 2023 flags ethnic minority health, environmental transition, and sustained poverty reduction as the three remaining structural gaps. Life satisfaction reflects social cohesion during transformation.",
+      "dimensions": [
+        {
+          "indicator": "poverty_rate",
+          "weight": 0.30,
+          "rationale": "Vietnam's SEDS and VNR 2023 both lead with poverty reduction as the primary social objective. Multidimensional poverty rate fell from 9.2% to 4.3% (2016–2022) — progress is being made, but 4.1% still above Denmark. Vietnam's income poverty rate remains elevated. Highest weight reflects this as the defining national development challenge."
+        },
+        {
+          "indicator": "hale",
+          "weight": 0.25,
+          "rationale": "VNR 2023 explicitly lists 'expansion of essential healthcare services for all people, especially vulnerable populations' as a top remaining priority (SDG 3). HALE of 65.4 years exceeds global median (62.9) but lags upper-middle-income peers. Reflects the strategy's human capital breakthrough emphasis."
+        },
+        {
+          "indicator": "co2_per_capita",
+          "weight": 0.25,
+          "rationale": "Vietnam's SEDS includes environmental sustainability as a strategic pillar. VNR 2023 flags increasing renewable energy and energy efficiency (SDG 7) as a key forward priority. CO2/cap of 3.5t is above the Paris 2t threshold as industrialisation accelerates — the strategic tension between growth and emission is explicit in national documents."
+        },
+        {
+          "indicator": "life_satisfaction",
+          "weight": 0.20,
+          "rationale": "Vietnam Cantril score of 6.35 is above global median (5.83), reflecting genuine social cohesion gains during the growth period. SEDS cultural/social cohesion is explicitly listed as a strategic breakthrough. Life satisfaction is the integrative outcome that captures whether growth is translating into lived well-being."
+        }
+      ]
+    },
+
+    "KEN": {
+      "name": "Kenya — Basic Needs & Resilience Composite",
+      "shortName": "KE Basic Needs",
+      "method": "HLEG Option B — expert-deliberation weights",
+      "weightSource": "Kenya Vision 2030 Social Pillar (vision2030.go.ke); Kenya Medium Term Plan IV 2023-2027 (vision2030.go.ke/wp-content/uploads/2024/03/FINAL-MTP-IV-2023-2027); Bottom-Up Economic Transformation Agenda (BETA) five pillars",
+      "weightSourceNote": "Kenya Vision 2030 Social Pillar prioritises 'a just and cohesive society with social equity in a clean and secure environment.' MTP IV clusters priorities under: universal health coverage, social protection, human capital development, environment and natural resources, and governance. BETA five pillars are: Agricultural Transformation, MSME Economy, Housing, Healthcare, and Digital/Creative. Weights reflect Kenya's development stage where basic human needs (health, poverty) remain structurally unmet, and where climate vulnerability is a defining constraint for a primarily agricultural economy. Editorial interpretation by dashboard authors.",
+      "policyFraming": "Kenya is a lower-middle-income country where the primary development challenge is unmet basic needs: poverty rate at 45.5% (well above global median of 20.7%), HALE at 58.2 years (below global median of 62.9), and MPI of 0.171 indicating multidimensional deprivation. Vision 2030 and BETA both prioritise healthcare and poverty elimination as foundational. Environmental resilience is critical given agriculture-dependence and climate exposure. CO2/cap (0.44t) is far below global median — Kenya is a low-emitter but highly climate-vulnerable.",
+      "dimensions": [
+        {
+          "indicator": "poverty_rate",
+          "weight": 0.35,
+          "rationale": "Kenya poverty rate 45.5% is the defining structural gap — more than double the global median of 20.7%. Vision 2030 Social Pillar explicitly names 'poverty elimination' first. BETA agricultural transformation pillar is primarily poverty-reduction focused. Highest weight reflects this as Kenya's most urgent unresolved challenge."
+        },
+        {
+          "indicator": "hale",
+          "weight": 0.30,
+          "rationale": "HALE of 58.2 years is below the global median (62.9) and well below the HLEG good-level (75). MTP IV clusters universal health coverage as the primary social sector priority. BETA Healthcare is one of the five named pillars. Health is both a policy priority and a measurable gap for Kenya."
+        },
+        {
+          "indicator": "mpi",
+          "weight": 0.20,
+          "rationale": "Kenya MPI of 0.171 indicates that about 17% of the population are multidimensionally poor (overlapping deprivations in health, education, living standards). Vision 2030 targets human capital development alongside income poverty. MPI captures the depth of deprivation beyond income alone — critical for Kenya's structural challenge."
+        },
+        {
+          "indicator": "pm25",
+          "weight": 0.15,
+          "rationale": "PM2.5 of 17.4 µg/m³ exceeds the WHO guideline (15 µg/m³). MTP IV environment pillar prioritises conservation and sustainable resource management. As an agricultural economy, air quality links directly to health burden and agricultural productivity. Included as an environmental resilience indicator given Kenya's climate exposure — lower weight reflects it as a secondary gap relative to poverty and health."
+        }
+      ]
+    }
+  }
+}

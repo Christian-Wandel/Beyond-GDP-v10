@@ -1,0 +1,976 @@
+{
+  "meta": {
+    "source": "UNDP Human Development Report 2023, Table 5",
+    "data_year": 2022,
+    "unit": "index (0–1, lower = more equal)",
+    "threshold_ambitious": 0.1,
+    "note": "Composite of reproductive health, empowerment, and labour market participation. ~170 countries."
+  },
+  "data": {
+    "CHE": {
+      "name": "Switzerland",
+      "gii": 0.018,
+      "year": 2022
+    },
+    "NOR": {
+      "name": "Norway",
+      "gii": 0.012,
+      "year": 2022
+    },
+    "ISL": {
+      "name": "Iceland",
+      "gii": 0.039,
+      "year": 2022
+    },
+    "HKG": {
+      "name": "Hong Kong, China (SAR)",
+      "gii": null,
+      "year": 2022
+    },
+    "DNK": {
+      "name": "Denmark",
+      "gii": 0.009,
+      "year": 2022
+    },
+    "SWE": {
+      "name": "Sweden",
+      "gii": 0.023,
+      "year": 2022
+    },
+    "DEU": {
+      "name": "Germany",
+      "gii": 0.071,
+      "year": 2022
+    },
+    "IRL": {
+      "name": "Ireland",
+      "gii": 0.072,
+      "year": 2022
+    },
+    "SGP": {
+      "name": "Singapore",
+      "gii": 0.036,
+      "year": 2022
+    },
+    "AUS": {
+      "name": "Australia",
+      "gii": 0.063,
+      "year": 2022
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "gii": 0.025,
+      "year": 2022
+    },
+    "BEL": {
+      "name": "Belgium",
+      "gii": 0.044,
+      "year": 2022
+    },
+    "FIN": {
+      "name": "Finland",
+      "gii": 0.032,
+      "year": 2022
+    },
+    "LIE": {
+      "name": "Liechtenstein",
+      "gii": null,
+      "year": 2022
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "gii": 0.094,
+      "year": 2022
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "gii": 0.082,
+      "year": 2022
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "gii": 0.035,
+      "year": 2022
+    },
+    "CAN": {
+      "name": "Canada",
+      "gii": 0.069,
+      "year": 2022
+    },
+    "KOR": {
+      "name": "Korea (Republic of)",
+      "gii": 0.062,
+      "year": 2022
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "gii": 0.043,
+      "year": 2022
+    },
+    "USA": {
+      "name": "United States",
+      "gii": 0.18,
+      "year": 2022
+    },
+    "AUT": {
+      "name": "Austria",
+      "gii": 0.048,
+      "year": 2022
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "gii": 0.049,
+      "year": 2022
+    },
+    "JPN": {
+      "name": "Japan",
+      "gii": 0.078,
+      "year": 2022
+    },
+    "ISR": {
+      "name": "Israel",
+      "gii": 0.092,
+      "year": 2022
+    },
+    "MLT": {
+      "name": "Malta",
+      "gii": 0.117,
+      "year": 2022
+    },
+    "ESP": {
+      "name": "Spain",
+      "gii": 0.059,
+      "year": 2022
+    },
+    "FRA": {
+      "name": "France",
+      "gii": 0.084,
+      "year": 2022
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "gii": 0.253,
+      "year": 2022
+    },
+    "ITA": {
+      "name": "Italy",
+      "gii": 0.057,
+      "year": 2022
+    },
+    "EST": {
+      "name": "Estonia",
+      "gii": 0.093,
+      "year": 2022
+    },
+    "CZE": {
+      "name": "Czechia",
+      "gii": 0.113,
+      "year": 2022
+    },
+    "GRC": {
+      "name": "Greece",
+      "gii": 0.12,
+      "year": 2022
+    },
+    "BHR": {
+      "name": "Bahrain",
+      "gii": 0.181,
+      "year": 2022
+    },
+    "AND": {
+      "name": "Andorra",
+      "gii": null,
+      "year": 2022
+    },
+    "POL": {
+      "name": "Poland",
+      "gii": 0.105,
+      "year": 2022
+    },
+    "LVA": {
+      "name": "Latvia",
+      "gii": 0.142,
+      "year": 2022
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "gii": 0.098,
+      "year": 2022
+    },
+    "HRV": {
+      "name": "Croatia",
+      "gii": 0.087,
+      "year": 2022
+    },
+    "QAT": {
+      "name": "Qatar",
+      "gii": 0.212,
+      "year": 2022
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "gii": 0.229,
+      "year": 2022
+    },
+    "PRT": {
+      "name": "Portugal",
+      "gii": 0.076,
+      "year": 2022
+    },
+    "SMR": {
+      "name": "San Marino",
+      "gii": null,
+      "year": 2022
+    },
+    "CHL": {
+      "name": "Chile",
+      "gii": 0.19,
+      "year": 2022
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "gii": 0.184,
+      "year": 2022
+    },
+    "TUR": {
+      "name": "Türkiye",
+      "gii": 0.259,
+      "year": 2022
+    },
+    "HUN": {
+      "name": "Hungary",
+      "gii": 0.23,
+      "year": 2022
+    },
+    "ARG": {
+      "name": "Argentina",
+      "gii": 0.292,
+      "year": 2022
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "gii": 0.199,
+      "year": 2022
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "gii": 0.114,
+      "year": 2022
+    },
+    "KNA": {
+      "name": "Saint Kitts and Nevis",
+      "gii": null,
+      "year": 2022
+    },
+    "URY": {
+      "name": "Uruguay",
+      "gii": 0.24,
+      "year": 2022
+    },
+    "ROU": {
+      "name": "Romania",
+      "gii": 0.23,
+      "year": 2022
+    },
+    "ATG": {
+      "name": "Antigua and Barbuda",
+      "gii": null,
+      "year": 2022
+    },
+    "BRN": {
+      "name": "Brunei Darussalam",
+      "gii": 0.279,
+      "year": 2022
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "gii": 0.178,
+      "year": 2022
+    },
+    "BHS": {
+      "name": "Bahamas",
+      "gii": 0.333,
+      "year": 2022
+    },
+    "PAN": {
+      "name": "Panama",
+      "gii": 0.392,
+      "year": 2022
+    },
+    "OMN": {
+      "name": "Oman",
+      "gii": 0.267,
+      "year": 2022
+    },
+    "GEO": {
+      "name": "Georgia",
+      "gii": 0.283,
+      "year": 2022
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "gii": 0.264,
+      "year": 2022
+    },
+    "BRB": {
+      "name": "Barbados",
+      "gii": 0.289,
+      "year": 2022
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "gii": 0.202,
+      "year": 2022
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "gii": 0.232,
+      "year": 2022
+    },
+    "SRB": {
+      "name": "Serbia",
+      "gii": 0.119,
+      "year": 2022
+    },
+    "THA": {
+      "name": "Thailand",
+      "gii": 0.31,
+      "year": 2022
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "gii": 0.177,
+      "year": 2022
+    },
+    "SYC": {
+      "name": "Seychelles",
+      "gii": null,
+      "year": 2022
+    },
+    "BLR": {
+      "name": "Belarus",
+      "gii": 0.096,
+      "year": 2022
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "gii": 0.206,
+      "year": 2022
+    },
+    "PLW": {
+      "name": "Palau",
+      "gii": null,
+      "year": 2022
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "gii": 0.369,
+      "year": 2022
+    },
+    "GRD": {
+      "name": "Grenada",
+      "gii": null,
+      "year": 2022
+    },
+    "ALB": {
+      "name": "Albania",
+      "gii": 0.116,
+      "year": 2022
+    },
+    "CHN": {
+      "name": "China",
+      "gii": 0.186,
+      "year": 2022
+    },
+    "ARM": {
+      "name": "Armenia",
+      "gii": 0.198,
+      "year": 2022
+    },
+    "MEX": {
+      "name": "Mexico",
+      "gii": 0.352,
+      "year": 2022
+    },
+    "IRN": {
+      "name": "Iran (Islamic Republic of)",
+      "gii": 0.484,
+      "year": 2022
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "gii": 0.376,
+      "year": 2022
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "gii": 0.148,
+      "year": 2022
+    },
+    "VCT": {
+      "name": "Saint Vincent and the Grenadines",
+      "gii": null,
+      "year": 2022
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "gii": 0.433,
+      "year": 2022
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "gii": 0.371,
+      "year": 2022
+    },
+    "MKD": {
+      "name": "North Macedonia",
+      "gii": 0.134,
+      "year": 2022
+    },
+    "CUB": {
+      "name": "Cuba",
+      "gii": 0.3,
+      "year": 2022
+    },
+    "MDA": {
+      "name": "Moldova (Republic of)",
+      "gii": 0.156,
+      "year": 2022
+    },
+    "MDV": {
+      "name": "Maldives",
+      "gii": 0.328,
+      "year": 2022
+    },
+    "PER": {
+      "name": "Peru",
+      "gii": 0.36,
+      "year": 2022
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "gii": 0.329,
+      "year": 2022
+    },
+    "BRA": {
+      "name": "Brazil",
+      "gii": 0.391,
+      "year": 2022
+    },
+    "COL": {
+      "name": "Colombia",
+      "gii": 0.392,
+      "year": 2022
+    },
+    "LBY": {
+      "name": "Libya",
+      "gii": 0.266,
+      "year": 2022
+    },
+    "DZA": {
+      "name": "Algeria",
+      "gii": 0.46,
+      "year": 2022
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "gii": null,
+      "year": 2022
+    },
+    "GUY": {
+      "name": "Guyana",
+      "gii": 0.416,
+      "year": 2022
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "gii": 0.297,
+      "year": 2022
+    },
+    "DMA": {
+      "name": "Dominica",
+      "gii": null,
+      "year": 2022
+    },
+    "TON": {
+      "name": "Tonga",
+      "gii": 0.462,
+      "year": 2022
+    },
+    "JOR": {
+      "name": "Jordan",
+      "gii": 0.449,
+      "year": 2022
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "gii": 0.188,
+      "year": 2022
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "gii": 0.237,
+      "year": 2022
+    },
+    "MHL": {
+      "name": "Marshall Islands",
+      "gii": null,
+      "year": 2022
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "gii": 0.429,
+      "year": 2022
+    },
+    "FJI": {
+      "name": "Fiji",
+      "gii": 0.332,
+      "year": 2022
+    },
+    "EGY": {
+      "name": "Egypt",
+      "gii": 0.389,
+      "year": 2022
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "gii": 0.242,
+      "year": 2022
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "gii": 0.378,
+      "year": 2022
+    },
+    "LCA": {
+      "name": "Saint Lucia",
+      "gii": 0.347,
+      "year": 2022
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "gii": 0.365,
+      "year": 2022
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "gii": 0.401,
+      "year": 2022
+    },
+    "PSE": {
+      "name": "Palestine, State of",
+      "gii": null,
+      "year": 2022
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "gii": 0.439,
+      "year": 2022
+    },
+    "PHL": {
+      "name": "Philippines",
+      "gii": 0.388,
+      "year": 2022
+    },
+    "BWA": {
+      "name": "Botswana",
+      "gii": 0.483,
+      "year": 2022
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "gii": 0.35,
+      "year": 2022
+    },
+    "WSM": {
+      "name": "Samoa",
+      "gii": 0.406,
+      "year": 2022
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "gii": 0.345,
+      "year": 2022
+    },
+    "BLZ": {
+      "name": "Belize",
+      "gii": 0.454,
+      "year": 2022
+    },
+    "VEN": {
+      "name": "Venezuela (Bolivarian Republic of)",
+      "gii": 0.521,
+      "year": 2022
+    },
+    "BOL": {
+      "name": "Bolivia (Plurinational State of)",
+      "gii": 0.418,
+      "year": 2022
+    },
+    "MAR": {
+      "name": "Morocco",
+      "gii": 0.44,
+      "year": 2022
+    },
+    "NRU": {
+      "name": "Nauru",
+      "gii": null,
+      "year": 2022
+    },
+    "GAB": {
+      "name": "Gabon",
+      "gii": 0.524,
+      "year": 2022
+    },
+    "SUR": {
+      "name": "Suriname",
+      "gii": 0.405,
+      "year": 2022
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "gii": 0.334,
+      "year": 2022
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "gii": 0.269,
+      "year": 2022
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "gii": 0.369,
+      "year": 2022
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "gii": 0.562,
+      "year": 2022
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "gii": 0.498,
+      "year": 2022
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "gii": 0.397,
+      "year": 2022
+    },
+    "CPV": {
+      "name": "Cabo Verde",
+      "gii": 0.325,
+      "year": 2022
+    },
+    "TUV": {
+      "name": "Tuvalu",
+      "gii": null,
+      "year": 2022
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "gii": null,
+      "year": 2022
+    },
+    "IND": {
+      "name": "India",
+      "gii": 0.437,
+      "year": 2022
+    },
+    "FSM": {
+      "name": "Micronesia (Federated States of)",
+      "gii": null,
+      "year": 2022
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "gii": 0.474,
+      "year": 2022
+    },
+    "KIR": {
+      "name": "Kiribati",
+      "gii": null,
+      "year": 2022
+    },
+    "HND": {
+      "name": "Honduras",
+      "gii": 0.413,
+      "year": 2022
+    },
+    "LAO": {
+      "name": "Lao People's Democratic Republic",
+      "gii": 0.467,
+      "year": 2022
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "gii": null,
+      "year": 2022
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "gii": null,
+      "year": 2022
+    },
+    "SWZ": {
+      "name": "Eswatini (Kingdom of)",
+      "gii": 0.491,
+      "year": 2022
+    },
+    "NAM": {
+      "name": "Namibia",
+      "gii": 0.45,
+      "year": 2022
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "gii": 0.479,
+      "year": 2022
+    },
+    "GHA": {
+      "name": "Ghana",
+      "gii": 0.512,
+      "year": 2022
+    },
+    "KEN": {
+      "name": "Kenya",
+      "gii": 0.533,
+      "year": 2022
+    },
+    "NPL": {
+      "name": "Nepal",
+      "gii": 0.495,
+      "year": 2022
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "gii": 0.486,
+      "year": 2022
+    },
+    "COG": {
+      "name": "Congo",
+      "gii": 0.572,
+      "year": 2022
+    },
+    "AGO": {
+      "name": "Angola",
+      "gii": 0.52,
+      "year": 2022
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "gii": 0.555,
+      "year": 2022
+    },
+    "COM": {
+      "name": "Comoros",
+      "gii": null,
+      "year": 2022
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "gii": 0.526,
+      "year": 2022
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "gii": 0.604,
+      "year": 2022
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "gii": 0.415,
+      "year": 2022
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "gii": null,
+      "year": 2022
+    },
+    "SYR": {
+      "name": "Syrian Arab Republic",
+      "gii": 0.487,
+      "year": 2022
+    },
+    "HTI": {
+      "name": "Haiti",
+      "gii": 0.621,
+      "year": 2022
+    },
+    "UGA": {
+      "name": "Uganda",
+      "gii": 0.527,
+      "year": 2022
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "gii": 0.519,
+      "year": 2022
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "gii": 0.677,
+      "year": 2022
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "gii": 0.4,
+      "year": 2022
+    },
+    "TGO": {
+      "name": "Togo",
+      "gii": 0.578,
+      "year": 2022
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "gii": 0.603,
+      "year": 2022
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "gii": 0.522,
+      "year": 2022
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "gii": 0.612,
+      "year": 2022
+    },
+    "TZA": {
+      "name": "Tanzania (United Republic of)",
+      "gii": 0.513,
+      "year": 2022
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "gii": 0.552,
+      "year": 2022
+    },
+    "SEN": {
+      "name": "Senegal",
+      "gii": 0.505,
+      "year": 2022
+    },
+    "SDN": {
+      "name": "Sudan",
+      "gii": 0.548,
+      "year": 2022
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "gii": null,
+      "year": 2022
+    },
+    "MWI": {
+      "name": "Malawi",
+      "gii": 0.579,
+      "year": 2022
+    },
+    "BEN": {
+      "name": "Benin",
+      "gii": 0.649,
+      "year": 2022
+    },
+    "GMB": {
+      "name": "Gambia",
+      "gii": 0.585,
+      "year": 2022
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "gii": null,
+      "year": 2022
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "gii": 0.494,
+      "year": 2022
+    },
+    "LBR": {
+      "name": "Liberia",
+      "gii": 0.656,
+      "year": 2022
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "gii": 0.574,
+      "year": 2022
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "gii": 0.631,
+      "year": 2022
+    },
+    "COD": {
+      "name": "Congo (Democratic Republic of the)",
+      "gii": 0.605,
+      "year": 2022
+    },
+    "GIN": {
+      "name": "Guinea",
+      "gii": 0.609,
+      "year": 2022
+    },
+    "AFG": {
+      "name": "Afghanistan",
+      "gii": 0.665,
+      "year": 2022
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "gii": 0.477,
+      "year": 2022
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "gii": 0.613,
+      "year": 2022
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "gii": 0.577,
+      "year": 2022
+    },
+    "YEM": {
+      "name": "Yemen",
+      "gii": 0.82,
+      "year": 2022
+    },
+    "BDI": {
+      "name": "Burundi",
+      "gii": 0.499,
+      "year": 2022
+    },
+    "MLI": {
+      "name": "Mali",
+      "gii": 0.607,
+      "year": 2022
+    },
+    "TCD": {
+      "name": "Chad",
+      "gii": 0.671,
+      "year": 2022
+    },
+    "NER": {
+      "name": "Niger",
+      "gii": 0.609,
+      "year": 2022
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "gii": null,
+      "year": 2022
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "gii": null,
+      "year": 2022
+    },
+    "SOM": {
+      "name": "Somalia",
+      "gii": 0.674,
+      "year": 2022
+    }
+  }
+}

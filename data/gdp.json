@@ -1,0 +1,1319 @@
+{
+  "meta": {
+    "source": "World Bank, World Development Indicators",
+    "unit": "current USD (total GDP)",
+    "note": "Total GDP, not per capita. Latest available year per country (2010–2023)."
+  },
+  "data": {
+    "ABW": {
+      "name": "Aruba",
+      "gdp_total_usd": 3544707788.0,
+      "year": 2022
+    },
+    "AFE": {
+      "name": "Africa Eastern and Southern",
+      "gdp_total_usd": 1185137703651.0,
+      "year": 2022
+    },
+    "AFG": {
+      "name": "Afghanistan",
+      "gdp_total_usd": 14266499430.0,
+      "year": 2021
+    },
+    "AFW": {
+      "name": "Africa Western and Central",
+      "gdp_total_usd": 875393693658.0,
+      "year": 2022
+    },
+    "AGO": {
+      "name": "Angola",
+      "gdp_total_usd": 106782770715.0,
+      "year": 2022
+    },
+    "ALB": {
+      "name": "Albania",
+      "gdp_total_usd": 18916378861.0,
+      "year": 2022
+    },
+    "AND": {
+      "name": "Andorra",
+      "gdp_total_usd": 3352031094.0,
+      "year": 2022
+    },
+    "ARB": {
+      "name": "Arab World",
+      "gdp_total_usd": 3543339785309.0,
+      "year": 2022
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "gdp_total_usd": 507063968273.0,
+      "year": 2022
+    },
+    "ARG": {
+      "name": "Argentina",
+      "gdp_total_usd": 631133384440.0,
+      "year": 2022
+    },
+    "ARM": {
+      "name": "Armenia",
+      "gdp_total_usd": 19513474648.0,
+      "year": 2022
+    },
+    "ASM": {
+      "name": "American Samoa",
+      "gdp_total_usd": 871000000.0,
+      "year": 2022
+    },
+    "ATG": {
+      "name": "Antigua and Barbuda",
+      "gdp_total_usd": 1867733333.0,
+      "year": 2022
+    },
+    "AUS": {
+      "name": "Australia",
+      "gdp_total_usd": 1692956646856.0,
+      "year": 2022
+    },
+    "AUT": {
+      "name": "Austria",
+      "gdp_total_usd": 470941926751.0,
+      "year": 2022
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "gdp_total_usd": 78721058824.0,
+      "year": 2022
+    },
+    "BDI": {
+      "name": "Burundi",
+      "gdp_total_usd": 3338722828.0,
+      "year": 2022
+    },
+    "BEL": {
+      "name": "Belgium",
+      "gdp_total_usd": 583435595580.0,
+      "year": 2022
+    },
+    "BEN": {
+      "name": "Benin",
+      "gdp_total_usd": 17396792700.0,
+      "year": 2022
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "gdp_total_usd": 18820064798.0,
+      "year": 2022
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "gdp_total_usd": 460201265528.0,
+      "year": 2022
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "gdp_total_usd": 90346169915.0,
+      "year": 2022
+    },
+    "BHR": {
+      "name": "Bahrain",
+      "gdp_total_usd": 44383297872.0,
+      "year": 2022
+    },
+    "BHS": {
+      "name": "Bahamas, The",
+      "gdp_total_usd": 12897400000.0,
+      "year": 2022
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "gdp_total_usd": 24473906674.0,
+      "year": 2022
+    },
+    "BLR": {
+      "name": "Belarus",
+      "gdp_total_usd": 72793457588.0,
+      "year": 2022
+    },
+    "BLZ": {
+      "name": "Belize",
+      "gdp_total_usd": 2830507576.0,
+      "year": 2022
+    },
+    "BMU": {
+      "name": "Bermuda",
+      "gdp_total_usd": 7546000000.0,
+      "year": 2022
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "gdp_total_usd": 44008282878.0,
+      "year": 2022
+    },
+    "BRA": {
+      "name": "Brazil",
+      "gdp_total_usd": 1920095779023.0,
+      "year": 2022
+    },
+    "BRB": {
+      "name": "Barbados",
+      "gdp_total_usd": 5699950000.0,
+      "year": 2022
+    },
+    "BRN": {
+      "name": "Brunei Darussalam",
+      "gdp_total_usd": 16681536467.0,
+      "year": 2022
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "gdp_total_usd": 2768003873.0,
+      "year": 2021
+    },
+    "BWA": {
+      "name": "Botswana",
+      "gdp_total_usd": 20355541963.0,
+      "year": 2022
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "gdp_total_usd": 2382618615.0,
+      "year": 2022
+    },
+    "CAN": {
+      "name": "Canada",
+      "gdp_total_usd": 2161483369422.0,
+      "year": 2022
+    },
+    "CEB": {
+      "name": "Central Europe and the Baltics",
+      "gdp_total_usd": 1944198197078.0,
+      "year": 2022
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "gdp_total_usd": 818426550206.0,
+      "year": 2022
+    },
+    "CHI": {
+      "name": "Channel Islands",
+      "gdp_total_usd": 11735662220.0,
+      "year": 2021
+    },
+    "CHL": {
+      "name": "Chile",
+      "gdp_total_usd": 301024724912.0,
+      "year": 2022
+    },
+    "CHN": {
+      "name": "China",
+      "gdp_total_usd": 17963171479205.0,
+      "year": 2022
+    },
+    "CIV": {
+      "name": "Cote d'Ivoire",
+      "gdp_total_usd": 70018715017.0,
+      "year": 2022
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "gdp_total_usd": 43644068311.0,
+      "year": 2022
+    },
+    "COD": {
+      "name": "Congo, Dem. Rep.",
+      "gdp_total_usd": 64718641221.0,
+      "year": 2022
+    },
+    "COG": {
+      "name": "Congo, Rep.",
+      "gdp_total_usd": 15816996655.0,
+      "year": 2022
+    },
+    "COL": {
+      "name": "Colombia",
+      "gdp_total_usd": 343622114560.0,
+      "year": 2022
+    },
+    "COM": {
+      "name": "Comoros",
+      "gdp_total_usd": 1242519407.0,
+      "year": 2022
+    },
+    "CPV": {
+      "name": "Cabo Verde",
+      "gdp_total_usd": 2226862134.0,
+      "year": 2022
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "gdp_total_usd": 69243626029.0,
+      "year": 2022
+    },
+    "CSS": {
+      "name": "Caribbean small states",
+      "gdp_total_usd": 94867024972.0,
+      "year": 2022
+    },
+    "CUB": {
+      "name": "Cuba",
+      "gdp_total_usd": 107351800000.0,
+      "year": 2020
+    },
+    "CUW": {
+      "name": "Curacao",
+      "gdp_total_usd": 3075180835.0,
+      "year": 2022
+    },
+    "CYM": {
+      "name": "Cayman Islands",
+      "gdp_total_usd": 6844827379.0,
+      "year": 2022
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "gdp_total_usd": 29250524418.0,
+      "year": 2022
+    },
+    "CZE": {
+      "name": "Czechia",
+      "gdp_total_usd": 290565654836.0,
+      "year": 2022
+    },
+    "DEU": {
+      "name": "Germany",
+      "gdp_total_usd": 4082469490798.0,
+      "year": 2022
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "gdp_total_usd": 3515108860.0,
+      "year": 2022
+    },
+    "DMA": {
+      "name": "Dominica",
+      "gdp_total_usd": 607440741.0,
+      "year": 2022
+    },
+    "DNK": {
+      "name": "Denmark",
+      "gdp_total_usd": 400167196949.0,
+      "year": 2022
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "gdp_total_usd": 113537368176.0,
+      "year": 2022
+    },
+    "DZA": {
+      "name": "Algeria",
+      "gdp_total_usd": 194998449769.0,
+      "year": 2022
+    },
+    "EAP": {
+      "name": "East Asia & Pacific (excluding high income)",
+      "gdp_total_usd": 21193771562304.0,
+      "year": 2022
+    },
+    "EAR": {
+      "name": "Early-demographic dividend",
+      "gdp_total_usd": 14148420366436.0,
+      "year": 2022
+    },
+    "EAS": {
+      "name": "East Asia & Pacific",
+      "gdp_total_usd": 30712490177156.0,
+      "year": 2022
+    },
+    "ECA": {
+      "name": "Europe & Central Asia (excluding high income)",
+      "gdp_total_usd": 4129330109663.0,
+      "year": 2022
+    },
+    "ECS": {
+      "name": "Europe & Central Asia",
+      "gdp_total_usd": 25344209837077.0,
+      "year": 2022
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "gdp_total_usd": 115049476000.0,
+      "year": 2022
+    },
+    "EGY": {
+      "name": "Egypt, Arab Rep.",
+      "gdp_total_usd": 476747720365.0,
+      "year": 2022
+    },
+    "EMU": {
+      "name": "Euro area",
+      "gdp_total_usd": 14207593902748.0,
+      "year": 2022
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "gdp_total_usd": 2065001626.0,
+      "year": 2011
+    },
+    "ESP": {
+      "name": "Spain",
+      "gdp_total_usd": 1417800466263.0,
+      "year": 2022
+    },
+    "EST": {
+      "name": "Estonia",
+      "gdp_total_usd": 38100812959.0,
+      "year": 2022
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "gdp_total_usd": 126783471598.0,
+      "year": 2022
+    },
+    "EUU": {
+      "name": "European Union",
+      "gdp_total_usd": 16746544871112.0,
+      "year": 2022
+    },
+    "FCS": {
+      "name": "Fragile and conflict affected situations",
+      "gdp_total_usd": 1906134056809.0,
+      "year": 2022
+    },
+    "FIN": {
+      "name": "Finland",
+      "gdp_total_usd": 282649838010.0,
+      "year": 2022
+    },
+    "FJI": {
+      "name": "Fiji",
+      "gdp_total_usd": 4979979546.0,
+      "year": 2022
+    },
+    "FRA": {
+      "name": "France",
+      "gdp_total_usd": 2779092236506.0,
+      "year": 2022
+    },
+    "FRO": {
+      "name": "Faroe Islands",
+      "gdp_total_usd": 3555929833.0,
+      "year": 2022
+    },
+    "FSM": {
+      "name": "Micronesia, Fed. Sts.",
+      "gdp_total_usd": 424000000.0,
+      "year": 2022
+    },
+    "GAB": {
+      "name": "Gabon",
+      "gdp_total_usd": 21071739225.0,
+      "year": 2022
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "gdp_total_usd": 3089072722400.0,
+      "year": 2022
+    },
+    "GEO": {
+      "name": "Georgia",
+      "gdp_total_usd": 24780791064.0,
+      "year": 2022
+    },
+    "GHA": {
+      "name": "Ghana",
+      "gdp_total_usd": 73766052452.0,
+      "year": 2022
+    },
+    "GIN": {
+      "name": "Guinea",
+      "gdp_total_usd": 20999229260.0,
+      "year": 2022
+    },
+    "GMB": {
+      "name": "Gambia, The",
+      "gdp_total_usd": 2187194563.0,
+      "year": 2022
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "gdp_total_usd": 1633559092.0,
+      "year": 2022
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "gdp_total_usd": 12029633747.0,
+      "year": 2022
+    },
+    "GRC": {
+      "name": "Greece",
+      "gdp_total_usd": 217581324512.0,
+      "year": 2022
+    },
+    "GRD": {
+      "name": "Grenada",
+      "gdp_total_usd": 1215379156.0,
+      "year": 2022
+    },
+    "GRL": {
+      "name": "Greenland",
+      "gdp_total_usd": 3235809504.0,
+      "year": 2021
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "gdp_total_usd": 95003330316.0,
+      "year": 2022
+    },
+    "GUM": {
+      "name": "Guam",
+      "gdp_total_usd": 6123000000.0,
+      "year": 2021
+    },
+    "GUY": {
+      "name": "Guyana",
+      "gdp_total_usd": 14718388489.0,
+      "year": 2022
+    },
+    "HIC": {
+      "name": "High income",
+      "gdp_total_usd": 61729512123778.0,
+      "year": 2022
+    },
+    "HKG": {
+      "name": "Hong Kong SAR, China",
+      "gdp_total_usd": 359838583490.0,
+      "year": 2022
+    },
+    "HND": {
+      "name": "Honduras",
+      "gdp_total_usd": 31717699764.0,
+      "year": 2022
+    },
+    "HPC": {
+      "name": "Heavily indebted poor countries (HIPC)",
+      "gdp_total_usd": 980688371243.0,
+      "year": 2022
+    },
+    "HRV": {
+      "name": "Croatia",
+      "gdp_total_usd": 71600049650.0,
+      "year": 2022
+    },
+    "HTI": {
+      "name": "Haiti",
+      "gdp_total_usd": 20253551885.0,
+      "year": 2022
+    },
+    "HUN": {
+      "name": "Hungary",
+      "gdp_total_usd": 177337436677.0,
+      "year": 2022
+    },
+    "IBD": {
+      "name": "IBRD only",
+      "gdp_total_usd": 37752366428370.0,
+      "year": 2022
+    },
+    "IBT": {
+      "name": "IDA & IBRD total",
+      "gdp_total_usd": 40573962163610.0,
+      "year": 2022
+    },
+    "IDA": {
+      "name": "IDA total",
+      "gdp_total_usd": 2822821779329.0,
+      "year": 2022
+    },
+    "IDB": {
+      "name": "IDA blend",
+      "gdp_total_usd": 1175091814528.0,
+      "year": 2022
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "gdp_total_usd": 1319100220408.0,
+      "year": 2022
+    },
+    "IDX": {
+      "name": "IDA only",
+      "gdp_total_usd": 1647744371553.0,
+      "year": 2022
+    },
+    "IMN": {
+      "name": "Isle of Man",
+      "gdp_total_usd": 6684229269.0,
+      "year": 2020
+    },
+    "IND": {
+      "name": "India",
+      "gdp_total_usd": 3416645826053.0,
+      "year": 2022
+    },
+    "IRL": {
+      "name": "Ireland",
+      "gdp_total_usd": 533140011838.0,
+      "year": 2022
+    },
+    "IRN": {
+      "name": "Iran, Islamic Rep.",
+      "gdp_total_usd": 413493207349.0,
+      "year": 2022
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "gdp_total_usd": 264182173793.0,
+      "year": 2022
+    },
+    "ISL": {
+      "name": "Iceland",
+      "gdp_total_usd": 28064529851.0,
+      "year": 2022
+    },
+    "ISR": {
+      "name": "Israel",
+      "gdp_total_usd": 525002447653.0,
+      "year": 2022
+    },
+    "ITA": {
+      "name": "Italy",
+      "gdp_total_usd": 2049737165408.0,
+      "year": 2022
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "gdp_total_usd": 17097760724.0,
+      "year": 2022
+    },
+    "JOR": {
+      "name": "Jordan",
+      "gdp_total_usd": 48653381781.0,
+      "year": 2022
+    },
+    "JPN": {
+      "name": "Japan",
+      "gdp_total_usd": 4256410760724.0,
+      "year": 2022
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "gdp_total_usd": 225496328925.0,
+      "year": 2022
+    },
+    "KEN": {
+      "name": "Kenya",
+      "gdp_total_usd": 113420008179.0,
+      "year": 2022
+    },
+    "KGZ": {
+      "name": "Kyrgyz Republic",
+      "gdp_total_usd": 11543966559.0,
+      "year": 2022
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "gdp_total_usd": 29504829319.0,
+      "year": 2022
+    },
+    "KIR": {
+      "name": "Kiribati",
+      "gdp_total_usd": 223353014.0,
+      "year": 2022
+    },
+    "KNA": {
+      "name": "St. Kitts and Nevis",
+      "gdp_total_usd": 965638865.0,
+      "year": 2022
+    },
+    "KOR": {
+      "name": "Korea, Rep.",
+      "gdp_total_usd": 1673916469027.0,
+      "year": 2022
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "gdp_total_usd": 175363265306.0,
+      "year": 2022
+    },
+    "LAC": {
+      "name": "Latin America & Caribbean (excluding high income)",
+      "gdp_total_usd": 5352536850675.0,
+      "year": 2022
+    },
+    "LAO": {
+      "name": "Lao PDR",
+      "gdp_total_usd": 15468785204.0,
+      "year": 2022
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "gdp_total_usd": 23131941557.0,
+      "year": 2021
+    },
+    "LBR": {
+      "name": "Liberia",
+      "gdp_total_usd": 4001046970.0,
+      "year": 2022
+    },
+    "LBY": {
+      "name": "Libya",
+      "gdp_total_usd": 45752336036.0,
+      "year": 2022
+    },
+    "LCA": {
+      "name": "St. Lucia",
+      "gdp_total_usd": 2343703704.0,
+      "year": 2022
+    },
+    "LCN": {
+      "name": "Latin America & Caribbean",
+      "gdp_total_usd": 6302490414792.0,
+      "year": 2022
+    },
+    "LDC": {
+      "name": "Least developed countries: UN classification",
+      "gdp_total_usd": 1424210446282.0,
+      "year": 2022
+    },
+    "LIC": {
+      "name": "Low income",
+      "gdp_total_usd": 528124562235.0,
+      "year": 2022
+    },
+    "LIE": {
+      "name": "Liechtenstein",
+      "gdp_total_usd": 7710380086.0,
+      "year": 2021
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "gdp_total_usd": 74403578363.0,
+      "year": 2022
+    },
+    "LMC": {
+      "name": "Lower middle income",
+      "gdp_total_usd": 8171521483868.0,
+      "year": 2022
+    },
+    "LMY": {
+      "name": "Low & middle income",
+      "gdp_total_usd": 38810361603320.0,
+      "year": 2022
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "gdp_total_usd": 2236502124.0,
+      "year": 2022
+    },
+    "LTE": {
+      "name": "Late-demographic dividend",
+      "gdp_total_usd": 28075737913541.0,
+      "year": 2022
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "gdp_total_usd": 70974490450.0,
+      "year": 2022
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "gdp_total_usd": 81641807866.0,
+      "year": 2022
+    },
+    "LVA": {
+      "name": "Latvia",
+      "gdp_total_usd": 40932030050.0,
+      "year": 2022
+    },
+    "MAC": {
+      "name": "Macao SAR, China",
+      "gdp_total_usd": 24042287327.0,
+      "year": 2022
+    },
+    "MAF": {
+      "name": "St. Martin (French part)",
+      "gdp_total_usd": 649206263.0,
+      "year": 2021
+    },
+    "MAR": {
+      "name": "Morocco",
+      "gdp_total_usd": 130912558830.0,
+      "year": 2022
+    },
+    "MCO": {
+      "name": "Monaco",
+      "gdp_total_usd": 8784002932.0,
+      "year": 2022
+    },
+    "MDA": {
+      "name": "Moldova",
+      "gdp_total_usd": 14508333280.0,
+      "year": 2022
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "gdp_total_usd": 15297192799.0,
+      "year": 2022
+    },
+    "MDV": {
+      "name": "Maldives",
+      "gdp_total_usd": 6170638747.0,
+      "year": 2022
+    },
+    "MEA": {
+      "name": "Middle East & North Africa",
+      "gdp_total_usd": 4426622170629.0,
+      "year": 2022
+    },
+    "MEX": {
+      "name": "Mexico",
+      "gdp_total_usd": 1465854089286.0,
+      "year": 2022
+    },
+    "MHL": {
+      "name": "Marshall Islands",
+      "gdp_total_usd": 258774475.0,
+      "year": 2022
+    },
+    "MIC": {
+      "name": "Middle income",
+      "gdp_total_usd": 38281934115376.0,
+      "year": 2022
+    },
+    "MKD": {
+      "name": "North Macedonia",
+      "gdp_total_usd": 13563132102.0,
+      "year": 2022
+    },
+    "MLI": {
+      "name": "Mali",
+      "gdp_total_usd": 18827176530.0,
+      "year": 2022
+    },
+    "MLT": {
+      "name": "Malta",
+      "gdp_total_usd": 18125564514.0,
+      "year": 2022
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "gdp_total_usd": 62263466264.0,
+      "year": 2022
+    },
+    "MNA": {
+      "name": "Middle East & North Africa (excluding high income)",
+      "gdp_total_usd": 1696713423188.0,
+      "year": 2022
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "gdp_total_usd": 6229801581.0,
+      "year": 2022
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "gdp_total_usd": 17146471626.0,
+      "year": 2022
+    },
+    "MNP": {
+      "name": "Northern Mariana Islands",
+      "gdp_total_usd": 858000000.0,
+      "year": 2020
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "gdp_total_usd": 18406835955.0,
+      "year": 2022
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "gdp_total_usd": 9780863579.0,
+      "year": 2022
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "gdp_total_usd": 12948726654.0,
+      "year": 2022
+    },
+    "MWI": {
+      "name": "Malawi",
+      "gdp_total_usd": 13164667627.0,
+      "year": 2022
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "gdp_total_usd": 407027451715.0,
+      "year": 2022
+    },
+    "NAC": {
+      "name": "North America",
+      "gdp_total_usd": 27608729369422.0,
+      "year": 2022
+    },
+    "NAM": {
+      "name": "Namibia",
+      "gdp_total_usd": 12914932656.0,
+      "year": 2022
+    },
+    "NCL": {
+      "name": "New Caledonia",
+      "gdp_total_usd": 9623318718.0,
+      "year": 2022
+    },
+    "NER": {
+      "name": "Niger",
+      "gdp_total_usd": 15342278919.0,
+      "year": 2022
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "gdp_total_usd": 472624597403.0,
+      "year": 2022
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "gdp_total_usd": 15671583940.0,
+      "year": 2022
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "gdp_total_usd": 1009398719033.0,
+      "year": 2022
+    },
+    "NOR": {
+      "name": "Norway",
+      "gdp_total_usd": 593348981538.0,
+      "year": 2022
+    },
+    "NPL": {
+      "name": "Nepal",
+      "gdp_total_usd": 40828247304.0,
+      "year": 2022
+    },
+    "NRU": {
+      "name": "Nauru",
+      "gdp_total_usd": 151647846.0,
+      "year": 2022
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "gdp_total_usd": 248101705541.0,
+      "year": 2022
+    },
+    "OED": {
+      "name": "OECD members",
+      "gdp_total_usd": 59849878381708.0,
+      "year": 2022
+    },
+    "OMN": {
+      "name": "Oman",
+      "gdp_total_usd": 114667360208.0,
+      "year": 2022
+    },
+    "OSS": {
+      "name": "Other small states",
+      "gdp_total_usd": 530807158164.0,
+      "year": 2022
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "gdp_total_usd": 374697366359.0,
+      "year": 2022
+    },
+    "PAN": {
+      "name": "Panama",
+      "gdp_total_usd": 76522511800.0,
+      "year": 2022
+    },
+    "PER": {
+      "name": "Peru",
+      "gdp_total_usd": 242631573321.0,
+      "year": 2022
+    },
+    "PHL": {
+      "name": "Philippines",
+      "gdp_total_usd": 404284326110.0,
+      "year": 2022
+    },
+    "PLW": {
+      "name": "Palau",
+      "gdp_total_usd": 232903016.0,
+      "year": 2021
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "gdp_total_usd": 31603619042.0,
+      "year": 2022
+    },
+    "POL": {
+      "name": "Poland",
+      "gdp_total_usd": 688125010521.0,
+      "year": 2022
+    },
+    "PRE": {
+      "name": "Pre-demographic dividend",
+      "gdp_total_usd": 1617245641606.0,
+      "year": 2022
+    },
+    "PRI": {
+      "name": "Puerto Rico",
+      "gdp_total_usd": 113434800000.0,
+      "year": 2022
+    },
+    "PRT": {
+      "name": "Portugal",
+      "gdp_total_usd": 255196660987.0,
+      "year": 2022
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "gdp_total_usd": 41722295229.0,
+      "year": 2022
+    },
+    "PSE": {
+      "name": "West Bank and Gaza",
+      "gdp_total_usd": 19111900000.0,
+      "year": 2022
+    },
+    "PSS": {
+      "name": "Pacific island small states",
+      "gdp_total_usd": 10324332232.0,
+      "year": 2022
+    },
+    "PST": {
+      "name": "Post-demographic dividend",
+      "gdp_total_usd": 56211584699649.0,
+      "year": 2022
+    },
+    "PYF": {
+      "name": "French Polynesia",
+      "gdp_total_usd": 5814661209.0,
+      "year": 2022
+    },
+    "QAT": {
+      "name": "Qatar",
+      "gdp_total_usd": 236258302840.0,
+      "year": 2022
+    },
+    "ROU": {
+      "name": "Romania",
+      "gdp_total_usd": 300691354865.0,
+      "year": 2022
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "gdp_total_usd": 2240422427459.0,
+      "year": 2022
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "gdp_total_usd": 13311487445.0,
+      "year": 2022
+    },
+    "SAS": {
+      "name": "South Asia",
+      "gdp_total_usd": 4390347563466.0,
+      "year": 2022
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "gdp_total_usd": 1108571517285.0,
+      "year": 2022
+    },
+    "SDN": {
+      "name": "Sudan",
+      "gdp_total_usd": 51662241775.0,
+      "year": 2022
+    },
+    "SEN": {
+      "name": "Senegal",
+      "gdp_total_usd": 27684264748.0,
+      "year": 2022
+    },
+    "SGP": {
+      "name": "Singapore",
+      "gdp_total_usd": 466788426792.0,
+      "year": 2022
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "gdp_total_usd": 1597204341.0,
+      "year": 2022
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "gdp_total_usd": 4094563859.0,
+      "year": 2022
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "gdp_total_usd": 32488720000.0,
+      "year": 2022
+    },
+    "SMR": {
+      "name": "San Marino",
+      "gdp_total_usd": 1855382833.0,
+      "year": 2021
+    },
+    "SOM": {
+      "name": "Somalia",
+      "gdp_total_usd": 10419541202.0,
+      "year": 2022
+    },
+    "SRB": {
+      "name": "Serbia",
+      "gdp_total_usd": 63563401044.0,
+      "year": 2022
+    },
+    "SSA": {
+      "name": "Sub-Saharan Africa (excluding high income)",
+      "gdp_total_usd": 2058942959165.0,
+      "year": 2022
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "gdp_total_usd": 11997800760.0,
+      "year": 2015
+    },
+    "SSF": {
+      "name": "Sub-Saharan Africa",
+      "gdp_total_usd": 2060531397309.0,
+      "year": 2022
+    },
+    "SST": {
+      "name": "Small states",
+      "gdp_total_usd": 636018280142.0,
+      "year": 2022
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "gdp_total_usd": 542686976.0,
+      "year": 2022
+    },
+    "SUR": {
+      "name": "Suriname",
+      "gdp_total_usd": 3620987993.0,
+      "year": 2022
+    },
+    "SVK": {
+      "name": "Slovak Republic",
+      "gdp_total_usd": 115461711689.0,
+      "year": 2022
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "gdp_total_usd": 60063475466.0,
+      "year": 2022
+    },
+    "SWE": {
+      "name": "Sweden",
+      "gdp_total_usd": 591718144602.0,
+      "year": 2022
+    },
+    "SWZ": {
+      "name": "Eswatini",
+      "gdp_total_usd": 4790922066.0,
+      "year": 2022
+    },
+    "SXM": {
+      "name": "Sint Maarten (Dutch part)",
+      "gdp_total_usd": 1537088724.0,
+      "year": 2022
+    },
+    "SYC": {
+      "name": "Seychelles",
+      "gdp_total_usd": 1588438144.0,
+      "year": 2022
+    },
+    "SYR": {
+      "name": "Syrian Arab Republic",
+      "gdp_total_usd": 8969512933.0,
+      "year": 2021
+    },
+    "TCA": {
+      "name": "Turks and Caicos Islands",
+      "gdp_total_usd": 1138808881.0,
+      "year": 2022
+    },
+    "TCD": {
+      "name": "Chad",
+      "gdp_total_usd": 12704149840.0,
+      "year": 2022
+    },
+    "TEA": {
+      "name": "East Asia & Pacific (IDA & IBRD countries)",
+      "gdp_total_usd": 21167325456079.0,
+      "year": 2022
+    },
+    "TEC": {
+      "name": "Europe & Central Asia (IDA & IBRD countries)",
+      "gdp_total_usd": 5189746524698.0,
+      "year": 2022
+    },
+    "TGO": {
+      "name": "Togo",
+      "gdp_total_usd": 8341225241.0,
+      "year": 2022
+    },
+    "THA": {
+      "name": "Thailand",
+      "gdp_total_usd": 495423343050.0,
+      "year": 2022
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "gdp_total_usd": 10492123388.0,
+      "year": 2022
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "gdp_total_usd": 56542857143.0,
+      "year": 2022
+    },
+    "TLA": {
+      "name": "Latin America & the Caribbean (IDA & IBRD countries)",
+      "gdp_total_usd": 6001569526440.0,
+      "year": 2022
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "gdp_total_usd": 3204753000.0,
+      "year": 2022
+    },
+    "TMN": {
+      "name": "Middle East & North Africa (IDA & IBRD countries)",
+      "gdp_total_usd": 1677609783950.0,
+      "year": 2022
+    },
+    "TON": {
+      "name": "Tonga",
+      "gdp_total_usd": 469228220.0,
+      "year": 2021
+    },
+    "TSA": {
+      "name": "South Asia (IDA & IBRD)",
+      "gdp_total_usd": 4390347563466.0,
+      "year": 2022
+    },
+    "TSS": {
+      "name": "Sub-Saharan Africa (IDA & IBRD countries)",
+      "gdp_total_usd": 2060531397309.0,
+      "year": 2022
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "gdp_total_usd": 30053575132.0,
+      "year": 2022
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "gdp_total_usd": 46303552449.0,
+      "year": 2022
+    },
+    "TUR": {
+      "name": "Turkiye",
+      "gdp_total_usd": 907118435953.0,
+      "year": 2022
+    },
+    "TUV": {
+      "name": "Tuvalu",
+      "gdp_total_usd": 59065979.0,
+      "year": 2022
+    },
+    "TZA": {
+      "name": "Tanzania",
+      "gdp_total_usd": 75732311666.0,
+      "year": 2022
+    },
+    "UGA": {
+      "name": "Uganda",
+      "gdp_total_usd": 45567304608.0,
+      "year": 2022
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "gdp_total_usd": 160502737251.0,
+      "year": 2022
+    },
+    "UMC": {
+      "name": "Upper middle income",
+      "gdp_total_usd": 30110929970108.0,
+      "year": 2022
+    },
+    "URY": {
+      "name": "Uruguay",
+      "gdp_total_usd": 71177146197.0,
+      "year": 2022
+    },
+    "USA": {
+      "name": "United States",
+      "gdp_total_usd": 25439700000000.0,
+      "year": 2022
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "gdp_total_usd": 80391853887.0,
+      "year": 2022
+    },
+    "VCT": {
+      "name": "St. Vincent and the Grenadines",
+      "gdp_total_usd": 948559259.0,
+      "year": 2022
+    },
+    "VEN": {
+      "name": "Venezuela, RB",
+      "gdp_total_usd": 482359318768.0,
+      "year": 2014
+    },
+    "VIR": {
+      "name": "Virgin Islands (U.S.)",
+      "gdp_total_usd": 4444000000.0,
+      "year": 2021
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "gdp_total_usd": 408802378905.0,
+      "year": 2022
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "gdp_total_usd": 1055811724.0,
+      "year": 2022
+    },
+    "WLD": {
+      "name": "World",
+      "gdp_total_usd": 100879560825391.0,
+      "year": 2022
+    },
+    "WSM": {
+      "name": "Samoa",
+      "gdp_total_usd": 832945206.0,
+      "year": 2022
+    },
+    "XKX": {
+      "name": "Kosovo",
+      "gdp_total_usd": 9409473518.0,
+      "year": 2022
+    },
+    "YEM": {
+      "name": "Yemen, Rep.",
+      "gdp_total_usd": 21606160784.0,
+      "year": 2018
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "gdp_total_usd": 405270850099.0,
+      "year": 2022
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "gdp_total_usd": 29163782138.0,
+      "year": 2022
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "gdp_total_usd": 27366627153.0,
+      "year": 2022
+    }
+  }
+}

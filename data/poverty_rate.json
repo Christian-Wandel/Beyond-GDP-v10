@@ -1,0 +1,1137 @@
+{
+  "meta": {
+    "source": "World Bank PIP v1 — Headcount poverty rate, tiered by country income group",
+    "unit": "% of population below tiered poverty line",
+    "threshold_red": 20.0,
+    "threshold_amber": 10.0,
+    "note": "Lines: LI $3.00/day, LM $4.20/day, UM $8.30/day, HI $25.00/day (2017 PPP)",
+    "poverty_lines": {
+      "LI": 3.0,
+      "LM": 4.2,
+      "UM": 8.3,
+      "HI": 25.0
+    }
+  },
+  "data": {
+    "ALB": {
+      "name": "Albania",
+      "value": 19.9292,
+      "year": 2020,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "DZA": {
+      "name": "Algeria",
+      "value": 41.833,
+      "year": 2011,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "AGO": {
+      "name": "Angola",
+      "value": 53.6702,
+      "year": 2018,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "ARG": {
+      "name": "Argentina",
+      "value": 15.1811,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "ARM": {
+      "name": "Armenia",
+      "value": 5.7142,
+      "year": 2024,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "AUS": {
+      "name": "Australia",
+      "value": 7.5,
+      "year": 2020,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "AUT": {
+      "name": "Austria",
+      "value": 4.5378,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "value": 35.9328,
+      "year": 2005,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "value": 5.9091,
+      "year": 2022,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "BRB": {
+      "name": "Barbados",
+      "value": 80.1423,
+      "year": 2016,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "BLR": {
+      "name": "Belarus",
+      "value": 2.643,
+      "year": 2020,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "BEL": {
+      "name": "Belgium",
+      "value": 3.504,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "BLZ": {
+      "name": "Belize",
+      "value": 19.7165,
+      "year": 2018,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "BEN": {
+      "name": "Benin",
+      "value": 27.2234,
+      "year": 2021,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "value": 0.4137,
+      "year": 2022,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "value": 4.8544,
+      "year": 2024,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "value": 11.6527,
+      "year": 2021,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "BWA": {
+      "name": "Botswana",
+      "value": 63.1735,
+      "year": 2015,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "BRA": {
+      "name": "Brazil",
+      "value": 20.6453,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "value": 4.3743,
+      "year": 2023,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "value": 42.0616,
+      "year": 2021,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "BDI": {
+      "name": "Burundi",
+      "value": 74.1992,
+      "year": 2020,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "CPV": {
+      "name": "Cabo Verde",
+      "value": 29.6874,
+      "year": 2015,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "value": 41.2587,
+      "year": 2021,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "CAN": {
+      "name": "Canada",
+      "value": 5.7,
+      "year": 2022,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "value": 71.6173,
+      "year": 2021,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "TCD": {
+      "name": "Chad",
+      "value": 39.4754,
+      "year": 2022,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "CHL": {
+      "name": "Chile",
+      "value": 4.513,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "CHN": {
+      "name": "China",
+      "value": 21.2807,
+      "year": 2022,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "COL": {
+      "name": "Colombia",
+      "value": 37.0075,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "COM": {
+      "name": "Comoros",
+      "value": 5.0668,
+      "year": 2024,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "COG": {
+      "name": "Congo",
+      "value": 54.9664,
+      "year": 2011,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "COD": {
+      "name": "Congo, Democratic Republic of",
+      "value": 85.3177,
+      "year": 2020,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "value": 9.6961,
+      "year": 2025,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "HRV": {
+      "name": "Croatia",
+      "value": 24.1912,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "value": 6.2485,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "CZE": {
+      "name": "Czech Republic",
+      "value": 15.162,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "value": 41.6393,
+      "year": 2021,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "DNK": {
+      "name": "Denmark",
+      "value": 3.3265,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "value": 43.7259,
+      "year": 2017,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "value": 13.9626,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "value": 30.1459,
+      "year": 2025,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "EGY": {
+      "name": "Egypt",
+      "value": 7.0905,
+      "year": 2021,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "value": 8.6021,
+      "year": 2023,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "value": 95.6878,
+      "year": 2022,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "EST": {
+      "name": "Estonia",
+      "value": 20.3716,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "SWZ": {
+      "name": "Eswatini",
+      "value": 58.2667,
+      "year": 2016,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "value": 38.6361,
+      "year": 2021,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "FJI": {
+      "name": "Fiji",
+      "value": 61.3228,
+      "year": 2019,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "FIN": {
+      "name": "Finland",
+      "value": 4.5039,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "FRA": {
+      "name": "France",
+      "value": 8.3303,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "GAB": {
+      "name": "Gabon",
+      "value": 32.8708,
+      "year": 2017,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "GMB": {
+      "name": "Gambia",
+      "value": 22.0019,
+      "year": 2020,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "GEO": {
+      "name": "Georgia",
+      "value": 11.0052,
+      "year": 2024,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "DEU": {
+      "name": "Germany",
+      "value": 8.1,
+      "year": 2022,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "GHA": {
+      "name": "Ghana",
+      "value": 56.2948,
+      "year": 2016,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "GRC": {
+      "name": "Greece",
+      "value": 39.1248,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "GRD": {
+      "name": "Grenada",
+      "value": 19.6169,
+      "year": 2018,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "value": 17.6158,
+      "year": 2023,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "GIN": {
+      "name": "Guinea",
+      "value": 11.6504,
+      "year": 2018,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "value": 39.8611,
+      "year": 2021,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "GUY": {
+      "name": "Guyana",
+      "value": 21.5445,
+      "year": 1998,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "HTI": {
+      "name": "Haiti",
+      "value": 40.415,
+      "year": 2012,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "HND": {
+      "name": "Honduras",
+      "value": 23.472,
+      "year": 2024,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "HUN": {
+      "name": "Hungary",
+      "value": 62.04,
+      "year": 2017,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "IND": {
+      "name": "India",
+      "value": 23.8923,
+      "year": 2022,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "value": 16.4035,
+      "year": 2025,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "IRN": {
+      "name": "Iran, Islamic Republic of",
+      "value": 36.0472,
+      "year": 2023,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "value": 2.3637,
+      "year": 2023,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "IRL": {
+      "name": "Ireland",
+      "value": 7.0966,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "ISR": {
+      "name": "Israel",
+      "value": 30.9,
+      "year": 2022,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "ITA": {
+      "name": "Italy",
+      "value": 15.4176,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "value": 22.8514,
+      "year": 2021,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "JPN": {
+      "name": "Japan",
+      "value": 19.5,
+      "year": 2020,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "JOR": {
+      "name": "Jordan",
+      "value": 15.3048,
+      "year": 2010,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "value": 15.1529,
+      "year": 2021,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "KEN": {
+      "name": "Kenya",
+      "value": 45.4827,
+      "year": 2022,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "KOR": {
+      "name": "Korea, Republic of",
+      "value": 10.4,
+      "year": 2021,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "value": 2.1876,
+      "year": 2024,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "LAO": {
+      "name": "Lao People's Democratic Republic",
+      "value": 22.4709,
+      "year": 2024,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "LVA": {
+      "name": "Latvia",
+      "value": 30.6191,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "value": 50.7053,
+      "year": 2022,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "value": 56.8304,
+      "year": 2017,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "LBR": {
+      "name": "Liberia",
+      "value": 33.5589,
+      "year": 2016,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "value": 3.2498,
+      "year": 2023,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "value": 1.7119,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "value": 69.1726,
+      "year": 2021,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "MWI": {
+      "name": "Malawi",
+      "value": 75.4382,
+      "year": 2019,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "value": 2.8703,
+      "year": 2021,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "MLI": {
+      "name": "Mali",
+      "value": 36.1031,
+      "year": 2021,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "MLT": {
+      "name": "Malta",
+      "value": 7.9739,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "value": 25.9597,
+      "year": 2019,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "value": 19.0945,
+      "year": 2017,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "MEX": {
+      "name": "Mexico",
+      "value": 21.3959,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "value": 2.2725,
+      "year": 2022,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "value": 14.5052,
+      "year": 2021,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "MAR": {
+      "name": "Morocco",
+      "value": 11.5526,
+      "year": 2013,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "value": 81.3614,
+      "year": 2022,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "value": 10.2662,
+      "year": 2017,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "NAM": {
+      "name": "Namibia",
+      "value": 61.0995,
+      "year": 2015,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "NPL": {
+      "name": "Nepal",
+      "value": 2.4363,
+      "year": 2022,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "value": 3.208,
+      "year": 2021,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "value": 15.6977,
+      "year": 2014,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "NER": {
+      "name": "Niger",
+      "value": 60.4899,
+      "year": 2021,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "value": 64.0214,
+      "year": 2022,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "NOR": {
+      "name": "Norway",
+      "value": 2.3376,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "value": 47.909,
+      "year": 2024,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "PAN": {
+      "name": "Panama",
+      "value": 19.7975,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "value": 69.4289,
+      "year": 2009,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "value": 4.5203,
+      "year": 2024,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "PER": {
+      "name": "Peru",
+      "value": 36.2033,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "PHL": {
+      "name": "Philippines",
+      "value": 29.3341,
+      "year": 2023,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "POL": {
+      "name": "Poland",
+      "value": 18.2867,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "PRT": {
+      "name": "Portugal",
+      "value": 28.0019,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "QAT": {
+      "name": "Qatar",
+      "value": 6.773,
+      "year": 2017,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "MDA": {
+      "name": "Republic of Moldova",
+      "value": 0.8419,
+      "year": 2023,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "MKD": {
+      "name": "Republic of North Macedonia",
+      "value": 20.4985,
+      "year": 2019,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "ROU": {
+      "name": "Romania",
+      "value": 5.0939,
+      "year": 2023,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "value": 0.9236,
+      "year": 2023,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "value": 38.5505,
+      "year": 2023,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "LCA": {
+      "name": "Saint Lucia",
+      "value": 7.7509,
+      "year": 2015,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "WSM": {
+      "name": "Samoa",
+      "value": 11.5372,
+      "year": 2013,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "value": 30.4588,
+      "year": 2017,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "SEN": {
+      "name": "Senegal",
+      "value": 37.323,
+      "year": 2021,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "SRB": {
+      "name": "Serbia",
+      "value": 9.049,
+      "year": 2023,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "value": 41.4852,
+      "year": 2018,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "value": 52.2035,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "value": 6.2837,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "value": 40.3015,
+      "year": 2012,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "value": 59.6155,
+      "year": 2022,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "value": 87.9692,
+      "year": 2016,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "ESP": {
+      "name": "Spain",
+      "value": 16.6391,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "SDN": {
+      "name": "Sudan",
+      "value": 26.025,
+      "year": 2014,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "SUR": {
+      "name": "Suriname",
+      "value": 20.8761,
+      "year": 2022,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "SWE": {
+      "name": "Sweden",
+      "value": 8.7804,
+      "year": 2023,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "value": 4.3511,
+      "year": 2022,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "SYR": {
+      "name": "Syrian Arab Republic",
+      "value": 42.0558,
+      "year": 2022,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "value": 6.1335,
+      "year": 2024,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "TZA": {
+      "name": "Tanzania, United Republic of",
+      "value": 51.3469,
+      "year": 2018,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "THA": {
+      "name": "Thailand",
+      "value": 11.6733,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "value": 71.374,
+      "year": 2014,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "TGO": {
+      "name": "Togo",
+      "value": 34.6611,
+      "year": 2021,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "TON": {
+      "name": "Tonga",
+      "value": 1.8292,
+      "year": 2021,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "value": 84.539,
+      "year": 1992,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "value": 20.6681,
+      "year": 2021,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "TUR": {
+      "name": "Turkiye",
+      "value": 4.1384,
+      "year": 2023,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "value": 55.5574,
+      "year": 1998,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "UGA": {
+      "name": "Uganda",
+      "value": 59.7844,
+      "year": 2019,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "value": 0.229,
+      "year": 2020,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "value": 5.272,
+      "year": 2018,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "value": 9.1,
+      "year": 2021,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "USA": {
+      "name": "United States of America",
+      "value": 8.9,
+      "year": 2024,
+      "poverty_line": 25.0,
+      "income_group": "HI"
+    },
+    "URY": {
+      "name": "Uruguay",
+      "value": 5.8513,
+      "year": 2024,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "value": 3.9613,
+      "year": 2025,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "value": 36.9211,
+      "year": 2019,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "VEN": {
+      "name": "Venezuela, Bolivarian Republic of",
+      "value": 43.349,
+      "year": 2006,
+      "poverty_line": 8.3,
+      "income_group": "UM"
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "value": 4.1637,
+      "year": 2022,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "YEM": {
+      "name": "Yemen",
+      "value": 57.7269,
+      "year": 2014,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "value": 81.4248,
+      "year": 2022,
+      "poverty_line": 4.2,
+      "income_group": "LM"
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "value": 49.2199,
+      "year": 2019,
+      "poverty_line": 3.0,
+      "income_group": "LI"
+    }
+  }
+}

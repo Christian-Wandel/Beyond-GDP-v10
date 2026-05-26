@@ -1,0 +1,881 @@
+{
+  "meta": {
+    "source": "UK Natural History Museum — Biodiversity Intactness Index (BII), Newbold et al. 2016 Science. HLEG Tier I #3. Spatially aggregated to country polygons (Natural Earth 1:110m).",
+    "unit": "BII 0-100 (area-weighted mean; 100 = intact, 0 = fully lost)",
+    "threshold_red": 70.0,
+    "threshold_amber": 85.0,
+    "note": "Newbold et al. (2016) global BII raster. Country mean from raster zonal stats."
+  },
+  "data": {
+    "FJI": {
+      "name": "Fiji",
+      "value": 101.96,
+      "year": 2016
+    },
+    "TZA": {
+      "name": "Tanzania, United Republic of",
+      "value": 91.9,
+      "year": 2016
+    },
+    "SAH": {
+      "name": "W. Sahara",
+      "value": 83.53,
+      "year": 2016
+    },
+    "CAN": {
+      "name": "Canada",
+      "value": 96.02,
+      "year": 2016
+    },
+    "USA": {
+      "name": "United States of America",
+      "value": 79.79,
+      "year": 2016
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "value": 65.29,
+      "year": 2016
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "value": 76.57,
+      "year": 2016
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "value": 100.36,
+      "year": 2016
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "value": 94.9,
+      "year": 2016
+    },
+    "ARG": {
+      "name": "Argentina",
+      "value": 72.69,
+      "year": 2016
+    },
+    "CHL": {
+      "name": "Chile",
+      "value": 88.21,
+      "year": 2016
+    },
+    "COD": {
+      "name": "Congo, Democratic Republic of",
+      "value": 95.41,
+      "year": 2016
+    },
+    "SOM": {
+      "name": "Somalia",
+      "value": 81.2,
+      "year": 2016
+    },
+    "KEN": {
+      "name": "Kenya",
+      "value": 80.0,
+      "year": 2016
+    },
+    "SDN": {
+      "name": "Sudan",
+      "value": 82.95,
+      "year": 2016
+    },
+    "TCD": {
+      "name": "Chad",
+      "value": 80.77,
+      "year": 2016
+    },
+    "HTI": {
+      "name": "Haiti",
+      "value": 86.44,
+      "year": 2016
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "value": 90.83,
+      "year": 2016
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "value": 94.07,
+      "year": 2016
+    },
+    "BHS": {
+      "name": "Bahamas",
+      "value": 85.43,
+      "year": 2016
+    },
+    "FLK": {
+      "name": "Falkland Is.",
+      "value": 93.46,
+      "year": 2016
+    },
+    "NOR": {
+      "name": "Norway",
+      "value": 95.96,
+      "year": 2016
+    },
+    "GRL": {
+      "name": "Greenland",
+      "value": 99.46,
+      "year": 2016
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "value": 96.37,
+      "year": 2016
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "value": 66.09,
+      "year": 2016
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "value": 87.96,
+      "year": 2016
+    },
+    "MEX": {
+      "name": "Mexico",
+      "value": 82.97,
+      "year": 2016
+    },
+    "URY": {
+      "name": "Uruguay",
+      "value": 62.12,
+      "year": 2016
+    },
+    "BRA": {
+      "name": "Brazil",
+      "value": 86.67,
+      "year": 2016
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "value": 82.45,
+      "year": 2016
+    },
+    "PER": {
+      "name": "Peru",
+      "value": 92.39,
+      "year": 2016
+    },
+    "COL": {
+      "name": "Colombia",
+      "value": 88.43,
+      "year": 2016
+    },
+    "PAN": {
+      "name": "Panama",
+      "value": 90.71,
+      "year": 2016
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "value": 94.17,
+      "year": 2016
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "value": 91.27,
+      "year": 2016
+    },
+    "HND": {
+      "name": "Honduras",
+      "value": 92.75,
+      "year": 2016
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "value": 91.5,
+      "year": 2016
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "value": 95.7,
+      "year": 2016
+    },
+    "BLZ": {
+      "name": "Belize",
+      "value": 94.11,
+      "year": 2016
+    },
+    "VEN": {
+      "name": "Venezuela, Bolivarian Republic of",
+      "value": 88.55,
+      "year": 2016
+    },
+    "GUY": {
+      "name": "Guyana",
+      "value": 94.82,
+      "year": 2016
+    },
+    "SUR": {
+      "name": "Suriname",
+      "value": 96.44,
+      "year": 2016
+    },
+    "FRA": {
+      "name": "France",
+      "value": 86.31,
+      "year": 2016
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "value": 89.59,
+      "year": 2016
+    },
+    "PRI": {
+      "name": "Puerto Rico",
+      "value": 95.7,
+      "year": 2016
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "value": 95.25,
+      "year": 2016
+    },
+    "CUB": {
+      "name": "Cuba",
+      "value": 85.53,
+      "year": 2016
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "value": 90.14,
+      "year": 2016
+    },
+    "BWA": {
+      "name": "Botswana",
+      "value": 70.25,
+      "year": 2016
+    },
+    "NAM": {
+      "name": "Namibia",
+      "value": 67.85,
+      "year": 2016
+    },
+    "SEN": {
+      "name": "Senegal",
+      "value": 86.8,
+      "year": 2016
+    },
+    "MLI": {
+      "name": "Mali",
+      "value": 81.06,
+      "year": 2016
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "value": 81.06,
+      "year": 2016
+    },
+    "BEN": {
+      "name": "Benin",
+      "value": 88.51,
+      "year": 2016
+    },
+    "NER": {
+      "name": "Niger",
+      "value": 81.58,
+      "year": 2016
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "value": 92.99,
+      "year": 2016
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "value": 91.19,
+      "year": 2016
+    },
+    "TGO": {
+      "name": "Togo",
+      "value": 89.26,
+      "year": 2016
+    },
+    "GHA": {
+      "name": "Ghana",
+      "value": 91.84,
+      "year": 2016
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "value": 92.25,
+      "year": 2016
+    },
+    "GIN": {
+      "name": "Guinea",
+      "value": 92.0,
+      "year": 2016
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "value": 93.92,
+      "year": 2016
+    },
+    "LBR": {
+      "name": "Liberia",
+      "value": 93.86,
+      "year": 2016
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "value": 94.59,
+      "year": 2016
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "value": 88.49,
+      "year": 2016
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "value": 82.08,
+      "year": 2016
+    },
+    "COG": {
+      "name": "Congo",
+      "value": 86.22,
+      "year": 2016
+    },
+    "GAB": {
+      "name": "Gabon",
+      "value": 84.72,
+      "year": 2016
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "value": 98.01,
+      "year": 2016
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "value": 86.94,
+      "year": 2016
+    },
+    "MWI": {
+      "name": "Malawi",
+      "value": 90.98,
+      "year": 2016
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "value": 85.9,
+      "year": 2016
+    },
+    "SWZ": {
+      "name": "Eswatini",
+      "value": 93.5,
+      "year": 2016
+    },
+    "AGO": {
+      "name": "Angola",
+      "value": 83.8,
+      "year": 2016
+    },
+    "BDI": {
+      "name": "Burundi",
+      "value": 96.0,
+      "year": 2016
+    },
+    "ISR": {
+      "name": "Israel",
+      "value": 80.87,
+      "year": 2016
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "value": 84.57,
+      "year": 2016
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "value": 83.49,
+      "year": 2016
+    },
+    "PSX": {
+      "name": "Palestine",
+      "value": 79.99,
+      "year": 2016
+    },
+    "GMB": {
+      "name": "Gambia",
+      "value": 94.92,
+      "year": 2016
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "value": 85.22,
+      "year": 2016
+    },
+    "DZA": {
+      "name": "Algeria",
+      "value": 82.93,
+      "year": 2016
+    },
+    "JOR": {
+      "name": "Jordan",
+      "value": 85.26,
+      "year": 2016
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "value": 83.9,
+      "year": 2016
+    },
+    "QAT": {
+      "name": "Qatar",
+      "value": 83.11,
+      "year": 2016
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "value": 80.27,
+      "year": 2016
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "value": 89.8,
+      "year": 2016
+    },
+    "OMN": {
+      "name": "Oman",
+      "value": 85.26,
+      "year": 2016
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "value": 102.98,
+      "year": 2016
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "value": 95.01,
+      "year": 2016
+    },
+    "THA": {
+      "name": "Thailand",
+      "value": 93.42,
+      "year": 2016
+    },
+    "LAO": {
+      "name": "Lao People's Democratic Republic",
+      "value": 100.35,
+      "year": 2016
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "value": 97.2,
+      "year": 2016
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "value": 94.29,
+      "year": 2016
+    },
+    "PRK": {
+      "name": "Korea, Democratic People's Republic of",
+      "value": 99.29,
+      "year": 2016
+    },
+    "KOR": {
+      "name": "Korea, Republic of",
+      "value": 97.08,
+      "year": 2016
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "value": 61.28,
+      "year": 2016
+    },
+    "IND": {
+      "name": "India",
+      "value": 88.79,
+      "year": 2016
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "value": 80.4,
+      "year": 2016
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "value": 97.22,
+      "year": 2016
+    },
+    "NPL": {
+      "name": "Nepal",
+      "value": 91.99,
+      "year": 2016
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "value": 90.33,
+      "year": 2016
+    },
+    "AFG": {
+      "name": "Afghanistan",
+      "value": 85.17,
+      "year": 2016
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "value": 85.21,
+      "year": 2016
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "value": 77.82,
+      "year": 2016
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "value": 78.38,
+      "year": 2016
+    },
+    "IRN": {
+      "name": "Iran, Islamic Republic of",
+      "value": 87.62,
+      "year": 2016
+    },
+    "SYR": {
+      "name": "Syrian Arab Republic",
+      "value": 79.74,
+      "year": 2016
+    },
+    "ARM": {
+      "name": "Armenia",
+      "value": 87.14,
+      "year": 2016
+    },
+    "SWE": {
+      "name": "Sweden",
+      "value": 93.35,
+      "year": 2016
+    },
+    "BLR": {
+      "name": "Belarus",
+      "value": 86.17,
+      "year": 2016
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "value": 82.53,
+      "year": 2016
+    },
+    "POL": {
+      "name": "Poland",
+      "value": 86.48,
+      "year": 2016
+    },
+    "AUT": {
+      "name": "Austria",
+      "value": 93.99,
+      "year": 2016
+    },
+    "HUN": {
+      "name": "Hungary",
+      "value": 84.38,
+      "year": 2016
+    },
+    "MDA": {
+      "name": "Republic of Moldova",
+      "value": 82.17,
+      "year": 2016
+    },
+    "ROU": {
+      "name": "Romania",
+      "value": 86.43,
+      "year": 2016
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "value": 85.05,
+      "year": 2016
+    },
+    "LVA": {
+      "name": "Latvia",
+      "value": 86.73,
+      "year": 2016
+    },
+    "EST": {
+      "name": "Estonia",
+      "value": 87.21,
+      "year": 2016
+    },
+    "DEU": {
+      "name": "Germany",
+      "value": 88.22,
+      "year": 2016
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "value": 87.1,
+      "year": 2016
+    },
+    "GRC": {
+      "name": "Greece",
+      "value": 84.85,
+      "year": 2016
+    },
+    "TUR": {
+      "name": "Turkiye",
+      "value": 86.77,
+      "year": 2016
+    },
+    "ALB": {
+      "name": "Albania",
+      "value": 85.57,
+      "year": 2016
+    },
+    "HRV": {
+      "name": "Croatia",
+      "value": 87.98,
+      "year": 2016
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "value": 91.1,
+      "year": 2016
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "value": 88.96,
+      "year": 2016
+    },
+    "BEL": {
+      "name": "Belgium",
+      "value": 86.63,
+      "year": 2016
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "value": 83.82,
+      "year": 2016
+    },
+    "PRT": {
+      "name": "Portugal",
+      "value": 88.81,
+      "year": 2016
+    },
+    "ESP": {
+      "name": "Spain",
+      "value": 82.09,
+      "year": 2016
+    },
+    "IRL": {
+      "name": "Ireland",
+      "value": 77.17,
+      "year": 2016
+    },
+    "NCL": {
+      "name": "New Caledonia",
+      "value": 95.0,
+      "year": 2016
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "value": 103.04,
+      "year": 2016
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "value": 67.6,
+      "year": 2016
+    },
+    "AUS": {
+      "name": "Australia",
+      "value": 66.2,
+      "year": 2016
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "value": 97.09,
+      "year": 2016
+    },
+    "CHN": {
+      "name": "China",
+      "value": 82.13,
+      "year": 2016
+    },
+    "ITA": {
+      "name": "Italy",
+      "value": 87.04,
+      "year": 2016
+    },
+    "DNK": {
+      "name": "Denmark",
+      "value": 83.25,
+      "year": 2016
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "value": 81.08,
+      "year": 2016
+    },
+    "ISL": {
+      "name": "Iceland",
+      "value": 84.67,
+      "year": 2016
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "value": 86.24,
+      "year": 2016
+    },
+    "GEO": {
+      "name": "Georgia",
+      "value": 90.2,
+      "year": 2016
+    },
+    "PHL": {
+      "name": "Philippines",
+      "value": 91.53,
+      "year": 2016
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "value": 96.6,
+      "year": 2016
+    },
+    "BRN": {
+      "name": "Brunei Darussalam",
+      "value": 98.29,
+      "year": 2016
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "value": 93.34,
+      "year": 2016
+    },
+    "FIN": {
+      "name": "Finland",
+      "value": 93.95,
+      "year": 2016
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "value": 90.51,
+      "year": 2016
+    },
+    "CZE": {
+      "name": "Czech Republic",
+      "value": 87.43,
+      "year": 2016
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "value": 88.66,
+      "year": 2016
+    },
+    "JPN": {
+      "name": "Japan",
+      "value": 97.57,
+      "year": 2016
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "value": 76.74,
+      "year": 2016
+    },
+    "YEM": {
+      "name": "Yemen",
+      "value": 86.0,
+      "year": 2016
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "value": 84.56,
+      "year": 2016
+    },
+    "CYN": {
+      "name": "N. Cyprus",
+      "value": 85.66,
+      "year": 2016
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "value": 85.78,
+      "year": 2016
+    },
+    "MAR": {
+      "name": "Morocco",
+      "value": 83.02,
+      "year": 2016
+    },
+    "EGY": {
+      "name": "Egypt",
+      "value": 84.48,
+      "year": 2016
+    },
+    "LBY": {
+      "name": "Libya",
+      "value": 84.14,
+      "year": 2016
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "value": 89.67,
+      "year": 2016
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "value": 81.78,
+      "year": 2016
+    },
+    "SOL": {
+      "name": "Somaliland",
+      "value": 78.3,
+      "year": 2016
+    },
+    "UGA": {
+      "name": "Uganda",
+      "value": 92.06,
+      "year": 2016
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "value": 95.54,
+      "year": 2016
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "value": 91.36,
+      "year": 2016
+    },
+    "MKD": {
+      "name": "Republic of North Macedonia",
+      "value": 83.89,
+      "year": 2016
+    },
+    "SRB": {
+      "name": "Serbia",
+      "value": 86.87,
+      "year": 2016
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "value": 88.83,
+      "year": 2016
+    },
+    "KOS": {
+      "name": "Kosovo",
+      "value": 87.36,
+      "year": 2016
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "value": 100.38,
+      "year": 2016
+    },
+    "SDS": {
+      "name": "S. Sudan",
+      "value": 75.61,
+      "year": 2016
+    }
+  }
+}

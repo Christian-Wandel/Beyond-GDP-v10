@@ -1,0 +1,1284 @@
+{
+  "meta": {
+    "source": "Global Carbon Project, Global Carbon Budget 2023",
+    "data_year": 2022,
+    "unit_total": "Mt CO2 (territorial fossil-fuel emissions)",
+    "unit_per_capita": "tonnes CO2 per person per year",
+    "threshold_paris_15c": 2.0,
+    "note": "Territorial emissions from fossil fuels only."
+  },
+  "data": {
+    "AFG": {
+      "name": "Afghanistan",
+      "co2_total_mt": 12.1479,
+      "co2_per_capita_tco2": 0.298,
+      "year": 2022
+    },
+    "ALB": {
+      "name": "Albania",
+      "co2_total_mt": 4.9547,
+      "co2_per_capita_tco2": 1.729,
+      "year": 2022
+    },
+    "DZA": {
+      "name": "Algeria",
+      "co2_total_mt": 176.3451,
+      "co2_per_capita_tco2": 3.889,
+      "year": 2022
+    },
+    "AND": {
+      "name": "Andorra",
+      "co2_total_mt": 0.3686,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "AGO": {
+      "name": "Angola",
+      "co2_total_mt": 16.0703,
+      "co2_per_capita_tco2": 0.459,
+      "year": 2022
+    },
+    "ANG": {
+      "name": "Anguilla",
+      "co2_total_mt": 0.139,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "ATG": {
+      "name": "Antigua and Barbuda",
+      "co2_total_mt": 0.6022,
+      "co2_per_capita_tco2": 6.022,
+      "year": 2022
+    },
+    "ARG": {
+      "name": "Argentina",
+      "co2_total_mt": 192.8644,
+      "co2_per_capita_tco2": 4.192,
+      "year": 2022
+    },
+    "ARM": {
+      "name": "Armenia",
+      "co2_total_mt": 6.4078,
+      "co2_per_capita_tco2": 2.156,
+      "year": 2022
+    },
+    "ABW": {
+      "name": "Aruba",
+      "co2_total_mt": 0.8659,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "AUS": {
+      "name": "Australia",
+      "co2_total_mt": 392.2793,
+      "co2_per_capita_tco2": 15.048,
+      "year": 2022
+    },
+    "AUT": {
+      "name": "Austria",
+      "co2_total_mt": 61.4884,
+      "co2_per_capita_tco2": 6.782,
+      "year": 2022
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "co2_total_mt": 38.0627,
+      "co2_per_capita_tco2": 3.695,
+      "year": 2022
+    },
+    "BHS": {
+      "name": "Bahamas",
+      "co2_total_mt": 2.12,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "BHR": {
+      "name": "Bahrain",
+      "co2_total_mt": 37.7957,
+      "co2_per_capita_tco2": 21.186,
+      "year": 2022
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "co2_total_mt": 102.1033,
+      "co2_per_capita_tco2": 0.608,
+      "year": 2022
+    },
+    "BRB": {
+      "name": "Barbados",
+      "co2_total_mt": 1.2328,
+      "co2_per_capita_tco2": 4.281,
+      "year": 2022
+    },
+    "BLR": {
+      "name": "Belarus",
+      "co2_total_mt": 58.8011,
+      "co2_per_capita_tco2": 6.234,
+      "year": 2022
+    },
+    "BEL": {
+      "name": "Belgium",
+      "co2_total_mt": 89.6054,
+      "co2_per_capita_tco2": 7.68,
+      "year": 2022
+    },
+    "BLZ": {
+      "name": "Belize",
+      "co2_total_mt": 0.7252,
+      "co2_per_capita_tco2": 1.76,
+      "year": 2022
+    },
+    "BEN": {
+      "name": "Benin",
+      "co2_total_mt": 8.4322,
+      "co2_per_capita_tco2": 0.66,
+      "year": 2022
+    },
+    "BMU": {
+      "name": "Bermuda",
+      "co2_total_mt": 0.4454,
+      "co2_per_capita_tco2": 7.184,
+      "year": 2022
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "co2_total_mt": 1.0555,
+      "co2_per_capita_tco2": 1.339,
+      "year": 2022
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "co2_total_mt": 21.4937,
+      "co2_per_capita_tco2": 1.792,
+      "year": 2022
+    },
+    "BON": {
+      "name": "Bonaire, Saint Eustatius and Saba",
+      "co2_total_mt": 0.1105,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "co2_total_mt": 19.7357,
+      "co2_per_capita_tco2": 6.074,
+      "year": 2022
+    },
+    "BWA": {
+      "name": "Botswana",
+      "co2_total_mt": 7.4673,
+      "co2_per_capita_tco2": 3.059,
+      "year": 2022
+    },
+    "BRA": {
+      "name": "Brazil",
+      "co2_total_mt": 483.4773,
+      "co2_per_capita_tco2": 2.245,
+      "year": 2022
+    },
+    "VGB": {
+      "name": "British Virgin Islands",
+      "co2_total_mt": 0.1568,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "BRN": {
+      "name": "Brunei Darussalam",
+      "co2_total_mt": 10.7537,
+      "co2_per_capita_tco2": 24.166,
+      "year": 2022
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "co2_total_mt": 46.1475,
+      "co2_per_capita_tco2": 6.742,
+      "year": 2022
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "co2_total_mt": 5.9622,
+      "co2_per_capita_tco2": 0.27,
+      "year": 2022
+    },
+    "BDI": {
+      "name": "Burundi",
+      "co2_total_mt": 0.7984,
+      "co2_per_capita_tco2": 0.063,
+      "year": 2022
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "co2_total_mt": 19.955,
+      "co2_per_capita_tco2": 1.162,
+      "year": 2022
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "co2_total_mt": 9.5727,
+      "co2_per_capita_tco2": 0.343,
+      "year": 2022
+    },
+    "CAN": {
+      "name": "Canada",
+      "co2_total_mt": 547.9439,
+      "co2_per_capita_tco2": 14.274,
+      "year": 2022
+    },
+    "CAP": {
+      "name": "Cape Verde",
+      "co2_total_mt": 0.5688,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "co2_total_mt": 0.2262,
+      "co2_per_capita_tco2": 0.045,
+      "year": 2022
+    },
+    "TCD": {
+      "name": "Chad",
+      "co2_total_mt": 2.3692,
+      "co2_per_capita_tco2": 0.136,
+      "year": 2022
+    },
+    "CHL": {
+      "name": "Chile",
+      "co2_total_mt": 84.3777,
+      "co2_per_capita_tco2": 4.383,
+      "year": 2022
+    },
+    "CHN": {
+      "name": "China",
+      "co2_total_mt": 11396.7774,
+      "co2_per_capita_tco2": 7.697,
+      "year": 2022
+    },
+    "COL": {
+      "name": "Colombia",
+      "co2_total_mt": 99.7179,
+      "co2_per_capita_tco2": 1.936,
+      "year": 2022
+    },
+    "COM": {
+      "name": "Comoros",
+      "co2_total_mt": 0.4128,
+      "co2_per_capita_tco2": 0.455,
+      "year": 2022
+    },
+    "COG": {
+      "name": "Congo",
+      "co2_total_mt": 7.4319,
+      "co2_per_capita_tco2": 1.282,
+      "year": 2022
+    },
+    "COO": {
+      "name": "Cook Islands",
+      "co2_total_mt": 0.068,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "co2_total_mt": 7.8887,
+      "co2_per_capita_tco2": 1.522,
+      "year": 2022
+    },
+    "HRV": {
+      "name": "Croatia",
+      "co2_total_mt": 17.5261,
+      "co2_per_capita_tco2": 4.318,
+      "year": 2022
+    },
+    "CUB": {
+      "name": "Cuba",
+      "co2_total_mt": 20.921,
+      "co2_per_capita_tco2": 1.85,
+      "year": 2022
+    },
+    "CUR": {
+      "name": "Curaçao",
+      "co2_total_mt": 1.7567,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "co2_total_mt": 7.0294,
+      "co2_per_capita_tco2": 5.748,
+      "year": 2022
+    },
+    "CZE": {
+      "name": "Czech Republic",
+      "co2_total_mt": 97.9693,
+      "co2_per_capita_tco2": 9.124,
+      "year": 2022
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "co2_total_mt": 11.7342,
+      "co2_per_capita_tco2": 0.423,
+      "year": 2022
+    },
+    "COD": {
+      "name": "Democratic Republic of the Congo",
+      "co2_total_mt": 3.6016,
+      "co2_per_capita_tco2": 0.038,
+      "year": 2022
+    },
+    "DNK": {
+      "name": "Denmark",
+      "co2_total_mt": 29.0593,
+      "co2_per_capita_tco2": 4.98,
+      "year": 2022
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "co2_total_mt": 0.453,
+      "co2_per_capita_tco2": 0.446,
+      "year": 2022
+    },
+    "DMA": {
+      "name": "Dominica",
+      "co2_total_mt": 0.1532,
+      "co2_per_capita_tco2": 2.128,
+      "year": 2022
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "co2_total_mt": 23.6379,
+      "co2_per_capita_tco2": 2.138,
+      "year": 2022
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "co2_total_mt": 41.6134,
+      "co2_per_capita_tco2": 2.297,
+      "year": 2022
+    },
+    "EGY": {
+      "name": "Egypt",
+      "co2_total_mt": 258.9517,
+      "co2_per_capita_tco2": 2.439,
+      "year": 2022
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "co2_total_mt": 7.7144,
+      "co2_per_capita_tco2": 1.178,
+      "year": 2022
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "co2_total_mt": 5.0762,
+      "co2_per_capita_tco2": 3.391,
+      "year": 2022
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "co2_total_mt": 0.6968,
+      "co2_per_capita_tco2": 0.19,
+      "year": 2022
+    },
+    "EST": {
+      "name": "Estonia",
+      "co2_total_mt": 10.3118,
+      "co2_per_capita_tco2": 7.8,
+      "year": 2022
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "co2_total_mt": 19.0733,
+      "co2_per_capita_tco2": 0.158,
+      "year": 2022
+    },
+    "FAE": {
+      "name": "Faeroe Islands",
+      "co2_total_mt": 0.7481,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "FJI": {
+      "name": "Fiji",
+      "co2_total_mt": 1.0739,
+      "co2_per_capita_tco2": 1.181,
+      "year": 2022
+    },
+    "FIN": {
+      "name": "Finland",
+      "co2_total_mt": 36.163,
+      "co2_per_capita_tco2": 6.51,
+      "year": 2022
+    },
+    "FRA": {
+      "name": "France",
+      "co2_total_mt": 297.5339,
+      "co2_per_capita_tco2": 4.534,
+      "year": 2022
+    },
+    "PYF": {
+      "name": "French Polynesia",
+      "co2_total_mt": 0.8732,
+      "co2_per_capita_tco2": 3.075,
+      "year": 2022
+    },
+    "GAB": {
+      "name": "Gabon",
+      "co2_total_mt": 5.7056,
+      "co2_per_capita_tco2": 2.447,
+      "year": 2022
+    },
+    "GMB": {
+      "name": "Gambia",
+      "co2_total_mt": 0.7705,
+      "co2_per_capita_tco2": 0.301,
+      "year": 2022
+    },
+    "GEO": {
+      "name": "Georgia",
+      "co2_total_mt": 11.0929,
+      "co2_per_capita_tco2": 2.795,
+      "year": 2022
+    },
+    "DEU": {
+      "name": "Germany",
+      "co2_total_mt": 665.6047,
+      "co2_per_capita_tco2": 7.935,
+      "year": 2022
+    },
+    "GHA": {
+      "name": "Ghana",
+      "co2_total_mt": 20.8069,
+      "co2_per_capita_tco2": 0.642,
+      "year": 2022
+    },
+    "GRC": {
+      "name": "Greece",
+      "co2_total_mt": 59.6628,
+      "co2_per_capita_tco2": 5.783,
+      "year": 2022
+    },
+    "GRL": {
+      "name": "Greenland",
+      "co2_total_mt": 0.5917,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "GRD": {
+      "name": "Grenada",
+      "co2_total_mt": 0.3404,
+      "co2_per_capita_tco2": 3.013,
+      "year": 2022
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "co2_total_mt": 19.1932,
+      "co2_per_capita_tco2": 1.033,
+      "year": 2022
+    },
+    "GIN": {
+      "name": "Guinea",
+      "co2_total_mt": 4.9536,
+      "co2_per_capita_tco2": 0.357,
+      "year": 2022
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "co2_total_mt": 0.3267,
+      "co2_per_capita_tco2": 0.158,
+      "year": 2022
+    },
+    "GUY": {
+      "name": "Guyana",
+      "co2_total_mt": 3.5371,
+      "co2_per_capita_tco2": 4.455,
+      "year": 2022
+    },
+    "HTI": {
+      "name": "Haiti",
+      "co2_total_mt": 2.4467,
+      "co2_per_capita_tco2": 0.209,
+      "year": 2022
+    },
+    "HND": {
+      "name": "Honduras",
+      "co2_total_mt": 11.1597,
+      "co2_per_capita_tco2": 1.092,
+      "year": 2022
+    },
+    "HON": {
+      "name": "Hong Kong",
+      "co2_total_mt": 30.5689,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "HUN": {
+      "name": "Hungary",
+      "co2_total_mt": 44.3536,
+      "co2_per_capita_tco2": 4.617,
+      "year": 2022
+    },
+    "ISL": {
+      "name": "Iceland",
+      "co2_total_mt": 3.5425,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "IND": {
+      "name": "India",
+      "co2_total_mt": 2829.6442,
+      "co2_per_capita_tco2": 2.012,
+      "year": 2022
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "co2_total_mt": 728.8833,
+      "co2_per_capita_tco2": 2.611,
+      "year": 2022
+    },
+    "IRN": {
+      "name": "Iran",
+      "co2_total_mt": 690.6353,
+      "co2_per_capita_tco2": 8.028,
+      "year": 2022
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "co2_total_mt": 179.0808,
+      "co2_per_capita_tco2": 4.247,
+      "year": 2022
+    },
+    "IRL": {
+      "name": "Ireland",
+      "co2_total_mt": 38.784,
+      "co2_per_capita_tco2": 7.726,
+      "year": 2022
+    },
+    "ISR": {
+      "name": "Israel",
+      "co2_total_mt": 56.1181,
+      "co2_per_capita_tco2": 6.289,
+      "year": 2022
+    },
+    "ITA": {
+      "name": "Italy",
+      "co2_total_mt": 338.0973,
+      "co2_per_capita_tco2": 5.607,
+      "year": 2022
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "co2_total_mt": 6.4876,
+      "co2_per_capita_tco2": 2.173,
+      "year": 2022
+    },
+    "JPN": {
+      "name": "Japan",
+      "co2_total_mt": 1053.7979,
+      "co2_per_capita_tco2": 8.391,
+      "year": 2022
+    },
+    "JOR": {
+      "name": "Jordan",
+      "co2_total_mt": 22.9126,
+      "co2_per_capita_tco2": 2.224,
+      "year": 2022
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "co2_total_mt": 271.1783,
+      "co2_per_capita_tco2": 14.12,
+      "year": 2022
+    },
+    "KEN": {
+      "name": "Kenya",
+      "co2_total_mt": 24.8519,
+      "co2_per_capita_tco2": 0.442,
+      "year": 2022
+    },
+    "KIR": {
+      "name": "Kiribati",
+      "co2_total_mt": 0.068,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "XKX": {
+      "name": "Kosovo",
+      "co2_total_mt": 8.0175,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "co2_total_mt": 109.19,
+      "co2_per_capita_tco2": 24.929,
+      "year": 2022
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "co2_total_mt": 9.4497,
+      "co2_per_capita_tco2": 1.405,
+      "year": 2022
+    },
+    "LAO": {
+      "name": "Laos",
+      "co2_total_mt": 23.1934,
+      "co2_per_capita_tco2": 3.1,
+      "year": 2022
+    },
+    "LVA": {
+      "name": "Latvia",
+      "co2_total_mt": 6.5915,
+      "co2_per_capita_tco2": 3.565,
+      "year": 2022
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "co2_total_mt": 23.9045,
+      "co2_per_capita_tco2": 3.576,
+      "year": 2022
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "co2_total_mt": 3.1347,
+      "co2_per_capita_tco2": 1.441,
+      "year": 2022
+    },
+    "LBR": {
+      "name": "Liberia",
+      "co2_total_mt": 0.8769,
+      "co2_per_capita_tco2": 0.165,
+      "year": 2022
+    },
+    "LBY": {
+      "name": "Libya",
+      "co2_total_mt": 62.9613,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "LIE": {
+      "name": "Liechtenstein",
+      "co2_total_mt": 0.1499,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "co2_total_mt": 12.6672,
+      "co2_per_capita_tco2": 4.759,
+      "year": 2022
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "co2_total_mt": 7.5241,
+      "co2_per_capita_tco2": 11.72,
+      "year": 2022
+    },
+    "MAC": {
+      "name": "Macao",
+      "co2_total_mt": 1.0516,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "co2_total_mt": 4.4036,
+      "co2_per_capita_tco2": 0.151,
+      "year": 2022
+    },
+    "MWI": {
+      "name": "Malawi",
+      "co2_total_mt": 2.0941,
+      "co2_per_capita_tco2": 0.104,
+      "year": 2022
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "co2_total_mt": 291.0714,
+      "co2_per_capita_tco2": 8.772,
+      "year": 2022
+    },
+    "MDV": {
+      "name": "Maldives",
+      "co2_total_mt": 1.7011,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "MLI": {
+      "name": "Mali",
+      "co2_total_mt": 7.0388,
+      "co2_per_capita_tco2": 0.328,
+      "year": 2022
+    },
+    "MLT": {
+      "name": "Malta",
+      "co2_total_mt": 1.6551,
+      "co2_per_capita_tco2": 3.728,
+      "year": 2022
+    },
+    "MHL": {
+      "name": "Marshall Islands",
+      "co2_total_mt": 0.1512,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "co2_total_mt": 4.5341,
+      "co2_per_capita_tco2": 0.925,
+      "year": 2022
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "co2_total_mt": 4.249,
+      "co2_per_capita_tco2": 3.333,
+      "year": 2022
+    },
+    "MEX": {
+      "name": "Mexico",
+      "co2_total_mt": 511.972,
+      "co2_per_capita_tco2": 3.891,
+      "year": 2022
+    },
+    "FSM": {
+      "name": "Micronesia (Federated States of)",
+      "co2_total_mt": 0.1512,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "MDA": {
+      "name": "Moldova",
+      "co2_total_mt": 5.422,
+      "co2_per_capita_tco2": 1.351,
+      "year": 2022
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "co2_total_mt": 37.8945,
+      "co2_per_capita_tco2": 11.218,
+      "year": 2022
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "co2_total_mt": 2.2925,
+      "co2_per_capita_tco2": 3.65,
+      "year": 2022
+    },
+    "MON": {
+      "name": "Montserrat",
+      "co2_total_mt": 0.0214,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "MAR": {
+      "name": "Morocco",
+      "co2_total_mt": 68.4118,
+      "co2_per_capita_tco2": 1.811,
+      "year": 2022
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "co2_total_mt": 8.0032,
+      "co2_per_capita_tco2": 0.242,
+      "year": 2022
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "co2_total_mt": 34.9222,
+      "co2_per_capita_tco2": 0.632,
+      "year": 2022
+    },
+    "NAM": {
+      "name": "Namibia",
+      "co2_total_mt": 3.953,
+      "co2_per_capita_tco2": 1.501,
+      "year": 2022
+    },
+    "NRU": {
+      "name": "Nauru",
+      "co2_total_mt": 0.0529,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "NPL": {
+      "name": "Nepal",
+      "co2_total_mt": 15.5,
+      "co2_per_capita_tco2": 0.513,
+      "year": 2022
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "co2_total_mt": 125.3582,
+      "co2_per_capita_tco2": 7.272,
+      "year": 2022
+    },
+    "NCL": {
+      "name": "New Caledonia",
+      "co2_total_mt": 5.1152,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "co2_total_mt": 32.2118,
+      "co2_per_capita_tco2": 6.577,
+      "year": 2022
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "co2_total_mt": 5.5504,
+      "co2_per_capita_tco2": 0.819,
+      "year": 2022
+    },
+    "NER": {
+      "name": "Niger",
+      "co2_total_mt": 3.0582,
+      "co2_per_capita_tco2": 0.117,
+      "year": 2022
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "co2_total_mt": 128.7595,
+      "co2_per_capita_tco2": 0.594,
+      "year": 2022
+    },
+    "NIU": {
+      "name": "Niue",
+      "co2_total_mt": 0.0076,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "PRK": {
+      "name": "North Korea",
+      "co2_total_mt": 50.8716,
+      "co2_per_capita_tco2": 1.957,
+      "year": 2022
+    },
+    "MKD": {
+      "name": "North Macedonia",
+      "co2_total_mt": 7.5884,
+      "co2_per_capita_tco2": 3.647,
+      "year": 2022
+    },
+    "NOR": {
+      "name": "Norway",
+      "co2_total_mt": 40.808,
+      "co2_per_capita_tco2": 7.405,
+      "year": 2022
+    },
+    "OCC": {
+      "name": "Occupied Palestinian Territory",
+      "co2_total_mt": 3.4969,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "OMN": {
+      "name": "Oman",
+      "co2_total_mt": 71.9864,
+      "co2_per_capita_tco2": 13.521,
+      "year": 2022
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "co2_total_mt": 200.1999,
+      "co2_per_capita_tco2": 0.872,
+      "year": 2022
+    },
+    "PLW": {
+      "name": "Palau",
+      "co2_total_mt": 0.2193,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "PAN": {
+      "name": "Panama",
+      "co2_total_mt": 11.8999,
+      "co2_per_capita_tco2": 2.676,
+      "year": 2022
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "co2_total_mt": 7.8231,
+      "co2_per_capita_tco2": 0.842,
+      "year": 2022
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "co2_total_mt": 9.018,
+      "co2_per_capita_tco2": 1.234,
+      "year": 2022
+    },
+    "PER": {
+      "name": "Peru",
+      "co2_total_mt": 60.9211,
+      "co2_per_capita_tco2": 1.809,
+      "year": 2022
+    },
+    "PHL": {
+      "name": "Philippines",
+      "co2_total_mt": 150.396,
+      "co2_per_capita_tco2": 1.337,
+      "year": 2022
+    },
+    "POL": {
+      "name": "Poland",
+      "co2_total_mt": 323.1173,
+      "co2_per_capita_tco2": 8.562,
+      "year": 2022
+    },
+    "PRT": {
+      "name": "Portugal",
+      "co2_total_mt": 41.605,
+      "co2_per_capita_tco2": 4.103,
+      "year": 2022
+    },
+    "QAT": {
+      "name": "Qatar",
+      "co2_total_mt": 101.3404,
+      "co2_per_capita_tco2": 34.007,
+      "year": 2022
+    },
+    "REP": {
+      "name": "Republic of South Sudan",
+      "co2_total_mt": 1.8336,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "ROU": {
+      "name": "Romania",
+      "co2_total_mt": 73.5213,
+      "co2_per_capita_tco2": 3.863,
+      "year": 2022
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "co2_total_mt": 1652.1773,
+      "co2_per_capita_tco2": 11.331,
+      "year": 2022
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "co2_total_mt": 1.5478,
+      "co2_per_capita_tco2": 0.114,
+      "year": 2022
+    },
+    "SAI": {
+      "name": "Saint Pierre and Miquelon",
+      "co2_total_mt": 0.0606,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "KNA": {
+      "name": "Saint Kitts and Nevis",
+      "co2_total_mt": 0.2245,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "LCA": {
+      "name": "Saint Lucia",
+      "co2_total_mt": 0.4703,
+      "co2_per_capita_tco2": 2.542,
+      "year": 2022
+    },
+    "VCT": {
+      "name": "Saint Vincent and the Grenadines",
+      "co2_total_mt": 0.2387,
+      "co2_per_capita_tco2": 2.132,
+      "year": 2022
+    },
+    "WSM": {
+      "name": "Samoa",
+      "co2_total_mt": 0.2495,
+      "co2_per_capita_tco2": 1.235,
+      "year": 2022
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "co2_total_mt": 0.1323,
+      "co2_per_capita_tco2": 0.58,
+      "year": 2022
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "co2_total_mt": 662.5494,
+      "co2_per_capita_tco2": 18.484,
+      "year": 2022
+    },
+    "SEN": {
+      "name": "Senegal",
+      "co2_total_mt": 11.6684,
+      "co2_per_capita_tco2": 0.661,
+      "year": 2022
+    },
+    "SRB": {
+      "name": "Serbia",
+      "co2_total_mt": 43.5066,
+      "co2_per_capita_tco2": 5.028,
+      "year": 2022
+    },
+    "SYC": {
+      "name": "Seychelles",
+      "co2_total_mt": 0.6588,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "co2_total_mt": 1.1295,
+      "co2_per_capita_tco2": 0.136,
+      "year": 2022
+    },
+    "SGP": {
+      "name": "Singapore",
+      "co2_total_mt": 53.2524,
+      "co2_per_capita_tco2": 8.959,
+      "year": 2022
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "co2_total_mt": 34.1517,
+      "co2_per_capita_tco2": 6.255,
+      "year": 2022
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "co2_total_mt": 12.7148,
+      "co2_per_capita_tco2": 6.119,
+      "year": 2022
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "co2_total_mt": 0.2986,
+      "co2_per_capita_tco2": 0.414,
+      "year": 2022
+    },
+    "SOM": {
+      "name": "Somalia",
+      "co2_total_mt": 0.6469,
+      "co2_per_capita_tco2": 0.038,
+      "year": 2022
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "co2_total_mt": 404.054,
+      "co2_per_capita_tco2": 6.65,
+      "year": 2022
+    },
+    "KOR": {
+      "name": "South Korea",
+      "co2_total_mt": 600.9993,
+      "co2_per_capita_tco2": 11.709,
+      "year": 2022
+    },
+    "ESP": {
+      "name": "Spain",
+      "co2_total_mt": 245.6138,
+      "co2_per_capita_tco2": 5.257,
+      "year": 2022
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "co2_total_mt": 17.3271,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "SDN": {
+      "name": "Sudan",
+      "co2_total_mt": 22.0133,
+      "co2_per_capita_tco2": 0.479,
+      "year": 2022
+    },
+    "SUR": {
+      "name": "Suriname",
+      "co2_total_mt": 3.5865,
+      "co2_per_capita_tco2": 6.008,
+      "year": 2022
+    },
+    "SWA": {
+      "name": "Swaziland",
+      "co2_total_mt": 1.265,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "SWE": {
+      "name": "Sweden",
+      "co2_total_mt": 38.0505,
+      "co2_per_capita_tco2": 3.724,
+      "year": 2022
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "co2_total_mt": 35.3802,
+      "co2_per_capita_tco2": 4.032,
+      "year": 2022
+    },
+    "SYR": {
+      "name": "Syria",
+      "co2_total_mt": 27.6353,
+      "co2_per_capita_tco2": 1.427,
+      "year": 2022
+    },
+    "TWN": {
+      "name": "Taiwan",
+      "co2_total_mt": 277.9009,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "co2_total_mt": 10.0174,
+      "co2_per_capita_tco2": 1.006,
+      "year": 2022
+    },
+    "TZA": {
+      "name": "Tanzania",
+      "co2_total_mt": 15.57,
+      "co2_per_capita_tco2": 0.246,
+      "year": 2022
+    },
+    "THA": {
+      "name": "Thailand",
+      "co2_total_mt": 270.7464,
+      "co2_per_capita_tco2": 3.864,
+      "year": 2022
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "co2_total_mt": 0.6689,
+      "co2_per_capita_tco2": 0.489,
+      "year": 2022
+    },
+    "TGO": {
+      "name": "Togo",
+      "co2_total_mt": 2.5756,
+      "co2_per_capita_tco2": 0.297,
+      "year": 2022
+    },
+    "TON": {
+      "name": "Tonga",
+      "co2_total_mt": 0.189,
+      "co2_per_capita_tco2": 1.75,
+      "year": 2022
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "co2_total_mt": 34.3317,
+      "co2_per_capita_tco2": 24.401,
+      "year": 2022
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "co2_total_mt": 35.5768,
+      "co2_per_capita_tco2": 2.953,
+      "year": 2022
+    },
+    "TUR": {
+      "name": "Turkey",
+      "co2_total_mt": 435.6846,
+      "co2_per_capita_tco2": 5.092,
+      "year": 2022
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "co2_total_mt": 70.9583,
+      "co2_per_capita_tco2": 11.441,
+      "year": 2022
+    },
+    "TCA": {
+      "name": "Turks and Caicos Islands",
+      "co2_total_mt": 0.3492,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "TUV": {
+      "name": "Tuvalu",
+      "co2_total_mt": 0.0113,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "UGA": {
+      "name": "Uganda",
+      "co2_total_mt": 6.0218,
+      "co2_per_capita_tco2": 0.124,
+      "year": 2022
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "co2_total_mt": 141.253,
+      "co2_per_capita_tco2": 3.27,
+      "year": 2022
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "co2_total_mt": 243.8952,
+      "co2_per_capita_tco2": 24.191,
+      "year": 2022
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "co2_total_mt": 318.6544,
+      "co2_per_capita_tco2": 4.652,
+      "year": 2022
+    },
+    "USA": {
+      "name": "United States of America",
+      "co2_total_mt": 5057.3038,
+      "co2_per_capita_tco2": 15.105,
+      "year": 2022
+    },
+    "URY": {
+      "name": "Uruguay",
+      "co2_total_mt": 7.8931,
+      "co2_per_capita_tco2": 2.258,
+      "year": 2022
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "co2_total_mt": 120.6102,
+      "co2_per_capita_tco2": 3.508,
+      "year": 2022
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "co2_total_mt": 0.2079,
+      "co2_per_capita_tco2": 0.646,
+      "year": 2022
+    },
+    "VEN": {
+      "name": "Venezuela",
+      "co2_total_mt": 76.892,
+      "co2_per_capita_tco2": 2.627,
+      "year": 2022
+    },
+    "VNM": {
+      "name": "Vietnam",
+      "co2_total_mt": 343.6066,
+      "co2_per_capita_tco2": 3.472,
+      "year": 2022
+    },
+    "WAL": {
+      "name": "Wallis and Futuna Islands",
+      "co2_total_mt": 0.0265,
+      "co2_per_capita_tco2": null,
+      "year": 2022
+    },
+    "YEM": {
+      "name": "Yemen",
+      "co2_total_mt": 11.3563,
+      "co2_per_capita_tco2": 0.365,
+      "year": 2022
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "co2_total_mt": 8.9219,
+      "co2_per_capita_tco2": 0.458,
+      "year": 2022
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "co2_total_mt": 8.856,
+      "co2_per_capita_tco2": 0.578,
+      "year": 2022
+    }
+  }
+}

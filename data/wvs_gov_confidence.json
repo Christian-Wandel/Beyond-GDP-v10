@@ -1,0 +1,401 @@
+{
+  "meta": {
+    "source": "World Values Survey Wave 7 (2017-2022) — Q71 confidence in civil services, weighted country mean",
+    "unit": "% of adult population (survey-weighted)",
+    "threshold_red": 30.0,
+    "threshold_amber": 50.0,
+    "note": "Wave 8 fieldwork starts 2027; Wave 7 data is static until then."
+  },
+  "data": {
+    "AND": {
+      "name": "Andorra",
+      "value": 49.1,
+      "year": 2018,
+      "n_weighted": 996.0
+    },
+    "ARG": {
+      "name": "Argentina",
+      "value": 29.86,
+      "year": 2017,
+      "n_weighted": 982.0
+    },
+    "ARM": {
+      "name": "Armenia",
+      "value": 34.71,
+      "year": 2021,
+      "n_weighted": 1190.0
+    },
+    "AUS": {
+      "name": "Australia",
+      "value": 30.45,
+      "year": 2018,
+      "n_weighted": 1800.0
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "value": 82.06,
+      "year": 2018,
+      "n_weighted": 1187.0
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "value": 23.67,
+      "year": 2017,
+      "n_weighted": 2036.0
+    },
+    "BRA": {
+      "name": "Brazil",
+      "value": 23.11,
+      "year": 2018,
+      "n_weighted": 1720.0
+    },
+    "CAN": {
+      "name": "Canada",
+      "value": 46.16,
+      "year": 2020,
+      "n_weighted": 4018.0
+    },
+    "CHL": {
+      "name": "Chile",
+      "value": 37.06,
+      "year": 2018,
+      "n_weighted": 978.0
+    },
+    "CHN": {
+      "name": "China",
+      "value": 94.92,
+      "year": 2018,
+      "n_weighted": 3027.0
+    },
+    "COL": {
+      "name": "Colombia",
+      "value": 11.91,
+      "year": 2018,
+      "n_weighted": 1520.0
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "value": 35.69,
+      "year": 2019,
+      "n_weighted": 962.0
+    },
+    "CZE": {
+      "name": "Czech Republic",
+      "value": 33.69,
+      "year": 2022,
+      "n_weighted": 1186.0
+    },
+    "DEU": {
+      "name": "Germany",
+      "value": 45.49,
+      "year": 2018,
+      "n_weighted": 1484.0
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "value": 32.21,
+      "year": 2018,
+      "n_weighted": 1186.0
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "value": 66.26,
+      "year": 2020,
+      "n_weighted": 1215.0
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "value": 24.38,
+      "year": 2022,
+      "n_weighted": 2585.0
+    },
+    "GRC": {
+      "name": "Greece",
+      "value": 13.17,
+      "year": 2017,
+      "n_weighted": 1180.0
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "value": 9.11,
+      "year": 2020,
+      "n_weighted": 1229.0
+    },
+    "HKG": {
+      "name": "Hong Kong, China (SAR)",
+      "value": 55.21,
+      "year": 2018,
+      "n_weighted": 2067.0
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "value": 79.11,
+      "year": 2018,
+      "n_weighted": 3188.0
+    },
+    "IND": {
+      "name": "India",
+      "value": 65.14,
+      "year": 2023,
+      "n_weighted": 1655.0
+    },
+    "IRN": {
+      "name": "Iran, Islamic Republic of",
+      "value": 52.05,
+      "year": 2020,
+      "n_weighted": 1489.0
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "value": 19.93,
+      "year": 2018,
+      "n_weighted": 1159.0
+    },
+    "JOR": {
+      "name": "Jordan",
+      "value": 42.52,
+      "year": 2018,
+      "n_weighted": 1023.0
+    },
+    "JPN": {
+      "name": "Japan",
+      "value": 43.36,
+      "year": 2019,
+      "n_weighted": 1243.0
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "value": 70.11,
+      "year": 2018,
+      "n_weighted": 1248.0
+    },
+    "KEN": {
+      "name": "Kenya",
+      "value": 45.58,
+      "year": 2021,
+      "n_weighted": 1244.0
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "value": 53.16,
+      "year": 2020,
+      "n_weighted": 1178.0
+    },
+    "KOR": {
+      "name": "Korea, Republic of",
+      "value": 51.33,
+      "year": 2018,
+      "n_weighted": 1245.0
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "value": 20.0,
+      "year": 2018,
+      "n_weighted": 1190.0
+    },
+    "LBY": {
+      "name": "Libya",
+      "value": 29.67,
+      "year": 2022,
+      "n_weighted": 1146.0
+    },
+    "MAC": {
+      "name": "MAC",
+      "value": 68.7,
+      "year": 2019,
+      "n_weighted": 1016.0
+    },
+    "MAR": {
+      "name": "Morocco",
+      "value": 21.0,
+      "year": 2021,
+      "n_weighted": 1200.0
+    },
+    "MDV": {
+      "name": "Maldives",
+      "value": 29.72,
+      "year": 2021,
+      "n_weighted": 1033.0
+    },
+    "MEX": {
+      "name": "Mexico",
+      "value": 17.43,
+      "year": 2018,
+      "n_weighted": 1739.0
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "value": 80.17,
+      "year": 2020,
+      "n_weighted": 1200.0
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "value": 40.47,
+      "year": 2020,
+      "n_weighted": 1562.0
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "value": 50.15,
+      "year": 2018,
+      "n_weighted": 1312.0
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "value": 40.26,
+      "year": 2018,
+      "n_weighted": 1233.0
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "value": 27.5,
+      "year": 2020,
+      "n_weighted": 1200.0
+    },
+    "NIR": {
+      "name": "NIR",
+      "value": 18.79,
+      "year": 2022,
+      "n_weighted": 439.0
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "value": 30.41,
+      "year": 2022,
+      "n_weighted": 1996.0
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "value": 53.92,
+      "year": 2020,
+      "n_weighted": 981.0
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "value": 63.57,
+      "year": 2018,
+      "n_weighted": 1957.0
+    },
+    "PER": {
+      "name": "Peru",
+      "value": 10.71,
+      "year": 2018,
+      "n_weighted": 1384.0
+    },
+    "PHL": {
+      "name": "Philippines",
+      "value": 81.6,
+      "year": 2019,
+      "n_weighted": 1200.0
+    },
+    "PRI": {
+      "name": "PRI",
+      "value": 15.09,
+      "year": 2018,
+      "n_weighted": 1113.0
+    },
+    "ROU": {
+      "name": "Romania",
+      "value": 20.97,
+      "year": 2018,
+      "n_weighted": 1197.0
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "value": 54.91,
+      "year": 2017,
+      "n_weighted": 1747.0
+    },
+    "SGP": {
+      "name": "Singapore",
+      "value": 81.57,
+      "year": 2020,
+      "n_weighted": 1989.0
+    },
+    "SRB": {
+      "name": "Serbia",
+      "value": 26.2,
+      "year": 2017,
+      "n_weighted": 977.0
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "value": 21.57,
+      "year": 2022,
+      "n_weighted": 1185.0
+    },
+    "THA": {
+      "name": "Thailand",
+      "value": 55.68,
+      "year": 2018,
+      "n_weighted": 1376.0
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "value": 90.84,
+      "year": 2020,
+      "n_weighted": 1179.0
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "value": 12.08,
+      "year": 2019,
+      "n_weighted": 1184.0
+    },
+    "TUR": {
+      "name": "Turkiye",
+      "value": 69.91,
+      "year": 2018,
+      "n_weighted": 2376.0
+    },
+    "TWN": {
+      "name": "TWN",
+      "value": 53.09,
+      "year": 2019,
+      "n_weighted": 1205.0
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "value": 20.28,
+      "year": 2020,
+      "n_weighted": 1202.0
+    },
+    "URY": {
+      "name": "Uruguay",
+      "value": 54.25,
+      "year": 2022,
+      "n_weighted": 989.0
+    },
+    "USA": {
+      "name": "United States of America",
+      "value": 33.65,
+      "year": 2017,
+      "n_weighted": 2571.0
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "value": 84.16,
+      "year": 2022,
+      "n_weighted": 1231.0
+    },
+    "VEN": {
+      "name": "Venezuela, Bolivarian Republic of",
+      "value": 17.31,
+      "year": 2021,
+      "n_weighted": 1190.0
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "value": 94.65,
+      "year": 2020,
+      "n_weighted": 1178.0
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "value": 51.99,
+      "year": 2020,
+      "n_weighted": 1208.0
+    }
+  }
+}

@@ -1,0 +1,1750 @@
+{
+  "meta": {
+    "source": "UNDP Human Development Report 2025",
+    "data_year": 2023,
+    "unit_hdi": "index (0–1)",
+    "unit_gni_pc": "2021 PPP USD",
+    "threshold_hdi_high": 0.7,
+    "threshold_hdi_very_high": 0.8,
+    "threshold_gni_high_income": 13845
+  },
+  "data": {
+    "ISL": {
+      "name": "Iceland",
+      "hdi": 0.972,
+      "life_expectancy": 82.691,
+      "expected_schooling": 18.8506,
+      "mean_schooling": 13.9089,
+      "gni_per_capita": 69116.9374,
+      "hdi_rank": 1
+    },
+    "NOR": {
+      "name": "Norway",
+      "hdi": 0.97,
+      "life_expectancy": 83.308,
+      "expected_schooling": 18.7929,
+      "mean_schooling": 13.118,
+      "gni_per_capita": 112710.0211,
+      "hdi_rank": 2
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "hdi": 0.97,
+      "life_expectancy": 83.954,
+      "expected_schooling": 16.6675,
+      "mean_schooling": 13.9491,
+      "gni_per_capita": 81948.9018,
+      "hdi_rank": 2
+    },
+    "DNK": {
+      "name": "Denmark",
+      "hdi": 0.962,
+      "life_expectancy": 81.933,
+      "expected_schooling": 18.704,
+      "mean_schooling": 13.0273,
+      "gni_per_capita": 76007.8567,
+      "hdi_rank": 4
+    },
+    "DEU": {
+      "name": "Germany",
+      "hdi": 0.959,
+      "life_expectancy": 81.378,
+      "expected_schooling": 17.3092,
+      "mean_schooling": 14.2964,
+      "gni_per_capita": 64053.2212,
+      "hdi_rank": 5
+    },
+    "SWE": {
+      "name": "Sweden",
+      "hdi": 0.959,
+      "life_expectancy": 83.262,
+      "expected_schooling": 18.9915,
+      "mean_schooling": 12.7403,
+      "gni_per_capita": 66102.0859,
+      "hdi_rank": 5
+    },
+    "AUS": {
+      "name": "Australia",
+      "hdi": 0.958,
+      "life_expectancy": 83.923,
+      "expected_schooling": 20.6548,
+      "mean_schooling": 12.87,
+      "gni_per_capita": 58276.8764,
+      "hdi_rank": 7
+    },
+    "HKG": {
+      "name": "Hong Kong, China (SAR)",
+      "hdi": 0.955,
+      "life_expectancy": 85.511,
+      "expected_schooling": 16.8959,
+      "mean_schooling": 12.35,
+      "gni_per_capita": 69435.7571,
+      "hdi_rank": 8
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "hdi": 0.955,
+      "life_expectancy": 82.158,
+      "expected_schooling": 18.5849,
+      "mean_schooling": 12.6699,
+      "gni_per_capita": 68344.3083,
+      "hdi_rank": 8
+    },
+    "BEL": {
+      "name": "Belgium",
+      "hdi": 0.951,
+      "life_expectancy": 82.115,
+      "expected_schooling": 18.996,
+      "mean_schooling": 12.6897,
+      "gni_per_capita": 63582.4754,
+      "hdi_rank": 10
+    },
+    "IRL": {
+      "name": "Ireland",
+      "hdi": 0.949,
+      "life_expectancy": 82.412,
+      "expected_schooling": 19.1849,
+      "mean_schooling": 11.725,
+      "gni_per_capita": 90884.6346,
+      "hdi_rank": 11
+    },
+    "FIN": {
+      "name": "Finland",
+      "hdi": 0.948,
+      "life_expectancy": 81.91,
+      "expected_schooling": 19.4941,
+      "mean_schooling": 12.9796,
+      "gni_per_capita": 57067.6369,
+      "hdi_rank": 12
+    },
+    "SGP": {
+      "name": "Singapore",
+      "hdi": 0.946,
+      "life_expectancy": 83.736,
+      "expected_schooling": 16.7423,
+      "mean_schooling": 11.99,
+      "gni_per_capita": 111239.2291,
+      "hdi_rank": 13
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "hdi": 0.946,
+      "life_expectancy": 81.302,
+      "expected_schooling": 17.8111,
+      "mean_schooling": 13.49,
+      "gni_per_capita": 54371.5863,
+      "hdi_rank": 13
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "hdi": 0.94,
+      "life_expectancy": 82.909,
+      "expected_schooling": 15.6016,
+      "mean_schooling": 12.99,
+      "gni_per_capita": 71142.3047,
+      "hdi_rank": 15
+    },
+    "CAN": {
+      "name": "Canada",
+      "hdi": 0.939,
+      "life_expectancy": 82.63,
+      "expected_schooling": 15.8883,
+      "mean_schooling": 13.87,
+      "gni_per_capita": 54688.4173,
+      "hdi_rank": 16
+    },
+    "LIE": {
+      "name": "Liechtenstein",
+      "hdi": 0.938,
+      "life_expectancy": 83.63,
+      "expected_schooling": 15.4126,
+      "mean_schooling": 12.41,
+      "gni_per_capita": 166811.6741,
+      "hdi_rank": 17
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "hdi": 0.938,
+      "life_expectancy": 82.088,
+      "expected_schooling": 19.3001,
+      "mean_schooling": 12.883,
+      "gni_per_capita": 47259.6014,
+      "hdi_rank": 17
+    },
+    "USA": {
+      "name": "United States",
+      "hdi": 0.938,
+      "life_expectancy": 79.304,
+      "expected_schooling": 15.923,
+      "mean_schooling": 13.91,
+      "gni_per_capita": 73650.0308,
+      "hdi_rank": 17
+    },
+    "KOR": {
+      "name": "Korea (Republic of)",
+      "hdi": 0.937,
+      "life_expectancy": 84.329,
+      "expected_schooling": 16.6186,
+      "mean_schooling": 12.7222,
+      "gni_per_capita": 49726.4533,
+      "hdi_rank": 20
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "hdi": 0.931,
+      "life_expectancy": 81.603,
+      "expected_schooling": 17.4772,
+      "mean_schooling": 12.9512,
+      "gni_per_capita": 46360.8078,
+      "hdi_rank": 21
+    },
+    "AUT": {
+      "name": "Austria",
+      "hdi": 0.93,
+      "life_expectancy": 81.956,
+      "expected_schooling": 16.2843,
+      "mean_schooling": 12.3615,
+      "gni_per_capita": 63479.2084,
+      "hdi_rank": 22
+    },
+    "JPN": {
+      "name": "Japan",
+      "hdi": 0.925,
+      "life_expectancy": 84.712,
+      "expected_schooling": 15.512,
+      "mean_schooling": 12.684,
+      "gni_per_capita": 47774.6097,
+      "hdi_rank": 23
+    },
+    "MLT": {
+      "name": "Malta",
+      "hdi": 0.924,
+      "life_expectancy": 83.299,
+      "expected_schooling": 15.9099,
+      "mean_schooling": 12.4207,
+      "gni_per_capita": 52155.0749,
+      "hdi_rank": 24
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "hdi": 0.922,
+      "life_expectancy": 82.229,
+      "expected_schooling": 14.358,
+      "mean_schooling": 12.5894,
+      "gni_per_capita": 85461.2483,
+      "hdi_rank": 25
+    },
+    "FRA": {
+      "name": "France",
+      "hdi": 0.92,
+      "life_expectancy": 83.325,
+      "expected_schooling": 16.0951,
+      "mean_schooling": 11.7657,
+      "gni_per_capita": 55060.1604,
+      "hdi_rank": 26
+    },
+    "ISR": {
+      "name": "Israel",
+      "hdi": 0.919,
+      "life_expectancy": 82.408,
+      "expected_schooling": 14.9342,
+      "mean_schooling": 13.5346,
+      "gni_per_capita": 48050.1118,
+      "hdi_rank": 27
+    },
+    "ESP": {
+      "name": "Spain",
+      "hdi": 0.918,
+      "life_expectancy": 83.67,
+      "expected_schooling": 17.8303,
+      "mean_schooling": 10.7561,
+      "gni_per_capita": 46008.4422,
+      "hdi_rank": 28
+    },
+    "CZE": {
+      "name": "Czechia",
+      "hdi": 0.915,
+      "life_expectancy": 79.834,
+      "expected_schooling": 16.7935,
+      "mean_schooling": 12.9632,
+      "gni_per_capita": 45889.014,
+      "hdi_rank": 29
+    },
+    "ITA": {
+      "name": "Italy",
+      "hdi": 0.915,
+      "life_expectancy": 83.716,
+      "expected_schooling": 16.7142,
+      "mean_schooling": 10.8281,
+      "gni_per_capita": 52388.8831,
+      "hdi_rank": 29
+    },
+    "SMR": {
+      "name": "San Marino",
+      "hdi": 0.915,
+      "life_expectancy": 85.706,
+      "expected_schooling": 14.5998,
+      "mean_schooling": 11.36,
+      "gni_per_capita": 64706.3756,
+      "hdi_rank": 29
+    },
+    "AND": {
+      "name": "Andorra",
+      "hdi": 0.913,
+      "life_expectancy": 84.041,
+      "expected_schooling": 14.5428,
+      "mean_schooling": 11.61,
+      "gni_per_capita": 64631.0749,
+      "hdi_rank": 32
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "hdi": 0.913,
+      "life_expectancy": 81.648,
+      "expected_schooling": 16.2156,
+      "mean_schooling": 12.5574,
+      "gni_per_capita": 45394.1562,
+      "hdi_rank": 32
+    },
+    "GRC": {
+      "name": "Greece",
+      "hdi": 0.908,
+      "life_expectancy": 81.857,
+      "expected_schooling": 20.8455,
+      "mean_schooling": 11.5539,
+      "gni_per_capita": 35760.7492,
+      "hdi_rank": 34
+    },
+    "POL": {
+      "name": "Poland",
+      "hdi": 0.906,
+      "life_expectancy": 78.633,
+      "expected_schooling": 16.6783,
+      "mean_schooling": 13.2085,
+      "gni_per_capita": 42217.6378,
+      "hdi_rank": 35
+    },
+    "EST": {
+      "name": "Estonia",
+      "hdi": 0.905,
+      "life_expectancy": 79.153,
+      "expected_schooling": 15.9679,
+      "mean_schooling": 13.5622,
+      "gni_per_capita": 40880.9304,
+      "hdi_rank": 36
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "hdi": 0.9,
+      "life_expectancy": 78.732,
+      "expected_schooling": 16.9494,
+      "mean_schooling": 11.6064,
+      "gni_per_capita": 50298.9136,
+      "hdi_rank": 37
+    },
+    "BHR": {
+      "name": "Bahrain",
+      "hdi": 0.899,
+      "life_expectancy": 81.284,
+      "expected_schooling": 15.9272,
+      "mean_schooling": 11.13,
+      "gni_per_capita": 52818.7954,
+      "hdi_rank": 38
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "hdi": 0.895,
+      "life_expectancy": 76.025,
+      "expected_schooling": 16.4547,
+      "mean_schooling": 13.6107,
+      "gni_per_capita": 41916.4658,
+      "hdi_rank": 39
+    },
+    "PRT": {
+      "name": "Portugal",
+      "hdi": 0.89,
+      "life_expectancy": 82.36,
+      "expected_schooling": 17.4868,
+      "mean_schooling": 9.7033,
+      "gni_per_capita": 41063.9257,
+      "hdi_rank": 40
+    },
+    "HRV": {
+      "name": "Croatia",
+      "hdi": 0.889,
+      "life_expectancy": 78.58,
+      "expected_schooling": 16.3482,
+      "mean_schooling": 12.0951,
+      "gni_per_capita": 41379.8903,
+      "hdi_rank": 41
+    },
+    "LVA": {
+      "name": "Latvia",
+      "hdi": 0.889,
+      "life_expectancy": 76.19,
+      "expected_schooling": 16.4827,
+      "mean_schooling": 13.4094,
+      "gni_per_capita": 37997.8223,
+      "hdi_rank": 41
+    },
+    "QAT": {
+      "name": "Qatar",
+      "hdi": 0.886,
+      "life_expectancy": 82.368,
+      "expected_schooling": 13.1412,
+      "mean_schooling": 10.77,
+      "gni_per_capita": 105353.268,
+      "hdi_rank": 43
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "hdi": 0.88,
+      "life_expectancy": 78.341,
+      "expected_schooling": 14.9468,
+      "mean_schooling": 13.1032,
+      "gni_per_capita": 36792.9887,
+      "hdi_rank": 44
+    },
+    "CHL": {
+      "name": "Chile",
+      "hdi": 0.878,
+      "life_expectancy": 81.167,
+      "expected_schooling": 16.9124,
+      "mean_schooling": 11.2911,
+      "gni_per_capita": 28047.1698,
+      "hdi_rank": 45
+    },
+    "HUN": {
+      "name": "Hungary",
+      "hdi": 0.87,
+      "life_expectancy": 77.024,
+      "expected_schooling": 15.4694,
+      "mean_schooling": 12.3316,
+      "gni_per_capita": 37236.0746,
+      "hdi_rank": 46
+    },
+    "ARG": {
+      "name": "Argentina",
+      "hdi": 0.865,
+      "life_expectancy": 77.395,
+      "expected_schooling": 18.8312,
+      "mean_schooling": 11.1846,
+      "gni_per_capita": 25876.0531,
+      "hdi_rank": 47
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "hdi": 0.862,
+      "life_expectancy": 77.087,
+      "expected_schooling": 15.5365,
+      "mean_schooling": 12.7739,
+      "gni_per_capita": 28026.3304,
+      "hdi_rank": 48
+    },
+    "URY": {
+      "name": "Uruguay",
+      "hdi": 0.862,
+      "life_expectancy": 78.138,
+      "expected_schooling": 17.484,
+      "mean_schooling": 10.54,
+      "gni_per_capita": 28649.822,
+      "hdi_rank": 48
+    },
+    "OMN": {
+      "name": "Oman",
+      "hdi": 0.858,
+      "life_expectancy": 80.031,
+      "expected_schooling": 13.4393,
+      "mean_schooling": 11.89,
+      "gni_per_capita": 36096.0412,
+      "hdi_rank": 50
+    },
+    "TUR": {
+      "name": "Türkiye",
+      "hdi": 0.853,
+      "life_expectancy": 77.156,
+      "expected_schooling": 19.8308,
+      "mean_schooling": 8.9862,
+      "gni_per_capita": 34506.9806,
+      "hdi_rank": 51
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "hdi": 0.852,
+      "life_expectancy": 80.405,
+      "expected_schooling": 15.9042,
+      "mean_schooling": 7.566,
+      "gni_per_capita": 56612.047,
+      "hdi_rank": 52
+    },
+    "ATG": {
+      "name": "Antigua and Barbuda",
+      "hdi": 0.851,
+      "life_expectancy": 77.598,
+      "expected_schooling": 15.503,
+      "mean_schooling": 11.6475,
+      "gni_per_capita": 27386.5179,
+      "hdi_rank": 53
+    },
+    "SYC": {
+      "name": "Seychelles",
+      "hdi": 0.848,
+      "life_expectancy": 72.862,
+      "expected_schooling": 18.2249,
+      "mean_schooling": 11.1999,
+      "gni_per_capita": 29195.0379,
+      "hdi_rank": 54
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "hdi": 0.845,
+      "life_expectancy": 75.636,
+      "expected_schooling": 15.3166,
+      "mean_schooling": 11.4545,
+      "gni_per_capita": 32174.93,
+      "hdi_rank": 55
+    },
+    "ROU": {
+      "name": "Romania",
+      "hdi": 0.845,
+      "life_expectancy": 75.938,
+      "expected_schooling": 14.0529,
+      "mean_schooling": 11.55,
+      "gni_per_capita": 39374.2537,
+      "hdi_rank": 55
+    },
+    "GEO": {
+      "name": "Georgia",
+      "hdi": 0.844,
+      "life_expectancy": 74.496,
+      "expected_schooling": 16.7547,
+      "mean_schooling": 12.7,
+      "gni_per_capita": 20752.5701,
+      "hdi_rank": 57
+    },
+    "KNA": {
+      "name": "Saint Kitts and Nevis",
+      "hdi": 0.84,
+      "life_expectancy": 72.145,
+      "expected_schooling": 18.407,
+      "mean_schooling": 10.8494,
+      "gni_per_capita": 29105.4374,
+      "hdi_rank": 58
+    },
+    "PAN": {
+      "name": "Panama",
+      "hdi": 0.839,
+      "life_expectancy": 79.594,
+      "expected_schooling": 13.3116,
+      "mean_schooling": 10.8338,
+      "gni_per_capita": 34384.5681,
+      "hdi_rank": 59
+    },
+    "BRN": {
+      "name": "Brunei Darussalam",
+      "hdi": 0.837,
+      "life_expectancy": 75.327,
+      "expected_schooling": 13.6986,
+      "mean_schooling": 9.282,
+      "gni_per_capita": 75826.8734,
+      "hdi_rank": 60
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "hdi": 0.837,
+      "life_expectancy": 74.402,
+      "expected_schooling": 14.0086,
+      "mean_schooling": 12.5472,
+      "gni_per_capita": 30988.5284,
+      "hdi_rank": 60
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "hdi": 0.833,
+      "life_expectancy": 80.799,
+      "expected_schooling": 16.3496,
+      "mean_schooling": 8.8448,
+      "gni_per_capita": 23417.2131,
+      "hdi_rank": 62
+    },
+    "SRB": {
+      "name": "Serbia",
+      "hdi": 0.833,
+      "life_expectancy": 76.769,
+      "expected_schooling": 15.0422,
+      "mean_schooling": 11.6417,
+      "gni_per_capita": 23114.8095,
+      "hdi_rank": 62
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "hdi": 0.832,
+      "life_expectancy": 73.154,
+      "expected_schooling": 13.1852,
+      "mean_schooling": 12.41,
+      "gni_per_capita": 39221.6836,
+      "hdi_rank": 64
+    },
+    "BLR": {
+      "name": "Belarus",
+      "hdi": 0.824,
+      "life_expectancy": 74.434,
+      "expected_schooling": 13.7188,
+      "mean_schooling": 12.3354,
+      "gni_per_capita": 26724.871,
+      "hdi_rank": 65
+    },
+    "BHS": {
+      "name": "Bahamas",
+      "hdi": 0.82,
+      "life_expectancy": 74.552,
+      "expected_schooling": 11.8914,
+      "mean_schooling": 12.8144,
+      "gni_per_capita": 30974.6807,
+      "hdi_rank": 66
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "hdi": 0.819,
+      "life_expectancy": 76.657,
+      "expected_schooling": 12.6764,
+      "mean_schooling": 11.09,
+      "gni_per_capita": 32553.0911,
+      "hdi_rank": 67
+    },
+    "MKD": {
+      "name": "North Macedonia",
+      "hdi": 0.815,
+      "life_expectancy": 77.395,
+      "expected_schooling": 14.7814,
+      "mean_schooling": 10.23,
+      "gni_per_capita": 22128.3946,
+      "hdi_rank": 68
+    },
+    "ARM": {
+      "name": "Armenia",
+      "hdi": 0.811,
+      "life_expectancy": 75.683,
+      "expected_schooling": 14.3839,
+      "mean_schooling": 11.345,
+      "gni_per_capita": 20220.7232,
+      "hdi_rank": 69
+    },
+    "BRB": {
+      "name": "Barbados",
+      "hdi": 0.811,
+      "life_expectancy": 76.178,
+      "expected_schooling": 16.628,
+      "mean_schooling": 9.9284,
+      "gni_per_capita": 17327.5205,
+      "hdi_rank": 69
+    },
+    "ALB": {
+      "name": "Albania",
+      "hdi": 0.81,
+      "life_expectancy": 79.602,
+      "expected_schooling": 14.5101,
+      "mean_schooling": 10.1753,
+      "gni_per_capita": 17627.394,
+      "hdi_rank": 71
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "hdi": 0.807,
+      "life_expectancy": 73.49,
+      "expected_schooling": 14.2376,
+      "mean_schooling": 10.7928,
+      "gni_per_capita": 27000.1451,
+      "hdi_rank": 72
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "hdi": 0.806,
+      "life_expectancy": 74.926,
+      "expected_schooling": 14.1628,
+      "mean_schooling": 10.1033,
+      "gni_per_capita": 27279.9601,
+      "hdi_rank": 73
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "hdi": 0.804,
+      "life_expectancy": 77.85,
+      "expected_schooling": 13.1639,
+      "mean_schooling": 10.97,
+      "gni_per_capita": 19827.4859,
+      "hdi_rank": 74
+    },
+    "IRN": {
+      "name": "Iran (Islamic Republic of)",
+      "hdi": 0.799,
+      "life_expectancy": 77.654,
+      "expected_schooling": 13.9683,
+      "mean_schooling": 10.8467,
+      "gni_per_capita": 16095.7717,
+      "hdi_rank": 75
+    },
+    "VCT": {
+      "name": "Saint Vincent and the Grenadines",
+      "hdi": 0.798,
+      "life_expectancy": 71.23,
+      "expected_schooling": 16.253,
+      "mean_schooling": 11.2953,
+      "gni_per_capita": 17246.6361,
+      "hdi_rank": 76
+    },
+    "THA": {
+      "name": "Thailand",
+      "hdi": 0.798,
+      "life_expectancy": 76.412,
+      "expected_schooling": 15.3588,
+      "mean_schooling": 9.04,
+      "gni_per_capita": 20569.9018,
+      "hdi_rank": 76
+    },
+    "CHN": {
+      "name": "China",
+      "hdi": 0.797,
+      "life_expectancy": 77.953,
+      "expected_schooling": 15.4787,
+      "mean_schooling": 8.0362,
+      "gni_per_capita": 22029.2225,
+      "hdi_rank": 78
+    },
+    "PER": {
+      "name": "Peru",
+      "hdi": 0.794,
+      "life_expectancy": 77.74,
+      "expected_schooling": 14.9094,
+      "mean_schooling": 10.1547,
+      "gni_per_capita": 14338.7098,
+      "hdi_rank": 79
+    },
+    "GRD": {
+      "name": "Grenada",
+      "hdi": 0.791,
+      "life_expectancy": 75.205,
+      "expected_schooling": 16.5773,
+      "mean_schooling": 9.4464,
+      "gni_per_capita": 14349.028,
+      "hdi_rank": 80
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "hdi": 0.789,
+      "life_expectancy": 74.429,
+      "expected_schooling": 12.9098,
+      "mean_schooling": 11.07,
+      "gni_per_capita": 20667.9573,
+      "hdi_rank": 81
+    },
+    "MEX": {
+      "name": "Mexico",
+      "hdi": 0.789,
+      "life_expectancy": 75.069,
+      "expected_schooling": 14.4681,
+      "mean_schooling": 9.3495,
+      "gni_per_capita": 21812.6557,
+      "hdi_rank": 81
+    },
+    "COL": {
+      "name": "Colombia",
+      "hdi": 0.788,
+      "life_expectancy": 77.725,
+      "expected_schooling": 14.2864,
+      "mean_schooling": 9.0316,
+      "gni_per_capita": 18665.9497,
+      "hdi_rank": 83
+    },
+    "BRA": {
+      "name": "Brazil",
+      "hdi": 0.786,
+      "life_expectancy": 75.848,
+      "expected_schooling": 15.7927,
+      "mean_schooling": 8.4254,
+      "gni_per_capita": 18011.2855,
+      "hdi_rank": 84
+    },
+    "PLW": {
+      "name": "Palau",
+      "hdi": 0.786,
+      "life_expectancy": 69.269,
+      "expected_schooling": 14.0674,
+      "mean_schooling": 13.299,
+      "gni_per_capita": 16034.5104,
+      "hdi_rank": 84
+    },
+    "MDA": {
+      "name": "Moldova (Republic of)",
+      "hdi": 0.785,
+      "life_expectancy": 71.198,
+      "expected_schooling": 14.6386,
+      "mean_schooling": 11.83,
+      "gni_per_capita": 15866.5421,
+      "hdi_rank": 86
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "hdi": 0.779,
+      "life_expectancy": 73.422,
+      "expected_schooling": 13.328,
+      "mean_schooling": 11.1227,
+      "gni_per_capita": 16933.1445,
+      "hdi_rank": 87
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "hdi": 0.777,
+      "life_expectancy": 77.392,
+      "expected_schooling": 14.8517,
+      "mean_schooling": 8.97,
+      "gni_per_capita": 13986.397,
+      "hdi_rank": 88
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "hdi": 0.776,
+      "life_expectancy": 73.72,
+      "expected_schooling": 13.6169,
+      "mean_schooling": 9.4445,
+      "gni_per_capita": 22023.5106,
+      "hdi_rank": 89
+    },
+    "GUY": {
+      "name": "Guyana",
+      "hdi": 0.776,
+      "life_expectancy": 70.18,
+      "expected_schooling": 13.0221,
+      "mean_schooling": 8.7024,
+      "gni_per_capita": 46959.2517,
+      "hdi_rank": 89
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "hdi": 0.776,
+      "life_expectancy": 77.483,
+      "expected_schooling": 13.1282,
+      "mean_schooling": 10.77,
+      "gni_per_capita": 12615.6004,
+      "hdi_rank": 89
+    },
+    "TON": {
+      "name": "Tonga",
+      "hdi": 0.769,
+      "life_expectancy": 72.895,
+      "expected_schooling": 17.7869,
+      "mean_schooling": 10.9149,
+      "gni_per_capita": 7438.2101,
+      "hdi_rank": 92
+    },
+    "MDV": {
+      "name": "Maldives",
+      "hdi": 0.766,
+      "life_expectancy": 81.041,
+      "expected_schooling": 12.7684,
+      "mean_schooling": 7.4104,
+      "gni_per_capita": 19317.3188,
+      "hdi_rank": 93
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "hdi": 0.766,
+      "life_expectancy": 74.588,
+      "expected_schooling": 15.4577,
+      "mean_schooling": 8.98,
+      "gni_per_capita": 13032.6353,
+      "hdi_rank": 93
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "hdi": 0.764,
+      "life_expectancy": 70.073,
+      "expected_schooling": 13.2406,
+      "mean_schooling": 11.2078,
+      "gni_per_capita": 17715.5817,
+      "hdi_rank": 95
+    },
+    "DZA": {
+      "name": "Algeria",
+      "hdi": 0.763,
+      "life_expectancy": 76.261,
+      "expected_schooling": 15.4952,
+      "mean_schooling": 7.4164,
+      "gni_per_capita": 15114.1717,
+      "hdi_rank": 96
+    },
+    "CUB": {
+      "name": "Cuba",
+      "hdi": 0.762,
+      "life_expectancy": 78.085,
+      "expected_schooling": 13.8788,
+      "mean_schooling": 10.6315,
+      "gni_per_capita": 8415.4117,
+      "hdi_rank": 97
+    },
+    "DMA": {
+      "name": "Dominica",
+      "hdi": 0.761,
+      "life_expectancy": 71.132,
+      "expected_schooling": 14.151,
+      "mean_schooling": 10.1251,
+      "gni_per_capita": 16001.1255,
+      "hdi_rank": 98
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "hdi": 0.756,
+      "life_expectancy": 73.844,
+      "expected_schooling": 13.9871,
+      "mean_schooling": 8.9307,
+      "gni_per_capita": 15252.2202,
+      "hdi_rank": 99
+    },
+    "EGY": {
+      "name": "Egypt",
+      "hdi": 0.754,
+      "life_expectancy": 71.633,
+      "expected_schooling": 13.1272,
+      "mean_schooling": 10.1361,
+      "gni_per_capita": 16218.1352,
+      "hdi_rank": 100
+    },
+    "JOR": {
+      "name": "Jordan",
+      "hdi": 0.754,
+      "life_expectancy": 77.814,
+      "expected_schooling": 13.109,
+      "mean_schooling": 10.24,
+      "gni_per_capita": 9221.8724,
+      "hdi_rank": 100
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "hdi": 0.752,
+      "life_expectancy": 77.817,
+      "expected_schooling": 11.683,
+      "mean_schooling": 10.37,
+      "gni_per_capita": 11298.8872,
+      "hdi_rank": 102
+    },
+    "LCA": {
+      "name": "Saint Lucia",
+      "hdi": 0.748,
+      "life_expectancy": 72.697,
+      "expected_schooling": 12.7304,
+      "mean_schooling": 8.6142,
+      "gni_per_capita": 20899.7819,
+      "hdi_rank": 103
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "hdi": 0.747,
+      "life_expectancy": 71.734,
+      "expected_schooling": 13.6377,
+      "mean_schooling": 9.42,
+      "gni_per_capita": 14787.0824,
+      "hdi_rank": 104
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "hdi": 0.746,
+      "life_expectancy": 76.508,
+      "expected_schooling": 14.6735,
+      "mean_schooling": 7.5949,
+      "gni_per_capita": 12011.3878,
+      "hdi_rank": 105
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "hdi": 0.741,
+      "life_expectancy": 66.139,
+      "expected_schooling": 13.7933,
+      "mean_schooling": 11.61,
+      "gni_per_capita": 13693.9886,
+      "hdi_rank": 106
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "hdi": 0.74,
+      "life_expectancy": 72.388,
+      "expected_schooling": 12.4609,
+      "mean_schooling": 11.91,
+      "gni_per_capita": 8825.7309,
+      "hdi_rank": 107
+    },
+    "BOL": {
+      "name": "Bolivia (Plurinational State of)",
+      "hdi": 0.733,
+      "life_expectancy": 68.581,
+      "expected_schooling": 15.6107,
+      "mean_schooling": 10.0212,
+      "gni_per_capita": 9445.2449,
+      "hdi_rank": 108
+    },
+    "GAB": {
+      "name": "Gabon",
+      "hdi": 0.733,
+      "life_expectancy": 68.337,
+      "expected_schooling": 12.4828,
+      "mean_schooling": 9.686,
+      "gni_per_capita": 18854.0615,
+      "hdi_rank": 108
+    },
+    "MHL": {
+      "name": "Marshall Islands",
+      "hdi": 0.733,
+      "life_expectancy": 66.945,
+      "expected_schooling": 16.3861,
+      "mean_schooling": 11.6367,
+      "gni_per_capita": 7223.8608,
+      "hdi_rank": 108
+    },
+    "BWA": {
+      "name": "Botswana",
+      "hdi": 0.731,
+      "life_expectancy": 69.163,
+      "expected_schooling": 11.4257,
+      "mean_schooling": 10.478,
+      "gni_per_capita": 16983.771,
+      "hdi_rank": 111
+    },
+    "FJI": {
+      "name": "Fiji",
+      "hdi": 0.731,
+      "life_expectancy": 67.316,
+      "expected_schooling": 13.8487,
+      "mean_schooling": 10.371,
+      "gni_per_capita": 12843.1589,
+      "hdi_rank": 111
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "hdi": 0.728,
+      "life_expectancy": 71.146,
+      "expected_schooling": 13.3358,
+      "mean_schooling": 8.6972,
+      "gni_per_capita": 13700.1299,
+      "hdi_rank": 113
+    },
+    "SUR": {
+      "name": "Suriname",
+      "hdi": 0.722,
+      "life_expectancy": 73.631,
+      "expected_schooling": 10.9591,
+      "mean_schooling": 8.4298,
+      "gni_per_capita": 17344.3869,
+      "hdi_rank": 114
+    },
+    "BLZ": {
+      "name": "Belize",
+      "hdi": 0.721,
+      "life_expectancy": 73.566,
+      "expected_schooling": 11.9838,
+      "mean_schooling": 8.7623,
+      "gni_per_capita": 12343.0781,
+      "hdi_rank": 115
+    },
+    "LBY": {
+      "name": "Libya",
+      "hdi": 0.721,
+      "life_expectancy": 69.339,
+      "expected_schooling": 12.9247,
+      "mean_schooling": 7.7786,
+      "gni_per_capita": 19831.4324,
+      "hdi_rank": 115
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "hdi": 0.72,
+      "life_expectancy": 71.479,
+      "expected_schooling": 12.3834,
+      "mean_schooling": 9.9599,
+      "gni_per_capita": 10056.9853,
+      "hdi_rank": 117
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "hdi": 0.72,
+      "life_expectancy": 71.677,
+      "expected_schooling": 12.7139,
+      "mean_schooling": 12.0659,
+      "gni_per_capita": 6078.1176,
+      "hdi_rank": 117
+    },
+    "PHL": {
+      "name": "Philippines",
+      "hdi": 0.72,
+      "life_expectancy": 69.833,
+      "expected_schooling": 12.819,
+      "mean_schooling": 9.9772,
+      "gni_per_capita": 10731.2042,
+      "hdi_rank": 117
+    },
+    "MAR": {
+      "name": "Morocco",
+      "hdi": 0.71,
+      "life_expectancy": 75.313,
+      "expected_schooling": 15.075,
+      "mean_schooling": 6.198,
+      "gni_per_capita": 8652.8809,
+      "hdi_rank": 120
+    },
+    "VEN": {
+      "name": "Venezuela (Bolivarian Republic of)",
+      "hdi": 0.709,
+      "life_expectancy": 72.514,
+      "expected_schooling": 12.9654,
+      "mean_schooling": 9.6784,
+      "gni_per_capita": 7157.08,
+      "hdi_rank": 121
+    },
+    "WSM": {
+      "name": "Samoa",
+      "hdi": 0.708,
+      "life_expectancy": 71.698,
+      "expected_schooling": 12.4364,
+      "mean_schooling": 11.333,
+      "gni_per_capita": 5952.0169,
+      "hdi_rank": 122
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "hdi": 0.706,
+      "life_expectancy": 74.947,
+      "expected_schooling": 11.5102,
+      "mean_schooling": 9.933,
+      "gni_per_capita": 6881.4796,
+      "hdi_rank": 123
+    },
+    "NRU": {
+      "name": "Nauru",
+      "hdi": 0.703,
+      "life_expectancy": 62.109,
+      "expected_schooling": 12.8426,
+      "mean_schooling": 9.4486,
+      "gni_per_capita": 19642.3777,
+      "hdi_rank": 124
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "hdi": 0.698,
+      "life_expectancy": 72.975,
+      "expected_schooling": 13.1527,
+      "mean_schooling": 5.8358,
+      "gni_per_capita": 13842.8035,
+      "hdi_rank": 125
+    },
+    "SWZ": {
+      "name": "Eswatini (Kingdom of)",
+      "hdi": 0.695,
+      "life_expectancy": 64.123,
+      "expected_schooling": 15.246,
+      "mean_schooling": 8.6852,
+      "gni_per_capita": 9919.0852,
+      "hdi_rank": 126
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "hdi": 0.695,
+      "life_expectancy": 72.324,
+      "expected_schooling": 12.3594,
+      "mean_schooling": 6.78,
+      "gni_per_capita": 12653.5247,
+      "hdi_rank": 126
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "hdi": 0.691,
+      "life_expectancy": 71.79,
+      "expected_schooling": 10.8498,
+      "mean_schooling": 11.2709,
+      "gni_per_capita": 5746.569,
+      "hdi_rank": 128
+    },
+    "TUV": {
+      "name": "Tuvalu",
+      "hdi": 0.689,
+      "life_expectancy": 67.105,
+      "expected_schooling": 12.3751,
+      "mean_schooling": 10.7675,
+      "gni_per_capita": 7005.5208,
+      "hdi_rank": 129
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "hdi": 0.685,
+      "life_expectancy": 74.672,
+      "expected_schooling": 12.3102,
+      "mean_schooling": 6.79,
+      "gni_per_capita": 8497.6586,
+      "hdi_rank": 130
+    },
+    "IND": {
+      "name": "India",
+      "hdi": 0.685,
+      "life_expectancy": 72.003,
+      "expected_schooling": 12.9545,
+      "mean_schooling": 6.88,
+      "gni_per_capita": 9046.7563,
+      "hdi_rank": 130
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "hdi": 0.678,
+      "life_expectancy": 72.099,
+      "expected_schooling": 11.1129,
+      "mean_schooling": 7.3,
+      "gni_per_capita": 10594.842,
+      "hdi_rank": 132
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "hdi": 0.674,
+      "life_expectancy": 63.707,
+      "expected_schooling": 12.4912,
+      "mean_schooling": 8.2813,
+      "gni_per_capita": 12762.4685,
+      "hdi_rank": 133
+    },
+    "PSE": {
+      "name": "Palestine, State of",
+      "hdi": 0.674,
+      "life_expectancy": 65.17,
+      "expected_schooling": 12.998,
+      "mean_schooling": 10.13,
+      "gni_per_capita": 6547.0986,
+      "hdi_rank": 133
+    },
+    "CPV": {
+      "name": "Cabo Verde",
+      "hdi": 0.668,
+      "life_expectancy": 76.059,
+      "expected_schooling": 11.3671,
+      "mean_schooling": 6.09,
+      "gni_per_capita": 8165.3792,
+      "hdi_rank": 135
+    },
+    "NAM": {
+      "name": "Namibia",
+      "hdi": 0.665,
+      "life_expectancy": 67.385,
+      "expected_schooling": 11.7851,
+      "mean_schooling": 7.2731,
+      "gni_per_capita": 10916.6087,
+      "hdi_rank": 136
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "hdi": 0.662,
+      "life_expectancy": 72.602,
+      "expected_schooling": 10.6776,
+      "mean_schooling": 5.8473,
+      "gni_per_capita": 12458.604,
+      "hdi_rank": 137
+    },
+    "COG": {
+      "name": "Congo",
+      "hdi": 0.649,
+      "life_expectancy": 65.772,
+      "expected_schooling": 12.6819,
+      "mean_schooling": 8.3226,
+      "gni_per_capita": 5902.5991,
+      "hdi_rank": 138
+    },
+    "HND": {
+      "name": "Honduras",
+      "hdi": 0.645,
+      "life_expectancy": 72.884,
+      "expected_schooling": 10.1622,
+      "mean_schooling": 7.5102,
+      "gni_per_capita": 6064.7858,
+      "hdi_rank": 139
+    },
+    "KIR": {
+      "name": "Kiribati",
+      "hdi": 0.644,
+      "life_expectancy": 66.473,
+      "expected_schooling": 11.8739,
+      "mean_schooling": 9.1286,
+      "gni_per_capita": 4947.2804,
+      "hdi_rank": 140
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "hdi": 0.637,
+      "life_expectancy": 69.718,
+      "expected_schooling": 12.8567,
+      "mean_schooling": 5.9876,
+      "gni_per_capita": 5583.4233,
+      "hdi_rank": 141
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "hdi": 0.634,
+      "life_expectancy": 67.689,
+      "expected_schooling": 13.2531,
+      "mean_schooling": 6.2266,
+      "gni_per_capita": 5434.5947,
+      "hdi_rank": 142
+    },
+    "GHA": {
+      "name": "Ghana",
+      "hdi": 0.628,
+      "life_expectancy": 65.498,
+      "expected_schooling": 11.4185,
+      "mean_schooling": 7.1072,
+      "gni_per_capita": 6846.3522,
+      "hdi_rank": 143
+    },
+    "KEN": {
+      "name": "Kenya",
+      "hdi": 0.628,
+      "life_expectancy": 63.646,
+      "expected_schooling": 11.4741,
+      "mean_schooling": 8.6247,
+      "gni_per_capita": 5608.2961,
+      "hdi_rank": 143
+    },
+    "NPL": {
+      "name": "Nepal",
+      "hdi": 0.622,
+      "life_expectancy": 70.354,
+      "expected_schooling": 13.7543,
+      "mean_schooling": 4.5037,
+      "gni_per_capita": 4725.9306,
+      "hdi_rank": 145
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "hdi": 0.621,
+      "life_expectancy": 71.477,
+      "expected_schooling": 11.8116,
+      "mean_schooling": 7.1832,
+      "gni_per_capita": 3403.6902,
+      "hdi_rank": 146
+    },
+    "LAO": {
+      "name": "Lao People's Democratic Republic",
+      "hdi": 0.617,
+      "life_expectancy": 68.964,
+      "expected_schooling": 9.6055,
+      "mean_schooling": 6.0602,
+      "gni_per_capita": 8106.1532,
+      "hdi_rank": 147
+    },
+    "AGO": {
+      "name": "Angola",
+      "hdi": 0.616,
+      "life_expectancy": 64.617,
+      "expected_schooling": 12.1676,
+      "mean_schooling": 5.9562,
+      "gni_per_capita": 6631.2765,
+      "hdi_rank": 148
+    },
+    "FSM": {
+      "name": "Micronesia (Federated States of)",
+      "hdi": 0.615,
+      "life_expectancy": 67.198,
+      "expected_schooling": 11.5401,
+      "mean_schooling": 7.3325,
+      "gni_per_capita": 4245.8782,
+      "hdi_rank": 149
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "hdi": 0.609,
+      "life_expectancy": 66.889,
+      "expected_schooling": 11.5046,
+      "mean_schooling": 6.38,
+      "gni_per_capita": 4918.8106,
+      "hdi_rank": 150
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "hdi": 0.606,
+      "life_expectancy": 70.668,
+      "expected_schooling": 11.1979,
+      "mean_schooling": 5.1971,
+      "gni_per_capita": 4931.0168,
+      "hdi_rank": 151
+    },
+    "COM": {
+      "name": "Comoros",
+      "hdi": 0.603,
+      "life_expectancy": 66.777,
+      "expected_schooling": 13.2945,
+      "mean_schooling": 6.0068,
+      "gni_per_capita": 3481.1214,
+      "hdi_rank": 152
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "hdi": 0.598,
+      "life_expectancy": 62.775,
+      "expected_schooling": 11.0575,
+      "mean_schooling": 8.9308,
+      "gni_per_capita": 3511.4632,
+      "hdi_rank": 153
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "hdi": 0.595,
+      "life_expectancy": 66.349,
+      "expected_schooling": 11.0205,
+      "mean_schooling": 7.3974,
+      "gni_per_capita": 3446.6758,
+      "hdi_rank": 154
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "hdi": 0.588,
+      "life_expectancy": 63.7,
+      "expected_schooling": 10.7919,
+      "mean_schooling": 6.5742,
+      "gni_per_capita": 4746.2658,
+      "hdi_rank": 155
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "hdi": 0.584,
+      "life_expectancy": 70.528,
+      "expected_schooling": 11.313,
+      "mean_schooling": 5.8797,
+      "gni_per_capita": 2777.2667,
+      "hdi_rank": 156
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "hdi": 0.582,
+      "life_expectancy": 61.944,
+      "expected_schooling": 11.4111,
+      "mean_schooling": 4.87,
+      "gni_per_capita": 6735.4163,
+      "hdi_rank": 157
+    },
+    "UGA": {
+      "name": "Uganda",
+      "hdi": 0.582,
+      "life_expectancy": 68.252,
+      "expected_schooling": 11.564,
+      "mean_schooling": 6.3237,
+      "gni_per_capita": 2736.41,
+      "hdi_rank": 157
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "hdi": 0.578,
+      "life_expectancy": 67.785,
+      "expected_schooling": 12.5905,
+      "mean_schooling": 4.88,
+      "gni_per_capita": 2970.5595,
+      "hdi_rank": 159
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "hdi": 0.576,
+      "life_expectancy": 66.134,
+      "expected_schooling": 11.5111,
+      "mean_schooling": 4.9625,
+      "gni_per_capita": 3970.6477,
+      "hdi_rank": 160
+    },
+    "TGO": {
+      "name": "Togo",
+      "hdi": 0.571,
+      "life_expectancy": 62.739,
+      "expected_schooling": 13.0964,
+      "mean_schooling": 5.8611,
+      "gni_per_capita": 2855.9638,
+      "hdi_rank": 161
+    },
+    "SYR": {
+      "name": "Syrian Arab Republic",
+      "hdi": 0.564,
+      "life_expectancy": 72.12,
+      "expected_schooling": 7.4188,
+      "mean_schooling": 5.9355,
+      "gni_per_capita": 3917.7024,
+      "hdi_rank": 162
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "hdi": 0.563,
+      "life_expectancy": 68.484,
+      "expected_schooling": 7.9495,
+      "mean_schooling": 4.852,
+      "gni_per_capita": 6267.4708,
+      "hdi_rank": 163
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "hdi": 0.56,
+      "life_expectancy": 54.462,
+      "expected_schooling": 10.5141,
+      "mean_schooling": 7.586,
+      "gni_per_capita": 5569.375,
+      "hdi_rank": 164
+    },
+    "TZA": {
+      "name": "Tanzania (United Republic of)",
+      "hdi": 0.555,
+      "life_expectancy": 66.995,
+      "expected_schooling": 8.5857,
+      "mean_schooling": 6.0654,
+      "gni_per_capita": 3514.6329,
+      "hdi_rank": 165
+    },
+    "HTI": {
+      "name": "Haiti",
+      "hdi": 0.554,
+      "life_expectancy": 64.936,
+      "expected_schooling": 10.8964,
+      "mean_schooling": 5.3823,
+      "gni_per_capita": 2934.9258,
+      "hdi_rank": 166
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "hdi": 0.55,
+      "life_expectancy": 57.375,
+      "expected_schooling": 10.9866,
+      "mean_schooling": 7.7299,
+      "gni_per_capita": 3029.3857,
+      "hdi_rank": 167
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "hdi": 0.544,
+      "life_expectancy": 67.649,
+      "expected_schooling": 7.8951,
+      "mean_schooling": 4.317,
+      "gni_per_capita": 5501.1329,
+      "hdi_rank": 168
+    },
+    "SEN": {
+      "name": "Senegal",
+      "hdi": 0.53,
+      "life_expectancy": 68.683,
+      "expected_schooling": 9.1427,
+      "mean_schooling": 2.9346,
+      "gni_per_capita": 4202.0307,
+      "hdi_rank": 169
+    },
+    "GMB": {
+      "name": "Gambia",
+      "hdi": 0.524,
+      "life_expectancy": 65.86,
+      "expected_schooling": 8.9779,
+      "mean_schooling": 4.6747,
+      "gni_per_capita": 2812.0176,
+      "hdi_rank": 170
+    },
+    "COD": {
+      "name": "Congo (Democratic Republic of the)",
+      "hdi": 0.522,
+      "life_expectancy": 61.895,
+      "expected_schooling": 10.9115,
+      "mean_schooling": 7.3786,
+      "gni_per_capita": 1431.0479,
+      "hdi_rank": 171
+    },
+    "MWI": {
+      "name": "Malawi",
+      "hdi": 0.517,
+      "life_expectancy": 67.353,
+      "expected_schooling": 9.9026,
+      "mean_schooling": 5.2437,
+      "gni_per_capita": 1633.6926,
+      "hdi_rank": 172
+    },
+    "BEN": {
+      "name": "Benin",
+      "hdi": 0.515,
+      "life_expectancy": 60.774,
+      "expected_schooling": 10.4465,
+      "mean_schooling": 3.1942,
+      "gni_per_capita": 3805.5275,
+      "hdi_rank": 173
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "hdi": 0.514,
+      "life_expectancy": 64.085,
+      "expected_schooling": 10.6353,
+      "mean_schooling": 3.673,
+      "gni_per_capita": 2403.0592,
+      "hdi_rank": 174
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "hdi": 0.513,
+      "life_expectancy": 65.987,
+      "expected_schooling": 6.2074,
+      "mean_schooling": 3.9504,
+      "gni_per_capita": 6367.606,
+      "hdi_rank": 175
+    },
+    "SDN": {
+      "name": "Sudan",
+      "hdi": 0.511,
+      "life_expectancy": 66.331,
+      "expected_schooling": 8.6204,
+      "mean_schooling": 3.962,
+      "gni_per_capita": 2810.312,
+      "hdi_rank": 176
+    },
+    "LBR": {
+      "name": "Liberia",
+      "hdi": 0.51,
+      "life_expectancy": 62.163,
+      "expected_schooling": 10.4659,
+      "mean_schooling": 6.1699,
+      "gni_per_capita": 1537.8594,
+      "hdi_rank": 177
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "hdi": 0.503,
+      "life_expectancy": 68.624,
+      "expected_schooling": 7.3367,
+      "mean_schooling": 5.0914,
+      "gni_per_capita": 2029.0701,
+      "hdi_rank": 178
+    },
+    "GIN": {
+      "name": "Guinea",
+      "hdi": 0.5,
+      "life_expectancy": 60.74,
+      "expected_schooling": 10.3933,
+      "mean_schooling": 2.4863,
+      "gni_per_capita": 3494.3477,
+      "hdi_rank": 179
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "hdi": 0.497,
+      "life_expectancy": 67.315,
+      "expected_schooling": 9.2177,
+      "mean_schooling": 2.4025,
+      "gni_per_capita": 2795.507,
+      "hdi_rank": 180
+    },
+    "AFG": {
+      "name": "Afghanistan",
+      "hdi": 0.496,
+      "life_expectancy": 66.035,
+      "expected_schooling": 10.7901,
+      "mean_schooling": 2.5148,
+      "gni_per_capita": 1971.5495,
+      "hdi_rank": 181
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "hdi": 0.493,
+      "life_expectancy": 63.611,
+      "expected_schooling": 10.8483,
+      "mean_schooling": 4.5905,
+      "gni_per_capita": 1355.7671,
+      "hdi_rank": 182
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "hdi": 0.487,
+      "life_expectancy": 63.632,
+      "expected_schooling": 9.0626,
+      "mean_schooling": 4.5925,
+      "gni_per_capita": 1655.7647,
+      "hdi_rank": 183
+    },
+    "YEM": {
+      "name": "Yemen",
+      "hdi": 0.47,
+      "life_expectancy": 69.295,
+      "expected_schooling": 7.4949,
+      "mean_schooling": 5.4841,
+      "gni_per_capita": 1018.2006,
+      "hdi_rank": 184
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "hdi": 0.467,
+      "life_expectancy": 61.786,
+      "expected_schooling": 9.0641,
+      "mean_schooling": 3.5353,
+      "gni_per_capita": 1713.7278,
+      "hdi_rank": 185
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "hdi": 0.459,
+      "life_expectancy": 61.092,
+      "expected_schooling": 8.7333,
+      "mean_schooling": 2.2666,
+      "gni_per_capita": 2390.5278,
+      "hdi_rank": 186
+    },
+    "BDI": {
+      "name": "Burundi",
+      "hdi": 0.439,
+      "life_expectancy": 63.651,
+      "expected_schooling": 9.8294,
+      "mean_schooling": 3.4739,
+      "gni_per_capita": 858.9156,
+      "hdi_rank": 187
+    },
+    "MLI": {
+      "name": "Mali",
+      "hdi": 0.419,
+      "life_expectancy": 60.439,
+      "expected_schooling": 7.0113,
+      "mean_schooling": 1.63,
+      "gni_per_capita": 2341.5881,
+      "hdi_rank": 188
+    },
+    "NER": {
+      "name": "Niger",
+      "hdi": 0.419,
+      "life_expectancy": 61.183,
+      "expected_schooling": 8.3089,
+      "mean_schooling": 1.4123,
+      "gni_per_capita": 1590.188,
+      "hdi_rank": 188
+    },
+    "TCD": {
+      "name": "Chad",
+      "hdi": 0.416,
+      "life_expectancy": 55.069,
+      "expected_schooling": 8.3476,
+      "mean_schooling": 2.335,
+      "gni_per_capita": 1748.001,
+      "hdi_rank": 190
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "hdi": 0.414,
+      "life_expectancy": 57.408,
+      "expected_schooling": 7.4358,
+      "mean_schooling": 3.9894,
+      "gni_per_capita": 1099.8607,
+      "hdi_rank": 191
+    },
+    "SOM": {
+      "name": "Somalia",
+      "hdi": 0.404,
+      "life_expectancy": 58.816,
+      "expected_schooling": 7.4862,
+      "mean_schooling": 1.9,
+      "gni_per_capita": 1474.7385,
+      "hdi_rank": 192
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "hdi": 0.388,
+      "life_expectancy": 57.617,
+      "expected_schooling": 5.6348,
+      "mean_schooling": 5.73,
+      "gni_per_capita": 688.3473,
+      "hdi_rank": 193
+    }
+  }
+}

@@ -1,0 +1,1175 @@
+{
+  "meta": {
+    "source": "Global Carbon Project, Global Carbon Budget 2023 (OSCAR/BLUE/H&C23 bookkeeping models)",
+    "data_year": 2022,
+    "unit_total": "Mt CH4 per year (net land-use emissions)",
+    "unit_per_capita": "kg CH4 per person per year",
+    "note": "Net land-use methane. Negative values indicate net CH4 sink (e.g. reforestation)."
+  },
+  "data": {
+    "AFG": {
+      "name": "Afghanistan",
+      "ch4_total_mt": 0.34436,
+      "ch4_per_capita_kg": 8.45,
+      "year": 2022
+    },
+    "ALB": {
+      "name": "Albania",
+      "ch4_total_mt": -0.05474,
+      "ch4_per_capita_kg": -19.1,
+      "year": 2022
+    },
+    "DZA": {
+      "name": "Algeria",
+      "ch4_total_mt": 0.26353,
+      "ch4_per_capita_kg": 5.81,
+      "year": 2022
+    },
+    "AND": {
+      "name": "Andorra",
+      "ch4_total_mt": -0.00095,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "AGO": {
+      "name": "Angola",
+      "ch4_total_mt": 26.78892,
+      "ch4_per_capita_kg": 764.81,
+      "year": 2022
+    },
+    "ATG": {
+      "name": "Antigua and Barbuda",
+      "ch4_total_mt": -0.0015,
+      "ch4_per_capita_kg": -15.0,
+      "year": 2022
+    },
+    "ARG": {
+      "name": "Argentina",
+      "ch4_total_mt": 4.96855,
+      "ch4_per_capita_kg": 107.99,
+      "year": 2022
+    },
+    "ARM": {
+      "name": "Armenia",
+      "ch4_total_mt": 0.21476,
+      "ch4_per_capita_kg": 72.26,
+      "year": 2022
+    },
+    "AUS": {
+      "name": "Australia",
+      "ch4_total_mt": -2.08549,
+      "ch4_per_capita_kg": -80.0,
+      "year": 2022
+    },
+    "AUT": {
+      "name": "Austria",
+      "ch4_total_mt": -1.59827,
+      "ch4_per_capita_kg": -176.27,
+      "year": 2022
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "ch4_total_mt": 1.12949,
+      "ch4_per_capita_kg": 109.66,
+      "year": 2022
+    },
+    "BHS": {
+      "name": "Bahamas",
+      "ch4_total_mt": -0.00699,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "BHR": {
+      "name": "Bahrain",
+      "ch4_total_mt": -0.0003,
+      "ch4_per_capita_kg": -0.17,
+      "year": 2022
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "ch4_total_mt": 2.52076,
+      "ch4_per_capita_kg": 15.01,
+      "year": 2022
+    },
+    "BRB": {
+      "name": "Barbados",
+      "ch4_total_mt": -0.02756,
+      "ch4_per_capita_kg": -95.69,
+      "year": 2022
+    },
+    "BLR": {
+      "name": "Belarus",
+      "ch4_total_mt": 1.22213,
+      "ch4_per_capita_kg": 129.56,
+      "year": 2022
+    },
+    "BEL": {
+      "name": "Belgium",
+      "ch4_total_mt": 0.75099,
+      "ch4_per_capita_kg": 64.36,
+      "year": 2022
+    },
+    "BLZ": {
+      "name": "Belize",
+      "ch4_total_mt": 1.57303,
+      "ch4_per_capita_kg": 3818.03,
+      "year": 2022
+    },
+    "BEN": {
+      "name": "Benin",
+      "ch4_total_mt": 3.21695,
+      "ch4_per_capita_kg": 251.62,
+      "year": 2022
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "ch4_total_mt": 0.17248,
+      "ch4_per_capita_kg": 218.88,
+      "year": 2022
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "ch4_total_mt": 12.05593,
+      "ch4_per_capita_kg": 1005.25,
+      "year": 2022
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "ch4_total_mt": 0.33834,
+      "ch4_per_capita_kg": 104.14,
+      "year": 2022
+    },
+    "BWA": {
+      "name": "Botswana",
+      "ch4_total_mt": 2.02016,
+      "ch4_per_capita_kg": 827.6,
+      "year": 2022
+    },
+    "BRA": {
+      "name": "Brazil",
+      "ch4_total_mt": 264.92713,
+      "ch4_per_capita_kg": 1230.19,
+      "year": 2022
+    },
+    "BRN": {
+      "name": "Brunei Darussalam",
+      "ch4_total_mt": 0.24411,
+      "ch4_per_capita_kg": 548.56,
+      "year": 2022
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "ch4_total_mt": -1.24368,
+      "ch4_per_capita_kg": -181.69,
+      "year": 2022
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "ch4_total_mt": 2.11308,
+      "ch4_per_capita_kg": 95.6,
+      "year": 2022
+    },
+    "BDI": {
+      "name": "Burundi",
+      "ch4_total_mt": 0.33309,
+      "ch4_per_capita_kg": 26.38,
+      "year": 2022
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "ch4_total_mt": 5.89713,
+      "ch4_per_capita_kg": 343.48,
+      "year": 2022
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "ch4_total_mt": 6.68867,
+      "ch4_per_capita_kg": 239.63,
+      "year": 2022
+    },
+    "CAN": {
+      "name": "Canada",
+      "ch4_total_mt": 20.14139,
+      "ch4_per_capita_kg": 524.68,
+      "year": 2022
+    },
+    "CAP": {
+      "name": "Cape Verde",
+      "ch4_total_mt": -0.01124,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "ch4_total_mt": 1.67456,
+      "ch4_per_capita_kg": 333.78,
+      "year": 2022
+    },
+    "TCD": {
+      "name": "Chad",
+      "ch4_total_mt": 7.27025,
+      "ch4_per_capita_kg": 417.49,
+      "year": 2022
+    },
+    "CHL": {
+      "name": "Chile",
+      "ch4_total_mt": 1.36309,
+      "ch4_per_capita_kg": 70.81,
+      "year": 2022
+    },
+    "CHN": {
+      "name": "China",
+      "ch4_total_mt": 69.59587,
+      "ch4_per_capita_kg": 47.0,
+      "year": 2022
+    },
+    "COL": {
+      "name": "Colombia",
+      "ch4_total_mt": 15.22847,
+      "ch4_per_capita_kg": 295.62,
+      "year": 2022
+    },
+    "COM": {
+      "name": "Comoros",
+      "ch4_total_mt": -0.0051,
+      "ch4_per_capita_kg": -5.62,
+      "year": 2022
+    },
+    "COG": {
+      "name": "Congo",
+      "ch4_total_mt": 2.11505,
+      "ch4_per_capita_kg": 364.79,
+      "year": 2022
+    },
+    "COO": {
+      "name": "Cook Islands",
+      "ch4_total_mt": -0.00466,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "ch4_total_mt": 0.20202,
+      "ch4_per_capita_kg": 38.98,
+      "year": 2022
+    },
+    "HRV": {
+      "name": "Croatia",
+      "ch4_total_mt": -0.85309,
+      "ch4_per_capita_kg": -210.17,
+      "year": 2022
+    },
+    "CUB": {
+      "name": "Cuba",
+      "ch4_total_mt": -1.4408,
+      "ch4_per_capita_kg": -127.44,
+      "year": 2022
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "ch4_total_mt": -0.07617,
+      "ch4_per_capita_kg": -62.28,
+      "year": 2022
+    },
+    "CZE": {
+      "name": "Czech Republic",
+      "ch4_total_mt": -2.65074,
+      "ch4_per_capita_kg": -246.88,
+      "year": 2022
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "ch4_total_mt": 14.34764,
+      "ch4_per_capita_kg": 517.18,
+      "year": 2022
+    },
+    "COD": {
+      "name": "Democratic Republic of the Congo",
+      "ch4_total_mt": 143.28045,
+      "ch4_per_capita_kg": 1504.4,
+      "year": 2022
+    },
+    "DNK": {
+      "name": "Denmark",
+      "ch4_total_mt": 0.26818,
+      "ch4_per_capita_kg": 45.96,
+      "year": 2022
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "ch4_total_mt": 0.01364,
+      "ch4_per_capita_kg": 13.43,
+      "year": 2022
+    },
+    "DMA": {
+      "name": "Dominica",
+      "ch4_total_mt": -0.01112,
+      "ch4_per_capita_kg": -154.44,
+      "year": 2022
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "ch4_total_mt": -0.49845,
+      "ch4_per_capita_kg": -45.08,
+      "year": 2022
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "ch4_total_mt": 2.57955,
+      "ch4_per_capita_kg": 142.41,
+      "year": 2022
+    },
+    "EGY": {
+      "name": "Egypt",
+      "ch4_total_mt": 0.55353,
+      "ch4_per_capita_kg": 5.21,
+      "year": 2022
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "ch4_total_mt": -0.64302,
+      "ch4_per_capita_kg": -98.17,
+      "year": 2022
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "ch4_total_mt": 0.68657,
+      "ch4_per_capita_kg": 458.63,
+      "year": 2022
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "ch4_total_mt": 0.73551,
+      "ch4_per_capita_kg": 200.85,
+      "year": 2022
+    },
+    "EST": {
+      "name": "Estonia",
+      "ch4_total_mt": 0.36304,
+      "ch4_per_capita_kg": 274.61,
+      "year": 2022
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "ch4_total_mt": 29.58605,
+      "ch4_per_capita_kg": 244.89,
+      "year": 2022
+    },
+    "FJI": {
+      "name": "Fiji",
+      "ch4_total_mt": 0.02465,
+      "ch4_per_capita_kg": 27.12,
+      "year": 2022
+    },
+    "FIN": {
+      "name": "Finland",
+      "ch4_total_mt": 4.59509,
+      "ch4_per_capita_kg": 827.2,
+      "year": 2022
+    },
+    "FRA": {
+      "name": "France",
+      "ch4_total_mt": -7.32776,
+      "ch4_per_capita_kg": -111.66,
+      "year": 2022
+    },
+    "GAB": {
+      "name": "Gabon",
+      "ch4_total_mt": 1.24919,
+      "ch4_per_capita_kg": 535.67,
+      "year": 2022
+    },
+    "GMB": {
+      "name": "Gambia",
+      "ch4_total_mt": 0.32267,
+      "ch4_per_capita_kg": 126.14,
+      "year": 2022
+    },
+    "GEO": {
+      "name": "Georgia",
+      "ch4_total_mt": -1.769,
+      "ch4_per_capita_kg": -445.7,
+      "year": 2022
+    },
+    "DEU": {
+      "name": "Germany",
+      "ch4_total_mt": -7.05767,
+      "ch4_per_capita_kg": -84.14,
+      "year": 2022
+    },
+    "GHA": {
+      "name": "Ghana",
+      "ch4_total_mt": 0.49032,
+      "ch4_per_capita_kg": 15.14,
+      "year": 2022
+    },
+    "GRC": {
+      "name": "Greece",
+      "ch4_total_mt": -3.24621,
+      "ch4_per_capita_kg": -314.65,
+      "year": 2022
+    },
+    "GRD": {
+      "name": "Grenada",
+      "ch4_total_mt": -0.00923,
+      "ch4_per_capita_kg": -81.68,
+      "year": 2022
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "ch4_total_mt": 2.86387,
+      "ch4_per_capita_kg": 154.1,
+      "year": 2022
+    },
+    "GIN": {
+      "name": "Guinea",
+      "ch4_total_mt": 3.51505,
+      "ch4_per_capita_kg": 253.5,
+      "year": 2022
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "ch4_total_mt": 0.30758,
+      "ch4_per_capita_kg": 149.09,
+      "year": 2022
+    },
+    "GUY": {
+      "name": "Guyana",
+      "ch4_total_mt": 1.94572,
+      "ch4_per_capita_kg": 2450.53,
+      "year": 2022
+    },
+    "HTI": {
+      "name": "Haiti",
+      "ch4_total_mt": 0.24763,
+      "ch4_per_capita_kg": 21.2,
+      "year": 2022
+    },
+    "HND": {
+      "name": "Honduras",
+      "ch4_total_mt": 3.31364,
+      "ch4_per_capita_kg": 324.2,
+      "year": 2022
+    },
+    "HUN": {
+      "name": "Hungary",
+      "ch4_total_mt": -1.72455,
+      "ch4_per_capita_kg": -179.53,
+      "year": 2022
+    },
+    "ISL": {
+      "name": "Iceland",
+      "ch4_total_mt": 0.0986,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "IND": {
+      "name": "India",
+      "ch4_total_mt": -0.87371,
+      "ch4_per_capita_kg": -0.62,
+      "year": 2022
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "ch4_total_mt": 243.30657,
+      "ch4_per_capita_kg": 871.65,
+      "year": 2022
+    },
+    "IRN": {
+      "name": "Iran",
+      "ch4_total_mt": -0.67841,
+      "ch4_per_capita_kg": -7.89,
+      "year": 2022
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "ch4_total_mt": 1.17223,
+      "ch4_per_capita_kg": 27.8,
+      "year": 2022
+    },
+    "IRL": {
+      "name": "Ireland",
+      "ch4_total_mt": 2.32171,
+      "ch4_per_capita_kg": 462.49,
+      "year": 2022
+    },
+    "ISR": {
+      "name": "Israel",
+      "ch4_total_mt": 0.43575,
+      "ch4_per_capita_kg": 48.83,
+      "year": 2022
+    },
+    "ITA": {
+      "name": "Italy",
+      "ch4_total_mt": -5.08625,
+      "ch4_per_capita_kg": -84.35,
+      "year": 2022
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "ch4_total_mt": -0.16002,
+      "ch4_per_capita_kg": -53.61,
+      "year": 2022
+    },
+    "JPN": {
+      "name": "Japan",
+      "ch4_total_mt": -2.36455,
+      "ch4_per_capita_kg": -18.83,
+      "year": 2022
+    },
+    "JOR": {
+      "name": "Jordan",
+      "ch4_total_mt": -0.02431,
+      "ch4_per_capita_kg": -2.36,
+      "year": 2022
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "ch4_total_mt": 3.2835,
+      "ch4_per_capita_kg": 170.97,
+      "year": 2022
+    },
+    "KEN": {
+      "name": "Kenya",
+      "ch4_total_mt": 0.98692,
+      "ch4_per_capita_kg": 17.56,
+      "year": 2022
+    },
+    "KIR": {
+      "name": "Kiribati",
+      "ch4_total_mt": 0.0,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "ch4_total_mt": 0.00094,
+      "ch4_per_capita_kg": 0.21,
+      "year": 2022
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "ch4_total_mt": 0.35976,
+      "ch4_per_capita_kg": 53.47,
+      "year": 2022
+    },
+    "LAO": {
+      "name": "Laos",
+      "ch4_total_mt": 7.96815,
+      "ch4_per_capita_kg": 1065.12,
+      "year": 2022
+    },
+    "LVA": {
+      "name": "Latvia",
+      "ch4_total_mt": 1.09137,
+      "ch4_per_capita_kg": 590.25,
+      "year": 2022
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "ch4_total_mt": 0.12797,
+      "ch4_per_capita_kg": 19.14,
+      "year": 2022
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "ch4_total_mt": 0.46776,
+      "ch4_per_capita_kg": 214.96,
+      "year": 2022
+    },
+    "LBR": {
+      "name": "Liberia",
+      "ch4_total_mt": 3.95842,
+      "ch4_per_capita_kg": 746.17,
+      "year": 2022
+    },
+    "LBY": {
+      "name": "Libya",
+      "ch4_total_mt": -0.18179,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "LIE": {
+      "name": "Liechtenstein",
+      "ch4_total_mt": -0.00588,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "ch4_total_mt": 0.6031,
+      "ch4_per_capita_kg": 226.56,
+      "year": 2022
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "ch4_total_mt": 0.01178,
+      "ch4_per_capita_kg": 18.35,
+      "year": 2022
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "ch4_total_mt": 4.28566,
+      "ch4_per_capita_kg": 146.88,
+      "year": 2022
+    },
+    "MWI": {
+      "name": "Malawi",
+      "ch4_total_mt": 2.64004,
+      "ch4_per_capita_kg": 130.82,
+      "year": 2022
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "ch4_total_mt": 33.40775,
+      "ch4_per_capita_kg": 1006.83,
+      "year": 2022
+    },
+    "MDV": {
+      "name": "Maldives",
+      "ch4_total_mt": 3e-05,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "MLI": {
+      "name": "Mali",
+      "ch4_total_mt": -0.09315,
+      "ch4_per_capita_kg": -4.34,
+      "year": 2022
+    },
+    "MLT": {
+      "name": "Malta",
+      "ch4_total_mt": -0.01331,
+      "ch4_per_capita_kg": -29.98,
+      "year": 2022
+    },
+    "MHL": {
+      "name": "Marshall Islands",
+      "ch4_total_mt": 0.0,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "ch4_total_mt": 0.18932,
+      "ch4_per_capita_kg": 38.62,
+      "year": 2022
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "ch4_total_mt": 0.00775,
+      "ch4_per_capita_kg": 6.08,
+      "year": 2022
+    },
+    "MEX": {
+      "name": "Mexico",
+      "ch4_total_mt": 39.22704,
+      "ch4_per_capita_kg": 298.16,
+      "year": 2022
+    },
+    "FSM": {
+      "name": "Micronesia (Federated States of)",
+      "ch4_total_mt": -0.02021,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "MDA": {
+      "name": "Moldova",
+      "ch4_total_mt": -0.67802,
+      "ch4_per_capita_kg": -168.96,
+      "year": 2022
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "ch4_total_mt": -0.89088,
+      "ch4_per_capita_kg": -263.73,
+      "year": 2022
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "ch4_total_mt": -0.40986,
+      "ch4_per_capita_kg": -652.64,
+      "year": 2022
+    },
+    "MAR": {
+      "name": "Morocco",
+      "ch4_total_mt": -0.82213,
+      "ch4_per_capita_kg": -21.77,
+      "year": 2022
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "ch4_total_mt": 10.09822,
+      "ch4_per_capita_kg": 305.18,
+      "year": 2022
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "ch4_total_mt": 28.95243,
+      "ch4_per_capita_kg": 524.24,
+      "year": 2022
+    },
+    "NAM": {
+      "name": "Namibia",
+      "ch4_total_mt": 2.01663,
+      "ch4_per_capita_kg": 765.62,
+      "year": 2022
+    },
+    "NRU": {
+      "name": "Nauru",
+      "ch4_total_mt": 0.0,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "NPL": {
+      "name": "Nepal",
+      "ch4_total_mt": 1.27566,
+      "ch4_per_capita_kg": 42.2,
+      "year": 2022
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "ch4_total_mt": 1.11369,
+      "ch4_per_capita_kg": 64.61,
+      "year": 2022
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "ch4_total_mt": -4.30423,
+      "ch4_per_capita_kg": -878.77,
+      "year": 2022
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "ch4_total_mt": 5.06733,
+      "ch4_per_capita_kg": 747.5,
+      "year": 2022
+    },
+    "NER": {
+      "name": "Niger",
+      "ch4_total_mt": 3.85084,
+      "ch4_per_capita_kg": 147.63,
+      "year": 2022
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "ch4_total_mt": 5.45587,
+      "ch4_per_capita_kg": 25.17,
+      "year": 2022
+    },
+    "NIU": {
+      "name": "Niue",
+      "ch4_total_mt": -0.00055,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "PRK": {
+      "name": "North Korea",
+      "ch4_total_mt": 1.93113,
+      "ch4_per_capita_kg": 74.3,
+      "year": 2022
+    },
+    "MKD": {
+      "name": "North Macedonia",
+      "ch4_total_mt": -0.29665,
+      "ch4_per_capita_kg": -142.55,
+      "year": 2022
+    },
+    "NOR": {
+      "name": "Norway",
+      "ch4_total_mt": 1.1362,
+      "ch4_per_capita_kg": 206.17,
+      "year": 2022
+    },
+    "OCC": {
+      "name": "Occupied Palestinian Territory",
+      "ch4_total_mt": 0.01621,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "OMN": {
+      "name": "Oman",
+      "ch4_total_mt": 0.08212,
+      "ch4_per_capita_kg": 15.42,
+      "year": 2022
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "ch4_total_mt": 3.39949,
+      "ch4_per_capita_kg": 14.81,
+      "year": 2022
+    },
+    "PLW": {
+      "name": "Palau",
+      "ch4_total_mt": 0.0,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "PAN": {
+      "name": "Panama",
+      "ch4_total_mt": 1.58819,
+      "ch4_per_capita_kg": 357.14,
+      "year": 2022
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "ch4_total_mt": 7.55804,
+      "ch4_per_capita_kg": 813.39,
+      "year": 2022
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "ch4_total_mt": 12.57127,
+      "ch4_per_capita_kg": 1720.68,
+      "year": 2022
+    },
+    "PER": {
+      "name": "Peru",
+      "ch4_total_mt": 7.69726,
+      "ch4_per_capita_kg": 228.51,
+      "year": 2022
+    },
+    "PHL": {
+      "name": "Philippines",
+      "ch4_total_mt": 5.16389,
+      "ch4_per_capita_kg": 45.9,
+      "year": 2022
+    },
+    "POL": {
+      "name": "Poland",
+      "ch4_total_mt": -7.72376,
+      "ch4_per_capita_kg": -204.66,
+      "year": 2022
+    },
+    "PRT": {
+      "name": "Portugal",
+      "ch4_total_mt": -1.2587,
+      "ch4_per_capita_kg": -124.12,
+      "year": 2022
+    },
+    "QAT": {
+      "name": "Qatar",
+      "ch4_total_mt": 0.00031,
+      "ch4_per_capita_kg": 0.1,
+      "year": 2022
+    },
+    "REP": {
+      "name": "Republic of South Sudan",
+      "ch4_total_mt": 1.72379,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "ROU": {
+      "name": "Romania",
+      "ch4_total_mt": -2.94213,
+      "ch4_per_capita_kg": -154.6,
+      "year": 2022
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "ch4_total_mt": 13.13111,
+      "ch4_per_capita_kg": 90.06,
+      "year": 2022
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "ch4_total_mt": 0.2109,
+      "ch4_per_capita_kg": 15.51,
+      "year": 2022
+    },
+    "KNA": {
+      "name": "Saint Kitts and Nevis",
+      "ch4_total_mt": -0.00659,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "LCA": {
+      "name": "Saint Lucia",
+      "ch4_total_mt": -0.0159,
+      "ch4_per_capita_kg": -85.95,
+      "year": 2022
+    },
+    "VCT": {
+      "name": "Saint Vincent and the Grenadines",
+      "ch4_total_mt": -0.00654,
+      "ch4_per_capita_kg": -58.39,
+      "year": 2022
+    },
+    "WSM": {
+      "name": "Samoa",
+      "ch4_total_mt": -0.04,
+      "ch4_per_capita_kg": -198.02,
+      "year": 2022
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "ch4_total_mt": 0.00048,
+      "ch4_per_capita_kg": 2.11,
+      "year": 2022
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "ch4_total_mt": 0.32578,
+      "ch4_per_capita_kg": 9.09,
+      "year": 2022
+    },
+    "SEN": {
+      "name": "Senegal",
+      "ch4_total_mt": 0.41718,
+      "ch4_per_capita_kg": 23.63,
+      "year": 2022
+    },
+    "SRB": {
+      "name": "Serbia",
+      "ch4_total_mt": -1.90284,
+      "ch4_per_capita_kg": -219.91,
+      "year": 2022
+    },
+    "SYC": {
+      "name": "Seychelles",
+      "ch4_total_mt": 0.0,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "ch4_total_mt": 2.21063,
+      "ch4_per_capita_kg": 266.15,
+      "year": 2022
+    },
+    "SGP": {
+      "name": "Singapore",
+      "ch4_total_mt": 0.03723,
+      "ch4_per_capita_kg": 6.26,
+      "year": 2022
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "ch4_total_mt": -0.80251,
+      "ch4_per_capita_kg": -146.98,
+      "year": 2022
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "ch4_total_mt": 0.21085,
+      "ch4_per_capita_kg": 101.47,
+      "year": 2022
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "ch4_total_mt": 0.77052,
+      "ch4_per_capita_kg": 1068.68,
+      "year": 2022
+    },
+    "SOM": {
+      "name": "Somalia",
+      "ch4_total_mt": 4.57093,
+      "ch4_per_capita_kg": 271.4,
+      "year": 2022
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "ch4_total_mt": 0.80882,
+      "ch4_per_capita_kg": 13.31,
+      "year": 2022
+    },
+    "KOR": {
+      "name": "South Korea",
+      "ch4_total_mt": -2.43438,
+      "ch4_per_capita_kg": -47.43,
+      "year": 2022
+    },
+    "ESP": {
+      "name": "Spain",
+      "ch4_total_mt": -4.57927,
+      "ch4_per_capita_kg": -98.02,
+      "year": 2022
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "ch4_total_mt": 0.96011,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "SDN": {
+      "name": "Sudan",
+      "ch4_total_mt": 7.69236,
+      "ch4_per_capita_kg": 167.25,
+      "year": 2022
+    },
+    "SUR": {
+      "name": "Suriname",
+      "ch4_total_mt": 0.81007,
+      "ch4_per_capita_kg": 1356.9,
+      "year": 2022
+    },
+    "SWA": {
+      "name": "Swaziland",
+      "ch4_total_mt": -0.02965,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "SWE": {
+      "name": "Sweden",
+      "ch4_total_mt": 3.19621,
+      "ch4_per_capita_kg": 312.77,
+      "year": 2022
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "ch4_total_mt": -0.37119,
+      "ch4_per_capita_kg": -42.31,
+      "year": 2022
+    },
+    "SYR": {
+      "name": "Syria",
+      "ch4_total_mt": -0.16582,
+      "ch4_per_capita_kg": -8.56,
+      "year": 2022
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "ch4_total_mt": 0.26157,
+      "ch4_per_capita_kg": 26.27,
+      "year": 2022
+    },
+    "TZA": {
+      "name": "Tanzania",
+      "ch4_total_mt": 32.23785,
+      "ch4_per_capita_kg": 509.29,
+      "year": 2022
+    },
+    "THA": {
+      "name": "Thailand",
+      "ch4_total_mt": 4.57551,
+      "ch4_per_capita_kg": 65.29,
+      "year": 2022
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "ch4_total_mt": 0.57127,
+      "ch4_per_capita_kg": 417.29,
+      "year": 2022
+    },
+    "TGO": {
+      "name": "Togo",
+      "ch4_total_mt": 0.18041,
+      "ch4_per_capita_kg": 20.78,
+      "year": 2022
+    },
+    "TON": {
+      "name": "Tonga",
+      "ch4_total_mt": 0.00094,
+      "ch4_per_capita_kg": 8.7,
+      "year": 2022
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "ch4_total_mt": -0.06805,
+      "ch4_per_capita_kg": -48.37,
+      "year": 2022
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "ch4_total_mt": -0.06435,
+      "ch4_per_capita_kg": -5.34,
+      "year": 2022
+    },
+    "TUR": {
+      "name": "Turkey",
+      "ch4_total_mt": -5.91276,
+      "ch4_per_capita_kg": -69.1,
+      "year": 2022
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "ch4_total_mt": 0.60211,
+      "ch4_per_capita_kg": 97.08,
+      "year": 2022
+    },
+    "TUV": {
+      "name": "Tuvalu",
+      "ch4_total_mt": 0.0,
+      "ch4_per_capita_kg": null,
+      "year": 2022
+    },
+    "UGA": {
+      "name": "Uganda",
+      "ch4_total_mt": 3.43369,
+      "ch4_per_capita_kg": 70.9,
+      "year": 2022
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "ch4_total_mt": -0.037,
+      "ch4_per_capita_kg": -0.86,
+      "year": 2022
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "ch4_total_mt": -0.12559,
+      "ch4_per_capita_kg": -12.46,
+      "year": 2022
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "ch4_total_mt": 3.31729,
+      "ch4_per_capita_kg": 48.43,
+      "year": 2022
+    },
+    "USA": {
+      "name": "United States of America",
+      "ch4_total_mt": 0.40526,
+      "ch4_per_capita_kg": 1.21,
+      "year": 2022
+    },
+    "URY": {
+      "name": "Uruguay",
+      "ch4_total_mt": -0.33458,
+      "ch4_per_capita_kg": -95.7,
+      "year": 2022
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "ch4_total_mt": -0.15317,
+      "ch4_per_capita_kg": -4.45,
+      "year": 2022
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "ch4_total_mt": -0.10045,
+      "ch4_per_capita_kg": -311.96,
+      "year": 2022
+    },
+    "VEN": {
+      "name": "Venezuela",
+      "ch4_total_mt": 4.41908,
+      "ch4_per_capita_kg": 150.99,
+      "year": 2022
+    },
+    "VNM": {
+      "name": "Vietnam",
+      "ch4_total_mt": 38.11547,
+      "ch4_per_capita_kg": 385.18,
+      "year": 2022
+    },
+    "YEM": {
+      "name": "Yemen",
+      "ch4_total_mt": -0.15844,
+      "ch4_per_capita_kg": -5.09,
+      "year": 2022
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "ch4_total_mt": 13.24378,
+      "ch4_per_capita_kg": 680.21,
+      "year": 2022
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "ch4_total_mt": 2.11443,
+      "ch4_per_capita_kg": 137.92,
+      "year": 2022
+    }
+  }
+}

@@ -1,0 +1,3381 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beyond GDP Dashboard</title>
+  <!-- No-flash theme: must run before any styles paint. -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('bgdp-theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <!-- #15: Space Grotesk — geometric dashboard font -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root,
+    :root[data-theme="dark"] {
+      /* Surface ladder — dark */
+      --bg:        #0b0e18;
+      --surface:   #141828;
+      --surface-2: #1d2237;
+      --surface-3: #252d40;
+      --surface2:  #1d2237;            /* legacy alias, do not remove */
+      --border:    #2a3050;
+      --border-strong: #3a4170;
+
+      /* Text ladder */
+      --text:        #e8eaf0;
+      --text-muted:  #a8acc4;
+      --text-subtle: #7a7e9d;
+
+      /* Status — tuned for dark surfaces */
+      --green:      #22c55e;
+      --green-dark: #16a34a;
+      --lime:       #84cc16;
+      --orange:     #fb923c;
+      --amber:      #f59e0b;
+      --red:        #ef4444;
+
+      /* Status alpha helpers (for status-pill backgrounds) */
+      --green-bg:  rgba(34,197,94,0.15);
+      --amber-bg:  rgba(245,158,11,0.15);
+      --red-bg:    rgba(239,68,68,0.15);
+      --gray-bg:   rgba(139,143,168,0.10);
+
+      /* Chart-axis tokens (consumed by ECharts options) */
+      --chart-text:      #e6e8f2;
+      --chart-text-mid:  #adb1c8;
+      --chart-text-low:  #8b8fa8;
+      --chart-grid:      rgba(255,255,255,0.18);
+      --chart-grid-soft: rgba(255,255,255,0.06);
+      --chart-needle-border: #141828;
+
+      /* Accent */
+      --accent:       #4f7fff;
+      --accent-hover: #6b8fff;
+      --accent-bg:    rgba(79,127,255,0.10);
+      --focus-ring:   #4f7fff;
+
+      /* Shape + motion */
+      --radius: 12px;
+      --radius-sm: 6px;
+      --shadow-card:  0 2px 12px rgba(0,0,0,0.35);
+      --shadow-lift:  0 6px 24px rgba(0,0,0,0.45);
+      --transition-fast: 150ms ease;
+      --transition-base: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+      color-scheme: dark;
+    }
+
+    :root[data-theme="light"] {
+      --bg:        #f7f7f5;
+      --surface:   #ffffff;
+      --surface-2: #f1f2f4;
+      --surface-3: #e7e9ee;
+      --surface2:  #f1f2f4;
+      --border:    #dfe2e8;
+      --border-strong: #c2c7d0;
+
+      --text:        #14171f;
+      --text-muted:  #555a6a;
+      --text-subtle: #8a8f9d;
+
+      /* Status — darker variants for AA contrast on light */
+      --green:      #15803d;
+      --green-dark: #166534;
+      --lime:       #4d7c0f;
+      --orange:     #c2410c;
+      --amber:      #b45309;
+      --red:        #b91c1c;
+
+      --green-bg:  rgba(21,128,61,0.10);
+      --amber-bg:  rgba(180,83,9,0.10);
+      --red-bg:    rgba(185,28,28,0.10);
+      --gray-bg:   rgba(85,90,106,0.08);
+
+      --chart-text:      #14171f;
+      --chart-text-mid:  #4b5163;
+      --chart-text-low:  #6b7080;
+      --chart-grid:      rgba(20,23,31,0.18);
+      --chart-grid-soft: rgba(20,23,31,0.06);
+      --chart-needle-border: #ffffff;
+
+      --accent:       #2056d6;
+      --accent-hover: #1640a8;
+      --accent-bg:    rgba(32,86,214,0.08);
+
+      --shadow-card:  0 1px 3px rgba(20,23,31,0.06), 0 1px 2px rgba(20,23,31,0.04);
+      --shadow-lift:  0 8px 24px rgba(20,23,31,0.12), 0 2px 6px rgba(20,23,31,0.06);
+
+      color-scheme: light;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      :root {
+        --transition-fast: 0ms;
+        --transition-base: 0ms;
+        --transition-slow: 0ms;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* #15 */
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      font-feature-settings: 'ss01' on, 'cv11' on;
+      transition: background-color var(--transition-base), color var(--transition-base);
+    }
+    /* Tabular numerals for any metric value */
+    .stat-number, .gnsd-number, .apex-stat-value, .nh-letter,
+    .metric-card .echarts-label-tnum {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .header-title {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .header-title h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+    .header-title span { font-size: 0.8rem; color: var(--text-muted); }
+    .header-badge {
+      font-size: 0.7rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* ── Country Selector ── */
+    .selector-bar {
+      padding: 20px 32px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .selector-bar label { font-size: 0.82rem; color: var(--text-muted); white-space: nowrap; }
+    .country-flag-img {
+      width: 24px;
+      height: 18px;
+      border-radius: 2px;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: none;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+    .country-search-wrapper {
+      position: relative;
+      width: 320px;
+    }
+    #country-input {
+      width: 100%;
+      padding: 9px 14px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    #country-input:focus { border-color: var(--accent); }
+    #country-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      max-height: 260px;
+      overflow-y: auto;
+      z-index: 1200;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    #country-dropdown.open { display: block; }
+    .dropdown-item {
+      padding: 9px 14px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .dropdown-item:hover,
+    .dropdown-item.highlighted { background: var(--border); }
+    .dropdown-item:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+      background: var(--border);
+    }
+    .dropdown-item .item-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      background: var(--bg);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .country-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .country-meta span { display: flex; align-items: center; gap: 5px; }
+
+    /* ── Main content ── */
+    main { padding: 28px 32px; }
+
+    /* ── Gauge Grid ── */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 1100px) { .metric-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .metric-grid { grid-template-columns: 1fr; } }
+
+    /* ── Dial panels ── */
+    .dial-panels { display: flex; flex-direction: column; gap: 24px; margin-bottom: 28px; }
+    .dial-panel {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px 16px;
+      scroll-margin-top: 210px; /* sticky-top-bar total height offset */
+    }
+    .dial-panel-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 10;
+    }
+    .dial-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(79,127,255,0.12);
+      border: 1px solid rgba(79,127,255,0.3);
+      padding: 3px 10px;
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+    .pillar-info-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      outline: none;
+      cursor: help;
+    }
+    .pillar-info-icon {
+      font-size: 0.78rem;
+      opacity: 0.85;
+      line-height: 1;
+      padding: 0 2px;
+      transition: opacity 0.15s;
+      user-select: none;
+    }
+    .pillar-info-wrap:hover .pillar-info-icon,
+    .pillar-info-wrap:focus-visible .pillar-info-icon { opacity: 1; }
+    .pillar-tooltip {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 300px;
+      padding: 12px 14px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+      z-index: 200;
+      pointer-events: none;
+      text-align: left;
+      white-space: normal;
+    }
+    .pillar-info-wrap:hover .pillar-tooltip,
+    .pillar-info-wrap:focus-visible .pillar-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0s;
+    }
+    .pillar-tooltip .pt-title {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+      text-transform: none;
+    }
+    .pillar-tooltip .pt-body {
+      display: block;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+    @media (max-width: 700px) {
+      .pillar-tooltip { width: min(300px, calc(100vw - 48px)); }
+    }
+    .dial-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .dial-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-left: 0;
+      flex-basis: 100%;
+    }
+
+    /* ── Framework credit ── */
+    .framework-credit {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding: 14px 0 18px;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+    }
+
+    /* Metric card — editorial-geometric: status color confined to left border + pill.
+       Ambient glow removed; soft elevation only on hover. */
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 16px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  background var(--transition-base);
+      animation: cardSlideUp var(--transition-base) ease-out backwards;
+    }
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lift);
+      border-color: var(--border-strong);
+    }
+    .metric-card:focus-within {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 3px;
+    }
+
+    .metric-card.card-danger { border-left-color: var(--red); }
+    .metric-card.card-amber  { border-left-color: var(--amber); }
+    .metric-card.card-safe   { border-left-color: var(--green); }
+    .metric-card.card-sink   { border-left-color: var(--green-dark); }
+
+    /* Hover: subtle status-tinted glow only (not ambient) */
+    .metric-card.card-danger:hover { box-shadow: var(--shadow-lift), 0 0 0 1px rgba(239,68,68,0.18); }
+    .metric-card.card-amber:hover  { box-shadow: var(--shadow-lift), 0 0 0 1px rgba(245,158,11,0.18); }
+    .metric-card.card-safe:hover   { box-shadow: var(--shadow-lift), 0 0 0 1px rgba(34,197,94,0.18); }
+    .metric-card.card-sink:hover   { box-shadow: var(--shadow-lift), 0 0 0 1px rgba(22,163,74,0.18); }
+
+    /* Card stagger entry (max 6 tiles per panel) */
+    @keyframes cardSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .metric-card:nth-child(1) { animation-delay: 0ms; }
+    .metric-card:nth-child(2) { animation-delay: 40ms; }
+    .metric-card:nth-child(3) { animation-delay: 80ms; }
+    .metric-card:nth-child(4) { animation-delay: 120ms; }
+    .metric-card:nth-child(5) { animation-delay: 160ms; }
+    .metric-card:nth-child(6) { animation-delay: 200ms; }
+
+    /* #6: larger, brighter card titles */
+    .metric-card .metric-title {
+      font-size: 0.85rem;       /* was 0.78rem */
+      font-weight: 600;
+      letter-spacing: 0.04em;   /* was 0.06em */
+      text-transform: uppercase;
+      color: var(--text);       /* was var(--text-muted) */
+      margin-bottom: 6px;       /* was 4px */
+      text-align: center;
+    }
+    .metric-chart { width: 100%; height: 100px; position: relative; }
+    .metric-footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+      padding: 0 4px;
+    }
+    .metric-footer .limit-label {
+      font-size: 0.78rem;  /* #8: was 0.72rem */
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .limit-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .status-green      { background: var(--green-bg); color: var(--green); }
+    .status-green-dark { background: var(--green-bg); color: var(--green-dark); }
+    .status-amber      { background: var(--amber-bg); color: var(--amber); }
+    .status-red        { background: var(--red-bg);   color: var(--red); }
+    .status-gray       { background: var(--gray-bg);  color: var(--text-muted); }
+
+    /* No-data overlay — absolutely positioned inside .metric-chart so it
+       covers the ECharts canvas without destroying the chart's own DOM.
+       Wiping the container's innerHTML breaks the ECharts instance, so
+       later setOption() calls silently no-op when data returns. */
+    .metric-nodata {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      gap: 8px;
+      background: var(--surface);
+      z-index: 2;
+    }
+    .metric-nodata .nd-icon { font-size: 2rem; opacity: 0.4; }
+
+    /* ── GDP Stat Card ── */
+    .stat-value-area {
+      width: 100%;
+      height: 235px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .stat-nodata {
+      width: 100%;
+      height: 235px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      gap: 8px;
+    }
+
+    /* ── Narrative Headline ── */
+    .narrative-headline {
+      position: sticky;
+      top: 0;
+      z-index: 1100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 32px 10px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .narrative-headline:empty { display: none; }
+    /* Row 1: country + letter + score sub */
+    .nh-row-headline {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nh-country { font-size: 1.2rem; font-weight: 700; color: var(--text); }
+    .nh-letter {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .nh-letter.grade-A { color: var(--green); }
+    .nh-letter.grade-B { color: var(--lime); }
+    .nh-letter.grade-C { color: var(--amber); }
+    .nh-letter.grade-D { color: var(--orange); }
+    .nh-letter.grade-F { color: var(--red); }
+    .nh-score-sub { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+    .nh-cap-note { font-size: 0.75rem; color: var(--amber); font-weight: 600; margin-left: 4px; cursor: help; }
+    /* Row 2: pillar verdict */
+    .nh-row-verdict { font-size: 1rem; color: var(--text); line-height: 1.4; }
+    /* Row 3: worst gap */
+    .nh-row-gap { font-size: 0.88rem; color: var(--text-muted); line-height: 1.4; }
+    /* Inline status spans */
+    .narrative-headline .nh-danger { color: var(--red);   font-weight: 600; }
+    .narrative-headline .nh-amber  { color: var(--amber); font-weight: 600; }
+    .narrative-headline .nh-safe   { color: var(--green); font-weight: 600; }
+    @media (max-width: 700px) {
+      .narrative-headline { padding: 8px 16px 8px 24px; }
+      .nh-letter { font-size: 1.8rem; }
+      .nh-country { font-size: 1rem; }
+      .nh-row-gap { display: none; }
+    }
+
+    /* ── Loading state ── */
+    #loading-overlay {
+      position: fixed; inset: 0;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      z-index: 999;
+    }
+    #loading-overlay.hidden { display: none; }
+    .loader {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── Info tooltips ── */
+    .card-corner {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 2;
+    }
+    /* #4: larger, bolder status badges */
+    .card-corner .status-badge {
+      font-size: 0.74rem;     /* was 0.68rem */
+      font-weight: 700;       /* was 600 */
+      padding: 3px 9px;       /* was 2px 7px */
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em; /* was 0.04em */
+    }
+    .info-btn {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid #4a5288;
+      color: #cfd3e5;
+      font-size: 11px;
+      font-weight: 700;
+      font-style: italic;
+      font-family: Georgia, serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: border-color 0.15s, color 0.15s;
+      flex-shrink: 0;
+    }
+    .info-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Right-side off-canvas drawer (pushes main, no overlay over content) */
+    .metric-tooltip {
+      display: flex;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(440px, 92vw);
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      border-radius: 0;
+      padding: 24px 22px 22px;
+      z-index: 1000;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+      transform: translateX(100%);
+      opacity: 1;
+      pointer-events: none;
+      box-shadow: -12px 0 32px rgba(0,0,0,0.18);
+      transition: transform var(--transition-base);
+    }
+    .metric-tooltip.open {
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+    /* Drawer overlays content — no push, so charts never resize. */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.32);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-base);
+    }
+    [data-theme="light"] .drawer-backdrop { background: rgba(20,23,31,0.18); }
+    .drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .tooltip-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tooltip-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .tooltip-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      padding: 2px 4px;
+    }
+    .tooltip-close:hover { color: var(--text); }
+    .tooltip-close:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    .info-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    [data-card]:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: var(--radius);
+    }
+    .tooltip-body {
+      font-size: 0.87rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* ── Apex stat bar ── */
+    .apex-bar {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0;
+      margin-bottom: 16px;
+      align-items: stretch;
+    }
+    .apex-bar.visible { display: flex; }
+    .apex-bar { position: relative; z-index: 30; }
+    /* GNSD tooltip uses shared drawer styling; just widen slightly for formula block */
+    #tooltip-gnsd .tooltip-body { font-size: 0.86rem; line-height: 1.55; }
+    #tooltip-gnsd .tooltip-body p { margin: 0 0 8px 0; }
+    #tooltip-gnsd .tooltip-body ul { margin: 4px 0 10px 18px; padding: 0; }
+    #tooltip-gnsd .tooltip-body li { margin: 2px 0; }
+    #tooltip-gnsd .gnsd-formula {
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      background: rgba(255,255,255,0.05);
+      padding: 6px 8px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .apex-stat-cell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 16px 20px;
+    }
+    .apex-stat-cell + .apex-stat-cell { border-left: 1px solid var(--border); }
+    .apex-stat-value {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .apex-stat-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-align: center;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .apex-stat-sub { font-size: 0.75rem; color: var(--text-muted); }
+    .gnsd-green { color: var(--green); }
+    .gnsd-amber { color: var(--amber); }
+    .gnsd-red   { color: var(--red); }
+
+    /* ── GNSD apex bar/number layout ── */
+    .apex-stat-label-row { display: flex; align-items: center; gap: 6px; justify-content: center; }
+    .gnsd-value-row { display: flex; align-items: baseline; gap: 4px; }
+    .gnsd-number {
+      font-size: 1.9rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--text);
+    }
+    .gnsd-number.gnsd-green { color: var(--green); }
+    .gnsd-number.gnsd-amber { color: var(--amber); }
+    .gnsd-number.gnsd-red   { color: var(--red); }
+    .gnsd-of { font-size: 0.8rem; color: var(--text-muted); }
+    .gnsd-bar {
+      position: relative;
+      width: 100%;
+      max-width: 220px;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .gnsd-bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      background: var(--text-muted);
+      transition: width 600ms cubic-bezier(.2,.8,.2,1), background-color 300ms ease;
+    }
+    .gnsd-bar-fill.gnsd-green { background: var(--green); }
+    .gnsd-bar-fill.gnsd-amber { background: var(--amber); }
+    .gnsd-bar-fill.gnsd-red   { background: var(--red); }
+    .gnsd-bar-ticks span {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: rgba(255,255,255,0.25);
+      pointer-events: none;
+    }
+
+    /* ── Pillar badge colour variants ── */
+    .pillar-O   { color: #60a5fa; background: rgba(96,165,250,0.12);  border-color: rgba(96,165,250,0.3); }
+    .pillar-I   { color: #34d399; background: rgba(52,211,153,0.12);  border-color: rgba(52,211,153,0.3); }
+    .pillar-N   { color: #f472b6; background: rgba(244,114,182,0.12); border-color: rgba(244,114,182,0.3); }
+    .pillar-EcS { color: #a78bfa; background: rgba(167,139,250,0.12); border-color: rgba(167,139,250,0.3); }
+    .pillar-EnS { color: #fb923c; background: rgba(251,146,60,0.12);  border-color: rgba(251,146,60,0.3); }
+    .pillar-Eq  { color: #e879f9; background: rgba(232,121,249,0.12); border-color: rgba(232,121,249,0.3); }
+
+    /* ── Year stale tag ── */
+    .year-tag { font-size: 0.7rem; color: var(--text-muted); font-style: italic; }
+
+    /* ── Mobile layout fixes ── */
+    @media (max-width: 600px) {
+      /* Reduce horizontal padding throughout */
+      header {
+        padding: 14px 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .header-title h1 { font-size: 1.05rem; }
+      .header-title span { display: none; }
+
+      .selector-bar {
+        padding: 14px 16px;
+        gap: 10px;
+      }
+      .country-search-wrapper { width: 100%; }
+      .country-meta { font-size: 0.75rem; gap: 10px; }
+
+      main { padding: 16px 12px; }
+
+      /* Dial panels */
+      .dial-panel { padding: 14px 12px 12px; }
+      .dial-panel-header { gap: 8px; margin-bottom: 12px; }
+      .dial-title { font-size: 0.9rem; }
+      .dial-desc { font-size: 0.78rem; }
+
+      /* Gauge cards: give title room so it doesn't collide with corner buttons */
+      .metric-card {
+        padding: 14px 12px 10px;
+      }
+      .metric-card .metric-title {
+        padding-right: 70px;   /* reserve space for status badge + info btn */
+        text-align: left;
+        font-size: 0.78rem;
+      }
+      .card-corner {
+        top: 10px;
+        right: 8px;
+        gap: 4px;
+      }
+      .card-corner .status-badge {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+      }
+      .info-btn {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+      }
+
+      /* Slightly reduce gauge chart height so cards aren't so tall */
+      .metric-chart { height: 92px; }
+      .metric-nodata { height: 92px; }
+      .stat-value-area { height: 200px; }
+      .stat-nodata { height: 200px; }
+      .stat-number { font-size: 2.2rem; }
+
+      /* Tooltip: ensure it doesn't overflow on narrow cards */
+      .metric-tooltip { padding: 14px 12px 12px; }
+      .tooltip-body { font-size: 0.82rem; }
+      .apex-bar { flex-direction: column; }
+      .apex-stat-cell + .apex-stat-cell { border-left: none; border-top: 1px solid var(--border); }
+      .apex-stat-value { font-size: 1.5rem; }
+    }
+
+    /* ── Theme toggle button ─────────────────────────────────────────── */
+    .theme-toggle {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--border);
+      background: transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: border-color var(--transition-fast),
+                  background var(--transition-fast),
+                  color var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      background: var(--accent-bg);
+      color: var(--accent);
+    }
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      transition: transform var(--transition-base);
+    }
+    .theme-toggle .icon-moon { display: none; }
+    [data-theme="light"] .theme-toggle .icon-sun  { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: inline-block; }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* ── Sticky top bar: wraps pillar nav + country selector + narrative ── */
+    .sticky-top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 95;
+      background: var(--bg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+
+    /* ── Pillar tabs (jump-nav) ─────────────────────────────────────── */
+    .pillar-tabs {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 2px;
+      padding: 0 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .pillar-tabs::-webkit-scrollbar { display: none; }
+    .pillar-tab {
+      flex-shrink: 0;
+      padding: 12px 14px 10px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition-fast),
+                  border-bottom-color var(--transition-fast);
+      white-space: nowrap;
+    }
+    .pillar-tab:hover { color: var(--text); }
+    .pillar-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .pillar-tab:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: -2px;
+    }
+
+    /* ── Narrative headline: non-sticky (sticky handled by .sticky-top-bar) ── */
+    .narrative-headline {
+      position: static;
+      z-index: auto;
+      max-height: 200px;
+      overflow: hidden;
+      transition: max-height var(--transition-base), padding var(--transition-base);
+    }
+
+    /* ── Light-mode tweaks for chart dial-panels & misc ─────────────── */
+    [data-theme="light"] ::-webkit-scrollbar-track { background: var(--surface-2); }
+    [data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--border-strong); }
+    [data-theme="light"] .gnsd-bar { background: rgba(20,23,31,0.06); }
+    [data-theme="light"] .gnsd-bar-ticks span { background: rgba(20,23,31,0.25); }
+    [data-theme="light"] #tooltip-gnsd .gnsd-formula { background: rgba(20,23,31,0.05); }
+    [data-theme="light"] .pillar-O   { color: #1d4ed8; background: rgba(29,78,216,0.10); border-color: rgba(29,78,216,0.30); }
+    [data-theme="light"] .pillar-I   { color: #047857; background: rgba(4,120,87,0.10);  border-color: rgba(4,120,87,0.30); }
+    [data-theme="light"] .pillar-N   { color: #be185d; background: rgba(190,24,93,0.10); border-color: rgba(190,24,93,0.30); }
+    [data-theme="light"] .pillar-EcS { color: #6d28d9; background: rgba(109,40,217,0.10);border-color: rgba(109,40,217,0.30); }
+    [data-theme="light"] .pillar-EnS { color: #c2410c; background: rgba(194,65,12,0.10); border-color: rgba(194,65,12,0.30); }
+    [data-theme="light"] .pillar-Eq  { color: #a21caf; background: rgba(162,28,175,0.10);border-color: rgba(162,28,175,0.30); }
+
+    /* Light-mode loading overlay text */
+    [data-theme="light"] #loading-overlay { background: var(--bg); }
+    [data-theme="light"] .loader { border-color: var(--border-strong); border-top-color: var(--accent); }
+
+    /* Country search wrapper responsive cap */
+    @media (min-width: 601px) {
+      .country-search-wrapper { width: clamp(240px, 28vw, 360px); }
+    }
+
+    /* Keyboard shortcut hint chip */
+    .kbd-hint {
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-subtle);
+      font-family: ui-monospace, Consolas, monospace;
+      margin-left: 6px;
+      pointer-events: none;
+    }
+    @media (max-width: 600px) { .kbd-hint { display: none; } }
+  </style>
+</head>
+<body>
+
+<div id="loading-overlay">
+  <div class="loader"></div>
+  <span style="color:var(--text-muted);font-size:0.85rem">Loading data...</span>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-title">
+    <h1>Beyond GDP Dashboard</h1>
+    <span>Sustainability &amp; Development Metrics</span>
+  </div>
+  <div class="header-right">
+    <div class="header-badge">Data: 2022&ndash;2023</div>
+    <button id="theme-toggle" class="theme-toggle" type="button"
+            aria-label="Toggle dark / light mode" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Sticky context bar: pillar nav + country selector + narrative verdict -->
+<div class="sticky-top-bar">
+
+  <!-- Pillar jump-nav -->
+  <nav class="pillar-tabs" aria-label="Dashboard sections">
+    <button class="pillar-tab active" type="button" data-target="panel-apex">Overview</button>
+    <button class="pillar-tab" type="button" data-target="panel-opportunity">Opportunity</button>
+    <button class="pillar-tab" type="button" data-target="panel-income">Income</button>
+    <button class="pillar-tab" type="button" data-target="panel-necessities">Necessities</button>
+    <button class="pillar-tab" type="button" data-target="panel-security">Security</button>
+    <button class="pillar-tab" type="button" data-target="panel-environment">Environment</button>
+    <button class="pillar-tab" type="button" data-target="panel-equity">Equity</button>
+  </nav>
+
+  <!-- Country Selector -->
+  <div class="selector-bar">
+    <label for="country-input">Select country</label>
+    <!-- #14: country flag -->
+    <img id="country-flag" src="" alt="" class="country-flag-img">
+    <div class="country-search-wrapper">
+      <input type="text" id="country-input" placeholder="Search countries..." autocomplete="off" />
+      <div id="country-dropdown"></div>
+    </div>
+    <div class="country-meta" id="country-meta">
+      <span id="meta-region"></span>
+      <span id="meta-income"></span>
+      <span id="meta-pop"></span>
+    </div>
+  </div>
+
+  <!-- Narrative verdict headline -->
+  <div id="narrative-headline" class="narrative-headline" aria-live="polite"></div>
+
+</div>
+
+<!-- Dashboard -->
+<main>
+
+  <!-- Apex stat bar -->
+  <div id="panel-apex" style="scroll-margin-top:210px"></div>
+  <div id="apex-bar" class="apex-bar">
+    <div class="apex-stat-cell gnsd-cell" id="apex-gnsd">
+      <div class="apex-stat-label-row">
+        <span class="apex-stat-label">GNSD Score</span>
+        <button class="info-btn" data-tooltip="tooltip-gnsd" title="What is GNSD?">i</button>
+      </div>
+      <div class="gnsd-value-row">
+        <span class="gnsd-number">—</span>
+        <span class="gnsd-of">/ 100</span>
+      </div>
+      <div class="gnsd-bar" aria-label="GNSD score progress bar">
+        <div class="gnsd-bar-fill"></div>
+        <div class="gnsd-bar-ticks">
+          <span style="left:40%"></span>
+          <span style="left:70%"></span>
+        </div>
+      </div>
+    </div>
+    <div class="apex-stat-cell" id="apex-gni">
+      <div class="apex-stat-label">GNI per Capita</div>
+      <div class="apex-stat-value" style="color:var(--text-muted)">—</div>
+      <div class="apex-stat-sub">2017 PPP</div>
+    </div>
+    <div class="apex-stat-cell" id="apex-gdp">
+      <div class="apex-stat-label">Total GDP</div>
+      <div class="apex-stat-value" style="color:var(--text-muted)">—</div>
+      <div class="apex-stat-sub">current USD</div>
+    </div>
+    <div class="metric-tooltip" id="tooltip-gnsd">
+      <div class="tooltip-header">
+        <div class="tooltip-title">GNSD — Gross National Sustainable Development</div>
+        <button class="tooltip-close" data-tooltip="tooltip-gnsd">✕</button>
+      </div>
+      <div class="tooltip-body">
+        <p><strong>What it measures.</strong> A single apex score (0–100) that combines economic output with multidimensional living standards. It answers: is growth translating into better lives within planetary limits?</p>
+        <p><strong>Formula</strong> (UNEN Working Paper No. 1, Samans et al., March 2026):</p>
+        <p><span class="gnsd-formula">GNSD = 0.4 × GDP per capita (normalized) + 0.6 × MLSI pillar average</span></p>
+        <p><em>GDP weighted at 40%: economic output is a means to an end. Human living standards (MLSI) weighted at 60% as the primary measure of national development.</em></p>
+        <p><strong>The five MLSI pillars (each 0–100):</strong></p>
+        <ul>
+          <li><strong>O — Opportunity:</strong> labour underutilization, NEET rate, mean years of schooling</li>
+          <li><strong>I — Income:</strong> average wage (PPP), labour productivity, poverty rate</li>
+          <li><strong>N — Necessities:</strong> multidimensional poverty, material footprint</li>
+          <li><strong>EcS — Economic &amp; Social Security:</strong> healthy life expectancy, UHC coverage</li>
+          <li><strong>EnS — Environmental Security:</strong> CO₂ per capita, ecological footprint vs biocapacity</li>
+        </ul>
+        <p><strong>Normalization:</strong> UNDP goalpost method. GDP per capita floor $1,000, ceiling $80,000 (log scale). Each MLSI indicator normalized 0–100 against fixed absolute goalposts.</p>
+        <p><strong>Ecological floor cap:</strong> A country scoring &lt;40 on Environmental Security cannot score above 60 overall — ecological overshoot is treated as a non-tradeable constraint.</p>
+        <p><strong>Reading the score:</strong> <span style="color:var(--green);font-weight:600">≥70 green (on track)</span>, <span style="color:var(--amber);font-weight:600">40–69 amber (mixed)</span>, <span style="color:var(--red);font-weight:600">&lt;40 red (lagging)</span>. Tick marks on the bar sit at 40 and 70.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dial-panels">
+
+    <!-- ── Pillar O: Opportunity ── -->
+    <section class="dial-panel" id="panel-opportunity">
+      <div class="dial-panel-header">
+        <span class="pillar-info-wrap" tabindex="0" aria-label="About this pillar">
+          <span class="pillar-info-icon">ⓘ</span>
+          <span class="pillar-tooltip" role="tooltip">
+            <strong class="pt-title">Opportunity</strong>
+            <span class="pt-body">Can people find decent work and access quality education? Gauges track mean years of schooling, youth NEET rate, and labour underutilization — the foundation of human agency in the GDP+ framework.</span>
+          </span>
+        </span>
+        <span class="dial-title">Opportunity</span>
+        <span class="dial-desc">Can people find decent work and access quality education?</span>
+      </div>
+      <div class="metric-grid">
+
+        <div class="metric-card" data-card="schooling">
+          <div class="metric-title">Mean Years of Schooling</div>
+          <div class="card-corner">
+            <div id="schooling-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-schooling" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-schooling" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--amber)"></div>
+              <span>Target: 12 years of schooling</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-schooling">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Mean Years of Schooling</div>
+              <button class="tooltip-close" data-tooltip="tooltip-schooling">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-schooling-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="lu4">
+          <div class="metric-title">Labour Underutilization (LU4)</div>
+          <div class="card-corner">
+            <div id="lu4-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-lu4" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-lu4" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Danger threshold: 10% (lower is better)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-lu4">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Labour Underutilization (LU4)</div>
+              <button class="tooltip-close" data-tooltip="tooltip-lu4">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-lu4-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="neet">
+          <div class="metric-title">NEET Rate (Youth 15&ndash;24)</div>
+          <div class="card-corner">
+            <div id="neet-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-neet" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-neet" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Danger threshold: 15% (lower is better)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-neet">
+            <div class="tooltip-header">
+              <div class="tooltip-title">NEET Rate (Youth 15&ndash;24)</div>
+              <button class="tooltip-close" data-tooltip="tooltip-neet">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-neet-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Pillar I: Income ── -->
+    <section class="dial-panel" id="panel-income">
+      <div class="dial-panel-header">
+        <span class="pillar-info-wrap" tabindex="0" aria-label="About this pillar">
+          <span class="pillar-info-icon">ⓘ</span>
+          <span class="pillar-tooltip" role="tooltip">
+            <strong class="pt-title">Income</strong>
+            <span class="pt-body">Are earnings sufficient to live on and grow the economy? Gauges track real wages, labour productivity, and income poverty — the bridge between individual livelihood and aggregate economic performance.</span>
+          </span>
+        </span>
+        <span class="dial-title">Income</span>
+        <span class="dial-desc">Are earnings sufficient to live on and grow the economy?</span>
+      </div>
+      <div class="metric-grid">
+
+        <div class="metric-card" data-card="wage">
+          <div class="metric-title">Average Annual Wage</div>
+          <div class="card-corner">
+            <div id="wage-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-wage" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-wage" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Minimum: $15,000 / year</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-wage">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Average Annual Wage</div>
+              <button class="tooltip-close" data-tooltip="tooltip-wage">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-wage-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="prod">
+          <div class="metric-title">Labour Productivity</div>
+          <div class="card-corner">
+            <div id="prod-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-prod" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-prod" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Minimum: $30,000 output/worker (2021 PPP)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-prod">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Labour Productivity</div>
+              <button class="tooltip-close" data-tooltip="tooltip-prod">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-prod-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="poverty">
+          <div class="metric-title">Income Poverty Rate</div>
+          <div class="card-corner">
+            <div id="poverty-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-poverty" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-poverty" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span id="poverty-limit-label">Danger threshold: 20% below poverty line</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-poverty">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Income Poverty Rate</div>
+              <button class="tooltip-close" data-tooltip="tooltip-poverty">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-poverty-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Pillar N: Necessities ── -->
+    <section class="dial-panel" id="panel-necessities">
+      <div class="dial-panel-header">
+        <span class="pillar-info-wrap" tabindex="0" aria-label="About this pillar">
+          <span class="pillar-info-icon">ⓘ</span>
+          <span class="pillar-tooltip" role="tooltip">
+            <strong class="pt-title">Necessities</strong>
+            <span class="pt-body">Can households afford food, housing, healthcare, and education while keeping material use sustainable? Gauges track the Multidimensional Poverty Index and material footprint per capita (UNEP 8 t/person ceiling).</span>
+          </span>
+        </span>
+        <span class="dial-title">Necessities</span>
+        <span class="dial-desc">Can households meet basic needs and keep material use sustainable?</span>
+      </div>
+      <div class="metric-grid">
+
+        <div class="metric-card" data-card="mpi">
+          <div class="metric-title">Multidimensional Poverty Index</div>
+          <div class="card-corner">
+            <div id="mpi-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-mpi" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-mpi" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Danger threshold: 0.10 (lower is better)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-mpi">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Multidimensional Poverty Index</div>
+              <button class="tooltip-close" data-tooltip="tooltip-mpi">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-mpi-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="matfp">
+          <div class="metric-title">Material Footprint per Capita</div>
+          <div class="card-corner">
+            <div id="matfp-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-matfp" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-matfp" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--amber)"></div>
+              <span>Safe threshold: 8 t/person (lower is better)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-matfp">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Material Footprint per Capita</div>
+              <button class="tooltip-close" data-tooltip="tooltip-matfp">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-matfp-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Pillar EcS: Security ── -->
+    <section class="dial-panel" id="panel-security">
+      <div class="dial-panel-header">
+        <span class="pillar-info-wrap" tabindex="0" aria-label="About this pillar">
+          <span class="pillar-info-icon">ⓘ</span>
+          <span class="pillar-tooltip" role="tooltip">
+            <strong class="pt-title">Security</strong>
+            <span class="pt-body">Are people protected against illness, old age, and unemployment? Gauges track healthy life expectancy and UHC service coverage — signals of whether the economy is building or depleting human capital.</span>
+          </span>
+        </span>
+        <span class="dial-title">Security</span>
+        <span class="dial-desc">Are people protected against health risks and social shocks?</span>
+      </div>
+      <div class="metric-grid">
+
+        <div class="metric-card" data-card="hale">
+          <div class="metric-title">Healthy Life Expectancy</div>
+          <div class="card-corner">
+            <div id="hale-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-hale" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-hale" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Danger threshold: below 60 healthy years</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-hale">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Healthy Life Expectancy</div>
+              <button class="tooltip-close" data-tooltip="tooltip-hale">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-hale-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="uhc">
+          <div class="metric-title">UHC Service Coverage</div>
+          <div class="card-corner">
+            <div id="uhc-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-uhc" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-uhc" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Danger threshold: below 70 index</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-uhc">
+            <div class="tooltip-header">
+              <div class="tooltip-title">UHC Service Coverage</div>
+              <button class="tooltip-close" data-tooltip="tooltip-uhc">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-uhc-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Pillar EnS: Environment ── -->
+    <section class="dial-panel" id="panel-environment">
+      <div class="dial-panel-header">
+        <span class="pillar-info-wrap" tabindex="0" aria-label="About this pillar">
+          <span class="pillar-info-icon">ⓘ</span>
+          <span class="pillar-tooltip" role="tooltip">
+            <strong class="pt-title">Environment</strong>
+            <span class="pt-body">Is the country living within planetary limits? Gauges track CO&#8322; and methane per capita against Paris 1.5&#8201;&#176;C thresholds — the future-proofing dimension of a sustainable economy.</span>
+          </span>
+        </span>
+        <span class="dial-title">Environment</span>
+        <span class="dial-desc">Operating within planetary limits for future generations</span>
+      </div>
+      <div class="metric-grid">
+
+        <div class="metric-card" data-card="co2">
+          <div class="metric-title">CO&#8322; Emissions per Capita</div>
+          <div class="card-corner">
+            <div id="co2-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-co2" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-co2" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Danger threshold: 2.0 t (Paris 1.5&deg;C budget)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-co2">
+            <div class="tooltip-header">
+              <div class="tooltip-title">CO&#8322; Emissions per Capita</div>
+              <button class="tooltip-close" data-tooltip="tooltip-co2">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-co2-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="ch4">
+          <div class="metric-title">Methane Emissions per Capita</div>
+          <div class="card-corner">
+            <div id="ch4-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-ch4" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-ch4" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Danger threshold: net zero or below (land use)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-ch4">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Methane Emissions per Capita</div>
+              <button class="tooltip-close" data-tooltip="tooltip-ch4">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-ch4-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="footprint">
+          <div class="metric-title">Ecological Footprint</div>
+          <div class="card-corner">
+            <div id="footprint-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-footprint" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-footprint" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span id="footprint-limit-label">Danger threshold: your biocapacity</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-footprint">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Ecological Footprint</div>
+              <button class="tooltip-close" data-tooltip="tooltip-footprint">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-footprint-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="bii">
+          <div class="metric-title">Biodiversity Intactness Index</div>
+          <div class="card-corner">
+            <div id="bii-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-bii" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-bii" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Danger threshold: below 70 (planetary boundary)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-bii">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Biodiversity Intactness Index</div>
+              <button class="tooltip-close" data-tooltip="tooltip-bii">&#x2715;</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-bii-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Equity strip ── -->
+    <section class="dial-panel" id="panel-equity">
+      <div class="dial-panel-header">
+        <span class="pillar-info-wrap" tabindex="0" aria-label="About this pillar">
+          <span class="pillar-info-icon">ⓘ</span>
+          <span class="pillar-tooltip" role="tooltip">
+            <strong class="pt-title">Gender Equity</strong>
+            <span class="pt-body">Are development gains distributed fairly between women and men? Gauges track the Gender Development Index and Gender Inequality Index — distribution matters as much as the total.</span>
+          </span>
+        </span>
+        <span class="dial-title">Gender Equity</span>
+        <span class="dial-desc">Distribution of human development outcomes between women and men</span>
+      </div>
+      <div class="metric-grid">
+
+        <div class="metric-card" data-card="gdi">
+          <div class="metric-title">Gender Development Index</div>
+          <div class="card-corner">
+            <div id="gdi-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-gdi" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-gdi" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Parity threshold: 0.975 (UNDP Group 1)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-gdi">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Gender Development Index</div>
+              <button class="tooltip-close" data-tooltip="tooltip-gdi">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-gdi-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+        <div class="metric-card" data-card="gii">
+          <div class="metric-title">Gender Inequality Index</div>
+          <div class="card-corner">
+            <div id="gii-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-gii" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-gii" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Danger threshold: 0.10 (ambitious, lower = more equal)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-gii">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Gender Inequality Index</div>
+              <button class="tooltip-close" data-tooltip="tooltip-gii">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-gii-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <div class="framework-credit">
+    Framework: <em>MLSI &mdash; Multidimensional Living Standards Index</em> &middot; <em>GDP Plus</em>, Jens Wandel &amp; Christian Wandel
+  </div>
+
+</main>
+
+<script src="lib/echarts.min.js"></script>
+<script>
+  if (typeof echarts === 'undefined') {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js';
+    document.head.appendChild(s);
+  }
+
+  // ── Theme tokens for ECharts (read live from CSS vars) ───────────────────
+  function chartTokens() {
+    const cs = getComputedStyle(document.documentElement);
+    const v = (n, fallback) => (cs.getPropertyValue(n).trim() || fallback);
+    return {
+      text:     v('--chart-text',      '#e6e8f2'),
+      textMid:  v('--chart-text-mid',  '#adb1c8'),
+      textLow:  v('--chart-text-low',  '#8b8fa8'),
+      grid:     v('--chart-grid',      'rgba(255,255,255,0.18)'),
+      gridSoft: v('--chart-grid-soft', 'rgba(255,255,255,0.06)'),
+      needleBorder: v('--chart-needle-border', '#141828'),
+      red:      v('--red',             '#ef4444'),
+    };
+  }
+
+  // ── Data cache ───────────────────────────────────────────────────────────
+  const Cache = {};
+  let lastGnsdResult = null;
+
+  async function loadAll() {
+    const files = [
+      'countries', 'ecological_footprint', 'hdi', 'gdp', 'co2', 'methane', 'gdi', 'gii',
+      'mpi', 'material_footprint', 'lu4', 'neet', 'wage', 'productivity',
+      'hale', 'uhc_coverage', 'poverty_rate', 'bii',
+    ];
+    await Promise.all(files.map(async (name) => {
+      const res = await fetch(`data/${name}.json`);
+      Cache[name] = await res.json();
+    }));
+  }
+
+  // ── ECharts instances ────────────────────────────────────────────────────
+  let chartFootprint, chartCo2, chartCh4, chartGdi, chartGii;
+  let chartSchooling, chartLu4, chartNeet, chartWage, chartProd, chartPoverty;
+  let chartMpi, chartMatFp, chartHale, chartUhc, chartBii;
+
+  function initCharts() {
+    const iv = id => echarts.init(document.getElementById(id), null, { renderer: 'svg' });
+    chartFootprint = iv('gauge-footprint');
+    chartCo2       = iv('gauge-co2');
+    chartCh4       = iv('gauge-ch4');
+    chartGdi       = iv('gauge-gdi');
+    chartGii       = iv('gauge-gii');
+    chartSchooling = iv('gauge-schooling');
+    chartLu4       = iv('gauge-lu4');
+    chartNeet      = iv('gauge-neet');
+    chartWage      = iv('gauge-wage');
+    chartProd      = iv('gauge-prod');
+    chartPoverty   = iv('gauge-poverty');
+    chartMpi       = iv('gauge-mpi');
+    chartMatFp     = iv('gauge-matfp');
+    chartHale      = iv('gauge-hale');
+    chartUhc       = iv('gauge-uhc');
+    chartBii       = iv('gauge-bii');
+    window.addEventListener('resize', () => {
+      [chartFootprint, chartCo2, chartCh4, chartGdi, chartGii,
+       chartSchooling, chartLu4, chartNeet, chartWage, chartProd, chartPoverty,
+       chartMpi, chartMatFp, chartHale, chartUhc, chartBii].forEach(c => c.resize());
+    });
+  }
+
+  // ── No-data overlay helpers ──────────────────────────────────────────────
+  // Show/hide a no-data overlay without destroying the ECharts-managed DOM
+  // inside the container. Wiping innerHTML orphans the chart instance, so
+  // switching back to a country with data would silently no-op on setOption.
+  function showNoData(el, chart) {
+    // Non-destructive: chart.clear() wipes ECharts state and strands
+    // subsequent setOption() calls under the SVG renderer. Use an empty
+    // series reset instead and layer the overlay on top.
+    if (chart) chart.setOption({ series: [] }, true);
+    let ov = el.querySelector(':scope > .metric-nodata');
+    if (!ov) {
+      ov = document.createElement('div');
+      ov.className = 'metric-nodata';
+      ov.innerHTML = '<div class="nd-icon">&#9680;</div><span>No data available</span>';
+      el.appendChild(ov);
+    }
+    ov.style.display = 'flex';
+  }
+  function hideNoData(el) {
+    const ov = el.querySelector(':scope > .metric-nodata');
+    if (ov) ov.style.display = 'none';
+  }
+
+  // ── Gauge builder ────────────────────────────────────────────────────────
+  // #1,2,3,11,17,18: thicker arcs, progress fill, bigger needles, animation, rich-text center
+  function buildGaugeOption({ value, min, max, zones, unitLabel, formatFn, vsText, vsColor }) {
+    const tk = chartTokens();
+    const vc = vsColor || tk.textLow;
+    // Progress fill uses status color so it doesn't default to ECharts blue
+    const progressColor = vsColor || '#4f7fff';
+    return {
+      backgroundColor: 'transparent',
+      tooltip: { show: false, trigger: 'none', triggerOn: 'none' },
+      series: [{
+        type: 'gauge',
+        min, max,
+        silent: true,
+        emphasis: { disabled: true },
+        startAngle: 215,
+        endAngle: -35,
+        radius: '90%',
+        center: ['50%', '60%'],
+        splitNumber: 4,
+        animationDuration: 800,           // #17
+        animationEasingUpdate: 'cubicOut', // #17
+        axisLine: {
+          lineStyle: {
+            width: 20,          // #1: was 16 — zone color background track
+            color: zones,
+            opacity: 0.9,
+          }
+        },
+        progress: { show: false },
+        axisTick: { show: false },
+        splitLine: {
+          show: true,
+          length: 6,
+          distance: 3,
+          lineStyle: { color: tk.grid, width: 1.5 }
+        },
+        axisLabel: { show: false },
+        pointer: {
+          length: '58%',        // #2: slightly shorter to avoid text overlap
+          width: 6,             // pressure-gauge: chunkier dial feel
+          itemStyle: { color: tk.text }
+        },
+        anchor: {
+          show: true,
+          size: 10,             // #2: was 8
+          itemStyle: { color: tk.text, borderColor: tk.textLow, borderWidth: 1 }
+        },
+        detail: {
+          valueAnimation: true,
+          // #3 + #18: rich text — value on top, unit + vs-limit below
+          formatter: function(v) {
+            const mainVal = formatFn ? formatFn(v) : String(v);
+            if (vsText) {
+              return `{val|${mainVal}}\n{unit|${unitLabel}}\n{vs|${vsText}}`;
+            }
+            return `{val|${mainVal}}\n{unit|${unitLabel}}`;
+          },
+          rich: {
+            val:  { fontSize: 22, fontWeight: '700', color: tk.text, lineHeight: 28 },
+            unit: { fontSize: 11, color: tk.textMid, lineHeight: 18 },
+            vs:   { fontSize: 10, color: vc, lineHeight: 18 },
+          },
+          offsetCenter: [0, '38%'],  // below needle pivot area
+        },
+        title: { show: false },  // #18: unit moved into rich-text detail
+        data: [{ value: isFinite(value) ? value : 0, name: unitLabel }],
+      }],
+    };
+  }
+
+  // ── Zone helpers ─────────────────────────────────────────────────────────
+  function makeZones(min, max, zoneDefs) {
+    const total = max - min;
+    return zoneDefs.map(z => [(z.maxVal - min) / total, z.color]);
+  }
+
+  // ── Status helpers ───────────────────────────────────────────────────────
+  // #5 + #12: also updates parent card's status class for colored border + glow
+  function setStatus(id, level, label) {
+    const el = document.getElementById(id);
+    const classMap = {
+      green: 'status-green', 'green-dark': 'status-green-dark',
+      amber: 'status-amber', red: 'status-red', gray: 'status-gray',
+    };
+    // Unified "distance from target" semantics: green = far from danger,
+    // regardless of whether the underlying metric is higher-better or lower-better.
+    const labelMap = {
+      green: 'On Target', 'green-dark': 'Net Sink',
+      amber: 'Caution', red: 'Overshoot', gray: 'No Data',
+    };
+    el.className = 'status-badge ' + (classMap[level] || 'status-gray');
+    el.textContent = label || labelMap[level] || '—';
+
+    // Update parent card class for colored border + glow
+    const cardEl = el.closest('[data-card]');
+    if (cardEl) {
+      cardEl.classList.remove('card-danger', 'card-amber', 'card-safe', 'card-sink', 'card-gray');
+      const cardClassMap = {
+        green: 'card-safe', 'green-dark': 'card-sink',
+        amber: 'card-amber', red: 'card-danger', gray: 'card-gray',
+      };
+      if (cardClassMap[level]) cardEl.classList.add(cardClassMap[level]);
+    }
+  }
+
+  // ── Format helpers ───────────────────────────────────────────────────────
+  function fmt(n, decimals = 2) {
+    if (n == null || !isFinite(n)) return 'N/A';
+    return Number(n).toFixed(decimals);
+  }
+  function fmtBillion(n) {
+    if (n == null || !isFinite(n)) return 'N/A';
+    if (n >= 1e12) return (n / 1e12).toFixed(2) + 'T';
+    if (n >= 1e9)  return (n / 1e9).toFixed(1) + 'B';
+    if (n >= 1e6)  return (n / 1e6).toFixed(0) + 'M';
+    return n.toFixed(0);
+  }
+  function fmtGni(n) {
+    if (n == null || !isFinite(n)) return 'N/A';
+    if (n >= 1000) return '$' + Math.round(n / 1000) + 'k';
+    return '$' + Math.round(n);
+  }
+
+  // ── Threshold marker layer ───────────────────────────────────────────────
+  // #2 + #17: thicker red threshold needle with smooth animation
+  function makeThresholdLayer(min, max, threshVal) {
+    return {
+      type: 'gauge',
+      min, max,
+      startAngle: 215, endAngle: -35,
+      radius: '90%', center: ['50%', '60%'],
+      silent: true,
+      animationDuration: 800,           // #17
+      animationEasingUpdate: 'cubicOut', // #17
+      axisLine: { show: false },
+      axisTick: { show: false },
+      splitLine: { show: false },
+      axisLabel: { show: false },
+      pointer: {
+        show: true,
+        length: '75%',   // #2: was '72%'
+        width: 4,         // #2: was 2.5
+        itemStyle: { color: chartTokens().red },
+      },
+      anchor: {
+        show: true,
+        size: 9,          // #2: was 6
+        itemStyle: { color: chartTokens().red, borderColor: chartTokens().needleBorder, borderWidth: 1.5 },
+      },
+      progress: { show: false },
+      detail: { show: false },
+      data: [{ value: threshVal }],
+    };
+  }
+
+  // ── Bullet builder ───────────────────────────────────────────────────────
+  // Horizontal bullet graph: zone-banded track + value bar. Same config
+  // contract as buildGaugeOption so render sites only swap the builder name.
+  function buildBulletOption({ value, min, max, zones, unitLabel, formatFn, vsText, vsColor, overflow, dangerMarkLine }) {
+    const tk = chartTokens();
+    const clampedValue = Math.max(min, Math.min(max, value));
+    const valueColor = tk.text;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const zoneOpacity = isLight ? 0.55 : 0.42;
+
+    // zones: ECharts gauge format [[pos01, color], ...] where pos01 is the
+    // normalised upper bound (0..1). Convert back to absolute xAxis values
+    // and build markArea rectangles — markArea uses real axis values so it
+    // works correctly when xAxis.min != 0 (e.g. HALE 40-80, CH4 -250-300).
+    const range = max - min;
+    const zoneAreas = [];
+    let prev = 0;
+    for (const z of zones) {
+      const pos = Array.isArray(z) ? z[0] : (z.maxVal - min) / range;
+      const color = Array.isArray(z) ? z[1] : z.color;
+      if (pos > prev) {
+        zoneAreas.push([
+          { xAxis: min + prev * range, itemStyle: { color, opacity: zoneOpacity } },
+          { xAxis: min + pos * range },
+        ]);
+      }
+      prev = pos;
+    }
+
+    return {
+      backgroundColor: 'transparent',
+      tooltip: { show: false, trigger: 'none', triggerOn: 'none' },
+      axisPointer: { show: false },
+      animation: true,
+      animationDuration: 450,
+      animationEasingUpdate: 'cubicOut',
+      grid: { left: 14, right: 14, top: 36, bottom: 26, containLabel: false },
+      xAxis: {
+        type: 'value',
+        min, max,
+        splitNumber: 4,
+        axisPointer: { show: false },
+        axisLine: { show: false },
+        axisTick: { show: false },
+        splitLine: { show: false },
+        axisLabel: {
+          color: tk.textLow,
+          fontSize: 10,
+          hideOverlap: true,
+          // Numeric-only axis ticks. formatFn from renderers ignores its arg
+          // (returns the metric's current value), so we format tick values
+          // here using a range-aware default. Unit context comes from card
+          // title + footer.
+          formatter: v => {
+            const abs = Math.abs(v);
+            if (abs >= 1000) return (v / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 }) + 'k';
+            if (abs >= 10) return String(Math.round(v));
+            if (abs >= 1) return v.toLocaleString(undefined, { maximumFractionDigits: 1 });
+            return v.toLocaleString(undefined, { maximumFractionDigits: 2 });
+          },
+        },
+      },
+      yAxis: {
+        type: 'category',
+        data: [''],
+        axisLine: { show: false },
+        axisTick: { show: false },
+        axisLabel: { show: false },
+      },
+      series: [
+        // Single bar series: value bar + markArea for zone backgrounds.
+        // markArea attached here (not a separate empty-data series) because
+        // ECharts skips markArea rendering when its parent series has no data.
+        // Data is [clampedValue] (not delta) — bar is drawn 0..value and
+        // xAxis.min clips the off-screen portion, which also works for
+        // metrics with non-zero min (HALE 40-80, CH4 -250-300).
+        {
+          type: 'bar',
+          barWidth: 12,
+          silent: true,
+          emphasis: { disabled: true },
+          data: [clampedValue],
+          itemStyle: { color: valueColor, borderRadius: 2 },
+          label: {
+            show: true,
+            position: 'top',
+            color: valueColor,
+            fontSize: 14,
+            fontWeight: 600,
+            formatter: () => (formatFn ? formatFn(value) : String(value)) + (overflow ? ' +' : ''),
+            distance: 6,
+          },
+          markLine: (() => {
+            // Zone boundary lines — thin grey dividers at each zone edge (a11y: color-blind safety)
+            const boundaries = zoneAreas.slice(0, -1).map(area => ({
+              xAxis: area[1].xAxis,
+              lineStyle: { color: tk.grid, width: 1, type: 'solid' },
+              label: {
+                show: true,
+                position: 'end',
+                formatter: p => {
+                  const v = p.value;
+                  const abs = Math.abs(v);
+                  if (abs >= 1000) return (v / 1000).toFixed(1) + 'k';
+                  if (abs >= 10) return String(Math.round(v));
+                  return v.toFixed(abs >= 1 ? 1 : 2);
+                },
+                color: tk.textLow,
+                fontSize: 9,
+                distance: 2,
+              },
+            }));
+            // Add danger threshold markLine if specified (GNSD anchor)
+            if (dangerMarkLine != null) {
+              boundaries.push({
+                xAxis: dangerMarkLine,
+                lineStyle: { color: tk.red, width: 2, type: 'dashed' },
+                label: { show: false },
+              });
+            }
+            if (overflow) {
+              boundaries.push({
+                xAxis: max,
+                lineStyle: { color: tk.red, width: 2, type: 'solid' },
+                label: { show: false },
+              });
+            }
+            return {
+              silent: true,
+              symbol: boundaries.map((_, i) => overflow && i === boundaries.length - 1 ? 'arrow' : 'none'),
+              symbolSize: [6, 8],
+              data: boundaries,
+            };
+          })(),
+          markArea: {
+            silent: true,
+            itemStyle: { borderWidth: 0 },
+            emphasis: { disabled: true },
+            data: zoneAreas,
+          },
+          z: 3,
+        },
+      ],
+    };
+  }
+
+  // ── Gauge renderers ──────────────────────────────────────────────────────
+
+  function renderFootprint(eodEntry) {
+    const el = document.getElementById('gauge-footprint');
+    if (!eodEntry || eodEntry.ecological_footprint == null) {
+      showNoData(el, chartFootprint);
+      setStatus('footprint-status', 'gray');
+      return;
+    }
+    hideNoData(el);
+
+    const fp = eodEntry.ecological_footprint;
+    const bc = eodEntry.biocapacity;
+    const worldBc = 1.63;
+    const threshold = bc != null ? bc : worldBc;
+    const maxScale  = 20;
+
+    const level = fp <= threshold ? 'green' : fp <= threshold * 1.5 ? 'amber' : 'red';
+    const fpPct = Math.round((fp / threshold - 1) * 100);
+    setStatus('footprint-status', level, level === 'green' ? null : `${fpPct}% above target`);
+
+    document.getElementById('footprint-limit-label').textContent = bc != null
+      ? `Danger threshold: ${fmt(bc)} gha (your biocapacity)`
+      : `Danger threshold: ${worldBc} gha (world avg biocapacity)`;
+
+    const zones = makeZones(0, maxScale, [
+      { maxVal: threshold,       color: '#22c55e' },
+      { maxVal: threshold * 1.5, color: '#f59e0b' },
+      { maxVal: maxScale,        color: '#ef4444' },
+    ]);
+
+    // #18: vs-limit callout text
+    const ratio = (fp / threshold).toFixed(1);
+    const vsText  = fp <= threshold ? 'safe zone' : `\u00d7${ratio} above threshold`;
+    const vsColor = fp <= threshold ? '#22c55e' : fp <= threshold * 1.5 ? '#f59e0b' : '#ef4444';
+
+    const option = buildBulletOption({
+      value: fp, min: 0, max: maxScale, zones,
+      unitLabel: 'gha / person',
+      formatFn: v => fmt(v, 2),
+      vsText, vsColor,
+    });
+    chartFootprint.setOption(option, true);
+  }
+
+  function renderHdi(hdiEntry) {
+    const el = document.getElementById('gauge-hdi');
+    if (!hdiEntry || hdiEntry.hdi == null) {
+      showNoData(el, typeof chartHdi !== 'undefined' ? chartHdi : null);
+      setStatus('hdi-status', 'gray');
+      return;
+    }
+    hideNoData(el);
+
+    const hdi = hdiEntry.hdi;
+    const zones = makeZones(0, 1, [
+      { maxVal: 0.55, color: '#ef4444' },
+      { maxVal: 0.70, color: '#f59e0b' },
+      { maxVal: 0.80, color: '#86efac' },
+      { maxVal: 1.0,  color: '#22c55e' },
+    ]);
+    const level = hdi >= 0.80 ? 'green' : hdi >= 0.70 ? 'amber' : 'red';
+    const hdiPct = Math.round((1 - hdi / 0.80) * 100);
+    setStatus('hdi-status', level, level === 'green' ? null : `${hdiPct}% below target`);
+
+    // #18: vs-limit callout
+    const vsText  = hdi >= 0.70 ? 'meets target' : `${(hdi / 0.70 * 100).toFixed(0)}% of target`;
+    const vsColor = hdi >= 0.80 ? '#22c55e' : hdi >= 0.70 ? '#86efac' : hdi >= 0.55 ? '#f59e0b' : '#ef4444';
+
+    const option = buildBulletOption({
+      value: hdi, min: 0, max: 1, zones,
+      unitLabel: 'HDI (0\u20131)',
+      formatFn: v => Number(v).toFixed(3),
+      vsText, vsColor,
+    });
+    chartHdi.setOption(option, true);
+  }
+
+  function renderGni(hdiEntry) {
+    const el = document.getElementById('gauge-gni');
+    if (!hdiEntry || hdiEntry.gni_per_capita == null) {
+      showNoData(el, typeof chartGni !== 'undefined' ? chartGni : null);
+      setStatus('gni-status', 'gray');
+      return;
+    }
+    hideNoData(el);
+
+    const gni = hdiEntry.gni_per_capita;
+    const maxScale = 100000;
+    const highIncome = 13845;
+
+    const zones = makeZones(0, maxScale, [
+      { maxVal: 4000,       color: '#ef4444' },
+      { maxVal: highIncome, color: '#f59e0b' },
+      { maxVal: 40000,      color: '#86efac' },
+      { maxVal: maxScale,   color: '#22c55e' },
+    ]);
+    const level = gni >= highIncome ? 'green' : gni >= 4000 ? 'amber' : 'red';
+    const gniPct = Math.round((1 - gni / highIncome) * 100);
+    setStatus('gni-status', level, level === 'green' ? null : `${gniPct}% below target`);
+
+    // #18: vs-limit callout
+    const vsText  = gni >= highIncome ? 'high income' : gni >= 4000 ? 'below threshold' : 'low income';
+    const vsColor = gni >= highIncome ? '#22c55e' : gni >= 4000 ? '#f59e0b' : '#ef4444';
+
+    const option = buildBulletOption({
+      value: Math.min(gni, maxScale),
+      min: 0, max: maxScale, zones,
+      unitLabel: '2017 PPP USD',
+      formatFn: () => fmtGni(gni),
+      vsText, vsColor,
+    });
+    chartGni.setOption(option, true);
+  }
+
+  function renderCo2(co2Entry) {
+    const el = document.getElementById('gauge-co2');
+    if (!co2Entry || co2Entry.co2_per_capita_tco2 == null) {
+      showNoData(el, chartCo2);
+      setStatus('co2-status', 'gray');
+      return;
+    }
+    hideNoData(el);
+
+    const co2 = co2Entry.co2_per_capita_tco2;
+    const parisLimit = 2.0;
+    const maxScale = 20;
+
+    const zones = makeZones(0, maxScale, [
+      { maxVal: parisLimit, color: '#22c55e' },
+      { maxVal: 7,          color: '#f59e0b' },
+      { maxVal: maxScale,   color: '#ef4444' },
+    ]);
+    const level = co2 <= parisLimit ? 'green' : co2 <= 7 ? 'amber' : 'red';
+    const co2Pct = Math.round((co2 / parisLimit - 1) * 100);
+    setStatus('co2-status', level, level === 'green' ? null : `${co2Pct}% above target`);
+
+    // #18: vs-limit callout
+    const ratio   = (co2 / parisLimit).toFixed(1);
+    const vsText  = co2 <= parisLimit ? 'within Paris budget' : `\u00d7${ratio} above threshold`;
+    const vsColor = co2 <= parisLimit ? '#22c55e' : co2 <= 7 ? '#f59e0b' : '#ef4444';
+
+    const option = buildBulletOption({
+      value: Math.min(co2, maxScale),
+      min: 0, max: maxScale, zones,
+      unitLabel: 't CO\u2082 / person',
+      formatFn: () => fmt(co2, 1) + ' t',
+      vsText, vsColor,
+      overflow: co2 > maxScale,
+    });
+    chartCo2.setOption(option, true);
+  }
+
+  function renderCh4(ch4Entry) {
+    const el = document.getElementById('gauge-ch4');
+    if (!ch4Entry || ch4Entry.ch4_per_capita_kg == null) {
+      showNoData(el, chartCh4);
+      setStatus('ch4-status', 'gray');
+      return;
+    }
+    hideNoData(el);
+
+    const ch4 = ch4Entry.ch4_per_capita_kg;
+    const minScale = -250;
+    const maxScale = 300;
+
+    const zones = makeZones(minScale, maxScale, [
+      { maxVal: 0,        color: '#16a34a' },
+      { maxVal: 50,       color: '#22c55e' },
+      { maxVal: 200,      color: '#f59e0b' },
+      { maxVal: maxScale, color: '#ef4444' },
+    ]);
+
+    const level = ch4 < 0 ? 'green-dark' : ch4 < 50 ? 'green' : ch4 < 200 ? 'amber' : 'red';
+    const ch4Pct = Math.round((ch4 / 50 - 1) * 100);
+    setStatus('ch4-status', level, (level === 'green' || level === 'green-dark') ? null : `${ch4Pct}% above target`);
+
+    // #18: vs-limit callout
+    let vsText, vsColor;
+    if (ch4 < 0)       { vsText = 'net sink';          vsColor = '#16a34a'; }
+    else if (ch4 < 50) { vsText = 'within safe range'; vsColor = '#22c55e'; }
+    else if (ch4 < 200){ vsText = 'moderate level';    vsColor = '#f59e0b'; }
+    else               { vsText = 'high emissions';    vsColor = '#ef4444'; }
+
+    const displayVal = Math.min(Math.max(ch4, minScale), maxScale);
+    const option = buildBulletOption({
+      value: displayVal,
+      min: minScale, max: maxScale, zones,
+      unitLabel: 'kg CH\u2084 / person',
+      formatFn: () => (ch4 < 0 ? '' : '+') + fmt(ch4, 1) + ' kg',
+      vsText, vsColor,
+    });
+    chartCh4.setOption(option, true);
+  }
+
+  function renderGdpStat(gdpEntry) {
+    const numEl   = document.getElementById('gdp-number');
+    const lblEl   = document.getElementById('gdp-label');
+    const yearEl  = document.getElementById('gdp-year');
+
+    if (!gdpEntry || gdpEntry.gdp_total_usd == null) {
+      document.getElementById('gdp-stat-area').innerHTML =
+        '<div class="stat-nodata"><div class="nd-icon" style="font-size:2rem;opacity:.4">&#9680;</div><span style="font-size:.85rem;color:var(--text-muted)">No data available</span></div>';
+      yearEl.textContent = '';
+      return;
+    }
+
+    numEl.textContent = '$' + fmtBillion(gdpEntry.gdp_total_usd);
+    lblEl.textContent = 'World Bank \u00b7 current USD';
+    yearEl.textContent = gdpEntry.year || '';
+  }
+
+  function renderGdi(gdiEntry) {
+    const el = document.getElementById('gauge-gdi');
+    if (!gdiEntry || gdiEntry.gdi == null) {
+      showNoData(el, chartGdi);
+      setStatus('gdi-status', 'gray');
+      return;
+    }
+    hideNoData(el);
+
+    const gdi = gdiEntry.gdi;
+    const minScale = 0.4;
+    const maxScale = 1.10;
+    const threshold = 0.975;
+
+    const zones = makeZones(minScale, maxScale, [
+      { maxVal: 0.85,      color: '#ef4444' },
+      { maxVal: 0.90,      color: '#f59e0b' },
+      { maxVal: threshold, color: '#86efac' },
+      { maxVal: maxScale,  color: '#22c55e' },
+    ]);
+
+    const level = gdi >= threshold ? 'green' : gdi >= 0.90 ? 'amber' : 'red';
+    const gdiPct = Math.round((1 - gdi / threshold) * 100);
+    setStatus('gdi-status', level, level === 'green' ? null : `${gdiPct}% below target`);
+
+    let vsText, vsColor;
+    if (gdi > 1.0)           { vsText = 'women lead';   vsColor = '#22c55e'; }
+    else if (gdi >= threshold){ vsText = 'gender parity'; vsColor = '#22c55e'; }
+    else if (gdi >= 0.90)    { vsText = 'near parity';  vsColor = '#86efac'; }
+    else                     { vsText = `${((1 - gdi) * 100).toFixed(0)}% gap`; vsColor = '#ef4444'; }
+
+    const option = buildBulletOption({
+      value: Math.min(Math.max(gdi, minScale), maxScale),
+      min: minScale, max: maxScale, zones,
+      unitLabel: 'GDI (0\u20131+)',
+      formatFn: () => Number(gdi).toFixed(3),
+      vsText, vsColor,
+    });
+    chartGdi.setOption(option, true);
+  }
+
+  function renderGii(giiEntry) {
+    const el = document.getElementById('gauge-gii');
+    if (!giiEntry || giiEntry.gii == null) {
+      showNoData(el, chartGii);
+      setStatus('gii-status', 'gray');
+      return;
+    }
+    hideNoData(el);
+
+    const gii = giiEntry.gii;
+    const target = 0.10;
+
+    const zones = makeZones(0, 1, [
+      { maxVal: target, color: '#22c55e' },
+      { maxVal: 0.30,   color: '#f59e0b' },
+      { maxVal: 1.0,    color: '#ef4444' },
+    ]);
+
+    const level = gii <= target ? 'green' : gii <= 0.30 ? 'amber' : 'red';
+    const giiPct = Math.round((gii / target - 1) * 100);
+    setStatus('gii-status', level, level === 'green' ? null : `${giiPct}% above target`);
+
+    let vsText, vsColor;
+    if (gii <= target)      { vsText = 'safe zone';                            vsColor = '#22c55e'; }
+    else if (gii <= 0.30)   { vsText = `\u00d7${(gii / target).toFixed(1)} above threshold`; vsColor = '#f59e0b'; }
+    else                    { vsText = `\u00d7${(gii / target).toFixed(1)} above threshold`; vsColor = '#ef4444'; }
+
+    const option = buildBulletOption({
+      value: gii,
+      min: 0, max: 1, zones,
+      unitLabel: 'GII (0\u20131)',
+      formatFn: v => Number(v).toFixed(3),
+      vsText, vsColor,
+    });
+    chartGii.setOption(option, true);
+  }
+
+  // ── New MLSI gauge renderers ─────────────────────────────────────────────
+
+  function renderSchooling(hdiEntry) {
+    const el = document.getElementById('gauge-schooling');
+    if (!hdiEntry || hdiEntry.mean_schooling == null) {
+      showNoData(el, chartSchooling);
+      setStatus('schooling-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = hdiEntry.mean_schooling;
+    const maxScale = 16;
+    const zones = makeZones(0, maxScale, [
+      { maxVal: 8, color: '#ef4444' }, { maxVal: 12, color: '#f59e0b' },
+      { maxVal: 15, color: '#86efac' }, { maxVal: maxScale, color: '#22c55e' },
+    ]);
+    const level = val >= 12 ? 'green' : val >= 8 ? 'amber' : 'red';
+    const schlPct = Math.round((1 - val / 12) * 100);
+    setStatus('schooling-status', level, level === 'green' ? null : `${schlPct}% below target`);
+    const vsText  = val >= 12 ? 'on target' : `${fmt(val / 12 * 100, 0)}% of target`;
+    const vsColor = val >= 12 ? '#22c55e' : val >= 8 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+      unitLabel: 'mean years of school', formatFn: v => fmt(v, 1) + ' yrs', vsText, vsColor });
+    chartSchooling.setOption(option, true);
+  }
+
+  function renderLu4(lu4Entry) {
+    const el = document.getElementById('gauge-lu4');
+    if (!lu4Entry || lu4Entry.value == null) {
+      showNoData(el, chartLu4);
+      setStatus('lu4-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = lu4Entry.value;
+    const maxScale = 60;
+    const zones = makeZones(0, maxScale, [
+      { maxVal: 5, color: '#22c55e' }, { maxVal: 10, color: '#f59e0b' },
+      { maxVal: maxScale, color: '#ef4444' },
+    ]);
+    const level = val <= 5 ? 'green' : val <= 10 ? 'amber' : 'red';
+    const lu4Pct = Math.round((val / 5 - 1) * 100);
+    setStatus('lu4-status', level, level === 'green' ? null : `${lu4Pct}% above target`);
+    const vsText  = val <= 5 ? 'safe zone' : `${fmt(val / 10 * 100, 0)}% of danger threshold`;
+    const vsColor = val <= 5 ? '#22c55e' : val <= 10 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+      unitLabel: '% labour underutilized', formatFn: v => fmt(v, 1) + '%', vsText, vsColor, dangerMarkLine: 10 });
+    chartLu4.setOption(option, true);
+    const yearTag = lu4Entry.year ? ` (${lu4Entry.year})` : '';
+    const footer = document.querySelector('[data-card="lu4"] .limit-label span');
+    if (footer && lu4Entry.year) footer.textContent = `Danger: 10% (lower is better${yearTag})`;
+  }
+
+  function renderNeet(neetEntry) {
+    const el = document.getElementById('gauge-neet');
+    if (!neetEntry || neetEntry.value == null) {
+      showNoData(el, chartNeet);
+      setStatus('neet-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = neetEntry.value;
+    const maxScale = 60;
+    const zones = makeZones(0, maxScale, [
+      { maxVal: 10, color: '#22c55e' }, { maxVal: 15, color: '#f59e0b' },
+      { maxVal: maxScale, color: '#ef4444' },
+    ]);
+    const level = val <= 10 ? 'green' : val <= 15 ? 'amber' : 'red';
+    const neetPct = Math.round((val / 10 - 1) * 100);
+    setStatus('neet-status', level, level === 'green' ? null : `${neetPct}% above target`);
+    const vsText  = val <= 10 ? 'safe zone' : `${fmt(val / 15 * 100, 0)}% of danger threshold`;
+    const vsColor = val <= 10 ? '#22c55e' : val <= 15 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+      unitLabel: '% youth NEET (15–24)', formatFn: v => fmt(v, 1) + '%', vsText, vsColor, dangerMarkLine: 15 });
+    chartNeet.setOption(option, true);
+  }
+
+  function renderWage(wageEntry) {
+    const el = document.getElementById('gauge-wage');
+    if (!wageEntry || wageEntry.value == null) {
+      showNoData(el, chartWage);
+      setStatus('wage-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = wageEntry.value;
+    const maxScale = 80000;
+    const zones = makeZones(0, maxScale, [
+      { maxVal: 15000, color: '#ef4444' }, { maxVal: 35000, color: '#f59e0b' },
+      { maxVal: 60000, color: '#86efac' }, { maxVal: maxScale, color: '#22c55e' },
+    ]);
+    const level = val >= 35000 ? 'green' : val >= 15000 ? 'amber' : 'red';
+    const wagePct = Math.round((1 - val / 35000) * 100);
+    setStatus('wage-status', level, level === 'green' ? null : `${wagePct}% below target`);
+    const vsText  = val >= 35000 ? 'above target' : val >= 15000 ? `${fmt(val / 35000 * 100, 0)}% of target` : 'below $15k';
+    const vsColor = val >= 35000 ? '#22c55e' : val >= 15000 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+      unitLabel: 'avg annual wage (USD)', formatFn: () => fmtGni(val), vsText, vsColor });
+    chartWage.setOption(option, true);
+  }
+
+  function renderProd(prodEntry) {
+    const el = document.getElementById('gauge-prod');
+    if (!prodEntry || prodEntry.value == null) {
+      showNoData(el, chartProd);
+      setStatus('prod-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = prodEntry.value;
+    const maxScale = 200000;
+    const zones = makeZones(0, maxScale, [
+      { maxVal: 30000, color: '#ef4444' }, { maxVal: 70000, color: '#f59e0b' },
+      { maxVal: 120000, color: '#86efac' }, { maxVal: maxScale, color: '#22c55e' },
+    ]);
+    const level = val >= 70000 ? 'green' : val >= 30000 ? 'amber' : 'red';
+    const prodPct = Math.round((1 - val / 70000) * 100);
+    setStatus('prod-status', level, level === 'green' ? null : `${prodPct}% below target`);
+    const vsText  = val >= 70000 ? 'above target' : val >= 30000 ? `${fmt(val / 70000 * 100, 0)}% of target` : 'below $30k';
+    const vsColor = val >= 70000 ? '#22c55e' : val >= 30000 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+      unitLabel: 'output/worker (2021 PPP)', formatFn: () => fmtGni(val), vsText, vsColor });
+    chartProd.setOption(option, true);
+  }
+
+  function renderPoverty(povEntry) {
+    const el = document.getElementById('gauge-poverty');
+    if (!povEntry || povEntry.value == null) {
+      showNoData(el, chartPoverty);
+      setStatus('poverty-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = povEntry.value;
+    const maxScale = 100;
+    const zones = makeZones(0, maxScale, [
+      { maxVal: 10, color: '#22c55e' }, { maxVal: 20, color: '#f59e0b' },
+      { maxVal: maxScale, color: '#ef4444' },
+    ]);
+    const level = val <= 10 ? 'green' : val <= 20 ? 'amber' : 'red';
+    const povPct = Math.round((val / 10 - 1) * 100);
+    setStatus('poverty-status', level, level === 'green' ? null : `${povPct}% above target`);
+    const vsText  = val <= 10 ? 'below 10% target' : `${fmt(val / 20 * 100, 0)}% of danger threshold`;
+    const vsColor = val <= 10 ? '#22c55e' : val <= 20 ? '#f59e0b' : '#ef4444';
+    const line = povEntry.poverty_line;
+    const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+      unitLabel: line ? `% below $${line}/day` : '% below poverty line',
+      formatFn: v => fmt(v, 1) + '%', vsText, vsColor, dangerMarkLine: 20 });
+    chartPoverty.setOption(option, true);
+    const lbl = document.getElementById('poverty-limit-label');
+    if (lbl && line) lbl.textContent = `Danger: 20% (line: $${line}/day)`;
+  }
+
+  function renderMpi(mpiEntry) {
+    const el = document.getElementById('gauge-mpi');
+    if (!mpiEntry || mpiEntry.mpi == null) {
+      showNoData(el, chartMpi);
+      setStatus('mpi-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = mpiEntry.mpi;
+    const maxScale = 0.4;
+    const zones = makeZones(0, maxScale, [
+      { maxVal: 0.01, color: '#22c55e' }, { maxVal: 0.1, color: '#f59e0b' },
+      { maxVal: maxScale, color: '#ef4444' },
+    ]);
+    const level = val <= 0.01 ? 'green' : val <= 0.1 ? 'amber' : 'red';
+    const mpiPct = Math.round((val / 0.01 - 1) * 100);
+    setStatus('mpi-status', level, level === 'green' ? null : `${mpiPct}% above target`);
+    const vsText  = val <= 0.01 ? 'safe zone' : `${fmt(val / 0.1 * 100, 0)}% of danger threshold`;
+    const vsColor = val <= 0.01 ? '#22c55e' : val <= 0.1 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+      unitLabel: 'MPI score (0–1)', formatFn: v => Number(v).toFixed(3), vsText, vsColor });
+    chartMpi.setOption(option, true);
+  }
+
+  function renderMatFp(matFpEntry) {
+    const el = document.getElementById('gauge-matfp');
+    if (!matFpEntry || matFpEntry.mf_per_capita_t == null) {
+      showNoData(el, chartMatFp);
+      setStatus('matfp-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = matFpEntry.mf_per_capita_t;
+    const maxScale = 50;
+    const zones = makeZones(0, maxScale, [
+      { maxVal: 8, color: '#22c55e' }, { maxVal: 16, color: '#f59e0b' },
+      { maxVal: maxScale, color: '#ef4444' },
+    ]);
+    const level = val <= 8 ? 'green' : val <= 16 ? 'amber' : 'red';
+    const matfpPct = Math.round((val / 8 - 1) * 100);
+    setStatus('matfp-status', level, level === 'green' ? null : `${matfpPct}% above target`);
+    const ratio   = (val / 8).toFixed(1);
+    const vsText  = val <= 8 ? 'within safe range' : `×${ratio} above safe range`;
+    const vsColor = val <= 8 ? '#22c55e' : val <= 16 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
+      unitLabel: 't material / person', formatFn: v => fmt(v, 1) + ' t', vsText, vsColor, dangerMarkLine: 30 });
+    chartMatFp.setOption(option, true);
+  }
+
+  function renderHale(haleEntry) {
+    const el = document.getElementById('gauge-hale');
+    if (!haleEntry || haleEntry.value == null) {
+      showNoData(el, chartHale);
+      setStatus('hale-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = haleEntry.value;
+    const minScale = 40; const maxScale = 80;
+    const zones = makeZones(minScale, maxScale, [
+      { maxVal: 60, color: '#ef4444' }, { maxVal: 70, color: '#f59e0b' },
+      { maxVal: 75, color: '#86efac' }, { maxVal: maxScale, color: '#22c55e' },
+    ]);
+    const level = val >= 70 ? 'green' : val >= 60 ? 'amber' : 'red';
+    const halePct = Math.round((1 - val / 70) * 100);
+    setStatus('hale-status', level, level === 'green' ? null : `${halePct}% below target`);
+    const vsText  = val >= 70 ? 'above target' : `${fmt(val / 70 * 100, 0)}% of 70-yr target`;
+    const vsColor = val >= 70 ? '#22c55e' : val >= 60 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({
+      value: Math.min(Math.max(val, minScale), maxScale), min: minScale, max: maxScale, zones,
+      unitLabel: 'healthy life years', formatFn: v => fmt(v, 1) + ' yrs', vsText, vsColor });
+    chartHale.setOption(option, true);
+  }
+
+  function renderUhc(uhcEntry) {
+    const el = document.getElementById('gauge-uhc');
+    if (!uhcEntry || uhcEntry.value == null) {
+      showNoData(el, chartUhc);
+      setStatus('uhc-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = uhcEntry.value;
+    const zones = makeZones(0, 100, [
+      { maxVal: 70, color: '#ef4444' }, { maxVal: 90, color: '#f59e0b' },
+      { maxVal: 95, color: '#86efac' }, { maxVal: 100, color: '#22c55e' },
+    ]);
+    const level = val >= 90 ? 'green' : val >= 70 ? 'amber' : 'red';
+    const uhcPct = Math.round((1 - val / 90) * 100);
+    setStatus('uhc-status', level, level === 'green' ? null : `${uhcPct}% below target`);
+    const vsText  = val >= 90 ? 'above target' : `${fmt(val / 90 * 100, 0)}% of 90% target`;
+    const vsColor = val >= 90 ? '#22c55e' : val >= 70 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
+      unitLabel: 'UHC coverage index', formatFn: v => fmt(v, 0) + '%', vsText, vsColor });
+    chartUhc.setOption(option, true);
+  }
+
+  function renderBii(biiEntry) {
+    const el = document.getElementById('gauge-bii');
+    if (!biiEntry || biiEntry.value == null) {
+      showNoData(el, chartBii);
+      setStatus('bii-status', 'gray'); return;
+    }
+    hideNoData(el);
+    const val = biiEntry.value;
+    const zones = makeZones(0, 100, [
+      { maxVal: 70, color: '#ef4444' }, { maxVal: 85, color: '#f59e0b' },
+      { maxVal: 95, color: '#86efac' }, { maxVal: 100, color: '#22c55e' },
+    ]);
+    const level = val >= 85 ? 'green' : val >= 70 ? 'amber' : 'red';
+    const biiPct = Math.round((1 - val / 85) * 100);
+    setStatus('bii-status', level, level === 'green' ? null : `${biiPct}% below target`);
+    const vsText  = val >= 85 ? 'above target' : `${fmt(val / 85 * 100, 0)}% of 85% target`;
+    const vsColor = val >= 85 ? '#22c55e' : val >= 70 ? '#f59e0b' : '#ef4444';
+    const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
+      unitLabel: 'BII score', formatFn: v => fmt(v, 1), vsText, vsColor });
+    chartBii.setOption(option, true);
+  }
+
+  // ── GNSD composite score ─────────────────────────────────────────────────
+  function computeGNSD(iso3) {
+    function normHigh(val, bad, mid, good) {
+      if (val == null || !isFinite(val)) return null;
+      if (val <= bad)  return 0;
+      if (val <= mid)  return 50 * (val - bad) / (mid - bad);
+      if (val <= good) return 50 + 50 * (val - mid) / (good - mid);
+      return 100;
+    }
+    function normLow(val, good, mid, bad) {
+      if (val == null || !isFinite(val)) return null;
+      if (val <= good) return 100;
+      if (val <= mid)  return 50 + 50 * (mid - val) / (mid - good);
+      if (val <= bad)  return 50 * (bad - val) / (bad - mid);
+      return 0;
+    }
+    const hdi   = Cache.hdi?.data?.[iso3];
+    const lu4   = Cache.lu4?.data?.[iso3];
+    const neet  = Cache.neet?.data?.[iso3];
+    const wage  = Cache.wage?.data?.[iso3];
+    const prod  = Cache.productivity?.data?.[iso3];
+    const pov   = Cache.poverty_rate?.data?.[iso3];
+    const mpi   = Cache.mpi?.data?.[iso3];
+    const matfp = Cache.material_footprint?.data?.[iso3];
+    const hale  = Cache.hale?.data?.[iso3];
+    const uhc   = Cache.uhc_coverage?.data?.[iso3];
+    const co2   = Cache.co2?.data?.[iso3];
+    const eod   = Cache.ecological_footprint?.data?.[iso3];
+    const bii   = Cache.bii?.data?.[iso3];
+
+    const pillarO   = [normHigh(hdi?.mean_schooling, 8, 12, 15), normLow(lu4?.value, 5, 10, 25), normLow(neet?.value, 10, 15, 30)];
+    const pillarI   = [normHigh(wage?.value, 15000, 35000, 60000), normHigh(prod?.value, 30000, 70000, 120000), normLow(pov?.value, 10, 20, 40)];
+    const pillarN   = [normLow(mpi?.mpi, 0.01, 0.1, 0.35), normLow(matfp?.mf_per_capita_t, 8, 16, 30)];
+    const pillarEcS = [normHigh(hale?.value, 60, 70, 75), normHigh(uhc?.value, 70, 90, 100)];
+    const eodNorm   = (eod?.ecological_footprint != null && eod?.biocapacity != null)
+      ? normLow(eod.ecological_footprint, eod.biocapacity, eod.biocapacity * 1.5, eod.biocapacity * 3) : null;
+    const pillarEnS = [normLow(co2?.co2_per_capita_tco2, 2, 7, 20), eodNorm, normHigh(bii?.value, 70, 85, 95)];
+
+    function avgPillar(vals) {
+      const valid = vals.filter(v => v != null);
+      return valid.length ? valid.reduce((a, b) => a + b, 0) / valid.length : null;
+    }
+    const pillarScores = {
+      O:   avgPillar(pillarO),
+      I:   avgPillar(pillarI),
+      N:   avgPillar(pillarN),
+      EcS: avgPillar(pillarEcS),
+      EnS: avgPillar(pillarEnS),
+    };
+    const validPillarVals = Object.values(pillarScores).filter(v => v != null);
+    if (!validPillarVals.length) return null;
+    const mlsiAvg = validPillarVals.reduce((a, b) => a + b, 0) / validPillarVals.length;
+
+    // Count non-null indicators for data-completeness disclosure
+    const allIndicators = [...pillarO, ...pillarI, ...pillarN, ...pillarEcS, ...pillarEnS];
+    const indicatorCount = allIndicators.filter(v => v != null).length;
+    const indicatorTotal = allIndicators.length;
+
+    const gni = hdi?.gni_per_capita;
+    let gdpNorm = null;
+    if (gni != null && isFinite(gni) && gni > 0) {
+      gdpNorm = Math.min(100, Math.max(0,
+        (Math.log10(gni) - Math.log10(1000)) / (Math.log10(80000) - Math.log10(1000)) * 100));
+    }
+    // UNEN white paper weights: GDP 40%, MLSI 60% — GDP is a means, not the end
+    let gnsd = gdpNorm != null ? 0.4 * gdpNorm + 0.6 * mlsiAvg : mlsiAvg;
+
+    // Ecological floor cap: environmental overshoot is non-tradeable.
+    // A country in the danger zone on EnS (score < 40) cannot score above D (60).
+    let ecoCapped = false;
+    if (pillarScores.EnS != null && pillarScores.EnS < 40 && gnsd > 60) {
+      gnsd = 60;
+      ecoCapped = true;
+    }
+
+    return { gnsd, pillarScores, indicatorCount, indicatorTotal, ecoCapped };
+  }
+
+  function updateApexBar(iso3) {
+    const hdi = Cache.hdi?.data?.[iso3];
+    const gdp = Cache.gdp?.data?.[iso3];
+    lastGnsdResult = computeGNSD(iso3);
+    const gnsdResult = lastGnsdResult;
+    const gnsd = gnsdResult?.gnsd ?? null;
+
+    const gnsdEl = document.getElementById('apex-gnsd');
+    if (gnsdEl) {
+      const numEl  = gnsdEl.querySelector('.gnsd-number');
+      const fillEl = gnsdEl.querySelector('.gnsd-bar-fill');
+      const ofEl   = gnsdEl.querySelector('.gnsd-of');
+      if (gnsd != null) {
+        const v = Math.round(gnsd);
+        const cls = v >= 70 ? 'gnsd-green' : v >= 40 ? 'gnsd-amber' : 'gnsd-red';
+        if (numEl)  { numEl.textContent = v; numEl.className = 'gnsd-number ' + cls; }
+        if (fillEl) { fillEl.style.width = v + '%'; fillEl.className = 'gnsd-bar-fill ' + cls; }
+        if (ofEl) {
+          const capNote = gnsdResult.ecoCapped ? ' · ⚠ eco cap' : '';
+          const dataNote = gnsdResult.indicatorCount < gnsdResult.indicatorTotal
+            ? ` · ${gnsdResult.indicatorCount}/${gnsdResult.indicatorTotal} indicators` : '';
+          ofEl.textContent = '/ 100' + capNote + dataNote;
+        }
+      } else {
+        if (numEl)  { numEl.textContent = '—'; numEl.className = 'gnsd-number'; }
+        if (fillEl) { fillEl.style.width = '0%'; fillEl.className = 'gnsd-bar-fill'; }
+        if (ofEl)   { ofEl.textContent = 'insufficient data'; }
+      }
+    }
+    const gniEl = document.getElementById('apex-gni');
+    if (gniEl) {
+      const gni = hdi?.gni_per_capita;
+      gniEl.innerHTML = gni != null
+        ? `<div class="apex-stat-label">GNI per Capita</div><div class="apex-stat-value">${fmtGni(gni)}</div><div class="apex-stat-sub">2017 PPP</div>`
+        : `<div class="apex-stat-label">GNI per Capita</div><div class="apex-stat-value" style="color:var(--text-muted);font-size:1.5rem">—</div><div class="apex-stat-sub">no data</div>`;
+    }
+    const gdpEl = document.getElementById('apex-gdp');
+    if (gdpEl) {
+      gdpEl.innerHTML = gdp?.gdp_total_usd != null
+        ? `<div class="apex-stat-label">Total GDP</div><div class="apex-stat-value">$${fmtBillion(gdp.gdp_total_usd)}</div><div class="apex-stat-sub">${gdp.year} · current USD</div>`
+        : `<div class="apex-stat-label">Total GDP</div><div class="apex-stat-value" style="color:var(--text-muted);font-size:1.5rem">—</div><div class="apex-stat-sub">no data</div>`;
+    }
+    document.getElementById('apex-bar')?.classList.add('visible');
+  }
+
+  // ── Scorecard strip (#13) ────────────────────────────────────────────────
+  const PILLARS = [
+    { code: 'O',   title: 'Opportunity',   cards: ['schooling', 'lu4', 'neet'] },
+    { code: 'I',   title: 'Income',        cards: ['wage', 'prod', 'poverty'] },
+    { code: 'N',   title: 'Necessities',   cards: ['mpi', 'matfp'] },
+    { code: 'EcS', title: 'Security',      cards: ['hale', 'uhc'] },
+    { code: 'EnS', title: 'Environment',   cards: ['co2', 'ch4', 'footprint'] },
+    { code: 'Eq',  title: 'Gender Equity', cards: ['gdi', 'gii'] },
+  ];
+
+  function renderPillarScorecard() {
+    let counts = { safe: 0, amber: 0, danger: 0, gray: 0 };
+    const pillarResults = [];
+
+    PILLARS.forEach(p => {
+      const cardEls = p.cards
+        .map(k => document.querySelector('[data-card="' + k + '"]'))
+        .filter(Boolean);
+
+      const statuses = cardEls.map(c => ({
+        klass: [...c.classList].find(x => x.startsWith('card-')) || 'card-gray',
+        title: c.querySelector('.metric-title')?.textContent.trim() || '',
+        badge: c.querySelector('.status-badge')?.textContent.trim() || '—',
+      }));
+
+      let level;
+      if (statuses.some(s => s.klass === 'card-danger'))                           level = 'danger';
+      else if (statuses.some(s => s.klass === 'card-amber'))                       level = 'amber';
+      else if (statuses.some(s => s.klass === 'card-safe' || s.klass === 'card-sink')) level = 'safe';
+      else                                                                          level = 'gray';
+
+      counts[level]++;
+      const safeCount   = statuses.filter(s => s.klass === 'card-safe' || s.klass === 'card-sink').length;
+      const dangerCount = statuses.filter(s => s.klass === 'card-danger').length;
+      const rankOf = k => ({ 'card-danger': 3, 'card-amber': 2, 'card-safe': 1, 'card-sink': 1 })[k] || 0;
+      const worstCard   = statuses.slice().sort((a, b) => rankOf(b.klass) - rankOf(a.klass))[0];
+      const worstMetric = worstCard && rankOf(worstCard.klass) >= 2
+        ? `${worstCard.title} (${worstCard.badge})`
+        : null;
+      pillarResults.push({ title: p.title, level, safeCount, dangerCount, total: statuses.length, worstMetric, worstRatio: rankOf(worstCard?.klass || '') });
+    });
+
+    renderNarrativeHeadline(counts, pillarResults);
+  }
+
+  function gnsdToLetter(score) {
+    if (score >= 90) return { letter: 'A', cls: 'grade-A' };
+    if (score >= 80) return { letter: 'B', cls: 'grade-B' };
+    if (score >= 70) return { letter: 'C', cls: 'grade-C' };
+    if (score >= 60) return { letter: 'D', cls: 'grade-D' };
+    return { letter: 'F', cls: 'grade-F' };
+  }
+
+  function renderNarrativeHeadline(counts, pillarResults) {
+    const el = document.getElementById('narrative-headline');
+    if (!el) return;
+
+    const countryName = document.getElementById('country-input')?.value?.trim() || '';
+    const gnsdTxt = document.querySelector('#apex-gnsd .gnsd-number')?.textContent?.trim();
+    const gnsdNum = Number(gnsdTxt);
+    const hasGnsd = Number.isFinite(gnsdNum);
+
+    const totalScored = counts.safe + counts.amber + counts.danger;
+    if (!countryName || totalScored === 0) {
+      el.innerHTML = '';
+      return;
+    }
+
+    // ── Line 1: country + letter + score sub ─────────────────────────────
+    const { letter, cls } = hasGnsd ? gnsdToLetter(gnsdNum) : { letter: '?', cls: '' };
+    const ecoCap = lastGnsdResult?.ecoCapped;
+    const dataShortfall = lastGnsdResult && lastGnsdResult.indicatorCount < lastGnsdResult.indicatorTotal
+      ? ` · ${lastGnsdResult.indicatorCount}/${lastGnsdResult.indicatorTotal} indicators` : '';
+    const capNote = ecoCap ? `<span class="nh-cap-note" title="Score capped: Environmental Security in danger zone"> ⚠ eco cap</span>` : '';
+    const scoreSub = hasGnsd
+      ? `<span class="nh-score-sub">GNSD ${Math.round(gnsdNum)}/100${dataShortfall}</span>${capNote}` : '';
+    const line1 =
+      `<div class="nh-row nh-row-headline">` +
+        `<span class="nh-country">${countryName}</span>` +
+        `<span class="nh-letter ${cls}">${letter}</span>` +
+        scoreSub +
+      `</div>`;
+
+    // ── Line 2: subject-first pillar verdict ─────────────────────────────
+    const dangerPillars = pillarResults.filter(p => p.level === 'danger');
+    const amberPillars  = pillarResults.filter(p => p.level === 'amber');
+    const safePillars   = pillarResults.filter(p => p.level === 'safe');
+
+    function nameList(pillars, cap = 2) {
+      const shown = pillars.slice(0, cap).map(p => p.title);
+      const extra = pillars.length - shown.length;
+      const joined = shown.join(' & ');
+      return extra > 0 ? `${joined} +${extra} more` : joined;
+    }
+
+    const verdictParts = [];
+    if (dangerPillars.length)
+      verdictParts.push(`<span class="nh-danger">${nameList(dangerPillars)}</span> overshoot.`);
+    if (amberPillars.length)
+      verdictParts.push(`<span class="nh-amber">${nameList(amberPillars)}</span> in caution.`);
+    if (safePillars.length)
+      verdictParts.push(`<span class="nh-safe">${nameList(safePillars)}</span> on target.`);
+
+    const line2 = verdictParts.length
+      ? `<div class="nh-row nh-row-verdict">${verdictParts.join(' ')}</div>`
+      : '';
+
+    // ── Line 3: worst-gap metric ──────────────────────────────────────────
+    let worstText = '';
+    let worstRatio = 0;
+    pillarResults.forEach(p => {
+      if (p.worstMetric && p.worstRatio > worstRatio) {
+        worstRatio = p.worstRatio;
+        worstText = p.worstMetric;
+      }
+    });
+    const line3 = worstText
+      ? `<div class="nh-row nh-row-gap">Worst gap: ${worstText}</div>`
+      : '';
+
+    el.innerHTML = line1 + line2 + line3;
+  }
+
+    // ── Country meta ─────────────────────────────────────────────────────────
+  function updateMeta(iso3) {
+    const countries = Cache.countries?.countries || [];
+    const entry = countries.find(c => c.iso3 === iso3);
+    const eod = Cache.ecological_footprint?.data?.[iso3];
+
+    document.getElementById('meta-region').textContent =
+      entry?.region ? `Region: ${entry.region}` : '';
+    document.getElementById('meta-income').textContent =
+      entry?.income_group ? `Income: ${entry.income_group}` : '';
+    document.getElementById('meta-pop').textContent =
+      eod?.population_millions ? `Population: ${Number(eod.population_millions).toFixed(1)}M` : '';
+  }
+
+  // ── Country flag (#14) ───────────────────────────────────────────────────
+  const ISO3_TO_ISO2 = {
+    AFG:'af',ALB:'al',DZA:'dz',AND:'ad',AGO:'ao',ATG:'ag',ARG:'ar',ARM:'am',
+    AUS:'au',AUT:'at',AZE:'az',BHS:'bs',BHR:'bh',BGD:'bd',BRB:'bb',BLR:'by',
+    BEL:'be',BLZ:'bz',BEN:'bj',BTN:'bt',BOL:'bo',BIH:'ba',BWA:'bw',BRA:'br',
+    BRN:'bn',BGR:'bg',BFA:'bf',BDI:'bi',CPV:'cv',KHM:'kh',CMR:'cm',CAN:'ca',
+    CAF:'cf',TCD:'td',CHL:'cl',CHN:'cn',COL:'co',COM:'km',COD:'cd',COG:'cg',
+    CRI:'cr',CIV:'ci',HRV:'hr',CUB:'cu',CYP:'cy',CZE:'cz',DNK:'dk',DJI:'dj',
+    DOM:'do',ECU:'ec',EGY:'eg',SLV:'sv',GNQ:'gq',ERI:'er',EST:'ee',SWZ:'sz',
+    ETH:'et',FJI:'fj',FIN:'fi',FRA:'fr',GAB:'ga',GMB:'gm',GEO:'ge',DEU:'de',
+    GHA:'gh',GRC:'gr',GTM:'gt',GIN:'gn',GNB:'gw',GUY:'gy',HTI:'ht',HND:'hn',
+    HUN:'hu',ISL:'is',IND:'in',IDN:'id',IRN:'ir',IRQ:'iq',IRL:'ie',ISR:'il',
+    ITA:'it',JAM:'jm',JPN:'jp',JOR:'jo',KAZ:'kz',KEN:'ke',PRK:'kp',KOR:'kr',
+    KWT:'kw',KGZ:'kg',LAO:'la',LVA:'lv',LBN:'lb',LSO:'ls',LBR:'lr',LBY:'ly',
+    LIE:'li',LTU:'lt',LUX:'lu',MDG:'mg',MWI:'mw',MYS:'my',MDV:'mv',MLI:'ml',
+    MLT:'mt',MRT:'mr',MUS:'mu',MEX:'mx',MDA:'md',MCO:'mc',MNG:'mn',MNE:'me',
+    MAR:'ma',MOZ:'mz',MMR:'mm',NAM:'na',NPL:'np',NLD:'nl',NZL:'nz',NIC:'ni',
+    NER:'ne',NGA:'ng',MKD:'mk',NOR:'no',OMN:'om',PAK:'pk',PAN:'pa',PNG:'pg',
+    PRY:'py',PER:'pe',PHL:'ph',POL:'pl',PRT:'pt',QAT:'qa',ROU:'ro',RUS:'ru',
+    RWA:'rw',WSM:'ws',SAU:'sa',SEN:'sn',SRB:'rs',SLE:'sl',SGP:'sg',SVK:'sk',
+    SVN:'si',SLB:'sb',SOM:'so',ZAF:'za',SSD:'ss',ESP:'es',LKA:'lk',SDN:'sd',
+    SUR:'sr',SWE:'se',CHE:'ch',SYR:'sy',TJK:'tj',TZA:'tz',THA:'th',
+    TLS:'tl',TGO:'tg',TON:'to',TTO:'tt',TUN:'tn',TUR:'tr',TKM:'tm',UGA:'ug',
+    UKR:'ua',ARE:'ae',GBR:'gb',USA:'us',URY:'uy',UZB:'uz',VUT:'vu',VEN:'ve',
+    VNM:'vn',YEM:'ye',ZMB:'zm',ZWE:'zw',STP:'st',DMA:'dm',GRD:'gd',KIR:'ki',
+    MHL:'mh',FSM:'fm',NRU:'nr',PLW:'pw',KNA:'kn',LCA:'lc',VCT:'vc',TUV:'tv',
+    PSE:'ps',HKG:'hk',MAC:'mo',GRL:'gl',FRO:'fo',NCL:'nc',PYF:'pf',
+    CUW:'cw',ABW:'aw',MTQ:'mq',GUF:'gf',REU:'re',MYT:'yt',SPM:'pm',
+  };
+
+  function updateFlag(iso3) {
+    const flagEl = document.getElementById('country-flag');
+    if (!flagEl) return;
+    const iso2 = ISO3_TO_ISO2[iso3];
+    if (iso2) {
+      flagEl.src = `https://flagcdn.com/24x18/${iso2}.png`;
+      flagEl.style.display = 'inline-block';
+    } else {
+      flagEl.style.display = 'none';
+    }
+  }
+
+  // ── Tooltip content ──────────────────────────────────────────────────────
+  function updateTooltips(iso3, name) {
+    const eod = Cache.ecological_footprint?.data?.[iso3];
+    const hdi = Cache.hdi?.data?.[iso3];
+    const gdp = Cache.gdp?.data?.[iso3];
+    const co2 = Cache.co2?.data?.[iso3];
+    const ch4 = Cache.methane?.data?.[iso3];
+    const gdi = Cache.gdi?.data?.[iso3];
+    const gii = Cache.gii?.data?.[iso3];
+
+    const fpEl = document.getElementById('tooltip-footprint-body');
+    if (fpEl) {
+      if (eod?.ecological_footprint != null && eod?.biocapacity != null) {
+        const fp = eod.ecological_footprint;
+        const bc = eod.biocapacity;
+        const ratio = (fp / bc).toFixed(1);
+        const earths = eod.earths_required;
+        if (fp > bc) {
+          fpEl.innerHTML = `<strong>${name}'s</strong> footprint of <strong>${fmt(fp)} gha/person</strong> exceeds its own biocapacity of ${fmt(bc)} gha by <strong>${ratio}×</strong>${earths ? `, as if requiring <strong>${fmt(earths, 1)} Earths</strong> if everyone lived this way` : ''}. The country consumes more from nature than its land can regenerate each year.`;
+        } else {
+          fpEl.innerHTML = `<strong>${name}</strong> lives within its ecological means — its footprint of <strong>${fmt(fp)} gha/person</strong> stays below its own biocapacity of ${fmt(bc)} gha. The country's resource consumption is locally sustainable.`;
+        }
+      } else {
+        fpEl.textContent = 'No ecological footprint data available for this country.';
+      }
+    }
+
+    const hdiEl = document.getElementById('tooltip-hdi-body');
+    if (hdiEl) {
+      if (hdi?.hdi != null) {
+        const h = hdi.hdi;
+        const tier = h >= 0.800 ? 'Very High' : h >= 0.700 ? 'High' : h >= 0.550 ? 'Medium' : 'Low';
+        const rel = h >= 0.700 ? 'meets' : 'falls below';
+        hdiEl.innerHTML = `<strong>${name}</strong> scores <strong>${fmt(h, 3)}</strong> on the Human Development Index, placing it in the <strong>${tier} Development</strong> tier — a composite of life expectancy, education, and income. The UNDP threshold for "High Development" is 0.700; ${name} ${rel} this bar${hdi.life_expectancy ? `, with a life expectancy of <strong>${fmt(hdi.life_expectancy, 1)} years</strong>` : ''}.`;
+      } else {
+        hdiEl.textContent = 'No HDI data available for this country.';
+      }
+    }
+
+    const gniEl = document.getElementById('tooltip-gni-body');
+    if (gniEl) {
+      if (hdi?.gni_per_capita != null) {
+        const gni = hdi.gni_per_capita;
+        const rel = gni >= 13845 ? 'above' : 'below';
+        const extra = gni >= 40000 ? ', well into high-income territory' : gni < 4000 ? ', in the low-income range' : '';
+        gniEl.innerHTML = `<strong>${name}'s</strong> GNI per capita is <strong>${fmtGni(gni)}</strong> (2017 PPP), which is <strong>${rel}</strong> the World Bank's high-income threshold of $13,845${extra}. This measures average purchasing power adjusted for local prices, not income distribution.`;
+      } else {
+        gniEl.textContent = 'No GNI per capita data available for this country.';
+      }
+    }
+
+    const co2El = document.getElementById('tooltip-co2-body');
+    if (co2El) {
+      if (co2?.co2_per_capita_tco2 != null) {
+        const c = co2.co2_per_capita_tco2;
+        const ratio = (c / 2.0).toFixed(1);
+        if (c <= 2.0) {
+          co2El.innerHTML = `<strong>${name}</strong> emits <strong>${fmt(c, 1)} t CO₂/person</strong> from fossil fuels — within the 2.0 t/person budget consistent with limiting warming to 1.5°C. This is among the relatively few countries currently meeting the Paris Agreement's per-capita carbon target.`;
+        } else {
+          co2El.innerHTML = `<strong>${name}</strong> emits <strong>${fmt(c, 1)} t CO₂/person</strong> from fossil fuels — <strong>${ratio}× the Paris 1.5°C per-capita budget</strong> of 2.0 t. Significant emissions reductions are needed to align with global climate targets.`;
+        }
+      } else {
+        co2El.textContent = 'No CO₂ emissions data available for this country.';
+      }
+    }
+
+    const ch4El = document.getElementById('tooltip-ch4-body');
+    if (ch4El) {
+      if (ch4?.ch4_per_capita_kg != null) {
+        const m = ch4.ch4_per_capita_kg;
+        if (m < 0) {
+          ch4El.innerHTML = `<strong>${name}'s</strong> land use absorbs more methane than it emits, making it a <strong>net CH₄ sink</strong> (${fmt(m, 1)} kg/person). This is a positive indicator — forests or wetlands are sequestering more than agricultural activity releases.`;
+        } else if (m < 50) {
+          ch4El.innerHTML = `<strong>${name}</strong> emits <strong>${fmt(m, 1)} kg CH₄/person</strong> from land use (agriculture, land-use change) — a low level below the 50 kg/person moderate threshold. Methane is a potent short-lived greenhouse gas, so even small reductions have rapid climate benefit.`;
+        } else if (m < 200) {
+          ch4El.innerHTML = `<strong>${name}</strong> emits <strong>${fmt(m, 1)} kg CH₄/person</strong> from land use — a moderate level reflecting significant livestock or agricultural activity. Reducing land-use methane is one of the fastest levers for slowing near-term warming.`;
+        } else {
+          ch4El.innerHTML = `<strong>${name}</strong> emits <strong>${fmt(m, 1)} kg CH₄/person</strong> from land use — a high level driven by intensive livestock farming or land-use change. Methane's short atmospheric lifetime means reductions here produce rapid climate benefits.`;
+        }
+      } else {
+        ch4El.textContent = 'No methane data available for this country.';
+      }
+    }
+
+    const gdpEl = document.getElementById('tooltip-gdp-body');
+    if (gdpEl) {
+      if (gdp?.gdp_total_usd != null) {
+        gdpEl.innerHTML = `<strong>${name}'s</strong> total GDP is <strong>$${fmtBillion(gdp.gdp_total_usd)}</strong> (${gdp.year}, current USD) — a measure of economic scale, not sustainability. Unlike the other dials here, there is no danger threshold for total GDP: a large economy can coexist with high ecological pressure, and a small one with low emissions.`;
+      } else {
+        gdpEl.textContent = 'No GDP data available for this country.';
+      }
+    }
+
+    const gdiEl = document.getElementById('tooltip-gdi-body');
+    if (gdiEl) {
+      if (gdi?.gdi != null) {
+        const g = gdi.gdi;
+        const group = g >= 0.975 ? 'Group 1 (high parity)' : g >= 0.95 ? 'Group 2' : g >= 0.90 ? 'Group 3' : g >= 0.85 ? 'Group 4' : 'Group 5 (very high gap)';
+        const desc = g > 1.0
+          ? `women score slightly higher than men overall (${fmt(g, 3)}), indicating above-parity on the composite`
+          : `female HDI is ${fmt(g, 3)} of male HDI`;
+        gdiEl.innerHTML = `The Gender Development Index compares female and male Human Development Index scores across life expectancy, education, and income. <strong>${name}</strong> scores <strong>${fmt(g, 3)}</strong> — ${desc}. UNDP classifies this as <strong>${group}</strong>. The parity threshold is 0.975; below 0.90 indicates a substantial development gap between women and men.`;
+      } else {
+        gdiEl.textContent = 'No GDI data available for this country.';
+      }
+    }
+
+    const giiEl = document.getElementById('tooltip-gii-body');
+    if (giiEl) {
+      if (gii?.gii != null) {
+        const g = gii.gii;
+        const ratio = (g / 0.10).toFixed(1);
+        const level = g <= 0.10 ? 'very low' : g <= 0.30 ? 'moderate' : g <= 0.60 ? 'high' : 'very high';
+        giiEl.innerHTML = `The Gender Inequality Index measures gender-based disparities across three dimensions: reproductive health (maternal mortality, adolescent birth rate), empowerment (parliamentary seats, secondary education), and labour market participation. <strong>${name}</strong> scores <strong>${fmt(g, 3)}</strong> — <strong>${level} inequality</strong>. A score of 0 means perfect equality; 1 means maximum inequality. The ambitious target is 0.10${g > 0.10 ? ` — ${name} is ${ratio}× this target` : ', which ' + name + ' meets'}.`;
+      } else {
+        giiEl.textContent = 'No GII data available for this country.';
+      }
+    }
+
+    // ── New MLSI tooltips ────────────────────────────────────────────────
+    const schoolingEl = document.getElementById('tooltip-schooling-body');
+    if (schoolingEl) {
+      const hdi = Cache.hdi?.data?.[iso3];
+      if (hdi?.mean_schooling != null) {
+        const v = hdi.mean_schooling;
+        schoolingEl.innerHTML = `<strong>${name}'s</strong> population averages <strong>${fmt(v, 1)} years of schooling</strong> among adults aged 25+. The MLSI target is 12 years (upper secondary completion). This is one of the three components driving Pillar O (Opportunity) scores. Source: UNDP Human Development Report 2025.`;
+      } else { schoolingEl.textContent = 'No data available.'; }
+    }
+
+    const lu4El = document.getElementById('tooltip-lu4-body');
+    if (lu4El) {
+      const lu4 = Cache.lu4?.data?.[iso3];
+      if (lu4?.value != null) {
+        const v = lu4.value;
+        lu4El.innerHTML = `<strong>${name}</strong> has <strong>${fmt(v, 1)}%</strong> of its workforce that is unemployed, underemployed, or discouraged — the ILO composite LU4 measure. This is broader than headline unemployment: it captures workers who want more hours and those who stopped looking. The MLSI danger threshold is 10%${lu4.year ? `; data year: ${lu4.year}` : ''}. Source: ILOSTAT.`;
+      } else { lu4El.textContent = 'No data available.'; }
+    }
+
+    const neetEl = document.getElementById('tooltip-neet-body');
+    if (neetEl) {
+      const neet = Cache.neet?.data?.[iso3];
+      if (neet?.value != null) {
+        const v = neet.value;
+        neetEl.innerHTML = `<strong>${name}</strong> has <strong>${fmt(v, 1)}%</strong> of youth aged 15–24 not in employment, education, or training (NEET). High NEET rates signal a generation at risk of skill stagnation and long-term unemployment. The MLSI danger threshold is 15%${neet.year ? `; data year: ${neet.year}` : ''}. Source: ILOSTAT.`;
+      } else { neetEl.textContent = 'No data available.'; }
+    }
+
+    const wageEl = document.getElementById('tooltip-wage-body');
+    if (wageEl) {
+      const wage = Cache.wage?.data?.[iso3];
+      if (wage?.value != null) {
+        const v = wage.value;
+        wageEl.innerHTML = `<strong>${name}'s</strong> average annual wage is <strong>${fmtGni(v)}</strong> (nominal USD). This measures mean gross earnings per employee across the economy. The MLSI minimum threshold is $15,000/year; the comfort target is $35,000/year${wage.year ? `; data year: ${wage.year}` : ''}. Source: ILOSTAT.`;
+      } else { wageEl.textContent = 'No data available.'; }
+    }
+
+    const prodEl = document.getElementById('tooltip-prod-body');
+    if (prodEl) {
+      const prod = Cache.productivity?.data?.[iso3];
+      if (prod?.value != null) {
+        const v = prod.value;
+        prodEl.innerHTML = `<strong>${name}'s</strong> labour productivity is <strong>${fmtGni(v)}</strong> output per worker (2021 PPP). Higher productivity enables higher wages without inflation and reflects technology, capital, and education. The MLSI minimum is $30,000/worker; the target is $70,000${prod.year ? `; data year: ${prod.year}` : ''}. Source: ILOSTAT.`;
+      } else { prodEl.textContent = 'No data available.'; }
+    }
+
+    const povertyEl = document.getElementById('tooltip-poverty-body');
+    if (povertyEl) {
+      const pov = Cache.poverty_rate?.data?.[iso3];
+      if (pov?.value != null) {
+        const v = pov.value; const line = pov.poverty_line;
+        povertyEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> population lives below ${line ? `$${line}/day` : 'the poverty line'}. The poverty line is tiered by income group so comparisons are meaningful across development levels. The MLSI danger threshold is 20%; below 10% is safe${pov.year ? `; data year: ${pov.year}` : ''}. Source: World Bank PIP.`;
+      } else { povertyEl.textContent = 'No poverty data available (common for conflict-affected or high-income states).'; }
+    }
+
+    const mpiEl = document.getElementById('tooltip-mpi-body');
+    if (mpiEl) {
+      const mpi = Cache.mpi?.data?.[iso3];
+      if (mpi?.mpi != null) {
+        const v = mpi.mpi; const hp = mpi.headcount_pct;
+        mpiEl.innerHTML = `<strong>${name}'s</strong> Multidimensional Poverty Index is <strong>${Number(v).toFixed(3)}</strong>${hp != null ? ` — <strong>${fmt(hp, 1)}%</strong> of the population is multidimensionally poor` : ''}. The MPI captures deprivations in health, education, and living standards simultaneously, beyond income alone. Danger threshold: 0.10. Note: MPI data is only available for developing countries. Source: UNDP/OPHI.`;
+      } else { mpiEl.textContent = 'No MPI data available — this indicator covers developing countries only.'; }
+    }
+
+    const matfpEl = document.getElementById('tooltip-matfp-body');
+    if (matfpEl) {
+      const matfp = Cache.material_footprint?.data?.[iso3];
+      if (matfp?.mf_per_capita_t != null) {
+        const v = matfp.mf_per_capita_t;
+        matfpEl.innerHTML = `<strong>${name}</strong> uses <strong>${fmt(v, 1)} tonnes of raw materials per person per year</strong> — covering biomass, fossil fuels, metals, and non-metallic minerals extracted anywhere in the world to satisfy domestic consumption. The IRP safe threshold is ~8 t/person; above 16 t is danger territory${matfp.year ? `; data year: ${matfp.year}` : ''}. Source: UN IRP GMFP.`;
+      } else { matfpEl.textContent = 'No data available.'; }
+    }
+
+    const haleEl = document.getElementById('tooltip-hale-body');
+    if (haleEl) {
+      const hale = Cache.hale?.data?.[iso3];
+      if (hale?.value != null) {
+        const v = hale.value;
+        haleEl.innerHTML = `<strong>${name}'s</strong> healthy life expectancy (HALE) is <strong>${fmt(v, 1)} years</strong> — the average number of years a newborn can expect to live in good health, accounting for time spent with illness or disability. This is a more meaningful security metric than raw life expectancy. The MLSI danger threshold is 60 years; target is 70+${hale.year ? `; data year: ${hale.year}` : ''}. Source: WHO GHO.`;
+      } else { haleEl.textContent = 'No data available.'; }
+    }
+
+    const uhcEl = document.getElementById('tooltip-uhc-body');
+    if (uhcEl) {
+      const uhc = Cache.uhc_coverage?.data?.[iso3];
+      if (uhc?.value != null) {
+        const v = uhc.value;
+        uhcEl.innerHTML = `<strong>${name}</strong> scores <strong>${fmt(v, 0)}</strong> on the WHO Universal Health Coverage service coverage index — a composite of 14 tracer indicators covering reproductive, maternal, child, and infectious disease services plus service capacity and access. Scale: 0–100. Danger threshold: below 70; target: above 90${uhc.year ? `; data year: ${uhc.year}` : ''}. Source: WHO GHO.`;
+      } else { uhcEl.textContent = 'No data available.'; }
+    }
+
+    const biiEl = document.getElementById('tooltip-bii-body');
+    if (biiEl) {
+      const biiD = Cache.bii?.data?.[iso3];
+      if (biiD?.value != null) {
+        const v = biiD.value;
+        const yearStr = biiD.year ? `; data year: ${biiD.year}` : '';
+        const source = 'Source: UK Natural History Museum, Newbold et al. (2016) Science.';
+        const base = `<strong>${name}'s</strong> Biodiversity Intactness Index (BII) is <strong>${fmt(v, 1)}</strong> — meaning roughly ${fmt(v, 0)}% of the wildlife, plants, and species that would naturally exist here are still present. A score of 100 represents a fully untouched ecosystem; a housing estate or industrial zone would score close to 0${yearStr}. ${source}`;
+        let context;
+        if (v >= 90) {
+          context = `${name} is above the 90 planetary boundary — the level scientists consider the minimum safe threshold for long-term ecosystem stability.`;
+        } else if (v >= 85) {
+          context = `${name} has crossed the 90 planetary boundary (the scientific safe limit), though it remains above the 85 caution threshold. Biodiversity loss has already exceeded what scientists consider safe, but the country is not yet in the highest-risk zone.`;
+        } else if (v >= 70) {
+          context = `${name} is in the caution zone (70–85): biodiversity loss has crossed the 90 planetary boundary and is approaching levels where ecosystems can start to break down in hard-to-reverse ways.`;
+        } else {
+          context = `${name} has fallen below 70 — a critical threshold where ecosystems risk breaking down in ways that are difficult or impossible to reverse. This is well below the 90 planetary boundary set by Newbold et al.`;
+        }
+        biiEl.innerHTML = `${base}<br><br>${context}`;
+      } else { biiEl.textContent = 'No data available.'; }
+    }
+  }
+
+  // ── Info drawer (right-side) — click to open, ESC / backdrop / close button to dismiss
+  function initTooltips() {
+    // Shared backdrop element
+    let backdrop = document.querySelector('.drawer-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'drawer-backdrop';
+      document.body.appendChild(backdrop);
+    }
+
+    // Move drawers out of metric-cards to body so card hover transforms
+    // don't create a new containing block for the position:fixed drawer.
+    document.querySelectorAll('.metric-tooltip').forEach(t => {
+      if (t.parentElement !== document.body) document.body.appendChild(t);
+      t.setAttribute('role', 'dialog');
+      t.setAttribute('aria-modal', 'false');
+      const title = t.querySelector('.tooltip-title');
+      if (title && !title.id) title.id = t.id + '-title';
+      if (title) t.setAttribute('aria-labelledby', title.id);
+    });
+
+    let lastInvoker = null;
+    function closeAll() {
+      document.querySelectorAll('.metric-tooltip.open').forEach(t => t.classList.remove('open'));
+      backdrop.classList.remove('open');
+      document.body.classList.remove('drawer-open');
+      if (lastInvoker && document.contains(lastInvoker)) {
+        lastInvoker.focus();
+      }
+      lastInvoker = null;
+    }
+    function openDrawer(id, invoker) {
+      const t = document.getElementById(id);
+      if (!t) return;
+      closeAll();
+      t.classList.add('open');
+      backdrop.classList.add('open');
+      document.body.classList.add('drawer-open');
+      lastInvoker = invoker || null;
+      const close = t.querySelector('.tooltip-close');
+      close?.focus();
+      // Resize charts after main padding shifts so bars don't clip
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 260);
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.info-btn');
+      if (btn) {
+        const id = btn.dataset.tooltip;
+        const t = document.getElementById(id);
+        if (t?.classList.contains('open')) closeAll();
+        else openDrawer(id, btn);
+        return;
+      }
+      const close = e.target.closest('.tooltip-close');
+      if (close) { closeAll(); return; }
+    });
+
+    backdrop.addEventListener('click', closeAll);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAll();
+    });
+  }
+
+  // ── Load country data ────────────────────────────────────────────────────
+  let currentISO = null, currentName = null;
+  function loadCountry(iso3, name) {
+    currentISO = iso3;
+    currentName = name;
+    document.getElementById('country-input').value = name;
+    updateMeta(iso3);
+    updateFlag(iso3);
+
+    // Pillar O
+    renderSchooling(Cache.hdi?.data?.[iso3]);
+    renderLu4(Cache.lu4?.data?.[iso3]);
+    renderNeet(Cache.neet?.data?.[iso3]);
+    // Pillar I
+    renderWage(Cache.wage?.data?.[iso3]);
+    renderProd(Cache.productivity?.data?.[iso3]);
+    renderPoverty(Cache.poverty_rate?.data?.[iso3]);
+    // Pillar N
+    renderMpi(Cache.mpi?.data?.[iso3]);
+    renderMatFp(Cache.material_footprint?.data?.[iso3]);
+    // Pillar EcS
+    renderHale(Cache.hale?.data?.[iso3]);
+    renderUhc(Cache.uhc_coverage?.data?.[iso3]);
+    // Pillar EnS
+    renderCo2(Cache.co2?.data?.[iso3]);
+    renderCh4(Cache.methane?.data?.[iso3]);
+    renderFootprint(Cache.ecological_footprint?.data?.[iso3]);
+    renderBii(Cache.bii?.data?.[iso3]);
+    // Equity
+    renderGdi(Cache.gdi?.data?.[iso3]);
+    renderGii(Cache.gii?.data?.[iso3]);
+
+    updateApexBar(iso3);
+    renderPillarScorecard();
+    updateTooltips(iso3, name);
+  }
+
+  // ── Country search / dropdown ────────────────────────────────────────────
+  function buildDropdown(filter = '') {
+    const dropdown = document.getElementById('country-dropdown');
+    const countries = Cache.countries?.countries || [];
+    const q = filter.toLowerCase().trim();
+
+    let items = countries;
+    if (q) {
+      const startsWith = countries.filter(c => c.name.toLowerCase().startsWith(q));
+      const contains   = countries.filter(c => !c.name.toLowerCase().startsWith(q) && c.name.toLowerCase().includes(q));
+      items = [...startsWith, ...contains];
+    }
+    items = items.slice(0, 60);
+
+    dropdown.innerHTML = items.map(c =>
+      `<div class="dropdown-item" data-iso3="${c.iso3}" data-name="${c.name}">
+        <span>${c.name}</span>
+        <span class="item-tag">${c.iso3}</span>
+      </div>`
+    ).join('');
+
+    dropdown.querySelectorAll('.dropdown-item').forEach(el => {
+      el.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        loadCountry(el.dataset.iso3, el.dataset.name);
+        dropdown.classList.remove('open');
+      });
+    });
+  }
+
+  function initSelector() {
+    const input    = document.getElementById('country-input');
+    const dropdown = document.getElementById('country-dropdown');
+
+    input.addEventListener('focus', () => {
+      buildDropdown(input.value);
+      dropdown.classList.add('open');
+    });
+    input.addEventListener('input', () => {
+      buildDropdown(input.value);
+      dropdown.classList.add('open');
+    });
+    input.addEventListener('blur', () => {
+      setTimeout(() => dropdown.classList.remove('open'), 150);
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const first = dropdown.querySelector('.dropdown-item');
+        if (first) {
+          loadCountry(first.dataset.iso3, first.dataset.name);
+          dropdown.classList.remove('open');
+        }
+        e.preventDefault();
+      }
+    });
+  }
+
+  // ── Boot ─────────────────────────────────────────────────────────────────
+  async function init() {
+    try {
+      await loadAll();
+    } catch (err) {
+      document.getElementById('loading-overlay').innerHTML =
+        `<div style="color:#ef4444;text-align:center;padding:32px;max-width:500px">
+          <div style="font-size:1.1rem;font-weight:700;margin-bottom:10px">Could not load data files</div>
+          <div style="font-size:0.85rem;color:#8b8fa8">
+            Open this dashboard via a local server:<br><br>
+            <code style="background:#141828;padding:6px 12px;border-radius:6px;display:inline-block">
+              python -m http.server 8080
+            </code><br><br>
+            Then open <strong>http://localhost:8080</strong> in your browser.
+          </div>
+        </div>`;
+      return;
+    }
+
+    document.getElementById('loading-overlay').classList.add('hidden');
+    initCharts();
+    initSelector();
+    initTooltips();
+    initThemeToggle();
+    initPillarTabs();
+    initNarrativeCollapse();
+    initKeyboardShortcuts();
+
+    const countries = Cache.countries?.countries || [];
+    const defaultCountry = countries.find(c => c.iso3 === 'DEU') || countries[0];
+    if (defaultCountry) {
+      loadCountry(defaultCountry.iso3, defaultCountry.name);
+    }
+  }
+
+  // ── Theme toggle ─────────────────────────────────────────────────────────
+  function initThemeToggle() {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('bgdp-theme', next); } catch (e) {}
+      // Re-render charts with new tokens. Resize first to flush layout.
+      [chartFootprint, chartCo2, chartCh4, chartGdi, chartGii,
+       chartSchooling, chartLu4, chartNeet, chartWage, chartProd, chartPoverty,
+       chartMpi, chartMatFp, chartHale, chartUhc].forEach(c => c && c.resize());
+      if (currentISO) loadCountry(currentISO, currentName);
+    });
+  }
+
+  // ── Pillar tabs (jump-nav + active tracking) ────────────────────────────
+  function initPillarTabs() {
+    const tabs = Array.from(document.querySelectorAll('.pillar-tab'));
+    if (!tabs.length) return;
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.dataset.target;
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // Track which panel is in view and highlight its tab
+    const panelMap = new Map();
+    tabs.forEach(t => {
+      const el = document.getElementById(t.dataset.target);
+      if (el) panelMap.set(el, t);
+    });
+    const obs = new IntersectionObserver(entries => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) {
+        const tab = panelMap.get(visible.target);
+        if (tab) {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+        }
+      }
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.25, 0.5, 1] });
+    panelMap.forEach((_tab, el) => obs.observe(el));
+  }
+
+  // ── Narrative headline: collapse on scroll-down ─────────────────────────
+  function initNarrativeCollapse() {
+    const headline = document.getElementById('narrative-headline');
+    if (!headline) return;
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > 80 && y > lastY) headline.classList.add('collapsed');
+      else if (y < lastY - 4 || y < 40) headline.classList.remove('collapsed');
+      lastY = y;
+    }, { passive: true });
+  }
+
+  // ── Keyboard shortcuts ──────────────────────────────────────────────────
+  function initKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+      // "/" focuses country search, unless already typing in a field
+      if (e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        const t = e.target;
+        const isInput = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+        if (!isInput) {
+          e.preventDefault();
+          document.getElementById('country-input')?.focus();
+        }
+      }
+    });
+  }
+
+  function waitForECharts(cb) {
+    if (typeof echarts !== 'undefined') { cb(); return; }
+    const iv = setInterval(() => {
+      if (typeof echarts !== 'undefined') { clearInterval(iv); cb(); }
+    }, 50);
+  }
+
+  waitForECharts(init);
+</script>
+</body>
+</html>

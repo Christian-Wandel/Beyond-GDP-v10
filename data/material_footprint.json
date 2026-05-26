@@ -1,0 +1,1015 @@
+{
+  "meta": {
+    "source": "UN IRP Global Material Flows Database (GMFP / SEEA UN)",
+    "data_year": 2022,
+    "unit_total": "Mt (megatonnes raw material consumption)",
+    "unit_per_capita": "tonnes per person per year",
+    "threshold_unep_ceiling": 8.0,
+    "flow_type": "MF — Material Footprint (RMC), sum of Biomass + Fossil + Metals + Minerals",
+    "note": "UNEP sustainable ceiling: 8 t/person. Green <8, amber 8–16, red >16."
+  },
+  "data": {
+    "AFG": {
+      "name": "Afghanistan",
+      "mf_total_mt": 52.76,
+      "mf_per_capita_t": 1.29,
+      "year": 2022
+    },
+    "AFR": {
+      "name": "Africa",
+      "mf_total_mt": 5950.05,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "ALB": {
+      "name": "Albania",
+      "mf_total_mt": 27.09,
+      "mf_per_capita_t": 9.45,
+      "year": 2022
+    },
+    "DZA": {
+      "name": "Algeria",
+      "mf_total_mt": 395.16,
+      "mf_per_capita_t": 8.71,
+      "year": 2022
+    },
+    "AGO": {
+      "name": "Angola",
+      "mf_total_mt": 110.99,
+      "mf_per_capita_t": 3.17,
+      "year": 2022
+    },
+    "ARG": {
+      "name": "Argentina",
+      "mf_total_mt": 736.29,
+      "mf_per_capita_t": 16.0,
+      "year": 2022
+    },
+    "ARM": {
+      "name": "Armenia",
+      "mf_total_mt": 21.57,
+      "mf_per_capita_t": 7.26,
+      "year": 2022
+    },
+    "ASI": {
+      "name": "Asia + Pacific",
+      "mf_total_mt": 56013.7,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "AUS": {
+      "name": "Australia",
+      "mf_total_mt": 828.5,
+      "mf_per_capita_t": 31.78,
+      "year": 2022
+    },
+    "AUT": {
+      "name": "Austria",
+      "mf_total_mt": 222.58,
+      "mf_per_capita_t": 24.55,
+      "year": 2022
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "mf_total_mt": 76.41,
+      "mf_per_capita_t": 7.42,
+      "year": 2022
+    },
+    "BHS": {
+      "name": "Bahamas",
+      "mf_total_mt": 6.74,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "BHR": {
+      "name": "Bahrain",
+      "mf_total_mt": 35.56,
+      "mf_per_capita_t": 19.93,
+      "year": 2022
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "mf_total_mt": 736.75,
+      "mf_per_capita_t": 4.39,
+      "year": 2022
+    },
+    "BLR": {
+      "name": "Belarus",
+      "mf_total_mt": 102.75,
+      "mf_per_capita_t": 10.89,
+      "year": 2022
+    },
+    "BEL": {
+      "name": "Belgium",
+      "mf_total_mt": 505.34,
+      "mf_per_capita_t": 43.31,
+      "year": 2022
+    },
+    "BLZ": {
+      "name": "Belize",
+      "mf_total_mt": 4.38,
+      "mf_per_capita_t": 10.62,
+      "year": 2022
+    },
+    "BEN": {
+      "name": "Benin",
+      "mf_total_mt": 47.75,
+      "mf_per_capita_t": 3.73,
+      "year": 2022
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "mf_total_mt": 18.88,
+      "mf_per_capita_t": 23.96,
+      "year": 2022
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "mf_total_mt": 146.63,
+      "mf_per_capita_t": 12.23,
+      "year": 2022
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "mf_total_mt": 49.09,
+      "mf_per_capita_t": 15.11,
+      "year": 2022
+    },
+    "BWA": {
+      "name": "Botswana",
+      "mf_total_mt": 14.05,
+      "mf_per_capita_t": 5.76,
+      "year": 2022
+    },
+    "BRA": {
+      "name": "Brazil",
+      "mf_total_mt": 3548.97,
+      "mf_per_capita_t": 16.48,
+      "year": 2022
+    },
+    "BRN": {
+      "name": "Brunei Darussalam",
+      "mf_total_mt": 9.43,
+      "mf_per_capita_t": 21.19,
+      "year": 2022
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "mf_total_mt": 103.54,
+      "mf_per_capita_t": 15.13,
+      "year": 2022
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "mf_total_mt": 46.04,
+      "mf_per_capita_t": 2.08,
+      "year": 2022
+    },
+    "BDI": {
+      "name": "Burundi",
+      "mf_total_mt": 21.52,
+      "mf_per_capita_t": 1.7,
+      "year": 2022
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "mf_total_mt": 143.09,
+      "mf_per_capita_t": 8.33,
+      "year": 2022
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "mf_total_mt": 113.49,
+      "mf_per_capita_t": 4.07,
+      "year": 2022
+    },
+    "CAN": {
+      "name": "Canada",
+      "mf_total_mt": 1561.58,
+      "mf_per_capita_t": 40.68,
+      "year": 2022
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "mf_total_mt": 16.75,
+      "mf_per_capita_t": 3.34,
+      "year": 2022
+    },
+    "TCD": {
+      "name": "Chad",
+      "mf_total_mt": 149.36,
+      "mf_per_capita_t": 8.58,
+      "year": 2022
+    },
+    "CHL": {
+      "name": "Chile",
+      "mf_total_mt": 275.79,
+      "mf_per_capita_t": 14.33,
+      "year": 2022
+    },
+    "CHN": {
+      "name": "China",
+      "mf_total_mt": 34893.36,
+      "mf_per_capita_t": 23.57,
+      "year": 2022
+    },
+    "COL": {
+      "name": "Colombia",
+      "mf_total_mt": 435.8,
+      "mf_per_capita_t": 8.46,
+      "year": 2022
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "mf_total_mt": 54.49,
+      "mf_per_capita_t": 10.51,
+      "year": 2022
+    },
+    "CIV": {
+      "name": "Cote d'Ivoire",
+      "mf_total_mt": 380.77,
+      "mf_per_capita_t": 13.73,
+      "year": 2022
+    },
+    "HRV": {
+      "name": "Croatia",
+      "mf_total_mt": 59.28,
+      "mf_per_capita_t": 14.61,
+      "year": 2022
+    },
+    "CUB": {
+      "name": "Cuba",
+      "mf_total_mt": 74.99,
+      "mf_per_capita_t": 6.63,
+      "year": 2022
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "mf_total_mt": 29.61,
+      "mf_per_capita_t": 24.21,
+      "year": 2022
+    },
+    "CZE": {
+      "name": "Czech Republic",
+      "mf_total_mt": 201.5,
+      "mf_per_capita_t": 18.77,
+      "year": 2022
+    },
+    "DR ": {
+      "name": "DR Congo",
+      "mf_total_mt": 186.35,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "DNK": {
+      "name": "Denmark",
+      "mf_total_mt": 151.8,
+      "mf_per_capita_t": 26.02,
+      "year": 2022
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "mf_total_mt": 12.23,
+      "mf_per_capita_t": 12.04,
+      "year": 2022
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "mf_total_mt": 91.83,
+      "mf_per_capita_t": 8.31,
+      "year": 2022
+    },
+    "EEC": {
+      "name": "EECCA",
+      "mf_total_mt": 3098.18,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "mf_total_mt": 123.53,
+      "mf_per_capita_t": 6.82,
+      "year": 2022
+    },
+    "EGY": {
+      "name": "Egypt",
+      "mf_total_mt": 445.49,
+      "mf_per_capita_t": 4.2,
+      "year": 2022
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "mf_total_mt": 56.42,
+      "mf_per_capita_t": 8.61,
+      "year": 2022
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "mf_total_mt": 7.31,
+      "mf_per_capita_t": 4.88,
+      "year": 2022
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "mf_total_mt": 8.91,
+      "mf_per_capita_t": 2.43,
+      "year": 2022
+    },
+    "EST": {
+      "name": "Estonia",
+      "mf_total_mt": 36.95,
+      "mf_per_capita_t": 27.95,
+      "year": 2022
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "mf_total_mt": 424.26,
+      "mf_per_capita_t": 3.51,
+      "year": 2022
+    },
+    "EUR": {
+      "name": "Europe",
+      "mf_total_mt": 12624.91,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "FIN": {
+      "name": "Finland",
+      "mf_total_mt": 166.01,
+      "mf_per_capita_t": 29.88,
+      "year": 2022
+    },
+    "FRA": {
+      "name": "France",
+      "mf_total_mt": 1116.12,
+      "mf_per_capita_t": 17.01,
+      "year": 2022
+    },
+    "GAB": {
+      "name": "Gabon",
+      "mf_total_mt": 11.13,
+      "mf_per_capita_t": 4.77,
+      "year": 2022
+    },
+    "GMB": {
+      "name": "Gambia",
+      "mf_total_mt": 8.33,
+      "mf_per_capita_t": 3.26,
+      "year": 2022
+    },
+    "GEO": {
+      "name": "Georgia",
+      "mf_total_mt": 43.6,
+      "mf_per_capita_t": 10.99,
+      "year": 2022
+    },
+    "DEU": {
+      "name": "Germany",
+      "mf_total_mt": 1966.11,
+      "mf_per_capita_t": 23.44,
+      "year": 2022
+    },
+    "GHA": {
+      "name": "Ghana",
+      "mf_total_mt": 210.41,
+      "mf_per_capita_t": 6.5,
+      "year": 2022
+    },
+    "GRC": {
+      "name": "Greece",
+      "mf_total_mt": 145.54,
+      "mf_per_capita_t": 14.11,
+      "year": 2022
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "mf_total_mt": 150.18,
+      "mf_per_capita_t": 8.08,
+      "year": 2022
+    },
+    "GIN": {
+      "name": "Guinea",
+      "mf_total_mt": 57.75,
+      "mf_per_capita_t": 4.17,
+      "year": 2022
+    },
+    "HTI": {
+      "name": "Haiti",
+      "mf_total_mt": 27.87,
+      "mf_per_capita_t": 2.39,
+      "year": 2022
+    },
+    "HND": {
+      "name": "Honduras",
+      "mf_total_mt": 60.62,
+      "mf_per_capita_t": 5.93,
+      "year": 2022
+    },
+    "HON": {
+      "name": "Hong Kong",
+      "mf_total_mt": 354.22,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "HUN": {
+      "name": "Hungary",
+      "mf_total_mt": 183.33,
+      "mf_per_capita_t": 19.09,
+      "year": 2022
+    },
+    "ISL": {
+      "name": "Iceland",
+      "mf_total_mt": 11.62,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "IND": {
+      "name": "India",
+      "mf_total_mt": 7096.2,
+      "mf_per_capita_t": 5.04,
+      "year": 2022
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "mf_total_mt": 2056.0,
+      "mf_per_capita_t": 7.37,
+      "year": 2022
+    },
+    "IRN": {
+      "name": "Iran",
+      "mf_total_mt": 516.27,
+      "mf_per_capita_t": 6.0,
+      "year": 2022
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "mf_total_mt": 145.86,
+      "mf_per_capita_t": 3.46,
+      "year": 2022
+    },
+    "IRL": {
+      "name": "Ireland",
+      "mf_total_mt": 142.01,
+      "mf_per_capita_t": 28.29,
+      "year": 2022
+    },
+    "ISR": {
+      "name": "Israel",
+      "mf_total_mt": 301.62,
+      "mf_per_capita_t": 33.8,
+      "year": 2022
+    },
+    "ITA": {
+      "name": "Italy",
+      "mf_total_mt": 925.72,
+      "mf_per_capita_t": 15.35,
+      "year": 2022
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "mf_total_mt": 14.43,
+      "mf_per_capita_t": 4.83,
+      "year": 2022
+    },
+    "JPN": {
+      "name": "Japan",
+      "mf_total_mt": 2203.12,
+      "mf_per_capita_t": 17.54,
+      "year": 2022
+    },
+    "JOR": {
+      "name": "Jordan",
+      "mf_total_mt": 79.86,
+      "mf_per_capita_t": 7.75,
+      "year": 2022
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "mf_total_mt": 342.57,
+      "mf_per_capita_t": 17.84,
+      "year": 2022
+    },
+    "KEN": {
+      "name": "Kenya",
+      "mf_total_mt": 267.59,
+      "mf_per_capita_t": 4.76,
+      "year": 2022
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "mf_total_mt": 180.4,
+      "mf_per_capita_t": 41.19,
+      "year": 2022
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "mf_total_mt": 24.42,
+      "mf_per_capita_t": 3.63,
+      "year": 2022
+    },
+    "LAO": {
+      "name": "Laos",
+      "mf_total_mt": 76.75,
+      "mf_per_capita_t": 10.26,
+      "year": 2022
+    },
+    "LAT": {
+      "name": "Latin America + Caribbean",
+      "mf_total_mt": 8052.23,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "LVA": {
+      "name": "Latvia",
+      "mf_total_mt": 41.47,
+      "mf_per_capita_t": 22.43,
+      "year": 2022
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "mf_total_mt": 56.32,
+      "mf_per_capita_t": 8.42,
+      "year": 2022
+    },
+    "LBR": {
+      "name": "Liberia",
+      "mf_total_mt": 9.24,
+      "mf_per_capita_t": 1.74,
+      "year": 2022
+    },
+    "LBY": {
+      "name": "Libya",
+      "mf_total_mt": 86.83,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "mf_total_mt": 60.04,
+      "mf_per_capita_t": 22.55,
+      "year": 2022
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "mf_total_mt": 46.92,
+      "mf_per_capita_t": 73.08,
+      "year": 2022
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "mf_total_mt": 62.57,
+      "mf_per_capita_t": 2.14,
+      "year": 2022
+    },
+    "MWI": {
+      "name": "Malawi",
+      "mf_total_mt": 73.97,
+      "mf_per_capita_t": 3.67,
+      "year": 2022
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "mf_total_mt": 710.69,
+      "mf_per_capita_t": 21.42,
+      "year": 2022
+    },
+    "MLI": {
+      "name": "Mali",
+      "mf_total_mt": 72.68,
+      "mf_per_capita_t": 3.38,
+      "year": 2022
+    },
+    "MLT": {
+      "name": "Malta",
+      "mf_total_mt": 10.52,
+      "mf_per_capita_t": 23.69,
+      "year": 2022
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "mf_total_mt": 28.09,
+      "mf_per_capita_t": 5.73,
+      "year": 2022
+    },
+    "MEX": {
+      "name": "Mexico",
+      "mf_total_mt": 1373.0,
+      "mf_per_capita_t": 10.44,
+      "year": 2022
+    },
+    "MDA": {
+      "name": "Moldova",
+      "mf_total_mt": 30.85,
+      "mf_per_capita_t": 7.69,
+      "year": 2022
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "mf_total_mt": 85.05,
+      "mf_per_capita_t": 25.18,
+      "year": 2022
+    },
+    "MAR": {
+      "name": "Morocco",
+      "mf_total_mt": 213.98,
+      "mf_per_capita_t": 5.67,
+      "year": 2022
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "mf_total_mt": 75.68,
+      "mf_per_capita_t": 2.29,
+      "year": 2022
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "mf_total_mt": 225.48,
+      "mf_per_capita_t": 4.08,
+      "year": 2022
+    },
+    "NAM": {
+      "name": "Namibia",
+      "mf_total_mt": 32.99,
+      "mf_per_capita_t": 12.52,
+      "year": 2022
+    },
+    "NPL": {
+      "name": "Nepal",
+      "mf_total_mt": 238.44,
+      "mf_per_capita_t": 7.89,
+      "year": 2022
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "mf_total_mt": 557.6,
+      "mf_per_capita_t": 32.35,
+      "year": 2022
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "mf_total_mt": 170.12,
+      "mf_per_capita_t": 34.73,
+      "year": 2022
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "mf_total_mt": 60.64,
+      "mf_per_capita_t": 8.95,
+      "year": 2022
+    },
+    "NER": {
+      "name": "Niger",
+      "mf_total_mt": 95.67,
+      "mf_per_capita_t": 3.67,
+      "year": 2022
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "mf_total_mt": 724.05,
+      "mf_per_capita_t": 3.34,
+      "year": 2022
+    },
+    "NAC": {
+      "name": "North America",
+      "mf_total_mt": 12122.66,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "PRK": {
+      "name": "North Korea",
+      "mf_total_mt": 107.9,
+      "mf_per_capita_t": 4.15,
+      "year": 2022
+    },
+    "MKD": {
+      "name": "North Macedonia",
+      "mf_total_mt": 18.61,
+      "mf_per_capita_t": 8.94,
+      "year": 2022
+    },
+    "NOR": {
+      "name": "Norway",
+      "mf_total_mt": 205.16,
+      "mf_per_capita_t": 37.23,
+      "year": 2022
+    },
+    "OMN": {
+      "name": "Oman",
+      "mf_total_mt": 176.57,
+      "mf_per_capita_t": 33.16,
+      "year": 2022
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "mf_total_mt": 969.58,
+      "mf_per_capita_t": 4.22,
+      "year": 2022
+    },
+    "PAL": {
+      "name": "Palestine",
+      "mf_total_mt": 25.83,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "PAN": {
+      "name": "Panama",
+      "mf_total_mt": 164.98,
+      "mf_per_capita_t": 37.1,
+      "year": 2022
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "mf_total_mt": 23.58,
+      "mf_per_capita_t": 2.54,
+      "year": 2022
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "mf_total_mt": 97.36,
+      "mf_per_capita_t": 13.33,
+      "year": 2022
+    },
+    "PER": {
+      "name": "Peru",
+      "mf_total_mt": 219.96,
+      "mf_per_capita_t": 6.53,
+      "year": 2022
+    },
+    "PHL": {
+      "name": "Philippines",
+      "mf_total_mt": 949.81,
+      "mf_per_capita_t": 8.44,
+      "year": 2022
+    },
+    "POL": {
+      "name": "Poland",
+      "mf_total_mt": 563.08,
+      "mf_per_capita_t": 14.92,
+      "year": 2022
+    },
+    "PRT": {
+      "name": "Portugal",
+      "mf_total_mt": 144.28,
+      "mf_per_capita_t": 14.23,
+      "year": 2022
+    },
+    "QAT": {
+      "name": "Qatar",
+      "mf_total_mt": 193.52,
+      "mf_per_capita_t": 64.94,
+      "year": 2022
+    },
+    "REP": {
+      "name": "Rep Congo",
+      "mf_total_mt": 21.02,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "ROU": {
+      "name": "Romania",
+      "mf_total_mt": 355.52,
+      "mf_per_capita_t": 18.68,
+      "year": 2022
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "mf_total_mt": 1780.24,
+      "mf_per_capita_t": 12.21,
+      "year": 2022
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "mf_total_mt": 46.53,
+      "mf_per_capita_t": 3.42,
+      "year": 2022
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "mf_total_mt": 848.77,
+      "mf_per_capita_t": 23.68,
+      "year": 2022
+    },
+    "SEN": {
+      "name": "Senegal",
+      "mf_total_mt": 94.77,
+      "mf_per_capita_t": 5.37,
+      "year": 2022
+    },
+    "SRB": {
+      "name": "Serbia",
+      "mf_total_mt": 113.48,
+      "mf_per_capita_t": 13.11,
+      "year": 2022
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "mf_total_mt": 26.0,
+      "mf_per_capita_t": 3.13,
+      "year": 2022
+    },
+    "SGP": {
+      "name": "Singapore",
+      "mf_total_mt": 306.02,
+      "mf_per_capita_t": 51.48,
+      "year": 2022
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "mf_total_mt": 89.75,
+      "mf_per_capita_t": 16.44,
+      "year": 2022
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "mf_total_mt": 42.26,
+      "mf_per_capita_t": 20.34,
+      "year": 2022
+    },
+    "SOM": {
+      "name": "Somalia",
+      "mf_total_mt": 67.11,
+      "mf_per_capita_t": 3.98,
+      "year": 2022
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "mf_total_mt": 358.43,
+      "mf_per_capita_t": 5.9,
+      "year": 2022
+    },
+    "KOR": {
+      "name": "South Korea",
+      "mf_total_mt": 1215.77,
+      "mf_per_capita_t": 23.69,
+      "year": 2022
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "mf_total_mt": 26.23,
+      "mf_per_capita_t": 2.26,
+      "year": 2022
+    },
+    "ESP": {
+      "name": "Spain",
+      "mf_total_mt": 651.49,
+      "mf_per_capita_t": 13.94,
+      "year": 2022
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "mf_total_mt": 89.85,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "SDN": {
+      "name": "Sudan",
+      "mf_total_mt": 213.25,
+      "mf_per_capita_t": 4.64,
+      "year": 2022
+    },
+    "SWE": {
+      "name": "Sweden",
+      "mf_total_mt": 250.94,
+      "mf_per_capita_t": 24.56,
+      "year": 2022
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "mf_total_mt": 337.54,
+      "mf_per_capita_t": 38.47,
+      "year": 2022
+    },
+    "SYR": {
+      "name": "Syria",
+      "mf_total_mt": 50.16,
+      "mf_per_capita_t": 2.59,
+      "year": 2022
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "mf_total_mt": 38.91,
+      "mf_per_capita_t": 3.91,
+      "year": 2022
+    },
+    "TZA": {
+      "name": "Tanzania",
+      "mf_total_mt": 280.26,
+      "mf_per_capita_t": 4.43,
+      "year": 2022
+    },
+    "THA": {
+      "name": "Thailand",
+      "mf_total_mt": 826.59,
+      "mf_per_capita_t": 11.8,
+      "year": 2022
+    },
+    "TGO": {
+      "name": "Togo",
+      "mf_total_mt": 22.31,
+      "mf_per_capita_t": 2.57,
+      "year": 2022
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "mf_total_mt": 89.25,
+      "mf_per_capita_t": 7.41,
+      "year": 2022
+    },
+    "TUR": {
+      "name": "Turkey",
+      "mf_total_mt": 1655.74,
+      "mf_per_capita_t": 19.35,
+      "year": 2022
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "mf_total_mt": 76.39,
+      "mf_per_capita_t": 12.32,
+      "year": 2022
+    },
+    "UGA": {
+      "name": "Uganda",
+      "mf_total_mt": 186.06,
+      "mf_per_capita_t": 3.84,
+      "year": 2022
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "mf_total_mt": 374.53,
+      "mf_per_capita_t": 8.67,
+      "year": 2022
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "mf_total_mt": 376.44,
+      "mf_per_capita_t": 37.34,
+      "year": 2022
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "mf_total_mt": 1135.64,
+      "mf_per_capita_t": 16.58,
+      "year": 2022
+    },
+    "USA": {
+      "name": "United States of America",
+      "mf_total_mt": 10561.09,
+      "mf_per_capita_t": 31.54,
+      "year": 2022
+    },
+    "URY": {
+      "name": "Uruguay",
+      "mf_total_mt": 31.64,
+      "mf_per_capita_t": 9.05,
+      "year": 2022
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "mf_total_mt": 185.95,
+      "mf_per_capita_t": 5.41,
+      "year": 2022
+    },
+    "VEN": {
+      "name": "Venezuela",
+      "mf_total_mt": 295.7,
+      "mf_per_capita_t": 10.1,
+      "year": 2022
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "mf_total_mt": 1109.49,
+      "mf_per_capita_t": 11.21,
+      "year": 2022
+    },
+    "WES": {
+      "name": "West Asia",
+      "mf_total_mt": 2225.01,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "WLD": {
+      "name": "World",
+      "mf_total_mt": 100086.75,
+      "mf_per_capita_t": null,
+      "year": 2022
+    },
+    "YEM": {
+      "name": "Yemen",
+      "mf_total_mt": 55.73,
+      "mf_per_capita_t": 1.79,
+      "year": 2022
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "mf_total_mt": 54.9,
+      "mf_per_capita_t": 2.82,
+      "year": 2022
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "mf_total_mt": 52.54,
+      "mf_per_capita_t": 3.43,
+      "year": 2022
+    }
+  }
+}

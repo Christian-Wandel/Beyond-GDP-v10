@@ -1,0 +1,1831 @@
+{
+  "meta": {
+    "source": "Global Footprint Network, National Footprint and Biocapacity Accounts 2023 Edition",
+    "data_year": 2022,
+    "unit_footprint": "global hectares per person (gha/person)",
+    "unit_biocapacity": "global hectares per person (gha/person)",
+    "threshold_biocapacity_world": 1.63
+  },
+  "data": {
+    "AFG": {
+      "name": "Afghanistan",
+      "region": "Middle East/Central Asia",
+      "income_group": "LI",
+      "population_millions": 40.754,
+      "ecological_footprint": 0.8015,
+      "biocapacity": 0.5138,
+      "earths_required": 0.5307,
+      "gdp_per_capita": null
+    },
+    "ALB": {
+      "name": "Albania",
+      "region": "Other Europe",
+      "income_group": "UM",
+      "population_millions": 2.866,
+      "ecological_footprint": 2.0712,
+      "biocapacity": 1.1768,
+      "earths_required": 1.3715,
+      "gdp_per_capita": 14888.8
+    },
+    "DZA": {
+      "name": "Algeria",
+      "region": "Africa",
+      "income_group": "UM",
+      "population_millions": 45.35,
+      "ecological_footprint": 2.223,
+      "biocapacity": 0.6634,
+      "earths_required": 1.472,
+      "gdp_per_capita": 11136.7
+    },
+    "AGO": {
+      "name": "Angola",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 35.027,
+      "ecological_footprint": 0.8578,
+      "biocapacity": 1.5882,
+      "earths_required": 0.568,
+      "gdp_per_capita": 6303.51
+    },
+    "ATG": {
+      "name": "Antigua and Barbuda",
+      "region": "Central America/Caribbean",
+      "income_group": "HI",
+      "population_millions": 0.1,
+      "ecological_footprint": 2.9367,
+      "biocapacity": 0.9173,
+      "earths_required": 1.9446,
+      "gdp_per_capita": 18748.8
+    },
+    "ARG": {
+      "name": "Argentina",
+      "region": "South America",
+      "income_group": "UM",
+      "population_millions": 46.01,
+      "ecological_footprint": 3.2206,
+      "biocapacity": 5.2317,
+      "earths_required": 2.1326,
+      "gdp_per_capita": 22116.9
+    },
+    "ARM": {
+      "name": "Armenia",
+      "region": "Middle East/Central Asia",
+      "income_group": "LM",
+      "population_millions": 2.972,
+      "ecological_footprint": 2.3264,
+      "biocapacity": 0.8466,
+      "earths_required": 1.5404,
+      "gdp_per_capita": 13548.2
+    },
+    "AUS": {
+      "name": "Australia",
+      "region": "Asia-Pacific",
+      "income_group": "HI",
+      "population_millions": 26.069,
+      "ecological_footprint": 5.777,
+      "biocapacity": 11.0214,
+      "earths_required": 3.8253,
+      "gdp_per_capita": 53052.8
+    },
+    "AUT": {
+      "name": "Austria",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 9.067,
+      "ecological_footprint": 5.6266,
+      "biocapacity": 2.8938,
+      "earths_required": 3.7257,
+      "gdp_per_capita": 55459.6
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "region": "Middle East/Central Asia",
+      "income_group": "UM",
+      "population_millions": 10.3,
+      "ecological_footprint": 2.3571,
+      "biocapacity": 0.937,
+      "earths_required": 1.5608,
+      "gdp_per_capita": 14691.8
+    },
+    "BHR": {
+      "name": "Bahrain",
+      "region": "Middle East/Central Asia",
+      "income_group": "HI",
+      "population_millions": 1.784,
+      "ecological_footprint": 8.1762,
+      "biocapacity": 0.5557,
+      "earths_required": 5.4139,
+      "gdp_per_capita": 49184.0
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "region": "Asia-Pacific",
+      "income_group": "LI",
+      "population_millions": 167.886,
+      "ecological_footprint": 0.6707,
+      "biocapacity": 0.2478,
+      "earths_required": 0.4441,
+      "gdp_per_capita": 5681.27
+    },
+    "BRB": {
+      "name": "Barbados",
+      "region": "Central America/Caribbean",
+      "income_group": "HI",
+      "population_millions": 0.288,
+      "ecological_footprint": 3.3141,
+      "biocapacity": 0.2599,
+      "earths_required": 2.1945,
+      "gdp_per_capita": 14910.0
+    },
+    "BLR": {
+      "name": "Belarus",
+      "region": "Other Europe",
+      "income_group": "UM",
+      "population_millions": 9.433,
+      "ecological_footprint": 4.5783,
+      "biocapacity": 3.7025,
+      "earths_required": 3.0315,
+      "gdp_per_capita": 18574.0
+    },
+    "BEL": {
+      "name": "Belgium",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 11.668,
+      "ecological_footprint": 6.6896,
+      "biocapacity": 1.1613,
+      "earths_required": 4.4296,
+      "gdp_per_capita": 52749.4
+    },
+    "BLZ": {
+      "name": "Belize",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 0.412,
+      "ecological_footprint": 7.5304,
+      "biocapacity": 3.3032,
+      "earths_required": 4.9863,
+      "gdp_per_capita": 6121.78
+    },
+    "BEN": {
+      "name": "Benin",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 12.785,
+      "ecological_footprint": 1.1106,
+      "biocapacity": 0.6335,
+      "earths_required": 0.7354,
+      "gdp_per_capita": 3543.24
+    },
+    "BMU": {
+      "name": "Bermuda",
+      "region": "North America",
+      "income_group": "HI",
+      "population_millions": 0.062,
+      "ecological_footprint": null,
+      "biocapacity": null,
+      "earths_required": null,
+      "gdp_per_capita": null
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 0.788,
+      "ecological_footprint": 4.7206,
+      "biocapacity": 4.8728,
+      "earths_required": 3.1258,
+      "gdp_per_capita": 11106.1
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "region": "South America",
+      "income_group": "LM",
+      "population_millions": 11.993,
+      "ecological_footprint": 2.7725,
+      "biocapacity": 13.2359,
+      "earths_required": 1.8359,
+      "gdp_per_capita": 8441.65
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "region": "Other Europe",
+      "income_group": "UM",
+      "population_millions": 3.249,
+      "ecological_footprint": 4.2655,
+      "biocapacity": 2.1739,
+      "earths_required": 2.8245,
+      "gdp_per_capita": 14964.4
+    },
+    "BWA": {
+      "name": "Botswana",
+      "region": "Africa",
+      "income_group": "UM",
+      "population_millions": 2.441,
+      "ecological_footprint": 2.2218,
+      "biocapacity": 2.9024,
+      "earths_required": 1.4712,
+      "gdp_per_capita": 16519.3
+    },
+    "BRA": {
+      "name": "Brazil",
+      "region": "South America",
+      "income_group": "UM",
+      "population_millions": 215.354,
+      "ecological_footprint": 2.5518,
+      "biocapacity": 8.1771,
+      "earths_required": 1.6897,
+      "gdp_per_capita": 14738.6
+    },
+    "BRN": {
+      "name": "Brunei Darussalam",
+      "region": "Asia-Pacific",
+      "income_group": "HI",
+      "population_millions": 0.445,
+      "ecological_footprint": 7.9086,
+      "biocapacity": 2.6176,
+      "earths_required": 5.2368,
+      "gdp_per_capita": 64197.5
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "region": "EU-27",
+      "income_group": "UM",
+      "population_millions": 6.845,
+      "ecological_footprint": 3.5821,
+      "biocapacity": 3.0843,
+      "earths_required": 2.3719,
+      "gdp_per_capita": 24490.1
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 22.103,
+      "ecological_footprint": 0.8978,
+      "biocapacity": 0.6946,
+      "earths_required": 0.5945,
+      "gdp_per_capita": 2281.2
+    },
+    "BDI": {
+      "name": "Burundi",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 12.625,
+      "ecological_footprint": 0.5936,
+      "biocapacity": 0.3563,
+      "earths_required": 0.3931,
+      "gdp_per_capita": 732.836
+    },
+    "CPV": {
+      "name": "Cabo Verde",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 0.568,
+      "ecological_footprint": 1.1622,
+      "biocapacity": 0.4373,
+      "earths_required": 0.7695,
+      "gdp_per_capita": 6629.28
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "region": "Asia-Pacific",
+      "income_group": "LI",
+      "population_millions": 17.169,
+      "ecological_footprint": 1.3395,
+      "biocapacity": 1.0119,
+      "earths_required": 0.8869,
+      "gdp_per_capita": 4705.06
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 27.912,
+      "ecological_footprint": 1.044,
+      "biocapacity": 1.4267,
+      "earths_required": 0.6913,
+      "gdp_per_capita": 3767.17
+    },
+    "CAN": {
+      "name": "Canada",
+      "region": "North America",
+      "income_group": "HI",
+      "population_millions": 38.388,
+      "ecological_footprint": 7.4206,
+      "biocapacity": 14.2411,
+      "earths_required": 4.9136,
+      "gdp_per_capita": 49516.2
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 5.017,
+      "ecological_footprint": 1.1169,
+      "biocapacity": 6.4117,
+      "earths_required": 0.7395,
+      "gdp_per_capita": 943.672
+    },
+    "TCD": {
+      "name": "Chad",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 17.414,
+      "ecological_footprint": 1.3746,
+      "biocapacity": 1.4422,
+      "earths_required": 0.9102,
+      "gdp_per_capita": 1460.01
+    },
+    "CHL": {
+      "name": "Chile",
+      "region": "South America",
+      "income_group": "UM",
+      "population_millions": 19.25,
+      "ecological_footprint": 3.8418,
+      "biocapacity": 3.2314,
+      "earths_required": 2.5439,
+      "gdp_per_capita": 24432.8
+    },
+    "CHN": {
+      "name": "China",
+      "region": "Asia-Pacific",
+      "income_group": "UM",
+      "population_millions": 1480.632,
+      "ecological_footprint": 3.6186,
+      "biocapacity": 0.8021,
+      "earths_required": 2.3961,
+      "gdp_per_capita": 18298.5
+    },
+    "COL": {
+      "name": "Colombia",
+      "region": "South America",
+      "income_group": "UM",
+      "population_millions": 51.513,
+      "ecological_footprint": 1.9771,
+      "biocapacity": 3.5876,
+      "earths_required": 1.3092,
+      "gdp_per_capita": 15609.9
+    },
+    "COM": {
+      "name": "Comoros",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 0.907,
+      "ecological_footprint": 1.9848,
+      "biocapacity": 0.3322,
+      "earths_required": 1.3143,
+      "gdp_per_capita": 2873.84
+    },
+    "COG": {
+      "name": "Congo",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 5.798,
+      "ecological_footprint": 1.1183,
+      "biocapacity": 7.8313,
+      "earths_required": 0.7405,
+      "gdp_per_capita": 3921.21
+    },
+    "COD": {
+      "name": "Congo, Democratic Republic of",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 95.241,
+      "ecological_footprint": 0.6854,
+      "biocapacity": 1.8462,
+      "earths_required": 0.4538,
+      "gdp_per_capita": 1127.11
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 5.182,
+      "ecological_footprint": 2.5989,
+      "biocapacity": 1.6151,
+      "earths_required": 1.7209,
+      "gdp_per_capita": 20975.5
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 27.742,
+      "ecological_footprint": 0.8848,
+      "biocapacity": 1.1064,
+      "earths_required": 0.5859,
+      "gdp_per_capita": null
+    },
+    "HRV": {
+      "name": "Croatia",
+      "region": "Other Europe",
+      "income_group": "HI",
+      "population_millions": 4.059,
+      "ecological_footprint": 3.7119,
+      "biocapacity": 2.5717,
+      "earths_required": 2.4578,
+      "gdp_per_capita": 31006.7
+    },
+    "CUB": {
+      "name": "Cuba",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 11.306,
+      "ecological_footprint": 1.917,
+      "biocapacity": 1.1151,
+      "earths_required": 1.2694,
+      "gdp_per_capita": null
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 1.223,
+      "ecological_footprint": 3.1893,
+      "biocapacity": 0.3805,
+      "earths_required": 2.1118,
+      "gdp_per_capita": 41491.5
+    },
+    "CZE": {
+      "name": "Czech Republic",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 10.737,
+      "ecological_footprint": 5.083,
+      "biocapacity": 2.522,
+      "earths_required": 3.3658,
+      "gdp_per_capita": 40707.3
+    },
+    "DNK": {
+      "name": "Denmark",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 5.835,
+      "ecological_footprint": 7.2865,
+      "biocapacity": 4.2165,
+      "earths_required": 4.8248,
+      "gdp_per_capita": 59332.9
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 1.016,
+      "ecological_footprint": 2.4574,
+      "biocapacity": 0.6339,
+      "earths_required": 1.6272,
+      "gdp_per_capita": 5710.12
+    },
+    "DMA": {
+      "name": "Dominica",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 0.072,
+      "ecological_footprint": 2.687,
+      "biocapacity": 1.0043,
+      "earths_required": 1.7792,
+      "gdp_per_capita": 12411.5
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 11.056,
+      "ecological_footprint": 1.8032,
+      "biocapacity": 0.6817,
+      "earths_required": 1.194,
+      "gdp_per_capita": 20541.4
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "region": "South America",
+      "income_group": "UM",
+      "population_millions": 18.113,
+      "ecological_footprint": 1.6783,
+      "biocapacity": 1.8728,
+      "earths_required": 1.1113,
+      "gdp_per_capita": 10846.5
+    },
+    "EGY": {
+      "name": "Egypt",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 106.157,
+      "ecological_footprint": 1.453,
+      "biocapacity": 0.3131,
+      "earths_required": 0.9621,
+      "gdp_per_capita": 12785.5
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "region": "Central America/Caribbean",
+      "income_group": "LM",
+      "population_millions": 6.55,
+      "ecological_footprint": 1.9526,
+      "biocapacity": 0.6057,
+      "earths_required": 1.293,
+      "gdp_per_capita": 9062.31
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "region": "Africa",
+      "income_group": "HI",
+      "population_millions": 1.497,
+      "ecological_footprint": 1.8276,
+      "biocapacity": 2.6695,
+      "earths_required": 1.2102,
+      "gdp_per_capita": 16304.8
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 3.662,
+      "ecological_footprint": 0.7241,
+      "biocapacity": 1.9494,
+      "earths_required": 0.4795,
+      "gdp_per_capita": 1799.88
+    },
+    "EST": {
+      "name": "Estonia",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 1.322,
+      "ecological_footprint": 8.1175,
+      "biocapacity": 9.8116,
+      "earths_required": 5.3751,
+      "gdp_per_capita": 38352.9
+    },
+    "SWZ": {
+      "name": "Eswatini",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 1.185,
+      "ecological_footprint": 2.8997,
+      "biocapacity": 1.3868,
+      "earths_required": 1.9201,
+      "gdp_per_capita": 8917.34
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 120.813,
+      "ecological_footprint": 0.8409,
+      "biocapacity": 0.449,
+      "earths_required": 0.5568,
+      "gdp_per_capita": 2918.29
+    },
+    "FJI": {
+      "name": "Fiji",
+      "region": "Asia-Pacific",
+      "income_group": "UM",
+      "population_millions": 0.909,
+      "ecological_footprint": 2.813,
+      "biocapacity": 2.744,
+      "earths_required": 1.8627,
+      "gdp_per_capita": 11647.1
+    },
+    "FIN": {
+      "name": "Finland",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 5.555,
+      "ecological_footprint": 5.3633,
+      "biocapacity": 11.7511,
+      "earths_required": 3.5513,
+      "gdp_per_capita": 49685.5
+    },
+    "FRA": {
+      "name": "France",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 65.624,
+      "ecological_footprint": 4.3131,
+      "biocapacity": 2.4584,
+      "earths_required": 2.856,
+      "gdp_per_capita": 47995.3
+    },
+    "GUF": {
+      "name": "French Guiana",
+      "region": "South America",
+      "income_group": null,
+      "population_millions": 0.314,
+      "ecological_footprint": 1.5471,
+      "biocapacity": 85.6461,
+      "earths_required": 1.0244,
+      "gdp_per_capita": null
+    },
+    "PYF": {
+      "name": "French Polynesia",
+      "region": "Asia-Pacific",
+      "income_group": "HI",
+      "population_millions": 0.284,
+      "ecological_footprint": 3.7176,
+      "biocapacity": 1.1271,
+      "earths_required": 2.4616,
+      "gdp_per_capita": null
+    },
+    "GAB": {
+      "name": "Gabon",
+      "region": "Africa",
+      "income_group": "UM",
+      "population_millions": 2.332,
+      "ecological_footprint": 2.0645,
+      "biocapacity": 16.9336,
+      "earths_required": 1.367,
+      "gdp_per_capita": 15287.1
+    },
+    "GMB": {
+      "name": "Gambia",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 2.558,
+      "ecological_footprint": 0.8539,
+      "biocapacity": 0.4535,
+      "earths_required": 0.5654,
+      "gdp_per_capita": 2266.11
+    },
+    "GEO": {
+      "name": "Georgia",
+      "region": "Middle East/Central Asia",
+      "income_group": "LM",
+      "population_millions": 3.969,
+      "ecological_footprint": 2.6555,
+      "biocapacity": 1.3813,
+      "earths_required": 1.7583,
+      "gdp_per_capita": 15925.5
+    },
+    "DEU": {
+      "name": "Germany",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 83.884,
+      "ecological_footprint": 4.4987,
+      "biocapacity": 1.6145,
+      "earths_required": 2.9788,
+      "gdp_per_capita": 54192.0
+    },
+    "GHA": {
+      "name": "Ghana",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 32.395,
+      "ecological_footprint": 1.7553,
+      "biocapacity": 0.9233,
+      "earths_required": 1.1623,
+      "gdp_per_capita": 5784.7
+    },
+    "GRC": {
+      "name": "Greece",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 10.317,
+      "ecological_footprint": 3.7802,
+      "biocapacity": 1.6045,
+      "earths_required": 2.5031,
+      "gdp_per_capita": 30488.2
+    },
+    "GRD": {
+      "name": "Grenada",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 0.113,
+      "ecological_footprint": 1.777,
+      "biocapacity": 1.5793,
+      "earths_required": 1.1767,
+      "gdp_per_capita": 15667.8
+    },
+    "GLP": {
+      "name": "Guadeloupe",
+      "region": "Central America/Caribbean",
+      "income_group": null,
+      "population_millions": 0.4,
+      "ecological_footprint": 3.42,
+      "biocapacity": 0.5507,
+      "earths_required": 2.2646,
+      "gdp_per_capita": null
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "region": "Central America/Caribbean",
+      "income_group": "LM",
+      "population_millions": 18.584,
+      "ecological_footprint": 1.8938,
+      "biocapacity": 0.9637,
+      "earths_required": 1.254,
+      "gdp_per_capita": 8489.15
+    },
+    "GIN": {
+      "name": "Guinea",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 13.866,
+      "ecological_footprint": 1.5259,
+      "biocapacity": 1.7189,
+      "earths_required": 1.0104,
+      "gdp_per_capita": 2594.72
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 2.063,
+      "ecological_footprint": 1.2072,
+      "biocapacity": 2.2436,
+      "earths_required": 0.7994,
+      "gdp_per_capita": 2384.48
+    },
+    "GUY": {
+      "name": "Guyana",
+      "region": "South America",
+      "income_group": "LM",
+      "population_millions": 0.794,
+      "ecological_footprint": 3.3153,
+      "biocapacity": 70.5074,
+      "earths_required": 2.1952,
+      "gdp_per_capita": 32768.4
+    },
+    "HTI": {
+      "name": "Haiti",
+      "region": "Central America/Caribbean",
+      "income_group": "LI",
+      "population_millions": 11.68,
+      "ecological_footprint": 0.591,
+      "biocapacity": 0.2357,
+      "earths_required": 0.3913,
+      "gdp_per_capita": 2731.34
+    },
+    "HND": {
+      "name": "Honduras",
+      "region": "Central America/Caribbean",
+      "income_group": "LM",
+      "population_millions": 10.221,
+      "ecological_footprint": 1.3471,
+      "biocapacity": 1.6511,
+      "earths_required": 0.892,
+      "gdp_per_capita": 5773.16
+    },
+    "HUN": {
+      "name": "Hungary",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 9.606,
+      "ecological_footprint": 3.7886,
+      "biocapacity": 2.5707,
+      "earths_required": 2.5086,
+      "gdp_per_capita": 35069.0
+    },
+    "IND": {
+      "name": "India",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 1406.632,
+      "ecological_footprint": 1.0376,
+      "biocapacity": 0.3422,
+      "earths_required": 0.6871,
+      "gdp_per_capita": 7158.92
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 279.134,
+      "ecological_footprint": 1.6786,
+      "biocapacity": 1.2274,
+      "earths_required": 1.1115,
+      "gdp_per_capita": 12449.3
+    },
+    "IRN": {
+      "name": "Iran, Islamic Republic of",
+      "region": "Middle East/Central Asia",
+      "income_group": "UM",
+      "population_millions": 86.023,
+      "ecological_footprint": 3.2486,
+      "biocapacity": 0.7513,
+      "earths_required": 2.1511,
+      "gdp_per_capita": 15701.7
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "region": "Middle East/Central Asia",
+      "income_group": "LM",
+      "population_millions": 42.165,
+      "ecological_footprint": 1.7267,
+      "biocapacity": 0.3142,
+      "earths_required": 1.1434,
+      "gdp_per_capita": 10399.1
+    },
+    "IRL": {
+      "name": "Ireland",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 5.02,
+      "ecological_footprint": 4.5054,
+      "biocapacity": 3.1092,
+      "earths_required": 2.9833,
+      "gdp_per_capita": 106717.0
+    },
+    "ISR": {
+      "name": "Israel",
+      "region": "Middle East/Central Asia",
+      "income_group": "HI",
+      "population_millions": 8.923,
+      "ecological_footprint": 4.1609,
+      "biocapacity": 0.2421,
+      "earths_required": 2.7552,
+      "gdp_per_capita": 43000.3
+    },
+    "ITA": {
+      "name": "Italy",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 60.298,
+      "ecological_footprint": 3.9512,
+      "biocapacity": 0.9711,
+      "earths_required": 2.6163,
+      "gdp_per_capita": 43010.1
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 2.985,
+      "ecological_footprint": 1.7403,
+      "biocapacity": 0.5543,
+      "earths_required": 1.1524,
+      "gdp_per_capita": 10108.5
+    },
+    "JPN": {
+      "name": "Japan",
+      "region": "Asia-Pacific",
+      "income_group": "HI",
+      "population_millions": 125.585,
+      "ecological_footprint": 4.0443,
+      "biocapacity": 0.6301,
+      "earths_required": 2.6779,
+      "gdp_per_capita": 41809.1
+    },
+    "JOR": {
+      "name": "Jordan",
+      "region": "Middle East/Central Asia",
+      "income_group": "UM",
+      "population_millions": 10.301,
+      "ecological_footprint": 1.3039,
+      "biocapacity": 0.2143,
+      "earths_required": 0.8634,
+      "gdp_per_capita": 10159.1
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "region": "Middle East/Central Asia",
+      "income_group": "UM",
+      "population_millions": 19.205,
+      "ecological_footprint": 4.2942,
+      "biocapacity": 3.8239,
+      "earths_required": 2.8434,
+      "gdp_per_capita": 26125.1
+    },
+    "KEN": {
+      "name": "Kenya",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 56.215,
+      "ecological_footprint": 0.8813,
+      "biocapacity": 0.4628,
+      "earths_required": 0.5836,
+      "gdp_per_capita": 5191.63
+    },
+    "PRK": {
+      "name": "Korea, Democratic People's Republic of",
+      "region": "Asia-Pacific",
+      "income_group": "LI",
+      "population_millions": 25.991,
+      "ecological_footprint": 1.1982,
+      "biocapacity": 0.5334,
+      "earths_required": 0.7934,
+      "gdp_per_capita": null
+    },
+    "KOR": {
+      "name": "Korea, Republic of",
+      "region": "Asia-Pacific",
+      "income_group": "HI",
+      "population_millions": 51.33,
+      "ecological_footprint": 5.8214,
+      "biocapacity": 0.6469,
+      "earths_required": 3.8547,
+      "gdp_per_capita": 45438.2
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "region": "Middle East/Central Asia",
+      "income_group": "HI",
+      "population_millions": 4.38,
+      "ecological_footprint": 8.5512,
+      "biocapacity": 0.8073,
+      "earths_required": 5.6622,
+      "gdp_per_capita": 43612.6
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "region": "Middle East/Central Asia",
+      "income_group": "LI",
+      "population_millions": 6.728,
+      "ecological_footprint": 1.5104,
+      "biocapacity": 1.2534,
+      "earths_required": 1.0001,
+      "gdp_per_capita": 4763.72
+    },
+    "LAO": {
+      "name": "Lao People's Democratic Republic",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 7.481,
+      "ecological_footprint": 1.8596,
+      "biocapacity": 1.6419,
+      "earths_required": 1.2314,
+      "gdp_per_capita": 7865.83
+    },
+    "LVA": {
+      "name": "Latvia",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 1.849,
+      "ecological_footprint": 7.7246,
+      "biocapacity": 9.9305,
+      "earths_required": 5.1149,
+      "gdp_per_capita": 31973.2
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "region": "Middle East/Central Asia",
+      "income_group": "UM",
+      "population_millions": 6.685,
+      "ecological_footprint": 3.1456,
+      "biocapacity": 0.319,
+      "earths_required": 2.0829,
+      "gdp_per_capita": null
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 2.176,
+      "ecological_footprint": 1.1511,
+      "biocapacity": 0.7237,
+      "earths_required": 0.7622,
+      "gdp_per_capita": 2598.62
+    },
+    "LBR": {
+      "name": "Liberia",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 5.305,
+      "ecological_footprint": 1.2426,
+      "biocapacity": 2.7317,
+      "earths_required": 0.8228,
+      "gdp_per_capita": 1524.03
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "region": "EU-27",
+      "income_group": "UM",
+      "population_millions": 2.662,
+      "ecological_footprint": 6.4283,
+      "biocapacity": 5.9671,
+      "earths_required": 4.2565,
+      "gdp_per_capita": 39809.9
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 0.642,
+      "ecological_footprint": 10.9594,
+      "biocapacity": 1.229,
+      "earths_required": 7.2569,
+      "gdp_per_capita": 120505.0
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 29.178,
+      "ecological_footprint": 0.794,
+      "biocapacity": 1.9788,
+      "earths_required": 0.5258,
+      "gdp_per_capita": 1522.57
+    },
+    "MWI": {
+      "name": "Malawi",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 20.181,
+      "ecological_footprint": 0.7243,
+      "biocapacity": 0.5765,
+      "earths_required": 0.4796,
+      "gdp_per_capita": 1372.75
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "region": "Asia-Pacific",
+      "income_group": "UM",
+      "population_millions": 33.181,
+      "ecological_footprint": 4.2424,
+      "biocapacity": 2.0623,
+      "earths_required": 2.8091,
+      "gdp_per_capita": 28179.9
+    },
+    "MLI": {
+      "name": "Mali",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 21.474,
+      "ecological_footprint": 1.0008,
+      "biocapacity": 1.3687,
+      "earths_required": 0.6627,
+      "gdp_per_capita": 2205.85
+    },
+    "MLT": {
+      "name": "Malta",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 0.444,
+      "ecological_footprint": 3.722,
+      "biocapacity": 0.4674,
+      "earths_required": 2.4645,
+      "gdp_per_capita": 46805.7
+    },
+    "MTQ": {
+      "name": "Martinique",
+      "region": "Central America/Caribbean",
+      "income_group": null,
+      "population_millions": 0.374,
+      "ecological_footprint": 3.5028,
+      "biocapacity": 0.5101,
+      "earths_required": 2.3194,
+      "gdp_per_capita": null
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 4.902,
+      "ecological_footprint": 2.2564,
+      "biocapacity": 3.6536,
+      "earths_required": 1.4941,
+      "gdp_per_capita": 5927.21
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "region": "Africa",
+      "income_group": "UM",
+      "population_millions": 1.275,
+      "ecological_footprint": 2.6036,
+      "biocapacity": 0.6755,
+      "earths_required": 1.724,
+      "gdp_per_capita": 21449.6
+    },
+    "MEX": {
+      "name": "Mexico",
+      "region": "North America",
+      "income_group": "UM",
+      "population_millions": 131.563,
+      "ecological_footprint": 2.2852,
+      "biocapacity": 1.2028,
+      "earths_required": 1.5132,
+      "gdp_per_capita": 19027.9
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 3.378,
+      "ecological_footprint": 7.7077,
+      "biocapacity": 13.5142,
+      "earths_required": 5.1037,
+      "gdp_per_capita": 11434.7
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "region": "Other Europe",
+      "income_group": "UM",
+      "population_millions": 0.628,
+      "ecological_footprint": 3.6506,
+      "biocapacity": 2.8288,
+      "earths_required": 2.4173,
+      "gdp_per_capita": 21307.8
+    },
+    "MAR": {
+      "name": "Morocco",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 37.773,
+      "ecological_footprint": 1.5453,
+      "biocapacity": 0.5654,
+      "earths_required": 1.0232,
+      "gdp_per_capita": 7743.86
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 33.089,
+      "ecological_footprint": 0.7712,
+      "biocapacity": 1.3856,
+      "earths_required": 0.5107,
+      "gdp_per_capita": 1232.25
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "region": "Asia-Pacific",
+      "income_group": "LI",
+      "population_millions": 55.227,
+      "ecological_footprint": 1.1142,
+      "biocapacity": 1.3622,
+      "earths_required": 0.7378,
+      "gdp_per_capita": 4090.4
+    },
+    "NAM": {
+      "name": "Namibia",
+      "region": "Africa",
+      "income_group": "UM",
+      "population_millions": 2.634,
+      "ecological_footprint": 2.3853,
+      "biocapacity": 6.1229,
+      "earths_required": 1.5794,
+      "gdp_per_capita": 8948.86
+    },
+    "NPL": {
+      "name": "Nepal",
+      "region": "Asia-Pacific",
+      "income_group": "LI",
+      "population_millions": 30.226,
+      "ecological_footprint": 0.9005,
+      "biocapacity": 0.39,
+      "earths_required": 0.5962,
+      "gdp_per_capita": 3921.46
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 17.238,
+      "ecological_footprint": 6.022,
+      "biocapacity": 1.1135,
+      "earths_required": 3.9875,
+      "gdp_per_capita": 58732.4
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "region": "Asia-Pacific",
+      "income_group": "HI",
+      "population_millions": 4.898,
+      "ecological_footprint": 5.4262,
+      "biocapacity": 8.4472,
+      "earths_required": 3.593,
+      "gdp_per_capita": 43177.6
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "region": "Central America/Caribbean",
+      "income_group": "LM",
+      "population_millions": 6.779,
+      "ecological_footprint": 1.4936,
+      "biocapacity": 2.3104,
+      "earths_required": 0.989,
+      "gdp_per_capita": 6056.39
+    },
+    "NER": {
+      "name": "Niger",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 26.084,
+      "ecological_footprint": 1.3503,
+      "biocapacity": 1.0743,
+      "earths_required": 0.8941,
+      "gdp_per_capita": 1228.85
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 216.747,
+      "ecological_footprint": 0.8013,
+      "biocapacity": 0.4464,
+      "earths_required": 0.5306,
+      "gdp_per_capita": 5012.79
+    },
+    "NOR": {
+      "name": "Norway",
+      "region": "Other Europe",
+      "income_group": "HI",
+      "population_millions": 5.511,
+      "ecological_footprint": 5.3987,
+      "biocapacity": 6.7476,
+      "earths_required": 3.5748,
+      "gdp_per_capita": 66642.9
+    },
+    "OMN": {
+      "name": "Oman",
+      "region": "Middle East/Central Asia",
+      "income_group": "HI",
+      "population_millions": 5.324,
+      "ecological_footprint": 7.2815,
+      "biocapacity": 1.8013,
+      "earths_required": 4.8215,
+      "gdp_per_capita": 30222.3
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 229.489,
+      "ecological_footprint": 0.73,
+      "biocapacity": 0.3615,
+      "earths_required": 0.4834,
+      "gdp_per_capita": 5541.58
+    },
+    "PAN": {
+      "name": "Panama",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 4.447,
+      "ecological_footprint": 2.3198,
+      "biocapacity": 2.6276,
+      "earths_required": 1.5361,
+      "gdp_per_capita": 30906.8
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 9.292,
+      "ecological_footprint": 1.1548,
+      "biocapacity": 2.9002,
+      "earths_required": 0.7647,
+      "gdp_per_capita": 3682.07
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "region": "South America",
+      "income_group": "LM",
+      "population_millions": 7.306,
+      "ecological_footprint": 3.1503,
+      "biocapacity": 9.6479,
+      "earths_required": 2.086,
+      "gdp_per_capita": 12359.1
+    },
+    "PER": {
+      "name": "Peru",
+      "region": "South America",
+      "income_group": "UM",
+      "population_millions": 33.684,
+      "ecological_footprint": 2.2379,
+      "biocapacity": 3.5468,
+      "earths_required": 1.4818,
+      "gdp_per_capita": 12877.9
+    },
+    "PHL": {
+      "name": "Philippines",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 112.509,
+      "ecological_footprint": 1.1794,
+      "biocapacity": 0.4027,
+      "earths_required": 0.7809,
+      "gdp_per_capita": 8767.67
+    },
+    "POL": {
+      "name": "Poland",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 37.74,
+      "ecological_footprint": 4.6487,
+      "biocapacity": 2.0162,
+      "earths_required": 3.0782,
+      "gdp_per_capita": 35703.1
+    },
+    "PRT": {
+      "name": "Portugal",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 10.141,
+      "ecological_footprint": 3.7194,
+      "biocapacity": 1.478,
+      "earths_required": 2.4628,
+      "gdp_per_capita": 34949.8
+    },
+    "QAT": {
+      "name": "Qatar",
+      "region": "Middle East/Central Asia",
+      "income_group": "HI",
+      "population_millions": 2.98,
+      "ecological_footprint": 13.1263,
+      "biocapacity": 1.039,
+      "earths_required": 8.6917,
+      "gdp_per_capita": 96604.6
+    },
+    "MDA": {
+      "name": "Republic of Moldova",
+      "region": "Other Europe",
+      "income_group": "LM",
+      "population_millions": 4.013,
+      "ecological_footprint": 1.5222,
+      "biocapacity": 1.0095,
+      "earths_required": 1.0079,
+      "gdp_per_capita": 14320.2
+    },
+    "MKD": {
+      "name": "Republic of North Macedonia",
+      "region": "Other Europe",
+      "income_group": "UM",
+      "population_millions": 2.081,
+      "ecological_footprint": 2.8136,
+      "biocapacity": 1.5513,
+      "earths_required": 1.863,
+      "gdp_per_capita": 16895.8
+    },
+    "REU": {
+      "name": "Réunion",
+      "region": "Africa",
+      "income_group": null,
+      "population_millions": 0.908,
+      "ecological_footprint": 3.4913,
+      "biocapacity": 0.1236,
+      "earths_required": 2.3118,
+      "gdp_per_capita": null
+    },
+    "ROU": {
+      "name": "Romania",
+      "region": "EU-27",
+      "income_group": "UM",
+      "population_millions": 19.031,
+      "ecological_footprint": 2.7377,
+      "biocapacity": 2.4506,
+      "earths_required": 1.8128,
+      "gdp_per_capita": 31366.8
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "region": "Other Europe",
+      "income_group": "UM",
+      "population_millions": 145.806,
+      "ecological_footprint": 5.8012,
+      "biocapacity": 7.7121,
+      "earths_required": 3.8413,
+      "gdp_per_capita": 25706.2
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 13.6,
+      "ecological_footprint": 0.554,
+      "biocapacity": 0.2435,
+      "earths_required": 0.3669,
+      "gdp_per_capita": 2404.69
+    },
+    "LCA": {
+      "name": "Saint Lucia",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 0.185,
+      "ecological_footprint": 1.7118,
+      "biocapacity": 0.3764,
+      "earths_required": 1.1335,
+      "gdp_per_capita": 14140.1
+    },
+    "VCT": {
+      "name": "Saint Vincent and Grenadines",
+      "region": "Central America/Caribbean",
+      "income_group": "UM",
+      "population_millions": 0.112,
+      "ecological_footprint": 1.8148,
+      "biocapacity": 1.1555,
+      "earths_required": 1.2017,
+      "gdp_per_capita": 13280.4
+    },
+    "WSM": {
+      "name": "Samoa",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 0.202,
+      "ecological_footprint": 2.4838,
+      "biocapacity": 1.6623,
+      "earths_required": 1.6446,
+      "gdp_per_capita": 5083.66
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 0.228,
+      "ecological_footprint": 1.0519,
+      "biocapacity": 0.7001,
+      "earths_required": 0.6965,
+      "gdp_per_capita": 4009.68
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "region": "Middle East/Central Asia",
+      "income_group": "HI",
+      "population_millions": 35.845,
+      "ecological_footprint": 5.7455,
+      "biocapacity": 0.6975,
+      "earths_required": 3.8044,
+      "gdp_per_capita": 47422.7
+    },
+    "SEN": {
+      "name": "Senegal",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 17.654,
+      "ecological_footprint": 1.2195,
+      "biocapacity": 1.0002,
+      "earths_required": 0.8075,
+      "gdp_per_capita": 3505.27
+    },
+    "SRB": {
+      "name": "Serbia",
+      "region": "Other Europe",
+      "income_group": "UM",
+      "population_millions": 8.653,
+      "ecological_footprint": 3.8306,
+      "biocapacity": 2.055,
+      "earths_required": 2.5364,
+      "gdp_per_capita": 20473.7
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 8.306,
+      "ecological_footprint": 1.0463,
+      "biocapacity": 0.9216,
+      "earths_required": 0.6928,
+      "gdp_per_capita": 1676.67
+    },
+    "SGP": {
+      "name": "Singapore",
+      "region": "Asia-Pacific",
+      "income_group": "HI",
+      "population_millions": 5.944,
+      "ecological_footprint": 5.738,
+      "biocapacity": 0.1041,
+      "earths_required": 3.7995,
+      "gdp_per_capita": 112699.0
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 5.46,
+      "ecological_footprint": 4.159,
+      "biocapacity": 2.6657,
+      "earths_required": 2.7539,
+      "gdp_per_capita": 33078.6
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 2.078,
+      "ecological_footprint": 4.782,
+      "biocapacity": 2.4858,
+      "earths_required": 3.1664,
+      "gdp_per_capita": 41569.6
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "region": "Asia-Pacific",
+      "income_group": "LI",
+      "population_millions": 0.721,
+      "ecological_footprint": 1.6649,
+      "biocapacity": 3.3244,
+      "earths_required": 1.1025,
+      "gdp_per_capita": 2042.9
+    },
+    "SOM": {
+      "name": "Somalia",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 16.842,
+      "ecological_footprint": 0.8914,
+      "biocapacity": 0.7124,
+      "earths_required": 0.5902,
+      "gdp_per_capita": 1132.26
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "region": "Africa",
+      "income_group": "UM",
+      "population_millions": 60.756,
+      "ecological_footprint": 3.2129,
+      "biocapacity": 1.2756,
+      "earths_required": 2.1274,
+      "gdp_per_capita": 13157.0
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 11.619,
+      "ecological_footprint": 1.669,
+      "biocapacity": 1.7822,
+      "earths_required": 1.1052,
+      "gdp_per_capita": 794.443
+    },
+    "ESP": {
+      "name": "Spain",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 46.719,
+      "ecological_footprint": 3.9156,
+      "biocapacity": 1.7222,
+      "earths_required": 2.5927,
+      "gdp_per_capita": 39753.0
+    },
+    "SDN": {
+      "name": "Sudan",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 45.992,
+      "ecological_footprint": 1.1419,
+      "biocapacity": 1.1317,
+      "earths_required": 0.7561,
+      "gdp_per_capita": 3804.17
+    },
+    "SUR": {
+      "name": "Suriname",
+      "region": "South America",
+      "income_group": "UM",
+      "population_millions": 0.597,
+      "ecological_footprint": 3.1391,
+      "biocapacity": 74.8385,
+      "earths_required": 2.0786,
+      "gdp_per_capita": 14817.7
+    },
+    "SWE": {
+      "name": "Sweden",
+      "region": "EU-27",
+      "income_group": "HI",
+      "population_millions": 10.219,
+      "ecological_footprint": 4.9379,
+      "biocapacity": 8.5195,
+      "earths_required": 3.2697,
+      "gdp_per_capita": 53896.5
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "region": "Other Europe",
+      "income_group": "HI",
+      "population_millions": 8.774,
+      "ecological_footprint": 3.736,
+      "biocapacity": 1.1261,
+      "earths_required": 2.4738,
+      "gdp_per_capita": null
+    },
+    "SYR": {
+      "name": "Syrian Arab Republic",
+      "region": "Middle East/Central Asia",
+      "income_group": "LM",
+      "population_millions": 19.365,
+      "ecological_footprint": 0.9973,
+      "biocapacity": 0.5999,
+      "earths_required": 0.6603,
+      "gdp_per_capita": null
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "region": "Middle East/Central Asia",
+      "income_group": "LI",
+      "population_millions": 9.957,
+      "ecological_footprint": 1.061,
+      "biocapacity": 0.4477,
+      "earths_required": 0.7025,
+      "gdp_per_capita": 3965.55
+    },
+    "TZA": {
+      "name": "Tanzania, United Republic of",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 63.299,
+      "ecological_footprint": 0.9263,
+      "biocapacity": 0.7998,
+      "earths_required": 0.6134,
+      "gdp_per_capita": 2876.39
+    },
+    "THA": {
+      "name": "Thailand",
+      "region": "Asia-Pacific",
+      "income_group": "UM",
+      "population_millions": 70.078,
+      "ecological_footprint": 2.3452,
+      "biocapacity": 1.1436,
+      "earths_required": 1.5529,
+      "gdp_per_capita": 18035.7
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 1.369,
+      "ecological_footprint": 0.567,
+      "biocapacity": 1.5912,
+      "earths_required": 0.3755,
+      "gdp_per_capita": 2860.04
+    },
+    "TGO": {
+      "name": "Togo",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 8.681,
+      "ecological_footprint": 0.8931,
+      "biocapacity": 0.5539,
+      "earths_required": 0.5914,
+      "gdp_per_capita": 2226.17
+    },
+    "TON": {
+      "name": "Tonga",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 0.108,
+      "ecological_footprint": 3.0904,
+      "biocapacity": 1.2569,
+      "earths_required": 2.0463,
+      "gdp_per_capita": 5809.77
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "region": "Central America/Caribbean",
+      "income_group": "HI",
+      "population_millions": 1.407,
+      "ecological_footprint": 5.3931,
+      "biocapacity": 1.3795,
+      "earths_required": 3.5711,
+      "gdp_per_capita": 25595.8
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "region": "Africa",
+      "income_group": "UM",
+      "population_millions": 12.047,
+      "ecological_footprint": 1.3614,
+      "biocapacity": 0.716,
+      "earths_required": 0.9014,
+      "gdp_per_capita": 10534.7
+    },
+    "TUR": {
+      "name": "Turkiye",
+      "region": "Middle East/Central Asia",
+      "income_group": "UM",
+      "population_millions": 85.562,
+      "ecological_footprint": 3.3948,
+      "biocapacity": 1.4782,
+      "earths_required": 2.2479,
+      "gdp_per_capita": 32108.8
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "region": "Middle East/Central Asia",
+      "income_group": "LM",
+      "population_millions": 6.202,
+      "ecological_footprint": 3.8608,
+      "biocapacity": 2.1527,
+      "earths_required": 2.5565,
+      "gdp_per_capita": 16150.9
+    },
+    "UGA": {
+      "name": "Uganda",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 48.433,
+      "ecological_footprint": 0.978,
+      "biocapacity": 0.4789,
+      "earths_required": 0.6476,
+      "gdp_per_capita": null
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "region": "Other Europe",
+      "income_group": "LM",
+      "population_millions": 43.192,
+      "ecological_footprint": 2.0135,
+      "biocapacity": 3.0867,
+      "earths_required": 1.3333,
+      "gdp_per_capita": null
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "region": "Middle East/Central Asia",
+      "income_group": "HI",
+      "population_millions": 10.082,
+      "ecological_footprint": 8.7148,
+      "biocapacity": 0.5432,
+      "earths_required": 5.7706,
+      "gdp_per_capita": 67025.8
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "region": "Other Europe",
+      "income_group": "HI",
+      "population_millions": 68.498,
+      "ecological_footprint": 3.5653,
+      "biocapacity": 1.0205,
+      "earths_required": 2.3608,
+      "gdp_per_capita": 47365.5
+    },
+    "USA": {
+      "name": "United States of America",
+      "region": "North America",
+      "income_group": "HI",
+      "population_millions": 334.805,
+      "ecological_footprint": 7.4606,
+      "biocapacity": 3.7208,
+      "earths_required": 4.9401,
+      "gdp_per_capita": 65117.5
+    },
+    "URY": {
+      "name": "Uruguay",
+      "region": "South America",
+      "income_group": "UM",
+      "population_millions": 3.496,
+      "ecological_footprint": 2.1621,
+      "biocapacity": 9.5578,
+      "earths_required": 1.4317,
+      "gdp_per_capita": 22836.6
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "region": "Middle East/Central Asia",
+      "income_group": "LM",
+      "population_millions": 34.382,
+      "ecological_footprint": 2.1071,
+      "biocapacity": 0.7301,
+      "earths_required": 1.3953,
+      "gdp_per_capita": null
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 0.322,
+      "ecological_footprint": 1.8303,
+      "biocapacity": 1.8365,
+      "earths_required": 1.2119,
+      "gdp_per_capita": 2441.54
+    },
+    "VEN": {
+      "name": "Venezuela, Bolivarian Republic of",
+      "region": "South America",
+      "income_group": "UM",
+      "population_millions": 29.267,
+      "ecological_footprint": 2.1095,
+      "biocapacity": 2.946,
+      "earths_required": 1.3968,
+      "gdp_per_capita": null
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "region": "Asia-Pacific",
+      "income_group": "LM",
+      "population_millions": 98.954,
+      "ecological_footprint": 2.4323,
+      "biocapacity": 0.7951,
+      "earths_required": 1.6105,
+      "gdp_per_capita": 11032.4
+    },
+    "YEM": {
+      "name": "Yemen",
+      "region": "Middle East/Central Asia",
+      "income_group": "LM",
+      "population_millions": 31.155,
+      "ecological_footprint": 0.6133,
+      "biocapacity": 0.3475,
+      "earths_required": 0.4061,
+      "gdp_per_capita": 1779.53
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "region": "Africa",
+      "income_group": "LM",
+      "population_millions": 19.47,
+      "ecological_footprint": 1.2132,
+      "biocapacity": 1.6519,
+      "earths_required": 0.8033,
+      "gdp_per_capita": null
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "region": "Africa",
+      "income_group": "LI",
+      "population_millions": 15.331,
+      "ecological_footprint": 1.0854,
+      "biocapacity": 0.6315,
+      "earths_required": 0.7187,
+      "gdp_per_capita": null
+    }
+  }
+}

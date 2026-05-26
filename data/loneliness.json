@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "source": "World Happiness Report 2025 (SDSN, CC-BY) — Negative affect index (loneliness proxy). HLEG Tier I #11. WHR negative affect module is the public extract of Gallup loneliness data.",
+    "unit": "0–1 (mean share reporting negative affect 'a lot of day yesterday')",
+    "threshold_red": 0.35,
+    "threshold_amber": 0.25
+  },
+  "data": {}
+}

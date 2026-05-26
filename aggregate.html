@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HLEG Headline Aggregates — Beyond GDP</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('bgdp-theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design tokens (identical to index.html) ─────────────────────────── */
+    :root,
+    :root[data-theme="dark"] {
+      --bg:        #0b0e18;
+      --surface:   #141828;
+      --surface-2: #1d2237;
+      --surface-3: #252d40;
+      --border:    #2a3050;
+      --border-strong: #3a4170;
+      --text:        #e8eaf0;
+      --text-muted:  #a8acc4;
+      --text-subtle: #7a7e9d;
+      --green:      #22c55e;
+      --lime:       #84cc16;
+      --orange:     #fb923c;
+      --amber:      #f59e0b;
+      --red:        #ef4444;
+      --green-bg:  rgba(34,197,94,0.15);
+      --amber-bg:  rgba(245,158,11,0.15);
+      --red-bg:    rgba(239,68,68,0.15);
+      --gray-bg:   rgba(139,143,168,0.10);
+      --accent:       #4f7fff;
+      --accent-hover: #6b8fff;
+      --accent-bg:    rgba(79,127,255,0.10);
+      --radius: 12px;
+      --radius-sm: 6px;
+      --shadow-card:  0 2px 12px rgba(0,0,0,0.35);
+      --transition-base: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+      color-scheme: dark;
+    }
+    :root[data-theme="light"] {
+      --bg:        #f7f7f5;
+      --surface:   #ffffff;
+      --surface-2: #f0f0ed;
+      --surface-3: #e8e8e4;
+      --border:    #d8d8d4;
+      --border-strong: #c0c0bb;
+      --text:        #1a1a2e;
+      --text-muted:  #4a4a6a;
+      --text-subtle: #7a7a9a;
+      --green:      #16a34a;
+      --amber:      #d97706;
+      --red:        #dc2626;
+      --green-bg:  rgba(22,163,74,0.10);
+      --amber-bg:  rgba(217,119,6,0.10);
+      --red-bg:    rgba(220,38,38,0.10);
+      --accent:       #3b6fe8;
+      color-scheme: light;
+    }
+
+    /* ── Base ────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ── Nav bar ─────────────────────────────────────────────────────────── */
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-sep { color: var(--border-strong); }
+    .nav-current {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .nav-back {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: var(--transition-base);
+    }
+    .nav-back:hover { background: var(--surface-2); color: var(--text); }
+
+    /* ── Page header ─────────────────────────────────────────────────────── */
+    .page-header {
+      max-width: 900px;
+      margin: 32px auto 0;
+      padding: 0 24px;
+    }
+    .page-header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .page-header p {
+      color: var(--text-muted);
+      max-width: 640px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .hleg-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ── MVP notice ──────────────────────────────────────────────────────── */
+    .mvp-notice {
+      max-width: 900px;
+      margin: 16px auto 0;
+      padding: 10px 16px;
+      background: var(--amber-bg);
+      border: 1px solid var(--amber);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .mvp-notice strong { color: var(--amber); }
+
+    /* ── Country selector ────────────────────────────────────────────────── */
+    .country-selector {
+      max-width: 900px;
+      margin: 24px auto 0;
+      padding: 0 24px;
+    }
+    .country-selector label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-subtle);
+      margin-bottom: 10px;
+    }
+    .country-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .country-btn {
+      padding: 8px 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+    .country-btn:hover { background: var(--surface-2); color: var(--text); }
+    .country-btn.active {
+      background: var(--accent-bg);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Country context strip ───────────────────────────────────────────── */
+    .country-context {
+      max-width: 900px;
+      margin: 16px auto 0;
+      padding: 12px 24px;
+      display: none;
+    }
+    .country-context.visible { display: flex; align-items: center; gap: 20px; }
+    .country-name-big {
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .country-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .country-chip {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--surface-2);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Cards layout ────────────────────────────────────────────────────── */
+    .cards-section {
+      max-width: 900px;
+      margin: 24px auto 0;
+      padding: 0 24px;
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .cards-section.visible { display: flex; }
+
+    /* ── Aggregate card ──────────────────────────────────────────────────── */
+    .agg-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-card);
+    }
+    .agg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .agg-title-group { flex: 1; }
+    .agg-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--surface-3);
+      color: var(--text-subtle);
+      margin-bottom: 6px;
+    }
+    .agg-name {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .agg-subtitle {
+      font-size: 12px;
+      color: var(--text-subtle);
+      line-height: 1.4;
+    }
+    .agg-score-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    .agg-score {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .agg-grade {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+    .agg-score-label {
+      font-size: 11px;
+      color: var(--text-subtle);
+    }
+
+    /* Progress bar */
+    .agg-progress-bar {
+      height: 6px;
+      background: var(--surface-3);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .agg-progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+
+    /* Completeness */
+    .agg-meta-row {
+      margin-bottom: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .agg-completeness {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .agg-completeness-ok {
+      background: var(--green-bg);
+      color: var(--green);
+    }
+    .agg-completeness-warn {
+      background: var(--amber-bg);
+      color: var(--amber);
+    }
+
+    /* Breakdown */
+    .agg-breakdown {
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+    .agg-breakdown-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-subtle);
+      margin-bottom: 10px;
+    }
+    .agg-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 8px;
+    }
+    .agg-row:last-child { border-bottom: none; }
+    .agg-row-highlight { margin-top: 4px; }
+    .agg-row-missing { opacity: 0.5; }
+    .agg-label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .agg-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .agg-value-group {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .agg-raw {
+      font-size: 12px;
+      color: var(--text-muted);
+      min-width: 72px;
+      text-align: right;
+    }
+    .agg-penalty {
+      font-size: 12px;
+      font-weight: 600;
+      min-width: 80px;
+      text-align: right;
+    }
+
+    /* Methodology drawer */
+    .agg-meth-toggle { margin-top: 4px; }
+    .agg-meth-btn {
+      background: none;
+      border: none;
+      color: var(--text-subtle);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 0;
+      letter-spacing: 0.03em;
+      transition: color 150ms;
+    }
+    .agg-meth-btn:hover { color: var(--text-muted); }
+    .agg-meth-content {
+      display: none;
+      margin-top: 10px;
+      padding: 14px;
+      background: var(--surface-3);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .agg-meth-content.agg-meth-open { display: block; }
+    .agg-meth-content p { margin-bottom: 8px; }
+    .agg-meth-content p:last-child { margin-bottom: 0; }
+    .agg-meth-content ul { margin-bottom: 8px; }
+    .agg-meth-content li { margin-bottom: 4px; }
+    .agg-disclaimer {
+      font-size: 11px;
+      color: var(--text-subtle);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+
+    /* ── Context explanation ─────────────────────────────────────────────── */
+    .context-section {
+      max-width: 900px;
+      margin: 20px auto 0;
+      padding: 0 24px;
+      display: none;
+    }
+    .context-section.visible { display: block; }
+    .context-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+    }
+    .context-box h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .context-box p {
+      font-size: 13px;
+      color: var(--text-subtle);
+      line-height: 1.6;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────────────────── */
+    .page-footer {
+      max-width: 900px;
+      margin: 40px auto 0;
+      padding: 24px 24px 48px;
+      border-top: 1px solid var(--border);
+    }
+    .page-footer p {
+      font-size: 12px;
+      color: var(--text-subtle);
+      line-height: 1.6;
+    }
+    .page-footer a { color: var(--accent); text-decoration: none; }
+    .page-footer a:hover { text-decoration: underline; }
+
+    /* ── Loading / error states ──────────────────────────────────────────── */
+    .loading-msg {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--text-subtle);
+      font-size: 14px;
+    }
+    .error-msg {
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 14px 20px;
+      background: var(--red-bg);
+      border: 1px solid var(--red);
+      border-radius: var(--radius-sm);
+      color: var(--red);
+      font-size: 13px;
+    }
+
+    /* ── Responsive ──────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .agg-header { flex-direction: column; }
+      .agg-score-group { flex-direction: row; gap: 10px; align-items: baseline; }
+      .agg-score { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a class="nav-brand" href="index.html">Beyond GDP</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">HLEG Headline Aggregates</span>
+    <a class="nav-back" href="index.html">← Main Dashboard</a>
+  </nav>
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="hleg-badge">UN HLEG 2026</div>
+    <h1>Headline Aggregate Indicators</h1>
+    <p>
+      The UN High-Level Expert Group on Beyond GDP recommends complementing the full indicator
+      dashboard with a small number of <strong>headline aggregate indicators</strong> that summarise progress
+      for communication and accountability — reported alongside GDP. This page implements the
+      HLEG's two illustrative options for three focus countries with contrasting development contexts.
+    </p>
+  </div>
+
+  <!-- MVP notice -->
+  <div class="mvp-notice" style="max-width:900px;margin:16px auto 0;padding:10px 20px;">
+    <strong>MVP — three illustrative countries.</strong>
+    Denmark, Vietnam, and Kenya were selected to span high, lower-middle, and lower-income development
+    contexts. Weights are editorial interpretations of cited national policy frameworks — not official
+    government indices. The HLEG itself did not reach consensus on a single aggregation method.
+  </div>
+
+  <!-- Country selector -->
+  <div class="country-selector">
+    <label>Select a country</label>
+    <div class="country-btns">
+      <button class="country-btn" data-iso3="DNK" onclick="selectCountry('DNK')">🇩🇰 Denmark</button>
+      <button class="country-btn" data-iso3="VNM" onclick="selectCountry('VNM')">🇻🇳 Vietnam</button>
+      <button class="country-btn" data-iso3="KEN" onclick="selectCountry('KEN')">🇰🇪 Kenya</button>
+    </div>
+  </div>
+
+  <!-- Country context -->
+  <div class="country-context" id="country-context">
+    <div class="country-name-big" id="ctx-name"></div>
+    <div class="country-meta" id="ctx-meta"></div>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards-section" id="cards-section">
+    <div id="card-A"></div>
+    <div id="card-B"></div>
+  </div>
+
+  <!-- Country framing context -->
+  <div class="context-section" id="context-section">
+    <div class="context-box">
+      <h4 id="ctx-framing-title">Policy framing</h4>
+      <p id="ctx-framing-body"></p>
+    </div>
+  </div>
+
+  <!-- Loading state -->
+  <div class="loading-msg" id="loading-msg">Loading data…</div>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <p>
+      <strong>Methodology:</strong> HLEG Option A = inequality-adjusted household income (GDP per capita proxy),
+      cross-country comparable with fixed 2022 global-median Gini reference. HLEG Option B = multiplicative
+      penalization of Option A score for underperformance on national-priority non-monetary dimensions.
+      Weights sourced via expert-deliberation from national policy frameworks.
+      Full methodology: <code>_config/aggregate-methodology.md</code>.
+    </p>
+    <p style="margin-top:8px;">
+      Source: UN HLEG "Counting What Counts: A Compass of Progress for People and Planet", 2026.
+      Data: World Bank, WHO GHO, ILOSTAT, World Happiness Report, UNDP/OPHI.
+      Framework: <a href="index.html">GDP+ (Jens Wandel &amp; Christian Wandel)</a>.
+    </p>
+  </footer>
+
+  <script src="js/aggregates.js"></script>
+  <script>
+    'use strict';
+
+    // ── Data files to load ────────────────────────────────────────────────
+    const DATA_FILES = {
+      aggregate_presets:  'data/aggregate-presets.json',
+      household_income:   'data/household_income.json',
+      gini:               'data/gini.json',
+      hale:               'data/hale.json',
+      pm25:               'data/pm25.json',
+      co2:                'data/co2.json',
+      life_satisfaction:  'data/life_satisfaction.json',
+      poverty_rate:       'data/poverty_rate.json',
+      mpi:                'data/mpi.json',
+      countries:          'data/countries.json',
+    };
+
+    const Cache = {};
+    let Presets = null;
+    let activeIso3 = null;
+
+    // Country display metadata
+    const COUNTRY_META = {
+      DNK: { name: 'Denmark',  income: 'High Income',         region: 'Europe' },
+      VNM: { name: 'Vietnam',  income: 'Lower-Middle Income', region: 'East Asia' },
+      KEN: { name: 'Kenya',    income: 'Lower-Middle Income', region: 'Sub-Saharan Africa' },
+    };
+
+    // ── Load all data ─────────────────────────────────────────────────────
+    async function loadAll() {
+      const entries = Object.entries(DATA_FILES);
+      try {
+        const results = await Promise.all(
+          entries.map(([key, url]) =>
+            fetch(url)
+              .then(r => r.ok ? r.json() : Promise.reject(`${url}: HTTP ${r.status}`))
+              .then(data => [key, data])
+              .catch(err => { console.warn('Failed to load', url, err); return [key, null]; })
+          )
+        );
+        results.forEach(([key, data]) => { if (data) Cache[key] = data; });
+        Presets = Cache.aggregate_presets;
+
+        if (!Presets) {
+          showError('aggregate-presets.json not found. Run the merge pipeline first: python 03_merge/merge_outputs.py');
+          return;
+        }
+
+        document.getElementById('loading-msg').style.display = 'none';
+        // Auto-select Denmark on load
+        selectCountry('DNK');
+      } catch (err) {
+        showError('Failed to load data: ' + err);
+      }
+    }
+
+    // ── Country selection ─────────────────────────────────────────────────
+    function selectCountry(iso3) {
+      activeIso3 = iso3;
+
+      // Update button states
+      document.querySelectorAll('.country-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.iso3 === iso3);
+      });
+
+      // Show country context strip
+      const meta = COUNTRY_META[iso3] || {};
+      document.getElementById('ctx-name').textContent = meta.name || iso3;
+      document.getElementById('ctx-meta').innerHTML = [
+        meta.income ? `<span class="country-chip">${meta.income}</span>` : '',
+        meta.region ? `<span class="country-chip">${meta.region}</span>` : '',
+      ].join('');
+      document.getElementById('country-context').classList.add('visible');
+
+      // Render cards
+      document.getElementById('cards-section').classList.add('visible');
+      renderCards(iso3);
+
+      // Show policy framing
+      const cfg = Presets?.countryAggregates?.[iso3];
+      if (cfg?.policyFraming) {
+        document.getElementById('ctx-framing-title').textContent = `${meta.name || iso3} — Policy framing`;
+        document.getElementById('ctx-framing-body').textContent = cfg.policyFraming;
+        document.getElementById('context-section').classList.add('visible');
+      } else {
+        document.getElementById('context-section').classList.remove('visible');
+      }
+    }
+
+    // ── Render both cards ─────────────────────────────────────────────────
+    function renderCards(iso3) {
+      // Option A
+      const resultA = window.AggregatesLib.computeOptionA(iso3, Presets, Cache);
+      window.AggregatesLib.renderAggregateCard(
+        document.getElementById('card-A'), 'A', resultA, Presets, iso3
+      );
+
+      // Option B
+      const resultB = window.AggregatesLib.computeOptionB(iso3, Presets, Cache);
+      window.AggregatesLib.renderAggregateCard(
+        document.getElementById('card-B'), 'B', resultB, Presets, iso3
+      );
+    }
+
+    // ── Error display ─────────────────────────────────────────────────────
+    function showError(msg) {
+      document.getElementById('loading-msg').style.display = 'none';
+      const el = document.createElement('div');
+      el.className = 'error-msg';
+      el.textContent = 'Error: ' + msg;
+      document.querySelector('.country-selector').after(el);
+    }
+
+    // ── Boot ──────────────────────────────────────────────────────────────
+    loadAll();
+  </script>
+</body>
+</html>

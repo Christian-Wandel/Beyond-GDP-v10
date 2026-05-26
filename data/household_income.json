@@ -1,0 +1,1121 @@
+{
+  "meta": {
+    "source": "UN Statistics Division National Accounts Main Aggregates Database — GDP per capita (current USD, series 5) used as proxy for HLEG Tier I #4. True household adjusted disposable income not available in AMA API.",
+    "unit": "USD per capita (current prices, GDP proxy)",
+    "threshold_red": 5000,
+    "threshold_amber": 20000,
+    "note": "DATA GAP: AMA API exposes only GDP aggregates, not household sector accounts. True HH disposable income requires OECD SNA or UNECE dataset."
+  },
+  "data": {
+    "AFG": {
+      "name": "Afghanistan",
+      "value": 428.7,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ALB": {
+      "name": "Albania",
+      "value": 9684.72,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "DZA": {
+      "name": "Algeria",
+      "value": 5702.79,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "AND": {
+      "name": "Andorra",
+      "value": 49303.6,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "AGO": {
+      "name": "Angola",
+      "value": 3092.43,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ATG": {
+      "name": "Antigua and Barbuda",
+      "value": 23059.83,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ARG": {
+      "name": "Argentina",
+      "value": 13969.78,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ARM": {
+      "name": "Armenia",
+      "value": 8727.88,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "AUS": {
+      "name": "Australia",
+      "value": 68528.27,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "AUT": {
+      "name": "Austria",
+      "value": 58634.11,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "value": 7189.6,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BHS": {
+      "name": "Bahamas",
+      "value": 39455.45,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BHR": {
+      "name": "Bahrain",
+      "value": 29314.44,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "value": 2493.29,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BRB": {
+      "name": "Barbados",
+      "value": 26897.2,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BLR": {
+      "name": "Belarus",
+      "value": 8387.37,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BEL": {
+      "name": "Belgium",
+      "value": 56612.79,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BLZ": {
+      "name": "Belize",
+      "value": 7681.24,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BEN": {
+      "name": "Benin",
+      "value": 1485.38,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BMU": {
+      "name": "Bermuda",
+      "value": 136765.89,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BTN": {
+      "name": "Bhutan",
+      "value": 4228.05,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "value": 3756.22,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "value": 9632.0,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BWA": {
+      "name": "Botswana",
+      "value": 7695.24,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BRA": {
+      "name": "Brazil",
+      "value": 10310.55,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BRN": {
+      "name": "Brunei Darussalam",
+      "value": 33417.83,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "value": 16772.51,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "value": 987.32,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "BDI": {
+      "name": "Burundi",
+      "value": 315.41,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CPV": {
+      "name": "Cabo Verde",
+      "value": 5272.85,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "value": 2602.98,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "value": 1830.01,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CAN": {
+      "name": "Canada",
+      "value": 57119.71,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "value": 516.17,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "TCD": {
+      "name": "Chad",
+      "value": 980.64,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CHL": {
+      "name": "Chile",
+      "value": 16709.89,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CHN": {
+      "name": "China",
+      "value": 68679.54,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "COL": {
+      "name": "Colombia",
+      "value": 7913.99,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "COM": {
+      "name": "Comoros",
+      "value": 1807.81,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "COG": {
+      "name": "Congo",
+      "value": 689.28,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "value": 18587.15,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "value": 2689.73,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "HRV": {
+      "name": "Croatia",
+      "value": 23910.87,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CUB": {
+      "name": "Cuba",
+      "value": 22957.03,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CYP": {
+      "name": "Cyprus",
+      "value": 40475.61,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "DNK": {
+      "name": "Denmark",
+      "value": 71021.49,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "value": 3552.73,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "DMA": {
+      "name": "Dominica",
+      "value": 10405.28,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "value": 10875.66,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "value": 6874.71,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "EGY": {
+      "name": "Egypt",
+      "value": 2633.53,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "value": 5579.66,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GNQ": {
+      "name": "Equatorial Guinea",
+      "value": 6493.15,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ERI": {
+      "name": "Eritrea",
+      "value": 542.22,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "EST": {
+      "name": "Estonia",
+      "value": 31432.18,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "value": 1077.36,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "FJI": {
+      "name": "Fiji",
+      "value": 6425.74,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "FIN": {
+      "name": "Finland",
+      "value": 53174.38,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "FRA": {
+      "name": "France",
+      "value": 45949.72,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "PYF": {
+      "name": "French Polynesia",
+      "value": 22437.95,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GAB": {
+      "name": "Gabon",
+      "value": 8218.76,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GMB": {
+      "name": "Gambia",
+      "value": 859.49,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GEO": {
+      "name": "Georgia",
+      "value": 8979.67,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "DEU": {
+      "name": "Germany",
+      "value": 55113.02,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GHA": {
+      "name": "Ghana",
+      "value": 2409.06,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GRC": {
+      "name": "Greece",
+      "value": 25592.11,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GRD": {
+      "name": "Grenada",
+      "value": 11705.09,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "value": 6150.03,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GIN": {
+      "name": "Guinea",
+      "value": 2471.38,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "value": 912.05,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "GUY": {
+      "name": "Guyana",
+      "value": 29670.4,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "HTI": {
+      "name": "Haiti",
+      "value": 2150.1,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "HND": {
+      "name": "Honduras",
+      "value": 3426.43,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "HUN": {
+      "name": "Hungary",
+      "value": 23036.55,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ISL": {
+      "name": "Iceland",
+      "value": 84450.2,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "IND": {
+      "name": "India",
+      "value": 2723.93,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "value": 4925.43,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "IRN": {
+      "name": "Iran, Islamic Republic of",
+      "value": 4893.55,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "value": 6073.61,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "IRL": {
+      "name": "Ireland",
+      "value": 53311.79,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ISR": {
+      "name": "Israel",
+      "value": 57769.72,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ITA": {
+      "name": "Italy",
+      "value": 40119.82,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "value": 7753.8,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "JPN": {
+      "name": "Japan",
+      "value": 32534.24,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "JOR": {
+      "name": "Jordan",
+      "value": 4618.1,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "value": 14154.63,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "KEN": {
+      "name": "Kenya",
+      "value": 2132.43,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SWZ": {
+      "name": "Eswatini",
+      "value": 3980.65,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "KIR": {
+      "name": "Kiribati",
+      "value": 2550.16,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "value": 32470.81,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "value": 2432.26,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LAO": {
+      "name": "Lao People's Democratic Republic",
+      "value": 2075.91,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LVA": {
+      "name": "Latvia",
+      "value": 23337.21,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "value": 6543.31,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "value": 1022.99,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LBR": {
+      "name": "Liberia",
+      "value": 935.61,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LBY": {
+      "name": "Libya",
+      "value": 6568.71,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LIE": {
+      "name": "Liechtenstein",
+      "value": 216392.39,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "value": 29683.79,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "value": 138595.64,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "value": 545.0,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MWI": {
+      "name": "Malawi",
+      "value": 541.86,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "value": 11867.26,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MDV": {
+      "name": "Maldives",
+      "value": 13379.35,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MLI": {
+      "name": "Mali",
+      "value": 1086.18,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MLT": {
+      "name": "Malta",
+      "value": 46385.7,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MHL": {
+      "name": "Marshall Islands",
+      "value": 7491.36,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "value": 2110.94,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "value": 11762.84,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MEX": {
+      "name": "Mexico",
+      "value": 14157.94,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "FSM": {
+      "name": "Micronesia (Federated States of)",
+      "value": 4166.0,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "value": 6786.3,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "value": 12959.38,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MAR": {
+      "name": "Morocco",
+      "value": 4217.46,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "value": 656.78,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MMR": {
+      "name": "Myanmar",
+      "value": 1188.92,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "NAM": {
+      "name": "Namibia",
+      "value": 4413.13,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "NRU": {
+      "name": "Nauru",
+      "value": 15645.21,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "NPL": {
+      "name": "Nepal",
+      "value": 1439.82,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "value": 66649.01,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "value": 49899.34,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "value": 2847.54,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "NER": {
+      "name": "Niger",
+      "value": 647.05,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "value": 1083.39,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "NOR": {
+      "name": "Norway",
+      "value": 86717.26,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "OMN": {
+      "name": "Oman",
+      "value": 20285.23,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "value": 1508.82,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "PLW": {
+      "name": "Palau",
+      "value": 17513.42,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "PAN": {
+      "name": "Panama",
+      "value": 19102.85,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "value": 3050.36,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "value": 6456.61,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "PER": {
+      "name": "Peru",
+      "value": 8455.51,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "PHL": {
+      "name": "Philippines",
+      "value": 3984.83,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "POL": {
+      "name": "Poland",
+      "value": 23734.18,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "PRT": {
+      "name": "Portugal",
+      "value": 30049.15,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "QAT": {
+      "name": "Qatar",
+      "value": 71893.87,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MDA": {
+      "name": "Republic of Moldova",
+      "value": 5996.86,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "MKD": {
+      "name": "Republic of North Macedonia",
+      "value": 9298.74,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ROU": {
+      "name": "Romania",
+      "value": 20129.79,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "value": 15007.46,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "value": 1059.92,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "KNA": {
+      "name": "Saint Kitts and Nevis",
+      "value": 23960.65,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LCA": {
+      "name": "Saint Lucia",
+      "value": 14323.02,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "WSM": {
+      "name": "Samoa",
+      "value": 5749.31,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SMR": {
+      "name": "San Marino",
+      "value": 62012.9,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "value": 3516.73,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "value": 36926.95,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SEN": {
+      "name": "Senegal",
+      "value": 1984.36,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SRB": {
+      "name": "Serbia",
+      "value": 13223.18,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SYC": {
+      "name": "Seychelles",
+      "value": 16576.35,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "value": 785.87,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SGP": {
+      "name": "Singapore",
+      "value": 93852.91,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "value": 25745.76,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "value": 34212.07,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "value": 1933.56,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SOM": {
+      "name": "Somalia",
+      "value": 629.49,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "value": 6267.19,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SSD": {
+      "name": "South Sudan",
+      "value": 294.93,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ESP": {
+      "name": "Spain",
+      "value": 35957.57,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "value": 4272.68,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SDN": {
+      "name": "Sudan",
+      "value": 506.93,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SUR": {
+      "name": "Suriname",
+      "value": 6990.46,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SWE": {
+      "name": "Sweden",
+      "value": 57028.29,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "value": 104972.67,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "SYR": {
+      "name": "Syrian Arab Republic",
+      "value": 699.33,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "value": 1317.06,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "THA": {
+      "name": "Thailand",
+      "value": 7346.62,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "TLS": {
+      "name": "Timor-Leste",
+      "value": 1331.97,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "TGO": {
+      "name": "Togo",
+      "value": 1068.08,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "TON": {
+      "name": "Tonga",
+      "value": 6218.1,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "value": 17000.83,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "value": 4357.14,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "TKM": {
+      "name": "Turkmenistan",
+      "value": 9160.71,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "TUV": {
+      "name": "Tuvalu",
+      "value": 5850.72,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "UGA": {
+      "name": "Uganda",
+      "value": 1127.04,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "value": 5038.04,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "value": 50087.83,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "USA": {
+      "name": "United States of America",
+      "value": 84816.87,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "URY": {
+      "name": "Uruguay",
+      "value": 23906.51,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "UZB": {
+      "name": "Uzbekistan",
+      "value": 3161.7,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "VUT": {
+      "name": "Vanuatu",
+      "value": 3331.99,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "value": 4717.29,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "YEM": {
+      "name": "Yemen",
+      "value": 352.46,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "value": 1187.11,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "value": 2748.45,
+      "year": 2024,
+      "note": "GDP per capita proxy; true HH disposable income not in UNSD AMA API"
+    }
+  }
+}
