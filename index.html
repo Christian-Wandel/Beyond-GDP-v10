@@ -1842,42 +1842,12 @@
 </div><!-- /app-shell -->
 
 <script src="lib/echarts.min.js"></script>
+<script src="js/core.js"></script>
 <script>
   if (typeof echarts === 'undefined') {
     const s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js';
     document.head.appendChild(s);
-  }
-
-  // ── Theme tokens for ECharts (read live from CSS vars) ───────────────────
-  function chartTokens() {
-    const cs = getComputedStyle(document.documentElement);
-    const v = (n, fallback) => (cs.getPropertyValue(n).trim() || fallback);
-    return {
-      text:     v('--chart-text',      '#e6e8f2'),
-      textMid:  v('--chart-text-mid',  '#adb1c8'),
-      textLow:  v('--chart-text-low',  '#8b8fa8'),
-      grid:     v('--chart-grid',      'rgba(255,255,255,0.18)'),
-      gridSoft: v('--chart-grid-soft', 'rgba(255,255,255,0.06)'),
-      needleBorder: v('--chart-needle-border', '#141828'),
-      red:      v('--red',             '#ef4444'),
-    };
-  }
-
-  // ── Data cache ───────────────────────────────────────────────────────────
-  const Cache = {};
-  let lastGnsdResult = null;
-
-  async function loadAll() {
-    const files = [
-      'countries', 'ecological_footprint', 'hdi', 'gdp', 'co2', 'methane', 'gdi', 'gii',
-      'mpi', 'material_footprint', 'lu4', 'neet', 'wage', 'productivity',
-      'hale', 'uhc_coverage', 'poverty_rate', 'bii',
-    ];
-    await Promise.all(files.map(async (name) => {
-      const res = await fetch(`data/${name}.json`);
-      Cache[name] = await res.json();
-    }));
   }
 
   // ── ECharts instances ────────────────────────────────────────────────────
@@ -1915,13 +1885,7 @@
   }
 
   // ── No-data overlay helpers ──────────────────────────────────────────────
-  // Show/hide a no-data overlay without destroying the ECharts-managed DOM
-  // inside the container. Wiping innerHTML orphans the chart instance, so
-  // switching back to a country with data would silently no-op on setOption.
   function showNoData(el, chart) {
-    // Non-destructive: chart.clear() wipes ECharts state and strands
-    // subsequent setOption() calls under the SVG renderer. Use an empty
-    // series reset instead and layer the overlay on top.
     if (chart) chart.setOption({ series: [] }, true);
     let ov = el.querySelector(':scope > .metric-nodata');
     if (!ov) {
@@ -2015,23 +1979,19 @@
   }
 
   // ── Status helpers ───────────────────────────────────────────────────────
-  // #5 + #12: also updates parent card's status class for colored border + glow
   function setStatus(id, level, label) {
     const el = document.getElementById(id);
+    if (!el) return;
     const classMap = {
       green: 'status-green', 'green-dark': 'status-green-dark',
       amber: 'status-amber', red: 'status-red', gray: 'status-gray',
     };
-    // Unified "distance from target" semantics: green = far from danger,
-    // regardless of whether the underlying metric is higher-better or lower-better.
     const labelMap = {
       green: 'On Target', 'green-dark': 'Net Sink',
       amber: 'Caution', red: 'Overshoot', gray: 'No Data',
     };
     el.className = 'status-badge ' + (classMap[level] || 'status-gray');
     el.textContent = label || labelMap[level] || '—';
-
-    // Update parent card class for colored border + glow
     const cardEl = el.closest('[data-card]');
     if (cardEl) {
       cardEl.classList.remove('card-danger', 'card-amber', 'card-safe', 'card-sink', 'card-gray');
@@ -2062,7 +2022,6 @@
   }
 
   // ── Threshold marker layer ───────────────────────────────────────────────
-  // #2 + #17: thicker red threshold needle with smooth animation
   function makeThresholdLayer(min, max, threshVal) {
     return {
       type: 'gauge',
@@ -2070,21 +2029,21 @@
       startAngle: 215, endAngle: -35,
       radius: '90%', center: ['50%', '60%'],
       silent: true,
-      animationDuration: 800,           // #17
-      animationEasingUpdate: 'cubicOut', // #17
+      animationDuration: 800,
+      animationEasingUpdate: 'cubicOut',
       axisLine: { show: false },
       axisTick: { show: false },
       splitLine: { show: false },
       axisLabel: { show: false },
       pointer: {
         show: true,
-        length: '75%',   // #2: was '72%'
-        width: 4,         // #2: was 2.5
+        length: '75%',
+        width: 4,
         itemStyle: { color: chartTokens().red },
       },
       anchor: {
         show: true,
-        size: 9,          // #2: was 6
+        size: 9,
         itemStyle: { color: chartTokens().red, borderColor: chartTokens().needleBorder, borderWidth: 1.5 },
       },
       progress: { show: false },
@@ -2093,9 +2052,8 @@
     };
   }
 
-  // ── Bullet builder ───────────────────────────────────────────────────────
-  // Horizontal bullet graph: zone-banded track + value bar. Same config
-  // contract as buildGaugeOption so render sites only swap the builder name.
+  // ── Bullet builder ── (also in core.js for pillar pages; index.html keeps its own copy
+  //    for the non-env renders that still live here until Day 2 migration)
   function buildBulletOption({ value, min, max, zones, unitLabel, formatFn, vsText, vsColor, overflow, dangerMarkLine }) {
     const tk = chartTokens();
     const clampedValue = Math.max(min, Math.min(max, value));
@@ -3051,47 +3009,7 @@
       eod?.population_millions ? `Population: ${Number(eod.population_millions).toFixed(1)}M` : '';
   }
 
-  // ── Country flag (#14) ───────────────────────────────────────────────────
-  const ISO3_TO_ISO2 = {
-    AFG:'af',ALB:'al',DZA:'dz',AND:'ad',AGO:'ao',ATG:'ag',ARG:'ar',ARM:'am',
-    AUS:'au',AUT:'at',AZE:'az',BHS:'bs',BHR:'bh',BGD:'bd',BRB:'bb',BLR:'by',
-    BEL:'be',BLZ:'bz',BEN:'bj',BTN:'bt',BOL:'bo',BIH:'ba',BWA:'bw',BRA:'br',
-    BRN:'bn',BGR:'bg',BFA:'bf',BDI:'bi',CPV:'cv',KHM:'kh',CMR:'cm',CAN:'ca',
-    CAF:'cf',TCD:'td',CHL:'cl',CHN:'cn',COL:'co',COM:'km',COD:'cd',COG:'cg',
-    CRI:'cr',CIV:'ci',HRV:'hr',CUB:'cu',CYP:'cy',CZE:'cz',DNK:'dk',DJI:'dj',
-    DOM:'do',ECU:'ec',EGY:'eg',SLV:'sv',GNQ:'gq',ERI:'er',EST:'ee',SWZ:'sz',
-    ETH:'et',FJI:'fj',FIN:'fi',FRA:'fr',GAB:'ga',GMB:'gm',GEO:'ge',DEU:'de',
-    GHA:'gh',GRC:'gr',GTM:'gt',GIN:'gn',GNB:'gw',GUY:'gy',HTI:'ht',HND:'hn',
-    HUN:'hu',ISL:'is',IND:'in',IDN:'id',IRN:'ir',IRQ:'iq',IRL:'ie',ISR:'il',
-    ITA:'it',JAM:'jm',JPN:'jp',JOR:'jo',KAZ:'kz',KEN:'ke',PRK:'kp',KOR:'kr',
-    KWT:'kw',KGZ:'kg',LAO:'la',LVA:'lv',LBN:'lb',LSO:'ls',LBR:'lr',LBY:'ly',
-    LIE:'li',LTU:'lt',LUX:'lu',MDG:'mg',MWI:'mw',MYS:'my',MDV:'mv',MLI:'ml',
-    MLT:'mt',MRT:'mr',MUS:'mu',MEX:'mx',MDA:'md',MCO:'mc',MNG:'mn',MNE:'me',
-    MAR:'ma',MOZ:'mz',MMR:'mm',NAM:'na',NPL:'np',NLD:'nl',NZL:'nz',NIC:'ni',
-    NER:'ne',NGA:'ng',MKD:'mk',NOR:'no',OMN:'om',PAK:'pk',PAN:'pa',PNG:'pg',
-    PRY:'py',PER:'pe',PHL:'ph',POL:'pl',PRT:'pt',QAT:'qa',ROU:'ro',RUS:'ru',
-    RWA:'rw',WSM:'ws',SAU:'sa',SEN:'sn',SRB:'rs',SLE:'sl',SGP:'sg',SVK:'sk',
-    SVN:'si',SLB:'sb',SOM:'so',ZAF:'za',SSD:'ss',ESP:'es',LKA:'lk',SDN:'sd',
-    SUR:'sr',SWE:'se',CHE:'ch',SYR:'sy',TJK:'tj',TZA:'tz',THA:'th',
-    TLS:'tl',TGO:'tg',TON:'to',TTO:'tt',TUN:'tn',TUR:'tr',TKM:'tm',UGA:'ug',
-    UKR:'ua',ARE:'ae',GBR:'gb',USA:'us',URY:'uy',UZB:'uz',VUT:'vu',VEN:'ve',
-    VNM:'vn',YEM:'ye',ZMB:'zm',ZWE:'zw',STP:'st',DMA:'dm',GRD:'gd',KIR:'ki',
-    MHL:'mh',FSM:'fm',NRU:'nr',PLW:'pw',KNA:'kn',LCA:'lc',VCT:'vc',TUV:'tv',
-    PSE:'ps',HKG:'hk',MAC:'mo',GRL:'gl',FRO:'fo',NCL:'nc',PYF:'pf',
-    CUW:'cw',ABW:'aw',MTQ:'mq',GUF:'gf',REU:'re',MYT:'yt',SPM:'pm',
-  };
-
-  function updateFlag(iso3) {
-    const flagEl = document.getElementById('country-flag');
-    if (!flagEl) return;
-    const iso2 = ISO3_TO_ISO2[iso3];
-    if (iso2) {
-      flagEl.src = `https://flagcdn.com/24x18/${iso2}.png`;
-      flagEl.style.display = 'inline-block';
-    } else {
-      flagEl.style.display = 'none';
-    }
-  }
+  // ISO3_TO_ISO2 / updateFlag — defined in core.js
 
   // ── Tooltip content ──────────────────────────────────────────────────────
   function updateTooltips(iso3, name) {
@@ -3390,8 +3308,7 @@
     });
   }
 
-  // ── Load country data ────────────────────────────────────────────────────
-  let currentISO = null, currentName = null;
+  // ── Load country data ── (currentISO / currentName defined in core.js)
   function loadCountry(iso3, name) {
     currentISO = iso3;
     currentName = name;
