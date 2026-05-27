@@ -665,15 +665,15 @@
     let parts = [];
 
     if (greens.length > 0) {
-      const labels = greens.slice(0, 2).map(p => PILLAR_FULL[p.code]).join(' &amp; ');
+      const labels = greens.slice(0, 2).map(p => PILLAR_FULL[p.code]).join(', ');
       parts.push(`<span class="narrative-strong">strong on ${labels}</span>`);
     }
     if (ambers.length > 0 && reds.length === 0) {
-      const labels = ambers.slice(0, 2).map(p => PILLAR_FULL[p.code]).join(' &amp; ');
+      const labels = ambers.slice(0, 2).map(p => PILLAR_FULL[p.code]).join(', ');
       parts.push(`<span class="narrative-caution">caution on ${labels}</span>`);
     }
     if (reds.length > 0) {
-      const labels = reds.slice(0, 2).map(p => PILLAR_FULL[p.code]).join(' &amp; ');
+      const labels = reds.slice(0, 2).map(p => PILLAR_FULL[p.code]).join(', ');
       parts.push(`<span class="narrative-weak">lagging on ${labels}</span>`);
     }
 
