@@ -35,6 +35,7 @@ function chartTokens() {
 
 // ── Data cache ────────────────────────────────────────────────────────────────
 const Cache = {};
+window.CoreCache = Cache; // expose for aggregates.js on hub page
 let lastGnsdResult = null;
 
 async function loadAll(extraFiles = []) {

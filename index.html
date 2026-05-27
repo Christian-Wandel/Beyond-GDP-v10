@@ -261,13 +261,44 @@
     .tooltip-close { background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 14px; line-height: 1; padding: 2px 4px; }
     .tooltip-close:hover { color: var(--text); }
     .tooltip-body { font-size: 0.87rem; line-height: 1.65; color: var(--text); }
-    #tooltip-gnsd .tooltip-body p { margin: 0 0 8px 0; }
-    #tooltip-gnsd .tooltip-body ul { margin: 4px 0 10px 18px; padding: 0; }
-    #tooltip-gnsd .tooltip-body li { margin: 2px 0; }
-    #tooltip-gnsd .gnsd-formula {
-      font-family: ui-monospace, Menlo, Consolas, monospace;
-      background: rgba(255,255,255,0.05); padding: 6px 8px; border-radius: 4px; display: inline-block;
+    .metric-tooltip .tooltip-body p { margin: 0 0 8px 0; }
+    .metric-tooltip .tooltip-body ul { margin: 4px 0 10px 18px; padding: 0; }
+    .metric-tooltip .tooltip-body li { margin: 2px 0; }
+    .apex-hleg-method {
+      font-size: 0.68rem; color: var(--text-subtle); text-align: center;
+      margin-top: 2px; font-style: italic;
     }
+
+    /* ── Narrative headline ── */
+    .narrative-headline {
+      margin-bottom: 28px;
+      padding: 20px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+    }
+    .narrative-headline[aria-hidden="true"] { display: none; }
+    .narrative-text {
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .narrative-country {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .narrative-score {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .narrative-strong { color: var(--green); font-weight: 600; }
+    .narrative-caution { color: var(--amber); font-weight: 600; }
+    .narrative-weak   { color: var(--red);   font-weight: 600; }
+    .narrative-nodata { color: var(--text-subtle); }
 
     /* ── Section heading ── */
     .section-heading {
@@ -314,17 +345,6 @@
 
     .pillar-card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .pillar-card-title { font-size: 0.9rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
-    .pillar-card-tag {
-      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 2px 7px; border-radius: 100px; border: 1px solid transparent;
-    }
-    /* Tag colours per pillar */
-    .pillar-card[data-pillar="O"]   .pillar-card-tag { color: #60a5fa; background: rgba(96,165,250,0.12);  border-color: rgba(96,165,250,0.3); }
-    .pillar-card[data-pillar="I"]   .pillar-card-tag { color: #34d399; background: rgba(52,211,153,0.12);  border-color: rgba(52,211,153,0.3); }
-    .pillar-card[data-pillar="N"]   .pillar-card-tag { color: #f472b6; background: rgba(244,114,182,0.12); border-color: rgba(244,114,182,0.3); }
-    .pillar-card[data-pillar="EcS"] .pillar-card-tag { color: #a78bfa; background: rgba(167,139,250,0.12); border-color: rgba(167,139,250,0.3); }
-    .pillar-card[data-pillar="EnS"] .pillar-card-tag { color: #fb923c; background: rgba(251,146,60,0.12);  border-color: rgba(251,146,60,0.3); }
-    .pillar-card[data-pillar="Eq"]  .pillar-card-tag { color: #e879f9; background: rgba(232,121,249,0.12); border-color: rgba(232,121,249,0.3); }
 
     .pillar-card-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
 
@@ -431,22 +451,23 @@
 
   <!-- Apex bar -->
   <div id="apex-bar" class="apex-bar">
-    <div class="apex-stat-cell gnsd-cell" id="apex-gnsd">
+    <div class="apex-stat-cell hleg-cell" id="apex-hleg">
       <div class="apex-stat-label-row">
-        <span class="apex-stat-label">GNSD Score</span>
-        <button class="info-btn" data-tooltip="tooltip-gnsd" title="What is GNSD?">i</button>
+        <span class="apex-stat-label" id="apex-hleg-label">HLEG Composite</span>
+        <button class="info-btn" data-tooltip="tooltip-hleg" title="About this score">i</button>
       </div>
       <div class="gnsd-value-row">
-        <span class="gnsd-number">—</span>
+        <span class="gnsd-number" id="apex-hleg-number">—</span>
         <span class="gnsd-of">/ 100</span>
       </div>
-      <div class="gnsd-bar" aria-label="GNSD score progress bar">
-        <div class="gnsd-bar-fill"></div>
+      <div class="gnsd-bar" aria-label="HLEG composite score progress bar">
+        <div class="gnsd-bar-fill" id="apex-hleg-bar-fill"></div>
         <div class="gnsd-bar-ticks">
           <span style="left:40%"></span>
           <span style="left:70%"></span>
         </div>
       </div>
+      <div class="apex-hleg-method" id="apex-hleg-method"></div>
     </div>
     <div class="apex-stat-cell" id="apex-gni">
       <div class="apex-stat-label">GNI per Capita</div>
@@ -458,29 +479,25 @@
       <div class="apex-stat-value" style="color:var(--text-muted)">—</div>
       <div class="apex-stat-sub">current USD</div>
     </div>
-    <!-- GNSD info drawer -->
-    <div class="metric-tooltip" id="tooltip-gnsd">
+    <!-- HLEG info drawer -->
+    <div class="metric-tooltip" id="tooltip-hleg">
       <div class="tooltip-header">
-        <div class="tooltip-title">GNSD — Gross National Sustainable Development</div>
-        <button class="tooltip-close" data-tooltip="tooltip-gnsd">✕</button>
+        <div class="tooltip-title">HLEG Headline Aggregate</div>
+        <button class="tooltip-close" data-tooltip="tooltip-hleg">✕</button>
       </div>
       <div class="tooltip-body">
-        <p><strong>What it measures.</strong> A single apex score (0–100) combining economic output with multidimensional living standards. Is growth translating into better lives within planetary limits?</p>
-        <p><strong>Formula</strong> (UNEN Working Paper No. 1, Samans et al., March 2026):</p>
-        <p><span class="gnsd-formula">GNSD = 0.4 × GDP per capita (normalized) + 0.6 × MLSI pillar average</span></p>
-        <p><strong>The six pillars:</strong></p>
-        <ul>
-          <li><strong>O — Work &amp; Education:</strong> labour underutilization, NEET rate, schooling, learning outcomes</li>
-          <li><strong>I — Income &amp; Poverty:</strong> wage, productivity, poverty rate, societal poverty</li>
-          <li><strong>N — Basic Needs:</strong> multidimensional poverty, material footprint, drinking water</li>
-          <li><strong>EcS — Health &amp; Security:</strong> HALE, UHC, low birthweight, Gini, homicide, life satisfaction, social trust, gov confidence</li>
-          <li><strong>EnS — Planet &amp; Nature:</strong> CO₂, ecological footprint, biodiversity, GHG, PM2.5, produced capital</li>
-          <li><strong>Eq — Gender &amp; Equality:</strong> GDI, GII, gender pay ratio, IPV (SDG 5.2.1)</li>
-        </ul>
-        <p><strong>Reading the score:</strong> <span style="color:var(--green);font-weight:600">≥70 green (on track)</span>, <span style="color:var(--amber);font-weight:600">40–69 amber (mixed)</span>, <span style="color:var(--red);font-weight:600">&lt;40 red (lagging)</span>.</p>
-        <p><strong>Pillar status (cards below):</strong> tercile rule applied to GNSD-normalised indicator means. Green ≥67, Yellow ≥33, Red &lt;33 (0–100 scale). Gray = fewer than 50% of pillar indicators have data.</p>
+        <p><strong>What it measures.</strong> A country-specific composite (0–100) built from the indicators that matter most for that country's development context, following the UN HLEG "Counting What Counts" framework (2026).</p>
+        <p><strong>Option B (shown here):</strong> Expert-deliberation weights applied to 3–4 priority indicators drawn from the country's own national strategy documents. Base = inequality-adjusted income (Option A); penalties applied for shortfalls relative to global medians.</p>
+        <p><strong>Option A fallback:</strong> When no country-specific config exists, inequality-adjusted household income per capita is shown (HLEG Option A — cross-country comparable).</p>
+        <p><strong>Reading the score:</strong> <span style="color:var(--green);font-weight:600">≥80 strong</span>, <span style="color:var(--amber);font-weight:600">65–79 good</span>, <span style="color:var(--orange);font-weight:600">50–64 mixed</span>, <span style="color:var(--red);font-weight:600">&lt;50 lagging</span>.</p>
+        <p>Full methodology and per-country weights: <a href="aggregate.html" style="color:var(--accent)">HLEG Headline Aggregates →</a></p>
       </div>
     </div>
+  </div>
+
+  <!-- Narrative headline -->
+  <div class="narrative-headline" id="narrative-headline" aria-hidden="true">
+    <p class="narrative-text" id="narrative-text"></p>
   </div>
 
   <!-- Pillar cards -->
@@ -490,7 +507,6 @@
     <a class="pillar-card" data-pillar="O" href="opportunity.html" id="card-O">
       <div class="pillar-card-header">
         <span class="pillar-card-title">Work &amp; Education</span>
-        <span class="pillar-card-tag">O</span>
       </div>
       <p class="pillar-card-desc">Can people find decent work and access quality education?</p>
       <div class="pillar-card-status-row">
@@ -504,7 +520,6 @@
     <a class="pillar-card" data-pillar="I" href="income.html" id="card-I">
       <div class="pillar-card-header">
         <span class="pillar-card-title">Income &amp; Poverty</span>
-        <span class="pillar-card-tag">I</span>
       </div>
       <p class="pillar-card-desc">Are wages adequate and is extreme poverty declining?</p>
       <div class="pillar-card-status-row">
@@ -518,7 +533,6 @@
     <a class="pillar-card" data-pillar="N" href="necessities.html" id="card-N">
       <div class="pillar-card-header">
         <span class="pillar-card-title">Basic Needs</span>
-        <span class="pillar-card-tag">N</span>
       </div>
       <p class="pillar-card-desc">Are essential needs — food, water, shelter — being met?</p>
       <div class="pillar-card-status-row">
@@ -532,7 +546,6 @@
     <a class="pillar-card" data-pillar="EcS" href="security.html" id="card-EcS">
       <div class="pillar-card-header">
         <span class="pillar-card-title">Health &amp; Security</span>
-        <span class="pillar-card-tag">EcS</span>
       </div>
       <p class="pillar-card-desc">Are people healthy and safe from violence and inequality?</p>
       <div class="pillar-card-status-row">
@@ -546,7 +559,6 @@
     <a class="pillar-card" data-pillar="EnS" href="environment.html" id="card-EnS">
       <div class="pillar-card-header">
         <span class="pillar-card-title">Planet &amp; Nature</span>
-        <span class="pillar-card-tag">EnS</span>
       </div>
       <p class="pillar-card-desc">Are emissions and ecological impact within planetary limits?</p>
       <div class="pillar-card-status-row">
@@ -560,7 +572,6 @@
     <a class="pillar-card" data-pillar="Eq" href="equity.html" id="card-Eq">
       <div class="pillar-card-header">
         <span class="pillar-card-title">Gender &amp; Equality</span>
-        <span class="pillar-card-tag">Eq</span>
       </div>
       <p class="pillar-card-desc">Equal opportunities and freedom from gender-based violence.</p>
       <div class="pillar-card-status-row">
@@ -585,11 +596,94 @@
 <div class="drawer-backdrop" id="drawer-backdrop"></div>
 
 <script src="js/core.js"></script>
+<script src="js/aggregates.js"></script>
 <script>
+  // ── HLEG aggregate presets ────────────────────────────────────────────────
+  let HlegPresets = null;
+
+  function renderHlegApexCell(score, label, isOptionB) {
+    const numEl    = document.getElementById('apex-hleg-number');
+    const barFill  = document.getElementById('apex-hleg-bar-fill');
+    const labelEl  = document.getElementById('apex-hleg-label');
+    const methodEl = document.getElementById('apex-hleg-method');
+
+    if (!numEl) return;
+
+    if (score == null) {
+      numEl.textContent = '—';
+      numEl.className = 'gnsd-number';
+      if (barFill) { barFill.style.width = '0%'; barFill.className = 'gnsd-bar-fill'; }
+      if (labelEl) labelEl.textContent = label || 'HLEG Composite';
+      if (methodEl) methodEl.textContent = '';
+      return;
+    }
+
+    const rounded = Math.round(score);
+    numEl.textContent = rounded;
+
+    // Colour thresholds (HLEG Option B scale — multiplicative penalty makes scores lower)
+    let cls = 'gnsd-red';
+    if (score >= 80) cls = 'gnsd-green';
+    else if (score >= 65) cls = 'gnsd-amber';
+    else if (score >= 50) cls = 'gnsd-amber';
+    numEl.className = 'gnsd-number ' + cls;
+
+    if (barFill) {
+      barFill.style.width = Math.min(100, score) + '%';
+      barFill.className = 'gnsd-bar-fill ' + cls;
+    }
+    if (labelEl) labelEl.textContent = label || 'HLEG Composite';
+    if (methodEl) methodEl.textContent = isOptionB ? 'Option B' : 'Option A';
+  }
+
   // ── Page-specific loadCountry ─────────────────────────────────────────────
   const PILLAR_CODES = ['O', 'I', 'N', 'EcS', 'EnS', 'Eq'];
   const LEVEL_CLASS = { green: 'pstatus-green', amber: 'pstatus-amber', red: 'pstatus-red', gray: 'pstatus-gray' };
   const LEVEL_LABEL = { green: 'On Target', amber: 'Caution', red: 'Needs Action', gray: 'No Data' };
+
+  const PILLAR_FULL = {
+    O: 'Work & Education', I: 'Income & Poverty', N: 'Basic Needs',
+    EcS: 'Health & Security', EnS: 'Planet & Nature', Eq: 'Gender & Equality'
+  };
+
+  function renderNarrativeHeadline(name, gnsdScore, pillarResults) {
+    const el    = document.getElementById('narrative-headline');
+    const textEl = document.getElementById('narrative-text');
+    if (!el || !textEl) return;
+
+    const greens  = pillarResults.filter(p => p.level === 'green');
+    const ambers  = pillarResults.filter(p => p.level === 'amber');
+    const reds    = pillarResults.filter(p => p.level === 'red');
+    const covered = pillarResults.filter(p => p.level !== 'gray');
+
+    if (covered.length === 0 || gnsdScore == null) {
+      el.setAttribute('aria-hidden', 'true');
+      return;
+    }
+
+    // Build sentence
+    let parts = [];
+
+    if (greens.length > 0) {
+      const labels = greens.slice(0, 2).map(p => PILLAR_FULL[p.code]).join(' &amp; ');
+      parts.push(`<span class="narrative-strong">strong on ${labels}</span>`);
+    }
+    if (ambers.length > 0 && reds.length === 0) {
+      const labels = ambers.slice(0, 2).map(p => PILLAR_FULL[p.code]).join(' &amp; ');
+      parts.push(`<span class="narrative-caution">caution on ${labels}</span>`);
+    }
+    if (reds.length > 0) {
+      const labels = reds.slice(0, 2).map(p => PILLAR_FULL[p.code]).join(' &amp; ');
+      parts.push(`<span class="narrative-weak">lagging on ${labels}</span>`);
+    }
+
+    const verdict = parts.length > 0 ? ' — ' + parts.join(', ') : '';
+    const scoreHtml = `<span class="narrative-score">${Math.round(gnsdScore)}/100</span>`;
+
+    textEl.innerHTML =
+      `<span class="narrative-country">${name}</span>: ${scoreHtml}${verdict}`;
+    el.removeAttribute('aria-hidden');
+  }
 
   function loadCountry(iso3, name) {
     currentISO = iso3;
@@ -600,10 +694,23 @@
     updateFlag(iso3);
     setCountryInURL(iso3);
 
+    // Render HLEG apex score (Option B if available, else Option A)
+    let hlegScore = null;
+    if (HlegPresets && window.AggregatesLib) {
+      const hasOptionB = !!HlegPresets.countryAggregates?.[iso3];
+      const result = hasOptionB
+        ? window.AggregatesLib.computeOptionB(iso3, HlegPresets, window.CoreCache)
+        : window.AggregatesLib.computeOptionA(iso3, HlegPresets, window.CoreCache);
+      hlegScore = result?.score ?? null;
+      renderHlegApexCell(hlegScore, hasOptionB ? HlegPresets.countryAggregates[iso3].shortName : 'HLEG Option A', hasOptionB);
+    }
     updateApexBar(iso3);
 
+    const pillarResults = [];
     for (const code of PILLAR_CODES) {
       const { score, level, counted, total } = computePillarStatus(iso3, code);
+      pillarResults.push({ code, score, level, counted, total });
+
       const badgeEl    = document.getElementById(`status-${code}`);
       const scoreEl    = document.getElementById(`score-${code}`);
       const coverageEl = document.getElementById(`coverage-${code}`);
@@ -626,6 +733,8 @@
       }
     }
 
+    renderNarrativeHeadline(name, hlegScore, pillarResults);
+
     // Update aggregates footer link
     const aggLink = document.getElementById('aggregate-link');
     if (aggLink) aggLink.href = `aggregate.html?country=${iso3}`;
@@ -644,6 +753,11 @@
     ];
     try {
       await loadAll(extraFiles);
+      // Load HLEG aggregate presets for Option B composite
+      try {
+        const r = await fetch('data/aggregate-presets.json');
+        if (r.ok) HlegPresets = await r.json();
+      } catch (e) { /* presets optional — fallback to no apex score */ }
     } catch (err) {
       document.getElementById('loading-overlay').innerHTML =
         `<div style="color:#ef4444;text-align:center;padding:32px;max-width:500px">
