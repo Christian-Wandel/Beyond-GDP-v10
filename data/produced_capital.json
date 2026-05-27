@@ -2,6 +2,7 @@
   "meta": {
     "source": "World Bank Changing Wealth of Nations 2021 — Net produced capital per capita (current USD). Accessed via Data360 API (WB_CWON_NW_NFL). HLEG Tier I #17.",
     "unit": "USD per capita (current prices, net produced/fixed capital)",
+    "pillar": "Income (I)",
     "threshold_red": 10000,
     "threshold_amber": 50000,
     "note": "CWON updated ~every 3 years; 2021 edition covers 146 countries through 2020."

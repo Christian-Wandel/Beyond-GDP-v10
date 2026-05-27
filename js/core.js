@@ -6,11 +6,11 @@
 //   - Country selector, tooltip drawer, theme toggle
 //   - URL param helpers (getCountryFromURL / setCountryInURL)
 //   - Environment pillar render functions (renderCo2, renderCh4, renderFootprint,
-//     renderBii, renderGhgTotal, renderPm25, renderProducedCapital)
+//     renderBii, renderGhgTotal, renderPm25, renderNaturalCapital)
 //   - Opportunity pillar render functions (renderSchooling, renderLu4, renderNeet,
 //     renderLearningOutcomes) + updateOppTooltips
 //   - Income pillar render functions (renderWage, renderProd, renderPoverty,
-//     renderPovertySocietal) + updateIncomeTooltips
+//     renderPovertySocietal, renderProducedCapital) + updateIncomeTooltips
 //   - Necessities pillar render functions (renderMpi, renderMatFp,
 //     renderDrinkingWater) + updateNecessitiesTooltips
 //   - Security pillar render functions (renderHale, renderUhc, renderHouseholdIncome,
@@ -779,7 +779,46 @@ function renderPm25(pm25Entry) {
   window.chartPm25.setOption(option, true);
 }
 
-// ── New Tier I: Net Produced Capital ─────────────────────────────────────────
+// ── Natural Capital (Environment pillar) ─────────────────────────────────────
+// World Bank CWON NW.NCA.TOTL.PC — total natural capital per capita (USD).
+// Covers forests, agricultural land, fisheries, fossil fuels, minerals,
+// protected areas. Thresholds: red <$2k, amber <$10k, green ≥$10k.
+function renderNaturalCapital(natEntry) {
+  const el = document.getElementById('gauge-natcap');
+  if (!el) return;
+  if (!natEntry || natEntry.value == null) {
+    showNoData(el, window.chartNatcap);
+    setStatus('natcap-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+
+  const val = natEntry.value;  // USD per capita
+  const maxScale = 120000;
+  const zones = makeZones(0, maxScale, [
+    { maxVal: 2000,     color: '#ef4444' },
+    { maxVal: 10000,    color: '#f59e0b' },
+    { maxVal: 40000,    color: '#86efac' },
+    { maxVal: maxScale, color: '#22c55e' },
+  ]);
+  const level = val >= 10000 ? 'green' : val >= 2000 ? 'amber' : 'red';
+  const natPct = Math.round((1 - val / 10000) * 100);
+  setStatus('natcap-status', level, level === 'green' ? null : `${natPct}% below threshold`);
+
+  const vsText  = val >= 10000 ? 'above threshold' : val >= 2000 ? `${fmt(val / 10000 * 100, 0)}% of target` : 'severely depleted';
+  const vsColor = val >= 10000 ? '#22c55e' : val >= 2000 ? '#f59e0b' : '#ef4444';
+
+  const option = buildBulletOption({
+    value: Math.min(val, maxScale),
+    min: 0, max: maxScale, zones,
+    unitLabel: 'natural capital / person (USD)',
+    formatFn: () => fmtGni(val),
+    vsText, vsColor,
+  });
+  window.chartNatcap.setOption(option, true);
+}
+
+// ── Net Produced Capital (Income pillar) ─────────────────────────────────────
 function renderProducedCapital(capEntry) {
   const el = document.getElementById('gauge-capital');
   if (!el) return;
@@ -824,7 +863,7 @@ function updateEnvTooltips(iso3, name) {
   const bii = Cache.bii?.data?.[iso3];
   const ghg = Cache.ghg_total?.data?.[iso3];
   const pm25 = Cache.pm25?.data?.[iso3];
-  const cap = Cache.produced_capital?.data?.[iso3];
+  const nat = Cache.natural_capital?.data?.[iso3];
 
   const fpEl = document.getElementById('tooltip-footprint-body');
   if (fpEl) {
@@ -907,12 +946,18 @@ function updateEnvTooltips(iso3, name) {
     } else { pm25El.textContent = 'No PM2.5 data available for this country.'; }
   }
 
-  const capEl = document.getElementById('tooltip-capital-body');
-  if (capEl) {
-    if (cap?.value != null) {
-      const v = cap.value;
-      capEl.innerHTML = `<strong>${name}'s</strong> net produced capital stock is <strong>${fmtGni(v)} per person</strong> — the value of machinery, infrastructure, and built assets (World Bank CWON 2021). Higher produced capital enables productivity and income. Threshold: below $10k/person = low base; above $50k = adequate${cap.year ? `; data year: ${cap.year}` : ''}.`;
-    } else { capEl.textContent = 'No produced capital data available for this country.'; }
+  const natEl = document.getElementById('tooltip-natcap-body');
+  if (natEl) {
+    if (nat?.value != null) {
+      const v = nat.value;
+      const yr = nat.year ? `; data year: ${nat.year}` : '';
+      let context;
+      if (v >= 40000)      context = `${name} holds very high natural capital — large forests, agricultural land, mineral or fossil fuel wealth per person.`;
+      else if (v >= 10000) context = `${name} has a substantial natural capital base, supporting ecosystem services and resource-based livelihoods.`;
+      else if (v >= 2000)  context = `${name} has a limited natural capital base. Resource depletion or small land area may constrain long-term ecological resilience.`;
+      else                 context = `${name} has very low natural capital per capita — high risk of resource scarcity and ecosystem service loss.`;
+      natEl.innerHTML = `<strong>${name}'s</strong> total natural capital is <strong>${fmtGni(v)} per person</strong> — the monetary value of forests, agricultural land, fisheries, fossil fuels, minerals, and protected areas (World Bank CWON 2021, series NW.NCA.TOTL.PC)${yr}. Natural capital is distinct from produced capital (machinery, buildings); together they make up a country's total wealth base.<br><br>${context}`;
+    } else { natEl.textContent = 'No natural capital data available for this country.'; }
   }
 }
 
@@ -1200,6 +1245,7 @@ function updateIncomeTooltips(iso3, name) {
   const prod = Cache.productivity?.data?.[iso3];
   const pov  = Cache.poverty_rate?.data?.[iso3];
   const ps   = Cache.poverty_societal?.data?.[iso3];
+  const cap  = Cache.produced_capital?.data?.[iso3];
 
   const wageEl = document.getElementById('tooltip-wage-body');
   if (wageEl) {
@@ -1232,6 +1278,15 @@ function updateIncomeTooltips(iso3, name) {
       const yr = ps.year ? `; data year: ${ps.year}` : '';
       psEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> population lives below the World Bank societal poverty line ($6.85/day PPP) — a single cross-country comparable line (HLEG Tier I #15). Unlike the tiered national poverty line, this stays fixed across income groups, so direct comparisons between countries are meaningful. Danger threshold: 20%; safe below 10%${yr}. Source: World Bank Open Data (SI.POV.SOPO).`;
     } else { psEl.textContent = 'No societal poverty data available for this country.'; }
+  }
+
+  const capEl = document.getElementById('tooltip-capital-body');
+  if (capEl) {
+    if (cap?.value != null) {
+      const v = cap.value;
+      const yr = cap.year ? `; data year: ${cap.year}` : '';
+      capEl.innerHTML = `<strong>${name}'s</strong> net produced capital stock is <strong>${fmtGni(v)} per person</strong> — the value of machinery, infrastructure, buildings, and other built assets (World Bank CWON 2021, HLEG Tier I #17). Produced capital is the accumulated stock of human-made assets that enables productivity. A larger capital stock generally supports higher wages and output per worker. Threshold: below $10k/person = low base; $10–50k = developing; above $50k = adequate${yr}. Source: World Bank Changing Wealth of Nations (NW.PCA.TOTL.CD).`;
+    } else { capEl.textContent = 'No produced capital data available for this country.'; }
   }
 }
 
@@ -1989,11 +2044,13 @@ function computePillarStatus(iso3, pillarCode) {
       const prod = Cache.productivity?.data?.[iso3];
       const pov  = Cache.poverty_rate?.data?.[iso3];
       const povS = Cache.poverty_societal?.data?.[iso3];
+      const cap  = Cache.produced_capital?.data?.[iso3];
       indicators = [
         normHigh(wage?.value, 15000, 35000, 60000),
         normHigh(prod?.value, 30000, 70000, 120000),
         normLow(pov?.value, 10, 20, 40),
         normLow(povS?.value, 5, 15, 35),
+        normHigh(cap?.value, 10000, 50000, 120000),
       ];
       break;
     }
@@ -2035,7 +2092,7 @@ function computePillarStatus(iso3, pillarCode) {
       const bii  = Cache.bii?.data?.[iso3];
       const ghg  = Cache.ghg_total?.data?.[iso3];
       const pm25 = Cache.pm25?.data?.[iso3];
-      const cap  = Cache.produced_capital?.data?.[iso3];
+      const nat  = Cache.natural_capital?.data?.[iso3];
       const eodNorm = (eod?.ecological_footprint != null && eod?.biocapacity != null)
         ? normLow(eod.ecological_footprint, eod.biocapacity, eod.biocapacity * 1.5, eod.biocapacity * 3) : null;
       indicators = [
@@ -2044,7 +2101,7 @@ function computePillarStatus(iso3, pillarCode) {
         normHigh(bii?.value, 70, 85, 95),
         normLow(ghg?.value, 100, 300, 1000),
         normLow(pm25?.value, 5, 15, 35),
-        normHigh(cap?.value, 10000, 30000, 80000),
+        normHigh(nat?.value, 2000, 10000, 40000),
       ];
       break;
     }

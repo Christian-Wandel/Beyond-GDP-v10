@@ -457,7 +457,7 @@
           <span class="pillar-info-icon">ⓘ</span>
           <span class="pillar-tooltip" role="tooltip">
             <strong class="pt-title">Planet &amp; Nature</strong>
-            <span class="pt-body">Is the country living within planetary limits? Tracks CO₂, total GHG, methane, ecological footprint, biodiversity, air quality, and produced capital — the environmental and resource stewardship dimension of sustainable development.</span>
+            <span class="pt-body">Is the country living within planetary limits? Tracks CO₂, total GHG, methane, ecological footprint, biodiversity, air quality, and natural capital — the environmental and resource stewardship dimension of sustainable development.</span>
           </span>
         </span>
         <span class="dial-title">Planet &amp; Nature</span>
@@ -604,26 +604,26 @@
           </div>
         </div>
 
-        <!-- Net Produced Capital -->
-        <div class="metric-card" data-card="capital">
-          <div class="metric-title">Net Produced Capital</div>
+        <!-- Natural Capital -->
+        <div class="metric-card" data-card="natcap">
+          <div class="metric-title">Natural Capital per Capita</div>
           <div class="card-corner">
-            <div id="capital-status" class="status-badge status-gray">No Data</div>
-            <button class="info-btn" data-tooltip="tooltip-capital" title="What does this mean?">i</button>
+            <div id="natcap-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-natcap" title="What does this mean?">i</button>
           </div>
-          <div id="gauge-capital" class="metric-chart"></div>
+          <div id="gauge-natcap" class="metric-chart"></div>
           <div class="metric-footer">
             <div class="limit-label">
               <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Threshold: &lt;$10k/person = low capital base</span>
+              <span>Threshold: &lt;$2k/person = severely depleted natural base</span>
             </div>
           </div>
-          <div class="metric-tooltip" id="tooltip-capital">
+          <div class="metric-tooltip" id="tooltip-natcap">
             <div class="tooltip-header">
-              <div class="tooltip-title">Net Produced Capital</div>
-              <button class="tooltip-close" data-tooltip="tooltip-capital">✕</button>
+              <div class="tooltip-title">Natural Capital per Capita</div>
+              <button class="tooltip-close" data-tooltip="tooltip-natcap">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-capital-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body" id="tooltip-natcap-body">Select a country to see interpretation.</div>
           </div>
         </div>
 
@@ -655,10 +655,10 @@
     window.chartBii      = iv('gauge-bii');
     window.chartGhg      = iv('gauge-ghg');
     window.chartPm25     = iv('gauge-pm25');
-    window.chartCapital  = iv('gauge-capital');
+    window.chartNatcap   = iv('gauge-natcap');
     window.__chartInstances = [
       window.chartCo2, window.chartCh4, window.chartFootprint,
-      window.chartBii, window.chartGhg, window.chartPm25, window.chartCapital,
+      window.chartBii, window.chartGhg, window.chartPm25, window.chartNatcap,
     ];
     window.addEventListener('resize', () => {
       window.__chartInstances.forEach(c => c && c.resize());
@@ -682,7 +682,7 @@
     renderBii(Cache.bii?.data?.[iso3]);
     renderGhgTotal(Cache.ghg_total?.data?.[iso3]);
     renderPm25(Cache.pm25?.data?.[iso3]);
-    renderProducedCapital(Cache.produced_capital?.data?.[iso3]);
+    renderNaturalCapital(Cache.natural_capital?.data?.[iso3]);
 
     updateEnvTooltips(iso3, name);
   }
@@ -690,7 +690,7 @@
   // ── Boot ──────────────────────────────────────────────────────────────────
   async function init() {
     try {
-      await loadAll(['ghg_total', 'pm25', 'produced_capital']);
+      await loadAll(['ghg_total', 'pm25', 'natural_capital']);
     } catch (err) {
       document.getElementById('loading-overlay').innerHTML =
         `<div style="color:#ef4444;text-align:center;padding:32px;max-width:500px">

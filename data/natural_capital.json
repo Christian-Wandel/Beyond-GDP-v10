@@ -1,0 +1,762 @@
+{
+  "meta": {
+    "source": "World Bank Changing Wealth of Nations 2021 — Natural capital per capita (current USD). Series NW.NCA.TOTL.PC via World Bank Open Data v2 API. Covers forests, agricultural land, fisheries, fossil fuels, minerals, protected areas.",
+    "unit": "USD per capita (current prices, total natural capital)",
+    "pillar": "Environment (EnS)",
+    "threshold_red": 2000,
+    "threshold_amber": 10000,
+    "note": "CWON updated ~every 3 years; 2021 edition covers ~150 countries through 2020. Not a HLEG Tier I indicator — added for framework completeness (natural vs produced capital split)."
+  },
+  "data": {
+    "ALB": {
+      "name": "Albania",
+      "value": 9641.28,
+      "year": 2020
+    },
+    "AGO": {
+      "name": "Angola",
+      "value": 4953.59,
+      "year": 2020
+    },
+    "ARG": {
+      "name": "Argentina",
+      "value": 6303.93,
+      "year": 2020
+    },
+    "ARM": {
+      "name": "Armenia",
+      "value": 3798.65,
+      "year": 2020
+    },
+    "AUS": {
+      "name": "Australia",
+      "value": 42088.11,
+      "year": 2020
+    },
+    "AUT": {
+      "name": "Austria",
+      "value": 8922.77,
+      "year": 2020
+    },
+    "AZE": {
+      "name": "Azerbaijan",
+      "value": 3087.04,
+      "year": 2020
+    },
+    "BHR": {
+      "name": "Bahrain",
+      "value": 529.28,
+      "year": 2020
+    },
+    "BGD": {
+      "name": "Bangladesh",
+      "value": 2888.93,
+      "year": 2020
+    },
+    "BLR": {
+      "name": "Belarus",
+      "value": 4478.09,
+      "year": 2020
+    },
+    "BEL": {
+      "name": "Belgium",
+      "value": 2852.97,
+      "year": 2020
+    },
+    "BLZ": {
+      "name": "Belize",
+      "value": 11827.48,
+      "year": 2020
+    },
+    "BEN": {
+      "name": "Benin",
+      "value": 7394.44,
+      "year": 2020
+    },
+    "BOL": {
+      "name": "Bolivia",
+      "value": 3094.53,
+      "year": 2020
+    },
+    "BIH": {
+      "name": "Bosnia and Herzegovina",
+      "value": 7892.7,
+      "year": 2020
+    },
+    "BWA": {
+      "name": "Botswana",
+      "value": 5282.81,
+      "year": 2020
+    },
+    "BRA": {
+      "name": "Brazil",
+      "value": 9247.05,
+      "year": 2020
+    },
+    "BGR": {
+      "name": "Bulgaria",
+      "value": 7441.22,
+      "year": 2020
+    },
+    "BFA": {
+      "name": "Burkina Faso",
+      "value": 4727.12,
+      "year": 2020
+    },
+    "BDI": {
+      "name": "Burundi",
+      "value": 3073.3,
+      "year": 2020
+    },
+    "KHM": {
+      "name": "Cambodia",
+      "value": 8032.96,
+      "year": 2020
+    },
+    "CMR": {
+      "name": "Cameroon",
+      "value": 8108.16,
+      "year": 2020
+    },
+    "CAN": {
+      "name": "Canada",
+      "value": 22275.69,
+      "year": 2020
+    },
+    "CAF": {
+      "name": "Central African Republic",
+      "value": 3807.21,
+      "year": 2020
+    },
+    "TCD": {
+      "name": "Chad",
+      "value": 2855.5,
+      "year": 2020
+    },
+    "CHL": {
+      "name": "Chile",
+      "value": 9159.51,
+      "year": 2020
+    },
+    "CHN": {
+      "name": "China",
+      "value": 10071.81,
+      "year": 2020
+    },
+    "COL": {
+      "name": "Colombia",
+      "value": 3687.21,
+      "year": 2020
+    },
+    "COM": {
+      "name": "Comoros",
+      "value": 3837.96,
+      "year": 2020
+    },
+    "COG": {
+      "name": "Congo",
+      "value": 7045.17,
+      "year": 2020
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "value": 13510.3,
+      "year": 2020
+    },
+    "CIV": {
+      "name": "Côte d'Ivoire",
+      "value": 9410.61,
+      "year": 2020
+    },
+    "HRV": {
+      "name": "Croatia",
+      "value": 7357.59,
+      "year": 2020
+    },
+    "CZE": {
+      "name": "Czech Republic",
+      "value": 5890.97,
+      "year": 2020
+    },
+    "DNK": {
+      "name": "Denmark",
+      "value": 4920.51,
+      "year": 2020
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "value": 620.51,
+      "year": 2020
+    },
+    "DOM": {
+      "name": "Dominican Republic",
+      "value": 6250.21,
+      "year": 2020
+    },
+    "ECU": {
+      "name": "Ecuador",
+      "value": 4435.73,
+      "year": 2020
+    },
+    "EGY": {
+      "name": "Egypt",
+      "value": 7337.28,
+      "year": 2020
+    },
+    "SLV": {
+      "name": "El Salvador",
+      "value": 2993.39,
+      "year": 2020
+    },
+    "EST": {
+      "name": "Estonia",
+      "value": 12877.6,
+      "year": 2020
+    },
+    "SWZ": {
+      "name": "Eswatini",
+      "value": 7668.55,
+      "year": 2020
+    },
+    "ETH": {
+      "name": "Ethiopia",
+      "value": 3546.05,
+      "year": 2020
+    },
+    "FIN": {
+      "name": "Finland",
+      "value": 17641.15,
+      "year": 2020
+    },
+    "FRA": {
+      "name": "France",
+      "value": 4993.42,
+      "year": 2020
+    },
+    "GAB": {
+      "name": "Gabon",
+      "value": 12568.11,
+      "year": 2020
+    },
+    "GMB": {
+      "name": "Gambia",
+      "value": 1124.29,
+      "year": 2020
+    },
+    "GEO": {
+      "name": "Georgia",
+      "value": 4271.03,
+      "year": 2020
+    },
+    "DEU": {
+      "name": "Germany",
+      "value": 3076.95,
+      "year": 2020
+    },
+    "GHA": {
+      "name": "Ghana",
+      "value": 8305.58,
+      "year": 2020
+    },
+    "GRC": {
+      "name": "Greece",
+      "value": 6860.98,
+      "year": 2020
+    },
+    "GTM": {
+      "name": "Guatemala",
+      "value": 4846.0,
+      "year": 2020
+    },
+    "GIN": {
+      "name": "Guinea",
+      "value": 5973.35,
+      "year": 2020
+    },
+    "GNB": {
+      "name": "Guinea-Bissau",
+      "value": 5941.4,
+      "year": 2020
+    },
+    "GUY": {
+      "name": "Guyana",
+      "value": 21572.19,
+      "year": 2020
+    },
+    "HTI": {
+      "name": "Haiti",
+      "value": 1729.08,
+      "year": 2020
+    },
+    "HND": {
+      "name": "Honduras",
+      "value": 3901.85,
+      "year": 2020
+    },
+    "HUN": {
+      "name": "Hungary",
+      "value": 7201.81,
+      "year": 2020
+    },
+    "ISL": {
+      "name": "Iceland",
+      "value": 30751.21,
+      "year": 2020
+    },
+    "IND": {
+      "name": "India",
+      "value": 4585.71,
+      "year": 2020
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "value": 5866.42,
+      "year": 2020
+    },
+    "IRN": {
+      "name": "Iran, Islamic Republic of",
+      "value": 5713.42,
+      "year": 2020
+    },
+    "IRQ": {
+      "name": "Iraq",
+      "value": 1472.02,
+      "year": 2020
+    },
+    "IRL": {
+      "name": "Ireland",
+      "value": 3897.69,
+      "year": 2020
+    },
+    "ISR": {
+      "name": "Israel",
+      "value": 5561.4,
+      "year": 2020
+    },
+    "ITA": {
+      "name": "Italy",
+      "value": 4717.34,
+      "year": 2020
+    },
+    "JAM": {
+      "name": "Jamaica",
+      "value": 6039.03,
+      "year": 2020
+    },
+    "JPN": {
+      "name": "Japan",
+      "value": 4063.69,
+      "year": 2020
+    },
+    "JOR": {
+      "name": "Jordan",
+      "value": 1459.88,
+      "year": 2020
+    },
+    "KAZ": {
+      "name": "Kazakhstan",
+      "value": 2224.06,
+      "year": 2020
+    },
+    "KEN": {
+      "name": "Kenya",
+      "value": 3868.78,
+      "year": 2020
+    },
+    "KOR": {
+      "name": "Korea, Republic of",
+      "value": 3000.59,
+      "year": 2020
+    },
+    "KWT": {
+      "name": "Kuwait",
+      "value": 902.58,
+      "year": 2020
+    },
+    "KGZ": {
+      "name": "Kyrgyzstan",
+      "value": 3003.64,
+      "year": 2020
+    },
+    "LAO": {
+      "name": "Lao People's Democratic Republic",
+      "value": 21617.17,
+      "year": 2020
+    },
+    "LVA": {
+      "name": "Latvia",
+      "value": 15437.08,
+      "year": 2020
+    },
+    "LBN": {
+      "name": "Lebanon",
+      "value": 5510.07,
+      "year": 2020
+    },
+    "LSO": {
+      "name": "Lesotho",
+      "value": 1840.85,
+      "year": 2020
+    },
+    "LBR": {
+      "name": "Liberia",
+      "value": 5867.57,
+      "year": 2020
+    },
+    "LTU": {
+      "name": "Lithuania",
+      "value": 11746.76,
+      "year": 2020
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "value": 2845.22,
+      "year": 2020
+    },
+    "MDG": {
+      "name": "Madagascar",
+      "value": 2812.35,
+      "year": 2020
+    },
+    "MWI": {
+      "name": "Malawi",
+      "value": 7018.94,
+      "year": 2020
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "value": 12966.6,
+      "year": 2020
+    },
+    "MDV": {
+      "name": "Maldives",
+      "value": 651.62,
+      "year": 2020
+    },
+    "MLI": {
+      "name": "Mali",
+      "value": 6023.0,
+      "year": 2020
+    },
+    "MLT": {
+      "name": "Malta",
+      "value": 890.46,
+      "year": 2020
+    },
+    "MRT": {
+      "name": "Mauritania",
+      "value": 1716.06,
+      "year": 2020
+    },
+    "MUS": {
+      "name": "Mauritius",
+      "value": 3345.96,
+      "year": 2020
+    },
+    "MEX": {
+      "name": "Mexico",
+      "value": 4594.39,
+      "year": 2020
+    },
+    "MDA": {
+      "name": "Republic of Moldova",
+      "value": 2390.71,
+      "year": 2020
+    },
+    "MNG": {
+      "name": "Mongolia",
+      "value": 3490.12,
+      "year": 2020
+    },
+    "MNE": {
+      "name": "Montenegro",
+      "value": 5530.46,
+      "year": 2020
+    },
+    "MAR": {
+      "name": "Morocco",
+      "value": 5883.57,
+      "year": 2020
+    },
+    "MOZ": {
+      "name": "Mozambique",
+      "value": 4714.62,
+      "year": 2020
+    },
+    "NAM": {
+      "name": "Namibia",
+      "value": 7378.76,
+      "year": 2020
+    },
+    "NPL": {
+      "name": "Nepal",
+      "value": 6809.59,
+      "year": 2020
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "value": 3030.17,
+      "year": 2020
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "value": 75540.92,
+      "year": 2020
+    },
+    "NIC": {
+      "name": "Nicaragua",
+      "value": 4393.31,
+      "year": 2020
+    },
+    "NER": {
+      "name": "Niger",
+      "value": 4065.35,
+      "year": 2020
+    },
+    "NGA": {
+      "name": "Nigeria",
+      "value": 5597.95,
+      "year": 2020
+    },
+    "MKD": {
+      "name": "Republic of North Macedonia",
+      "value": 6668.81,
+      "year": 2020
+    },
+    "NOR": {
+      "name": "Norway",
+      "value": 22113.03,
+      "year": 2020
+    },
+    "OMN": {
+      "name": "Oman",
+      "value": 3787.59,
+      "year": 2020
+    },
+    "PAK": {
+      "name": "Pakistan",
+      "value": 3439.63,
+      "year": 2020
+    },
+    "PAN": {
+      "name": "Panama",
+      "value": 5702.51,
+      "year": 2020
+    },
+    "PNG": {
+      "name": "Papua New Guinea",
+      "value": 16275.55,
+      "year": 2020
+    },
+    "PRY": {
+      "name": "Paraguay",
+      "value": 13969.3,
+      "year": 2020
+    },
+    "PER": {
+      "name": "Peru",
+      "value": 4815.72,
+      "year": 2020
+    },
+    "PHL": {
+      "name": "Philippines",
+      "value": 4327.63,
+      "year": 2020
+    },
+    "POL": {
+      "name": "Poland",
+      "value": 5487.13,
+      "year": 2020
+    },
+    "PRT": {
+      "name": "Portugal",
+      "value": 5828.88,
+      "year": 2020
+    },
+    "QAT": {
+      "name": "Qatar",
+      "value": 1153.33,
+      "year": 2020
+    },
+    "ROU": {
+      "name": "Romania",
+      "value": 8840.47,
+      "year": 2020
+    },
+    "RUS": {
+      "name": "Russian Federation",
+      "value": 4685.33,
+      "year": 2020
+    },
+    "RWA": {
+      "name": "Rwanda",
+      "value": 4176.35,
+      "year": 2020
+    },
+    "STP": {
+      "name": "Sao Tome and Principe",
+      "value": 3838.83,
+      "year": 2020
+    },
+    "SAU": {
+      "name": "Saudi Arabia",
+      "value": 2452.24,
+      "year": 2020
+    },
+    "SEN": {
+      "name": "Senegal",
+      "value": 5121.76,
+      "year": 2020
+    },
+    "SRB": {
+      "name": "Serbia",
+      "value": 7811.55,
+      "year": 2020
+    },
+    "SLE": {
+      "name": "Sierra Leone",
+      "value": 3592.5,
+      "year": 2020
+    },
+    "SGP": {
+      "name": "Singapore",
+      "value": 200.29,
+      "year": 2020
+    },
+    "SVK": {
+      "name": "Slovakia",
+      "value": 5549.11,
+      "year": 2020
+    },
+    "SVN": {
+      "name": "Slovenia",
+      "value": 10944.3,
+      "year": 2020
+    },
+    "SLB": {
+      "name": "Solomon Islands",
+      "value": 22816.49,
+      "year": 2020
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "value": 4925.37,
+      "year": 2020
+    },
+    "ESP": {
+      "name": "Spain",
+      "value": 6590.53,
+      "year": 2020
+    },
+    "LKA": {
+      "name": "Sri Lanka",
+      "value": 3739.03,
+      "year": 2020
+    },
+    "LCA": {
+      "name": "Saint Lucia",
+      "value": 7049.24,
+      "year": 2020
+    },
+    "SDN": {
+      "name": "Sudan",
+      "value": 4859.56,
+      "year": 2020
+    },
+    "SUR": {
+      "name": "Suriname",
+      "value": 32635.56,
+      "year": 2020
+    },
+    "SWE": {
+      "name": "Sweden",
+      "value": 19367.24,
+      "year": 2020
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "value": 8730.62,
+      "year": 2020
+    },
+    "TJK": {
+      "name": "Tajikistan",
+      "value": 3403.47,
+      "year": 2020
+    },
+    "TZA": {
+      "name": "Tanzania, United Republic of",
+      "value": 4533.26,
+      "year": 2020
+    },
+    "THA": {
+      "name": "Thailand",
+      "value": 9685.53,
+      "year": 2020
+    },
+    "TGO": {
+      "name": "Togo",
+      "value": 3827.18,
+      "year": 2020
+    },
+    "TTO": {
+      "name": "Trinidad and Tobago",
+      "value": 1565.65,
+      "year": 2020
+    },
+    "TUN": {
+      "name": "Tunisia",
+      "value": 7128.02,
+      "year": 2020
+    },
+    "TUR": {
+      "name": "Turkiye",
+      "value": 7490.46,
+      "year": 2020
+    },
+    "UGA": {
+      "name": "Uganda",
+      "value": 2990.32,
+      "year": 2020
+    },
+    "UKR": {
+      "name": "Ukraine",
+      "value": 3019.31,
+      "year": 2020
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "value": 2621.24,
+      "year": 2020
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "value": 1430.71,
+      "year": 2020
+    },
+    "USA": {
+      "name": "United States of America",
+      "value": 4519.26,
+      "year": 2020
+    },
+    "URY": {
+      "name": "Uruguay",
+      "value": 14903.42,
+      "year": 2020
+    },
+    "VNM": {
+      "name": "Viet Nam",
+      "value": 12260.56,
+      "year": 2020
+    },
+    "ZMB": {
+      "name": "Zambia",
+      "value": 7278.5,
+      "year": 2020
+    },
+    "ZWE": {
+      "name": "Zimbabwe",
+      "value": 3818.0,
+      "year": 2020
+    }
+  }
+}

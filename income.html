@@ -555,6 +555,29 @@
           </div>
         </div>
 
+        <!-- Net Produced Capital (HLEG Tier I #17) -->
+        <div class="metric-card" data-card="capital">
+          <div class="metric-title">Net Produced Capital</div>
+          <div class="card-corner">
+            <div id="capital-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-capital" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-capital" class="metric-chart"></div>
+          <div class="metric-footer">
+            <div class="limit-label">
+              <div class="limit-dot" style="background:var(--red)"></div>
+              <span>Threshold: &lt;$10k/person = low capital base (HLEG Tier I #17)</span>
+            </div>
+          </div>
+          <div class="metric-tooltip" id="tooltip-capital">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Net Produced Capital</div>
+              <button class="tooltip-close" data-tooltip="tooltip-capital">✕</button>
+            </div>
+            <div class="tooltip-body" id="tooltip-capital-body">Select a country to see interpretation.</div>
+          </div>
+        </div>
+
       </div><!-- /metric-grid -->
     </div><!-- /dial-panel -->
 
@@ -581,8 +604,10 @@
     window.chartProd             = iv('gauge-prod');
     window.chartPoverty          = iv('gauge-poverty');
     window.chartPovertySocietal  = iv('gauge-poverty-societal');
+    window.chartCapital          = iv('gauge-capital');
     window.__chartInstances = [
       window.chartWage, window.chartProd, window.chartPoverty, window.chartPovertySocietal,
+      window.chartCapital,
     ];
     window.addEventListener('resize', () => {
       window.__chartInstances.forEach(c => c && c.resize());
@@ -604,6 +629,7 @@
     renderProd(Cache.productivity?.data?.[iso3]);
     renderPoverty(Cache.poverty_rate?.data?.[iso3]);
     renderPovertySocietal(Cache.poverty_societal?.data?.[iso3]);
+    renderProducedCapital(Cache.produced_capital?.data?.[iso3]);
 
     updateIncomeTooltips(iso3, name);
   }
@@ -611,7 +637,7 @@
   // ── Boot ──────────────────────────────────────────────────────────────────
   async function init() {
     try {
-      await loadAll(['poverty_societal']);
+      await loadAll(['poverty_societal', 'produced_capital']);
     } catch (err) {
       document.getElementById('loading-overlay').innerHTML =
         `<div style="color:#ef4444;text-align:center;padding:32px;max-width:500px">
