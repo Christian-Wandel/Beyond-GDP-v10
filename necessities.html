@@ -265,9 +265,7 @@
     .metric-card:nth-child(4) { animation-delay: 120ms; }
     .metric-card .metric-title { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); margin-bottom: 6px; text-align: center; }
     .metric-chart { width: 100%; height: 100px; position: relative; }
-    .metric-footer { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 4px; padding: 0 4px; }
-    .metric-footer .limit-label { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
-    .limit-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tooltip-target { font-size: 0.82rem; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
     .card-corner { position: absolute; top: 10px; right: 10px; display: flex; align-items: center; gap: 6px; z-index: 2; }
     .card-corner .status-badge { font-size: 0.74rem; font-weight: 700; padding: 3px 9px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; }
     .status-green      { background: var(--green-bg); color: var(--green); }
@@ -398,6 +396,10 @@
       Aggregates
       <span class="left-nav-link-icon">↗</span>
     </a>
+    <a class="left-nav-item" href="discover.html">
+      <span class="left-nav-dot"></span>
+      Discovery
+    </a>
   </div>
   <div class="left-nav-divider"></div>
   <div class="left-nav-section">
@@ -454,11 +456,11 @@
           <span class="pillar-info-icon">ⓘ</span>
           <span class="pillar-tooltip" role="tooltip">
             <strong class="pt-title">Basic Needs</strong>
-            <span class="pt-body">Can households meet basic needs while keeping material use sustainable? Tracks the Multidimensional Poverty Index, material footprint per capita (UNEP 8 t/person ceiling), and safely managed drinking water coverage (SDG 6.1.1).</span>
+            <span class="pt-body">Do people have access to the material foundations of a healthy, autonomous life? Tracks clean water, sanitation, electricity, and digital connectivity — the essentials that enable meaningful participation in modern society. The Multidimensional Poverty Index captures compounded deprivation across these dimensions for developing countries.</span>
           </span>
         </span>
         <span class="dial-title">Basic Needs</span>
-        <span class="dial-desc">Can households meet basic needs while keeping material use sustainable?</span>
+        <span class="dial-desc">Access to the essentials for a dignified and autonomous life</span>
       </div>
 
       <div class="metric-grid">
@@ -471,45 +473,19 @@
             <button class="info-btn" data-tooltip="tooltip-mpi" title="What does this mean?">i</button>
           </div>
           <div id="gauge-mpi" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Danger threshold: 0.10 (lower is better)</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-mpi">
             <div class="tooltip-header">
               <div class="tooltip-title">Multidimensional Poverty Index</div>
               <button class="tooltip-close" data-tooltip="tooltip-mpi">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-mpi-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Danger threshold: 0.10 (lower is better)</p>
+              <p id="tooltip-mpi-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Material Footprint per Capita -->
-        <div class="metric-card" data-card="matfp">
-          <div class="metric-title">Material Footprint per Capita</div>
-          <div class="card-corner">
-            <div id="matfp-status" class="status-badge status-gray">No Data</div>
-            <button class="info-btn" data-tooltip="tooltip-matfp" title="What does this mean?">i</button>
-          </div>
-          <div id="gauge-matfp" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Safe range: 8 t / person (UNEP)</span>
-            </div>
-          </div>
-          <div class="metric-tooltip" id="tooltip-matfp">
-            <div class="tooltip-header">
-              <div class="tooltip-title">Material Footprint per Capita</div>
-              <button class="tooltip-close" data-tooltip="tooltip-matfp">✕</button>
-            </div>
-            <div class="tooltip-body" id="tooltip-matfp-body">Select a country to see interpretation.</div>
-          </div>
-        </div>
-
-        <!-- Drinking Water (Tier I #13) -->
+        <!-- Drinking Water (SDG 6.1.1) -->
         <div class="metric-card" data-card="water">
           <div class="metric-title">Safely Managed Drinking Water</div>
           <div class="card-corner">
@@ -517,18 +493,75 @@
             <button class="info-btn" data-tooltip="tooltip-water" title="What does this mean?">i</button>
           </div>
           <div id="gauge-water" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--amber)"></div>
-              <span>SDG 6.1.1 target: 85%+ coverage</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-water">
             <div class="tooltip-header">
               <div class="tooltip-title">Safely Managed Drinking Water</div>
               <button class="tooltip-close" data-tooltip="tooltip-water">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-water-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">SDG 6.1.1 target: 85%+ coverage</p>
+              <p id="tooltip-water-body">Select a country to see interpretation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Safely Managed Sanitation (SDG 6.2.1) -->
+        <div class="metric-card" data-card="sanitation">
+          <div class="metric-title">Safely Managed Sanitation</div>
+          <div class="card-corner">
+            <div id="sanitation-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-sanitation" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-sanitation" class="metric-chart"></div>
+          <div class="metric-tooltip" id="tooltip-sanitation">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Safely Managed Sanitation</div>
+              <button class="tooltip-close" data-tooltip="tooltip-sanitation">✕</button>
+            </div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">SDG 6.2.1 target: 85%+ coverage</p>
+              <p id="tooltip-sanitation-body">Select a country to see interpretation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Access to Electricity (SDG 7.1.1) -->
+        <div class="metric-card" data-card="electricity">
+          <div class="metric-title">Access to Electricity</div>
+          <div class="card-corner">
+            <div id="electricity-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-electricity" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-electricity" class="metric-chart"></div>
+          <div class="metric-tooltip" id="tooltip-electricity">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Access to Electricity</div>
+              <button class="tooltip-close" data-tooltip="tooltip-electricity">✕</button>
+            </div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">SDG 7.1.1 target: 90%+ coverage</p>
+              <p id="tooltip-electricity-body">Select a country to see interpretation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Internet Access (SDG 17.8.1) -->
+        <div class="metric-card" data-card="internet">
+          <div class="metric-title">Internet Access</div>
+          <div class="card-corner">
+            <div id="internet-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-internet" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-internet" class="metric-chart"></div>
+          <div class="metric-tooltip" id="tooltip-internet">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Internet Access</div>
+              <button class="tooltip-close" data-tooltip="tooltip-internet">✕</button>
+            </div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">SDG 17.8.1 target: 70%+ connected</p>
+              <p id="tooltip-internet-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -543,7 +576,7 @@
 </div><!-- /app-shell -->
 
 <script src="lib/echarts.min.js"></script>
-<script src="js/core.js"></script>
+<script src="js/core.js?v=20260528"></script>
 <script>
   if (typeof echarts === 'undefined') {
     const s = document.createElement('script');
@@ -554,11 +587,14 @@
   // ── Chart instances (necessities pillar only) ─────────────────────────────
   function initCharts() {
     const iv = id => echarts.init(document.getElementById(id), null, { renderer: 'svg' });
-    window.chartMpi    = iv('gauge-mpi');
-    window.chartMatFp  = iv('gauge-matfp');
-    window.chartWater  = iv('gauge-water');
+    window.chartMpi         = iv('gauge-mpi');
+    window.chartWater       = iv('gauge-water');
+    window.chartSanitation  = iv('gauge-sanitation');
+    window.chartElectricity = iv('gauge-electricity');
+    window.chartInternet    = iv('gauge-internet');
     window.__chartInstances = [
-      window.chartMpi, window.chartMatFp, window.chartWater,
+      window.chartMpi, window.chartWater,
+      window.chartSanitation, window.chartElectricity, window.chartInternet,
     ];
     window.addEventListener('resize', () => {
       window.__chartInstances.forEach(c => c && c.resize());
@@ -577,8 +613,10 @@
     propagateCountryParam(iso3);
 
     renderMpi(Cache.mpi?.data?.[iso3]);
-    renderMatFp(Cache.material_footprint?.data?.[iso3]);
     renderDrinkingWater(Cache.drinking_water?.data?.[iso3]);
+    renderSanitation(Cache.sanitation?.data?.[iso3]);
+    renderElectricity(Cache.electricity?.data?.[iso3]);
+    renderInternet(Cache.internet?.data?.[iso3]);
 
     updateNecessitiesTooltips(iso3, name);
   }
@@ -586,7 +624,7 @@
   // ── Boot ──────────────────────────────────────────────────────────────────
   async function init() {
     try {
-      await loadAll(['drinking_water']);
+      await loadAll(['drinking_water', 'sanitation', 'electricity', 'internet']);
     } catch (err) {
       document.getElementById('loading-overlay').innerHTML =
         `<div style="color:#ef4444;text-align:center;padding:32px;max-width:500px">

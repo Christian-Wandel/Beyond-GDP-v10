@@ -265,9 +265,7 @@
     .metric-card:nth-child(4) { animation-delay: 120ms; }
     .metric-card .metric-title { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); margin-bottom: 6px; text-align: center; }
     .metric-chart { width: 100%; height: 100px; position: relative; }
-    .metric-footer { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 4px; padding: 0 4px; }
-    .metric-footer .limit-label { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
-    .limit-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tooltip-target { font-size: 0.82rem; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
     .card-corner { position: absolute; top: 10px; right: 10px; display: flex; align-items: center; gap: 6px; z-index: 2; }
     .card-corner .status-badge { font-size: 0.74rem; font-weight: 700; padding: 3px 9px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; }
     .status-green      { background: var(--green-bg); color: var(--green); }
@@ -398,6 +396,10 @@
       Aggregates
       <span class="left-nav-link-icon">↗</span>
     </a>
+    <a class="left-nav-item" href="discover.html">
+      <span class="left-nav-dot"></span>
+      Discovery
+    </a>
   </div>
   <div class="left-nav-divider"></div>
   <div class="left-nav-section">
@@ -471,18 +473,15 @@
             <button class="info-btn" data-tooltip="tooltip-wage" title="What does this mean?">i</button>
           </div>
           <div id="gauge-wage" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Minimum: $15,000 / year</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-wage">
             <div class="tooltip-header">
               <div class="tooltip-title">Average Annual Wage</div>
               <button class="tooltip-close" data-tooltip="tooltip-wage">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-wage-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Minimum: $15,000 / year</p>
+              <p id="tooltip-wage-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -494,18 +493,15 @@
             <button class="info-btn" data-tooltip="tooltip-prod" title="What does this mean?">i</button>
           </div>
           <div id="gauge-prod" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Minimum: $30,000 output/worker (2021 PPP)</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-prod">
             <div class="tooltip-header">
               <div class="tooltip-title">Labour Productivity</div>
               <button class="tooltip-close" data-tooltip="tooltip-prod">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-prod-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Minimum: $30,000 output/worker (2021 PPP)</p>
+              <p id="tooltip-prod-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -517,18 +513,15 @@
             <button class="info-btn" data-tooltip="tooltip-poverty" title="What does this mean?">i</button>
           </div>
           <div id="gauge-poverty" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span id="poverty-limit-label">Danger threshold: 20% below poverty line</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-poverty">
             <div class="tooltip-header">
               <div class="tooltip-title">Income Poverty Rate (National)</div>
               <button class="tooltip-close" data-tooltip="tooltip-poverty">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-poverty-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target" id="poverty-limit-label">Danger threshold: 20% below poverty line</p>
+              <p id="tooltip-poverty-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -540,18 +533,15 @@
             <button class="info-btn" data-tooltip="tooltip-poverty-societal" title="What does this mean?">i</button>
           </div>
           <div id="gauge-poverty-societal" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Danger threshold: 20% (HLEG Tier I #15)</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-poverty-societal">
             <div class="tooltip-header">
               <div class="tooltip-title">Societal Poverty Line ($6.85/day)</div>
               <button class="tooltip-close" data-tooltip="tooltip-poverty-societal">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-poverty-societal-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Danger threshold: 20% (HLEG Tier I #15)</p>
+              <p id="tooltip-poverty-societal-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -563,18 +553,15 @@
             <button class="info-btn" data-tooltip="tooltip-capital" title="What does this mean?">i</button>
           </div>
           <div id="gauge-capital" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Threshold: &lt;$10k/person = low capital base (HLEG Tier I #17)</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-capital">
             <div class="tooltip-header">
               <div class="tooltip-title">Net Produced Capital</div>
               <button class="tooltip-close" data-tooltip="tooltip-capital">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-capital-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Threshold: &lt;$10k/person = low capital base (HLEG Tier I #17)</p>
+              <p id="tooltip-capital-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 

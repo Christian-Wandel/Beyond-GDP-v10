@@ -268,9 +268,7 @@
     .metric-card:nth-child(7) { animation-delay: 240ms; }
     .metric-card .metric-title { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); margin-bottom: 6px; text-align: center; }
     .metric-chart { width: 100%; height: 100px; position: relative; }
-    .metric-footer { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 4px; padding: 0 4px; }
-    .metric-footer .limit-label { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
-    .limit-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tooltip-target { font-size: 0.82rem; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
     .card-corner { position: absolute; top: 10px; right: 10px; display: flex; align-items: center; gap: 6px; z-index: 2; }
     .card-corner .status-badge { font-size: 0.74rem; font-weight: 700; padding: 3px 9px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; }
     .status-green      { background: var(--green-bg); color: var(--green); }
@@ -401,6 +399,10 @@
       Aggregates
       <span class="left-nav-link-icon">↗</span>
     </a>
+    <a class="left-nav-item" href="discover.html">
+      <span class="left-nav-dot"></span>
+      Discovery
+    </a>
   </div>
   <div class="left-nav-divider"></div>
   <div class="left-nav-section">
@@ -474,18 +476,15 @@
             <button class="info-btn" data-tooltip="tooltip-co2" title="What does this mean?">i</button>
           </div>
           <div id="gauge-co2" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Danger threshold: 2.0 t (Paris 1.5&deg;C budget)</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-co2">
             <div class="tooltip-header">
               <div class="tooltip-title">CO&#8322; Emissions per Capita</div>
               <button class="tooltip-close" data-tooltip="tooltip-co2">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-co2-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Danger threshold: 2.0 t (Paris 1.5°C budget)</p>
+              <p id="tooltip-co2-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -497,18 +496,15 @@
             <button class="info-btn" data-tooltip="tooltip-ch4" title="What does this mean?">i</button>
           </div>
           <div id="gauge-ch4" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Danger threshold: net zero or below (land use)</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-ch4">
             <div class="tooltip-header">
               <div class="tooltip-title">Methane Emissions per Capita</div>
               <button class="tooltip-close" data-tooltip="tooltip-ch4">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-ch4-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Target: net zero or below (land use)</p>
+              <p id="tooltip-ch4-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -520,18 +516,15 @@
             <button class="info-btn" data-tooltip="tooltip-footprint" title="What does this mean?">i</button>
           </div>
           <div id="gauge-footprint" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span id="footprint-limit-label">Danger threshold: your biocapacity</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-footprint">
             <div class="tooltip-header">
               <div class="tooltip-title">Ecological Footprint</div>
               <button class="tooltip-close" data-tooltip="tooltip-footprint">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-footprint-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target" id="footprint-limit-label">Target: within your biocapacity</p>
+              <p id="tooltip-footprint-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -543,18 +536,15 @@
             <button class="info-btn" data-tooltip="tooltip-bii" title="What does this mean?">i</button>
           </div>
           <div id="gauge-bii" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Danger threshold: below 70 (planetary boundary)</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-bii">
             <div class="tooltip-header">
               <div class="tooltip-title">Biodiversity Intactness Index</div>
               <button class="tooltip-close" data-tooltip="tooltip-bii">&#x2715;</button>
             </div>
-            <div class="tooltip-body" id="tooltip-bii-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Danger threshold: below 70 (planetary boundary)</p>
+              <p id="tooltip-bii-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -566,18 +556,15 @@
             <button class="info-btn" data-tooltip="tooltip-ghg" title="What does this mean?">i</button>
           </div>
           <div id="gauge-ghg" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Threshold: &gt;500 MtCO&#8322;e = high emitter</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-ghg">
             <div class="tooltip-header">
               <div class="tooltip-title">Total GHG Emissions</div>
               <button class="tooltip-close" data-tooltip="tooltip-ghg">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-ghg-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Threshold: &gt;500 MtCO&#8322;e = high emitter</p>
+              <p id="tooltip-ghg-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -589,18 +576,35 @@
             <button class="info-btn" data-tooltip="tooltip-pm25" title="What does this mean?">i</button>
           </div>
           <div id="gauge-pm25" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>WHO guideline: 5 &#956;g/m&#179; annual mean</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-pm25">
             <div class="tooltip-header">
               <div class="tooltip-title">PM2.5 Air Pollution</div>
               <button class="tooltip-close" data-tooltip="tooltip-pm25">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-pm25-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">WHO guideline: 5 &#956;g/m&#179; annual mean</p>
+              <p id="tooltip-pm25-body">Select a country to see interpretation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Material Footprint per Capita -->
+        <div class="metric-card" data-card="matfp">
+          <div class="metric-title">Material Footprint per Capita</div>
+          <div class="card-corner">
+            <div id="matfp-status" class="status-badge status-gray">No Data</div>
+            <button class="info-btn" data-tooltip="tooltip-matfp" title="What does this mean?">i</button>
+          </div>
+          <div id="gauge-matfp" class="metric-chart"></div>
+          <div class="metric-tooltip" id="tooltip-matfp">
+            <div class="tooltip-header">
+              <div class="tooltip-title">Material Footprint per Capita</div>
+              <button class="tooltip-close" data-tooltip="tooltip-matfp">✕</button>
+            </div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Target: &lt;8 t / person (UNEP)</p>
+              <p id="tooltip-matfp-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -612,18 +616,15 @@
             <button class="info-btn" data-tooltip="tooltip-natcap" title="What does this mean?">i</button>
           </div>
           <div id="gauge-natcap" class="metric-chart"></div>
-          <div class="metric-footer">
-            <div class="limit-label">
-              <div class="limit-dot" style="background:var(--red)"></div>
-              <span>Threshold: &lt;$2k/person = severely depleted natural base</span>
-            </div>
-          </div>
           <div class="metric-tooltip" id="tooltip-natcap">
             <div class="tooltip-header">
               <div class="tooltip-title">Natural Capital per Capita</div>
               <button class="tooltip-close" data-tooltip="tooltip-natcap">✕</button>
             </div>
-            <div class="tooltip-body" id="tooltip-natcap-body">Select a country to see interpretation.</div>
+            <div class="tooltip-body">
+              <p class="tooltip-target">Threshold: &lt;$2k/person = severely depleted natural base</p>
+              <p id="tooltip-natcap-body">Select a country to see interpretation.</p>
+            </div>
           </div>
         </div>
 
@@ -655,10 +656,11 @@
     window.chartBii      = iv('gauge-bii');
     window.chartGhg      = iv('gauge-ghg');
     window.chartPm25     = iv('gauge-pm25');
+    window.chartMatFp    = iv('gauge-matfp');
     window.chartNatcap   = iv('gauge-natcap');
     window.__chartInstances = [
       window.chartCo2, window.chartCh4, window.chartFootprint,
-      window.chartBii, window.chartGhg, window.chartPm25, window.chartNatcap,
+      window.chartBii, window.chartGhg, window.chartPm25, window.chartMatFp, window.chartNatcap,
     ];
     window.addEventListener('resize', () => {
       window.__chartInstances.forEach(c => c && c.resize());
@@ -682,6 +684,7 @@
     renderBii(Cache.bii?.data?.[iso3]);
     renderGhgTotal(Cache.ghg_total?.data?.[iso3]);
     renderPm25(Cache.pm25?.data?.[iso3]);
+    renderMatFp(Cache.material_footprint?.data?.[iso3]);
     renderNaturalCapital(Cache.natural_capital?.data?.[iso3]);
 
     updateEnvTooltips(iso3, name);
@@ -690,7 +693,7 @@
   // ── Boot ──────────────────────────────────────────────────────────────────
   async function init() {
     try {
-      await loadAll(['ghg_total', 'pm25', 'natural_capital']);
+      await loadAll(['ghg_total', 'pm25', 'natural_capital', 'material_footprint']);
     } catch (err) {
       document.getElementById('loading-overlay').innerHTML =
         `<div style="color:#ef4444;text-align:center;padding:32px;max-width:500px">

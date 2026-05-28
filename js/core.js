@@ -278,7 +278,17 @@ function computeGNSD(iso3) {
 
   const pillarO   = [normHigh(hdi?.mean_schooling, 8, 12, 15), normLow(lu4?.value, 5, 10, 25), normLow(neet?.value, 10, 15, 30)];
   const pillarI   = [normHigh(wage?.value, 15000, 35000, 60000), normHigh(prod?.value, 30000, 70000, 120000), normLow(pov?.value, 10, 20, 40)];
-  const pillarN   = [normLow(mpi?.mpi, 0.01, 0.1, 0.35), normLow(matfp?.mf_per_capita_t, 8, 16, 30)];
+  const dw    = Cache.drinking_water?.data?.[iso3];
+  const san   = Cache.sanitation?.data?.[iso3];
+  const elec  = Cache.electricity?.data?.[iso3];
+  const inet  = Cache.internet?.data?.[iso3];
+  const pillarN   = [
+    normLow(mpi?.mpi, 0.01, 0.1, 0.35),
+    normHigh(dw?.value, 50, 75, 95),
+    normHigh(san?.value, 50, 75, 95),
+    normHigh(elec?.value, 60, 80, 98),
+    normHigh(inet?.value, 20, 50, 90),
+  ];
   const pillarEcS = [normHigh(hale?.value, 60, 70, 75), normHigh(uhc?.value, 70, 90, 100)];
   const eodNorm   = (eod?.ecological_footprint != null && eod?.biocapacity != null)
     ? normLow(eod.ecological_footprint, eod.biocapacity, eod.biocapacity * 1.5, eod.biocapacity * 3) : null;
@@ -572,7 +582,7 @@ function renderFootprint(eodEntry) {
 
   const level = fp <= threshold ? 'green' : fp <= threshold * 1.5 ? 'amber' : 'red';
   const fpPct = Math.round((fp / threshold - 1) * 100);
-  setStatus('footprint-status', level, level === 'green' ? null : `${fpPct}% above target`);
+  setStatus('footprint-status', level, level === 'green' ? null : 'Above Target');
 
   const footprintLimitLabel = document.getElementById('footprint-limit-label');
   if (footprintLimitLabel) {
@@ -621,7 +631,7 @@ function renderCo2(co2Entry) {
   ]);
   const level = co2 <= parisLimit ? 'green' : co2 <= 7 ? 'amber' : 'red';
   const co2Pct = Math.round((co2 / parisLimit - 1) * 100);
-  setStatus('co2-status', level, level === 'green' ? null : `${co2Pct}% above target`);
+  setStatus('co2-status', level, level === 'green' ? null : 'Above Target');
 
   const ratio   = (co2 / parisLimit).toFixed(1);
   const vsText  = co2 <= parisLimit ? 'within Paris budget' : `×${ratio} above threshold`;
@@ -661,7 +671,7 @@ function renderCh4(ch4Entry) {
 
   const level = ch4 < 0 ? 'green-dark' : ch4 < 50 ? 'green' : ch4 < 200 ? 'amber' : 'red';
   const ch4Pct = Math.round((ch4 / 50 - 1) * 100);
-  setStatus('ch4-status', level, (level === 'green' || level === 'green-dark') ? null : `${ch4Pct}% above target`);
+  setStatus('ch4-status', level, (level === 'green' || level === 'green-dark') ? null : 'Above Target');
 
   let vsText, vsColor;
   if (ch4 < 0)        { vsText = 'net sink';          vsColor = '#16a34a'; }
@@ -696,7 +706,7 @@ function renderBii(biiEntry) {
   ]);
   const level = val >= 85 ? 'green' : val >= 70 ? 'amber' : 'red';
   const biiPct = Math.round((1 - val / 85) * 100);
-  setStatus('bii-status', level, level === 'green' ? null : `${biiPct}% below target`);
+  setStatus('bii-status', level, level === 'green' ? null : 'Below Target');
   const vsText  = val >= 85 ? 'above target' : `${fmt(val / 85 * 100, 0)}% of 85% target`;
   const vsColor = val >= 85 ? '#22c55e' : val >= 70 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
@@ -763,7 +773,7 @@ function renderPm25(pm25Entry) {
   ]);
   const level = val <= 5 ? 'green' : val <= 15 ? 'green' : val <= 35 ? 'amber' : 'red';
   const pm25Pct = Math.round((val / 5 - 1) * 100);
-  setStatus('pm25-status', level, level === 'green' ? null : `${pm25Pct}% above WHO guideline`);
+  setStatus('pm25-status', level, level === 'green' ? null : 'Above Target');
 
   const vsText  = val <= 5 ? 'meets WHO guideline' : val <= 15 ? 'above WHO, below IT-3' : val <= 35 ? 'caution zone' : 'high pollution';
   const vsColor = val <= 5 ? '#22c55e' : val <= 15 ? '#86efac' : val <= 35 ? '#f59e0b' : '#ef4444';
@@ -804,7 +814,7 @@ function renderNaturalCapital(natEntry) {
   ]);
   const level = val >= 10000 ? 'green' : val >= 2000 ? 'amber' : 'red';
   const natPct = Math.round((1 - val / 10000) * 100);
-  setStatus('natcap-status', level, level === 'green' ? null : `${natPct}% below threshold`);
+  setStatus('natcap-status', level, level === 'green' ? null : 'Below Target');
 
   const vsText  = val >= 10000 ? 'above threshold' : val >= 2000 ? `${fmt(val / 10000 * 100, 0)}% of target` : 'severely depleted';
   const vsColor = val >= 10000 ? '#22c55e' : val >= 2000 ? '#f59e0b' : '#ef4444';
@@ -841,7 +851,7 @@ function renderProducedCapital(capEntry) {
   ]);
   const level = val >= 50000 ? 'green' : val >= 10000 ? 'amber' : 'red';
   const capPct = Math.round((1 - val / 50000) * 100);
-  setStatus('capital-status', level, level === 'green' ? null : `${capPct}% below threshold`);
+  setStatus('capital-status', level, level === 'green' ? null : 'Below Target');
 
   const vsText  = val >= 50000 ? 'above threshold' : val >= 10000 ? `${fmt(val / 50000 * 100, 0)}% of target` : 'low capital base';
   const vsColor = val >= 50000 ? '#22c55e' : val >= 10000 ? '#f59e0b' : '#ef4444';
@@ -865,6 +875,7 @@ function updateEnvTooltips(iso3, name) {
   const ghg = Cache.ghg_total?.data?.[iso3];
   const pm25 = Cache.pm25?.data?.[iso3];
   const nat = Cache.natural_capital?.data?.[iso3];
+  const matfp = Cache.material_footprint?.data?.[iso3];
 
   const fpEl = document.getElementById('tooltip-footprint-body');
   if (fpEl) {
@@ -960,6 +971,15 @@ function updateEnvTooltips(iso3, name) {
       natEl.innerHTML = `<strong>${name}'s</strong> total natural capital is <strong>${fmtGni(v)} per person</strong> — the monetary value of forests, agricultural land, fisheries, fossil fuels, minerals, and protected areas (World Bank CWON 2021, series NW.NCA.TOTL.PC)${yr}. Natural capital is distinct from produced capital (machinery, buildings); together they make up a country's total wealth base.<br><br>${context}`;
     } else { natEl.textContent = 'No natural capital data available for this country.'; }
   }
+
+  const matFpEl = document.getElementById('tooltip-matfp-body');
+  if (matFpEl) {
+    if (matfp?.mf_per_capita_t != null) {
+      const v = matfp.mf_per_capita_t;
+      const ratio = (v / 8).toFixed(1);
+      matFpEl.innerHTML = `<strong>${name}'s</strong> material footprint is <strong>${fmt(v, 1)} t/person</strong>. The UNEP safe range is 8 t/person; the danger threshold is 16 t/person${v > 8 ? ` — this is <strong>${ratio}×</strong> the safe range` : ''}. Material footprint includes all biomass, fossil fuels, metals, and non-metallic minerals embodied in domestic final demand. Source: UNEP.`;
+    } else { matFpEl.textContent = 'No material footprint data available.'; }
+  }
 }
 
 // =============================================================================
@@ -985,7 +1005,7 @@ function renderSchooling(hdiEntry) {
   ]);
   const level = val >= 12 ? 'green' : val >= 8 ? 'amber' : 'red';
   const schlPct = Math.round((1 - val / 12) * 100);
-  setStatus('schooling-status', level, level === 'green' ? null : `${schlPct}% below target`);
+  setStatus('schooling-status', level, level === 'green' ? null : 'Below Target');
   const vsText  = val >= 12 ? 'on target' : `${fmt(val / 12 * 100, 0)}% of target`;
   const vsColor = val >= 12 ? '#22c55e' : val >= 8 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
@@ -1010,7 +1030,7 @@ function renderLu4(lu4Entry) {
   ]);
   const level = val <= 5 ? 'green' : val <= 10 ? 'amber' : 'red';
   const lu4Pct = Math.round((val / 5 - 1) * 100);
-  setStatus('lu4-status', level, level === 'green' ? null : `${lu4Pct}% above target`);
+  setStatus('lu4-status', level, level === 'green' ? null : 'Above Target');
   const vsText  = val <= 5 ? 'safe zone' : `${fmt(val / 10 * 100, 0)}% of danger threshold`;
   const vsColor = val <= 5 ? '#22c55e' : val <= 10 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
@@ -1039,7 +1059,7 @@ function renderNeet(neetEntry) {
   ]);
   const level = val <= 10 ? 'green' : val <= 15 ? 'amber' : 'red';
   const neetPct = Math.round((val / 10 - 1) * 100);
-  setStatus('neet-status', level, level === 'green' ? null : `${neetPct}% above target`);
+  setStatus('neet-status', level, level === 'green' ? null : 'Above Target');
   const vsText  = val <= 10 ? 'safe zone' : `${fmt(val / 15 * 100, 0)}% of danger threshold`;
   const vsColor = val <= 10 ? '#22c55e' : val <= 15 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
@@ -1068,7 +1088,7 @@ function renderLearningOutcomes(loEntry) {
   ]);
   const level = val >= 490 ? 'green' : val >= 420 ? 'amber' : 'red';
   const loPct = Math.round((1 - val / 490) * 100);
-  setStatus('learning-status', level, level === 'green' ? null : `${loPct}% below benchmark`);
+  setStatus('learning-status', level, level === 'green' ? null : 'Below Target');
   const vsText  = val >= 490 ? 'above OECD benchmark' : val >= 420 ? `${fmt(val / 490 * 100, 0)}% of benchmark` : 'below minimum proficiency';
   const vsColor = val >= 490 ? '#22c55e' : val >= 420 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({
@@ -1150,7 +1170,7 @@ function renderWage(wageEntry) {
   ]);
   const level = val >= 35000 ? 'green' : val >= 15000 ? 'amber' : 'red';
   const wagePct = Math.round((1 - val / 35000) * 100);
-  setStatus('wage-status', level, level === 'green' ? null : `${wagePct}% below target`);
+  setStatus('wage-status', level, level === 'green' ? null : 'Below Target');
   const vsText  = val >= 35000 ? 'above target' : val >= 15000 ? `${fmt(val / 35000 * 100, 0)}% of target` : 'below $15k';
   const vsColor = val >= 35000 ? '#22c55e' : val >= 15000 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
@@ -1175,7 +1195,7 @@ function renderProd(prodEntry) {
   ]);
   const level = val >= 70000 ? 'green' : val >= 30000 ? 'amber' : 'red';
   const prodPct = Math.round((1 - val / 70000) * 100);
-  setStatus('prod-status', level, level === 'green' ? null : `${prodPct}% below target`);
+  setStatus('prod-status', level, level === 'green' ? null : 'Below Target');
   const vsText  = val >= 70000 ? 'above target' : val >= 30000 ? `${fmt(val / 70000 * 100, 0)}% of target` : 'below $30k';
   const vsColor = val >= 70000 ? '#22c55e' : val >= 30000 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
@@ -1200,7 +1220,7 @@ function renderPoverty(povEntry) {
   ]);
   const level = val <= 10 ? 'green' : val <= 20 ? 'amber' : 'red';
   const povPct = Math.round((val / 10 - 1) * 100);
-  setStatus('poverty-status', level, level === 'green' ? null : `${povPct}% above target`);
+  setStatus('poverty-status', level, level === 'green' ? null : 'Above Target');
   const vsText  = val <= 10 ? 'below 10% target' : `${fmt(val / 20 * 100, 0)}% of danger threshold`;
   const vsColor = val <= 10 ? '#22c55e' : val <= 20 ? '#f59e0b' : '#ef4444';
   const line = povEntry.poverty_line;
@@ -1231,7 +1251,7 @@ function renderPovertySocietal(psEntry) {
   ]);
   const level = val <= 10 ? 'green' : val <= 20 ? 'amber' : 'red';
   const psPct = Math.round((val / 10 - 1) * 100);
-  setStatus('poverty-societal-status', level, level === 'green' ? null : `${psPct}% above target`);
+  setStatus('poverty-societal-status', level, level === 'green' ? null : 'Above Target');
   const vsText  = val <= 10 ? 'below 10% target' : `${fmt(val / 20 * 100, 0)}% of danger threshold`;
   const vsColor = val <= 10 ? '#22c55e' : val <= 20 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
@@ -1314,7 +1334,7 @@ function renderMpi(mpiEntry) {
   ]);
   const level = val <= 0.01 ? 'green' : val <= 0.1 ? 'amber' : 'red';
   const mpiPct = Math.round((val / 0.01 - 1) * 100);
-  setStatus('mpi-status', level, level === 'green' ? null : `${mpiPct}% above target`);
+  setStatus('mpi-status', level, level === 'green' ? null : 'Above Target');
   const vsText  = val <= 0.01 ? 'safe zone' : `${fmt(val / 0.1 * 100, 0)}% of danger threshold`;
   const vsColor = val <= 0.01 ? '#22c55e' : val <= 0.1 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
@@ -1339,7 +1359,7 @@ function renderMatFp(matFpEntry) {
   ]);
   const level = val <= 8 ? 'green' : val <= 16 ? 'amber' : 'red';
   const matfpPct = Math.round((val / 8 - 1) * 100);
-  setStatus('matfp-status', level, level === 'green' ? null : `${matfpPct}% above target`);
+  setStatus('matfp-status', level, level === 'green' ? null : 'Above Target');
   const ratio   = (val / 8).toFixed(1);
   const vsText  = val <= 8 ? 'within safe range' : `×${ratio} above safe range`;
   const vsColor = val <= 8 ? '#22c55e' : val <= 16 ? '#f59e0b' : '#ef4444';
@@ -1368,7 +1388,7 @@ function renderDrinkingWater(dwEntry) {
   ]);
   const level = val >= 85 ? 'green' : val >= 60 ? 'amber' : 'red';
   const waterPct = Math.round((1 - val / 85) * 100);
-  setStatus('water-status', level, level === 'green' ? null : `${waterPct}% below target`);
+  setStatus('water-status', level, level === 'green' ? null : 'Below Target');
   const vsText  = val >= 85 ? 'above target' : val >= 60 ? `${fmt(val / 85 * 100, 0)}% of target` : 'low coverage';
   const vsColor = val >= 85 ? '#22c55e' : val >= 60 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
@@ -1377,11 +1397,91 @@ function renderDrinkingWater(dwEntry) {
   window.chartWater.setOption(option, true);
 }
 
+function renderSanitation(sanEntry) {
+  const el = document.getElementById('gauge-sanitation');
+  if (!el) return;
+  if (!sanEntry || sanEntry.value == null) {
+    showNoData(el, window.chartSanitation);
+    setStatus('sanitation-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = sanEntry.value;
+  const zones = makeZones(0, 100, [
+    { maxVal: 60,  color: '#ef4444' },
+    { maxVal: 85,  color: '#f59e0b' },
+    { maxVal: 95,  color: '#86efac' },
+    { maxVal: 100, color: '#22c55e' },
+  ]);
+  const level = val >= 85 ? 'green' : val >= 60 ? 'amber' : 'red';
+  setStatus('sanitation-status', level, level === 'green' ? null : 'Below Target');
+  const vsText  = val >= 85 ? 'above target' : val >= 60 ? `${fmt(val / 85 * 100, 0)}% of target` : 'low coverage';
+  const vsColor = val >= 85 ? '#22c55e' : val >= 60 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
+    unitLabel: '% safely managed sanitation',
+    formatFn: v => fmt(v, 1) + '%', vsText, vsColor });
+  window.chartSanitation.setOption(option, true);
+}
+
+function renderElectricity(elecEntry) {
+  const el = document.getElementById('gauge-electricity');
+  if (!el) return;
+  if (!elecEntry || elecEntry.value == null) {
+    showNoData(el, window.chartElectricity);
+    setStatus('electricity-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = elecEntry.value;
+  const zones = makeZones(0, 100, [
+    { maxVal: 70,  color: '#ef4444' },
+    { maxVal: 90,  color: '#f59e0b' },
+    { maxVal: 98,  color: '#86efac' },
+    { maxVal: 100, color: '#22c55e' },
+  ]);
+  const level = val >= 90 ? 'green' : val >= 70 ? 'amber' : 'red';
+  setStatus('electricity-status', level, level === 'green' ? null : 'Below Target');
+  const vsText  = val >= 90 ? 'above target' : val >= 70 ? `${fmt(val / 90 * 100, 0)}% of target` : 'major energy poverty';
+  const vsColor = val >= 90 ? '#22c55e' : val >= 70 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
+    unitLabel: '% with access to electricity',
+    formatFn: v => fmt(v, 1) + '%', vsText, vsColor });
+  window.chartElectricity.setOption(option, true);
+}
+
+function renderInternet(netEntry) {
+  const el = document.getElementById('gauge-internet');
+  if (!el) return;
+  if (!netEntry || netEntry.value == null) {
+    showNoData(el, window.chartInternet);
+    setStatus('internet-status', 'gray');
+    return;
+  }
+  hideNoData(el);
+  const val = netEntry.value;
+  const zones = makeZones(0, 100, [
+    { maxVal: 30,  color: '#ef4444' },
+    { maxVal: 70,  color: '#f59e0b' },
+    { maxVal: 90,  color: '#86efac' },
+    { maxVal: 100, color: '#22c55e' },
+  ]);
+  const level = val >= 70 ? 'green' : val >= 30 ? 'amber' : 'red';
+  setStatus('internet-status', level, level === 'green' ? null : 'Below Target');
+  const vsText  = val >= 70 ? 'above target' : val >= 30 ? `${fmt(val / 70 * 100, 0)}% of target` : 'limited connectivity';
+  const vsColor = val >= 70 ? '#22c55e' : val >= 30 ? '#f59e0b' : '#ef4444';
+  const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
+    unitLabel: '% individuals using the internet',
+    formatFn: v => fmt(v, 1) + '%', vsText, vsColor });
+  window.chartInternet.setOption(option, true);
+}
+
 // ── Tooltip content for necessities pillar ────────────────────────────────────
 function updateNecessitiesTooltips(iso3, name) {
-  const mpi = Cache.mpi?.data?.[iso3];
-  const matfp = Cache.material_footprint?.data?.[iso3];
-  const water = Cache.drinking_water?.data?.[iso3];
+  const mpi        = Cache.mpi?.data?.[iso3];
+  const water      = Cache.drinking_water?.data?.[iso3];
+  const sanitation = Cache.sanitation?.data?.[iso3];
+  const electricity = Cache.electricity?.data?.[iso3];
+  const internet   = Cache.internet?.data?.[iso3];
 
   const mpiEl = document.getElementById('tooltip-mpi-body');
   if (mpiEl) {
@@ -1389,15 +1489,6 @@ function updateNecessitiesTooltips(iso3, name) {
       const v = mpi.mpi; const hp = mpi.headcount_pct;
       mpiEl.innerHTML = `<strong>${name}'s</strong> Multidimensional Poverty Index is <strong>${Number(v).toFixed(3)}</strong>${hp != null ? ` — <strong>${fmt(hp, 1)}%</strong> of the population is multidimensionally poor` : ''}. The MPI captures deprivations in health, education, and living standards simultaneously, beyond income alone. Danger threshold: 0.10. Note: MPI data is only available for developing countries. Source: UNDP/OPHI.`;
     } else { mpiEl.textContent = 'No MPI data available — this indicator covers developing countries only.'; }
-  }
-
-  const matFpEl = document.getElementById('tooltip-matfp-body');
-  if (matFpEl) {
-    if (matfp?.mf_per_capita_t != null) {
-      const v = matfp.mf_per_capita_t;
-      const ratio = (v / 8).toFixed(1);
-      matFpEl.innerHTML = `<strong>${name}'s</strong> material footprint is <strong>${fmt(v, 1)} t/person</strong>. The UNEP safe range is 8 t/person; the danger threshold is 16 t/person${v > 8 ? ` — this is <strong>${ratio}×</strong> the safe range` : ''}. Material footprint includes all biomass, fossil fuels, metals, and non-metallic minerals embodied in domestic final demand. Source: UNEP.`;
-    } else { matFpEl.textContent = 'No material footprint data available.'; }
   }
 
   const waterEl = document.getElementById('tooltip-water-body');
@@ -1412,6 +1503,48 @@ function updateNecessitiesTooltips(iso3, name) {
       else              context = `Low coverage — the majority of the population lacks safely managed drinking water (SDG 6.1.1 indicator).`;
       waterEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> population uses safely managed drinking water services (SDG 6.1.1, HLEG Tier I #13)${yr}.<br><br>${context} Source: WHO/UNICEF JMP 2025.`;
     } else { waterEl.textContent = 'No drinking water coverage data available for this country.'; }
+  }
+
+  const sanEl = document.getElementById('tooltip-sanitation-body');
+  if (sanEl) {
+    if (sanitation?.value != null) {
+      const v = sanitation.value;
+      const yr = sanitation.year ? `; data year: ${sanitation.year}` : '';
+      let context;
+      if (v >= 95)      context = `Near-universal safely managed sanitation — the vast majority have safe, private facilities.`;
+      else if (v >= 85) context = `Most of the population has safely managed sanitation; remaining gaps tend to affect rural and informal settlements.`;
+      else if (v >= 60) context = `Substantial sanitation gap — a significant share of the population lacks safely managed services, increasing disease risk.`;
+      else              context = `Major sanitation deficit — the majority lack safely managed sanitation (SDG 6.2.1 target). Risk of waterborne disease and loss of dignity is high.`;
+      sanEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> population uses safely managed sanitation services (SDG 6.2.1)${yr}.<br><br>${context} Source: WHO/UNICEF JMP 2025.`;
+    } else { sanEl.textContent = 'No sanitation coverage data available for this country.'; }
+  }
+
+  const elecEl = document.getElementById('tooltip-electricity-body');
+  if (elecEl) {
+    if (electricity?.value != null) {
+      const v = electricity.value;
+      const yr = electricity.year ? `; data year: ${electricity.year}` : '';
+      let context;
+      if (v >= 98)      context = `Universal electricity access — essentially the entire population can power lights, appliances, and communications.`;
+      else if (v >= 90) context = `Nearly universal access; remaining gaps tend to be in remote or rural areas.`;
+      else if (v >= 70) context = `Significant electricity access gap — a meaningful share of the population lacks reliable power, limiting education, health, and economic opportunity.`;
+      else              context = `Major energy poverty — less than 70% of the population has electricity access. This constrains health services, education, and economic participation at a fundamental level.`;
+      elecEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> population has access to electricity (SDG 7.1.1)${yr}.<br><br>${context} Source: World Bank WDI (EG.ELC.ACCS.ZS).`;
+    } else { elecEl.textContent = 'No electricity access data available for this country.'; }
+  }
+
+  const netEl = document.getElementById('tooltip-internet-body');
+  if (netEl) {
+    if (internet?.value != null) {
+      const v = internet.value;
+      const yr = internet.year ? `; data year: ${internet.year}` : '';
+      let context;
+      if (v >= 90)      context = `Widespread digital participation — the internet is a mainstream part of daily life for most residents, enabling economic and civic engagement.`;
+      else if (v >= 70) context = `Majority connected — internet access is mainstream, though a meaningful share remains offline.`;
+      else if (v >= 30) context = `Emerging connectivity — a significant portion of the population is offline, limiting access to education, services, and economic opportunity.`;
+      else              context = `Limited connectivity — less than 30% of the population uses the internet, a significant barrier to economic participation in the modern world (SDG 17.8.1).`;
+      netEl.innerHTML = `<strong>${fmt(v, 1)}%</strong> of <strong>${name}'s</strong> population uses the internet (SDG 17.8.1)${yr}.<br><br>${context} Source: World Bank WDI / ITU (IT.NET.USER.ZS).`;
+    } else { netEl.textContent = 'No internet access data available for this country.'; }
   }
 }
 
@@ -1438,7 +1571,7 @@ function renderHale(haleEntry) {
   ]);
   const level = val >= 70 ? 'green' : val >= 60 ? 'amber' : 'red';
   const halePct = Math.round((1 - val / 70) * 100);
-  setStatus('hale-status', level, level === 'green' ? null : `${halePct}% below target`);
+  setStatus('hale-status', level, level === 'green' ? null : 'Below Target');
   const vsText  = val >= 70 ? 'above target' : `${fmt(val / 70 * 100, 0)}% of 70-yr target`;
   const vsColor = val >= 70 ? '#22c55e' : val >= 60 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({
@@ -1463,11 +1596,11 @@ function renderUhc(uhcEntry) {
   ]);
   const level = val >= 90 ? 'green' : val >= 70 ? 'amber' : 'red';
   const uhcPct = Math.round((1 - val / 90) * 100);
-  setStatus('uhc-status', level, level === 'green' ? null : `${uhcPct}% below target`);
+  setStatus('uhc-status', level, level === 'green' ? null : 'Below Target');
   const vsText  = val >= 90 ? 'above target' : `${fmt(val / 90 * 100, 0)}% of 90% target`;
   const vsColor = val >= 90 ? '#22c55e' : val >= 70 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: val, min: 0, max: 100, zones,
-    unitLabel: 'UHC coverage index', formatFn: v => fmt(v, 0) + '%', vsText, vsColor });
+    unitLabel: 'Health system coverage index (0–100)', formatFn: v => fmt(v, 0) + '%', vsText, vsColor });
   window.chartUhc.setOption(option, true);
 }
 
@@ -1492,7 +1625,7 @@ function renderHouseholdIncome(hhEntry) {
   ]);
   const level = val >= 20000 ? 'green' : val >= 5000 ? 'amber' : 'red';
   const hhPct = Math.round((1 - val / 20000) * 100);
-  setStatus('hhinc-status', level, level === 'green' ? null : `${hhPct}% below target`);
+  setStatus('hhinc-status', level, level === 'green' ? null : 'Below Target');
   const vsText  = val >= 20000 ? 'above $20k' : val >= 5000 ? `${fmt(val / 20000 * 100, 0)}% of target` : 'below $5k';
   const vsColor = val >= 20000 ? '#22c55e' : val >= 5000 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({
@@ -1523,7 +1656,7 @@ function renderLbw(lbwEntry) {
   ]);
   const level = val <= 7 ? 'green' : val <= 15 ? 'amber' : 'red';
   const lbwPct = Math.round((val / 7 - 1) * 100);
-  setStatus('lbw-status', level, level === 'green' ? null : `${lbwPct}% above target`);
+  setStatus('lbw-status', level, level === 'green' ? null : 'Above Target');
   const vsText  = val <= 7 ? 'safe zone' : `${fmt(val / 15 * 100, 0)}% of danger threshold`;
   const vsColor = val <= 7 ? '#22c55e' : val <= 15 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({ value: Math.min(val, maxScale), min: 0, max: maxScale, zones,
@@ -1693,7 +1826,7 @@ function updateSecurityTooltips(iso3, name) {
   if (uhcEl) {
     if (uhc?.value != null) {
       const v = uhc.value;
-      uhcEl.innerHTML = `<strong>${name}'s</strong> UHC service coverage index is <strong>${fmt(v, 0)}%</strong>${uhc.year ? ` (${uhc.year})` : ''}. SDG 3.8.1 composite of 14 tracer indicators covering reproductive, child, infectious, and noncommunicable disease services plus capacity and access. Target: 90%+. Source: WHO.`;
+      uhcEl.innerHTML = `<strong>${name}</strong> scores <strong>${fmt(v, 0)}/100</strong> on the WHO Health System Coverage Index${uhc.year ? ` (${uhc.year})` : ''}.<p>This score measures whether people can actually get the healthcare they need — not just whether a health system exists. It combines three things:</p><ul><li><strong>Access</strong> — can people reach health services (clinics, hospitals, medicines)?</li><li><strong>Quality</strong> — are those services effective enough to improve health outcomes?</li><li><strong>Financial protection</strong> — can people afford care without falling into poverty?</li></ul><p>A country with universal insurance but expensive co-pays, long wait times, or poor rural access will score below 100. That is why high-income countries rarely reach 90+.</p><p>Composed of 14 tracer indicators across reproductive health, child health, infectious disease, and noncommunicable diseases. <strong>Target: 90+</strong> (SDG 3.8.1). Source: WHO Global Health Observatory.</p>`;
     } else { uhcEl.textContent = 'No UHC data available.'; }
   }
 
@@ -1824,7 +1957,7 @@ function renderGii(giiEntry) {
   ]);
   const level = val <= 0.10 ? 'green' : val <= 0.30 ? 'amber' : 'red';
   const giiPct = val <= 0.10 ? 0 : Math.round((val / 0.30) * 100);
-  setStatus('gii-status', level, level === 'green' ? null : `${giiPct}% of danger threshold`);
+  setStatus('gii-status', level, level === 'green' ? null : 'Above Target');
   const vsText  = val <= 0.10 ? 'near equality' : `${fmt(val / 0.30 * 100, 0)}% of moderate threshold`;
   const vsColor = val <= 0.10 ? '#22c55e' : val <= 0.30 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({
@@ -1891,7 +2024,7 @@ function renderIpv(ipvEntry) {
     { maxVal: maxScale, color: '#ef4444' },
   ]);
   const level = val <= 10 ? 'green' : val <= 20 ? 'amber' : 'red';
-  setStatus('ipv-status', level, level === 'green' ? null : `${fmt(val, 1)}% above safe threshold`);
+  setStatus('ipv-status', level, level === 'green' ? null : 'Above Target');
   const vsText  = val <= 10 ? 'below danger threshold' : `${fmt(val / 20 * 100, 0)}% of danger threshold`;
   const vsColor = val <= 10 ? '#22c55e' : val <= 20 ? '#f59e0b' : '#ef4444';
   const option = buildBulletOption({
@@ -2057,12 +2190,16 @@ function computePillarStatus(iso3, pillarCode) {
     }
     case 'N': {
       const mpi  = Cache.mpi?.data?.[iso3];
-      const matfp = Cache.material_footprint?.data?.[iso3];
       const dw   = Cache.drinking_water?.data?.[iso3];
+      const san  = Cache.sanitation?.data?.[iso3];
+      const elec = Cache.electricity?.data?.[iso3];
+      const inet = Cache.internet?.data?.[iso3];
       indicators = [
         normLow(mpi?.mpi, 0.01, 0.1, 0.35),
-        normLow(matfp?.mf_per_capita_t, 8, 16, 30),
         normHigh(dw?.value, 50, 75, 95),
+        normHigh(san?.value, 50, 75, 95),
+        normHigh(elec?.value, 60, 80, 98),
+        normHigh(inet?.value, 20, 50, 90),
       ];
       break;
     }

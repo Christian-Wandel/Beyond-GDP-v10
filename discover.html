@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beyond GDP — Discovery</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('bgdp-theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root,
+    :root[data-theme="dark"] {
+      --bg: #0b0e18; --surface: #141828; --surface-2: #1d2237; --surface-3: #252d40;
+      --border: #2a3050; --border-strong: #3a4170;
+      --text: #e8eaf0; --text-muted: #a8acc4; --text-subtle: #7a7e9d;
+      --green: #22c55e; --green-dark: #16a34a; --amber: #f59e0b; --red: #ef4444;
+      --chart-grid-soft: rgba(255,255,255,0.06);
+      --accent: #4f7fff; --accent-bg: rgba(79,127,255,0.10); --focus-ring: #4f7fff;
+      --radius: 10px; --radius-sm: 6px;
+      --shadow-card: 0 2px 12px rgba(0,0,0,0.35);
+      color-scheme: dark;
+    }
+    :root[data-theme="light"] {
+      --bg: #f7f7f5; --surface: #ffffff; --surface-2: #f1f2f4; --surface-3: #e7e9ee;
+      --border: #dfe2e8; --border-strong: #c2c7d0;
+      --text: #14171f; --text-muted: #555a6a; --text-subtle: #8a8f9d;
+      --green: #15803d; --green-dark: #166534; --amber: #b45309; --red: #b91c1c;
+      --chart-grid-soft: rgba(20,23,31,0.06);
+      --accent: #2056d6; --accent-bg: rgba(32,86,214,0.08); --focus-ring: #2056d6;
+      color-scheme: light;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      :root { --transition-fast: 0ms; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); height: 100%; }
+    body { display: flex; flex-direction: row; overflow: hidden; }
+
+    /* ── Left nav (matching pillar pages) ────────────────────────────── */
+    .left-nav {
+      width: 200px; min-width: 200px; background: var(--surface);
+      border-right: 1px solid var(--border); overflow-y: auto;
+      display: flex; flex-direction: column; padding: 16px 0; flex-shrink: 0;
+    }
+    .left-nav-section { padding: 20px 0 8px; }
+    .left-nav-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--text-subtle);
+      padding: 0 16px 6px;
+    }
+    .left-nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 16px; font-size: 0.87rem; font-weight: 500;
+      color: var(--text-muted); text-decoration: none;
+      border-left: 3px solid transparent; transition: background 150ms ease, color 150ms ease;
+      cursor: pointer;
+    }
+    .left-nav-item:hover { color: var(--text); background: var(--surface-2); }
+    .left-nav-item.active { color: var(--text); background: var(--accent-bg); border-left-color: var(--accent); font-weight: 600; }
+    .left-nav-item:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
+    .left-nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border-strong); flex-shrink: 0; }
+    .left-nav-item.active .left-nav-dot { background: var(--accent); }
+    .left-nav-divider { height: 1px; background: var(--border); margin: 8px 16px; }
+    .left-nav-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 16px; font-size: 0.87rem; font-weight: 500;
+      color: var(--text-muted); text-decoration: none;
+      border-left: 3px solid transparent; transition: background 150ms ease, color 150ms ease;
+    }
+    .left-nav-link:hover { color: var(--text); background: var(--surface-2); }
+    .left-nav-link-icon { font-size: 0.75rem; color: var(--text-subtle); margin-left: auto; }
+
+    /* ── Main layout ─────────────────────────────────────────────────── */
+    .main-area {
+      flex: 1; display: flex; flex-direction: column; overflow: hidden;
+    }
+    .page-header {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between;
+    }
+    .page-header-title { font-size: 1.3rem; font-weight: 700; }
+    .page-header-sub { font-size: 0.85rem; color: var(--text-subtle); margin-top: 2px; }
+    .theme-toggle {
+      background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted);
+      padding: 0.4rem 0.7rem; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.95rem;
+    }
+    .theme-toggle:hover { background: var(--surface-3); color: var(--text); }
+
+    /* ── Two-column content: picker left, chart right ────────────────── */
+    .content-area {
+      flex: 1; display: flex; flex-direction: row; overflow: hidden;
+    }
+
+    /* ── Metric picker (left panel) ──────────────────────────────────── */
+    .picker-panel {
+      width: 380px; min-width: 380px; background: var(--surface-2);
+      border-right: 1px solid var(--border); overflow-y: auto; overflow-x: hidden;
+      padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem;
+    }
+    .picker-panel-title {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--text-subtle);
+    }
+    .pillar-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .pillar-group-label {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.6px; color: var(--text-subtle); padding: 4px 0 2px;
+      border-bottom: 1px solid var(--border);
+    }
+    .metric-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; }
+    .metric-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid transparent; border-radius: var(--radius-sm);
+      padding: 0.55rem 0.6rem; cursor: pointer; transition: all 150ms ease;
+      display: flex; flex-direction: column; gap: 0.25rem; position: relative;
+    }
+    .metric-card:hover { border-color: var(--border-strong); background: var(--surface-2); }
+    .metric-card.active {
+      background: var(--accent-bg); border-color: var(--accent);
+    }
+    .metric-card-row { display: flex; align-items: center; gap: 0.4rem; }
+    .metric-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .metric-card-name { font-size: 0.75rem; font-weight: 600; color: var(--text); line-height: 1.2; }
+    .metric-card-unit { font-size: 0.65rem; color: var(--text-subtle); }
+
+    /* ── Chart panel (right) ─────────────────────────────────────────── */
+    .chart-panel {
+      flex: 1; display: flex; flex-direction: column; overflow: hidden;
+    }
+    .chart-meta-bar {
+      padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border);
+      display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+    }
+    .chart-meta-bar .meta-title { font-size: 1rem; font-weight: 700; }
+    .chart-meta-bar .meta-detail { font-size: 0.78rem; color: var(--text-subtle); }
+    .chart-meta-bar .meta-count { font-size: 0.78rem; color: var(--text-muted); margin-left: auto; }
+    .zone-legend {
+      padding: 0.5rem 1.5rem; background: var(--surface-2); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+    }
+    .zone-filter-btn {
+      display: flex; align-items: center; gap: 0.35rem; font-size: 0.73rem;
+      color: var(--text-muted); background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 0.25rem 0.65rem; cursor: pointer;
+      transition: all 150ms ease; font-family: 'Space Grotesk', sans-serif;
+      user-select: none;
+    }
+    .zone-filter-btn:hover { border-color: var(--border-strong); color: var(--text); }
+    .zone-filter-btn.active { color: var(--text); border-color: var(--border-strong); background: var(--surface-3); }
+    .zone-filter-btn.muted { opacity: 0.4; }
+    .legend-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .legend-divider { width: 1px; height: 18px; background: var(--border); margin: 0 0.2rem; flex-shrink: 0; }
+    .sort-btn {
+      display: flex; align-items: center; gap: 0.3rem; font-size: 0.73rem;
+      color: var(--text-muted); background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 0.25rem 0.65rem; cursor: pointer;
+      transition: all 150ms ease; font-family: 'Space Grotesk', sans-serif;
+      user-select: none;
+    }
+    .sort-btn:hover { border-color: var(--border-strong); color: var(--text); }
+    .sort-btn.active { color: var(--accent); border-color: var(--accent); background: var(--accent-bg); }
+    .chart-container { flex: 1; overflow: hidden; }
+    #rankedChart { width: 100%; height: 100%; }
+    .empty-state {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 1rem; color: var(--text-subtle); padding: 4rem;
+      text-align: center;
+    }
+    .empty-state-icon { font-size: 2.5rem; }
+    .empty-state-text { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<!-- Left navigation -->
+<aside class="left-nav" aria-label="Dashboard navigation">
+  <div class="left-nav-section">
+    <div class="left-nav-label">Overview</div>
+    <a class="left-nav-item" href="index.html">
+      <span class="left-nav-dot"></span>
+      Overview
+    </a>
+    <a class="left-nav-link" href="aggregate.html">
+      <span class="left-nav-dot" style="background:var(--accent)"></span>
+      Aggregates
+      <span class="left-nav-link-icon">↗</span>
+    </a>
+    <a class="left-nav-item active" href="discover.html">
+      <span class="left-nav-dot"></span>
+      Discovery
+    </a>
+  </div>
+  <div class="left-nav-divider"></div>
+  <div class="left-nav-section">
+    <div class="left-nav-label">Pillars</div>
+    <a class="left-nav-item" href="opportunity.html" data-pillar="O">
+      <span class="left-nav-dot"></span>
+      Work &amp; Education
+    </a>
+    <a class="left-nav-item" href="income.html" data-pillar="I">
+      <span class="left-nav-dot"></span>
+      Income &amp; Poverty
+    </a>
+    <a class="left-nav-item" href="necessities.html" data-pillar="N">
+      <span class="left-nav-dot"></span>
+      Basic Needs
+    </a>
+    <a class="left-nav-item" href="security.html" data-pillar="EcS">
+      <span class="left-nav-dot"></span>
+      Health &amp; Security
+    </a>
+    <a class="left-nav-item" href="environment.html" data-pillar="EnS">
+      <span class="left-nav-dot"></span>
+      Planet &amp; Nature
+    </a>
+    <a class="left-nav-item" href="equity.html" data-pillar="Eq">
+      <span class="left-nav-dot"></span>
+      Gender &amp; Equality
+    </a>
+  </div>
+</aside>
+
+<!-- Main area -->
+<div class="main-area">
+  <div class="page-header">
+    <div>
+      <div class="page-header-title">Discovery</div>
+      <div class="page-header-sub">Select a metric — see all countries ranked by zone</div>
+    </div>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">☀️</button>
+  </div>
+
+  <div class="content-area">
+    <!-- Metric picker -->
+    <div class="picker-panel" id="pickerPanel" aria-label="Metric picker">
+      <div class="picker-panel-title">Select a metric</div>
+      <!-- Cards injected by JS, grouped by pillar -->
+    </div>
+
+    <!-- Chart panel -->
+    <div class="chart-panel">
+      <div class="chart-meta-bar" id="metaBar" style="display:none">
+        <span class="meta-title" id="metaTitle"></span>
+        <span class="meta-detail" id="metaDetail"></span>
+        <span class="meta-count" id="metaCount"></span>
+      </div>
+      <div class="zone-legend" id="zoneLegend" style="display:none">
+        <button class="zone-filter-btn active" data-zone="on-target">
+          <div class="legend-swatch" style="background:#22c55e"></div>On Target
+        </button>
+        <button class="zone-filter-btn active" data-zone="caution">
+          <div class="legend-swatch" style="background:#f59e0b"></div>Caution
+        </button>
+        <button class="zone-filter-btn active" data-zone="overshoot">
+          <div class="legend-swatch" style="background:#ef4444"></div>Overshoot
+        </button>
+        <button class="zone-filter-btn active" data-zone="net-sink">
+          <div class="legend-swatch" style="background:#16a34a"></div>Net Sink
+        </button>
+        <button class="zone-filter-btn active" data-zone="no-data">
+          <div class="legend-swatch" style="background:#6b7280"></div>No Data
+        </button>
+        <div class="legend-divider"></div>
+        <button class="sort-btn" id="sortAlphaBtn" title="Sort countries A→Z">A→Z</button>
+      </div>
+      <div class="chart-container" id="chartContainer">
+        <div class="empty-state">
+          <div class="empty-state-icon">🗺️</div>
+          <div class="empty-state-text">Select a metric to see all countries ranked by sustainability zone</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="lib/echarts.min.js"></script>
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// GDP+ metric definitions — 13 core metrics only
+// Zone classifier: fn(value, countryData) → 'on-target'|'caution'|'overshoot'|'net-sink'|'no-data'
+// higherIsBetter: true = green at top of range, false = green at bottom (inverted)
+// ─────────────────────────────────────────────────────────────────────────────
+const METRICS = [
+  // Environment (EnS) — orange accent
+  {
+    id: 'co2', label: 'CO₂ / capita', unit: 't CO₂ / person / yr',
+    pillar: 'EnS', pillarLabel: 'Planet & Nature', pillarAccent: '#fb923c',
+    pillarPage: 'environment',
+    file: 'co2', key: 'co2_per_capita_tco2',
+    threshold: 'Target: ≤2.0 t (Paris 1.5°C)', source: 'Global Carbon Project 2022',
+    higherIsBetter: false,
+    classify: v => v <= 2.0 ? 'on-target' : v <= 7.0 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(1) + ' t',
+  },
+  {
+    id: 'ecological_footprint', label: 'Ecol. Footprint', unit: 'gha / person',
+    pillar: 'EnS', pillarLabel: 'Planet & Nature', pillarAccent: '#fb923c',
+    pillarPage: 'environment',
+    file: 'ecological_footprint', key: 'ecological_footprint',
+    threshold: 'Target: within biocapacity (world avg 1.63 gha)', source: 'Global Footprint Network',
+    higherIsBetter: false,
+    classify: (v, row) => {
+      const bc = row.biocapacity != null ? row.biocapacity : 1.63;
+      if (v < 0) return 'net-sink';
+      return v <= bc ? 'on-target' : v <= bc * 1.5 ? 'caution' : 'overshoot';
+    },
+    fmt: v => v.toFixed(2) + ' gha',
+  },
+  {
+    id: 'methane', label: 'Methane / capita', unit: 'kg CH₄ / person',
+    pillar: 'EnS', pillarLabel: 'Planet & Nature', pillarAccent: '#fb923c',
+    pillarPage: 'environment',
+    file: 'methane', key: 'ch4_per_capita_kg',
+    threshold: 'Target: <0 (net sink) or <50 kg/p', source: 'EDGAR / GFN',
+    higherIsBetter: false,
+    classify: v => v < 0 ? 'net-sink' : v < 50 ? 'on-target' : v < 200 ? 'caution' : 'overshoot',
+    fmt: v => (v < 0 ? '' : '+') + v.toFixed(0) + ' kg',
+  },
+  {
+    id: 'material_footprint', label: 'Material Footprint', unit: 't / person',
+    pillar: 'EnS', pillarLabel: 'Planet & Nature', pillarAccent: '#fb923c',
+    pillarPage: 'environment',
+    file: 'material_footprint', key: 'mf_per_capita_t',
+    threshold: 'Target: <8 t (UNEP ceiling)', source: 'UNEP / IRP',
+    higherIsBetter: false,
+    classify: v => v <= 8 ? 'on-target' : v <= 16 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(1) + ' t',
+  },
+  {
+    id: 'bii', label: 'Biodiversity (BII)', unit: 'BII score (0–100)',
+    pillar: 'EnS', pillarLabel: 'Planet & Nature', pillarAccent: '#fb923c',
+    pillarPage: 'environment',
+    file: 'bii', key: 'value',
+    threshold: 'Target: >85 (planetary boundary)', source: 'NHM / Newbold et al. 2016',
+    higherIsBetter: true,
+    classify: v => v >= 85 ? 'on-target' : v >= 70 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(1),
+  },
+
+  // Opportunity (O) — blue accent
+  {
+    id: 'lu4', label: 'Labour Underutil.', unit: '% of workforce',
+    pillar: 'O', pillarLabel: 'Work & Education', pillarAccent: '#4f7fff',
+    pillarPage: 'opportunity',
+    file: 'lu4', key: 'value',
+    threshold: 'Target: <5% (ILO LU4)', source: 'ILOSTAT',
+    higherIsBetter: false,
+    classify: v => v <= 5 ? 'on-target' : v <= 10 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(1) + '%',
+  },
+  {
+    id: 'neet', label: 'NEET Rate', unit: '% youth 15–24',
+    pillar: 'O', pillarLabel: 'Work & Education', pillarAccent: '#4f7fff',
+    pillarPage: 'opportunity',
+    file: 'neet', key: 'value',
+    threshold: 'Target: <10% (ILO)', source: 'ILOSTAT',
+    higherIsBetter: false,
+    classify: v => v <= 10 ? 'on-target' : v <= 15 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(1) + '%',
+  },
+
+  // Income (I) — green accent
+  {
+    id: 'wage', label: 'Avg Wage', unit: 'USD / year',
+    pillar: 'I', pillarLabel: 'Income & Poverty', pillarAccent: '#22c55e',
+    pillarPage: 'income',
+    file: 'wage', key: 'value',
+    threshold: 'Target: >$35,000/yr', source: 'ILO / UNSD',
+    higherIsBetter: true,
+    classify: v => v >= 35000 ? 'on-target' : v >= 15000 ? 'caution' : 'overshoot',
+    fmt: v => '$' + Math.round(v).toLocaleString(),
+  },
+
+  // Necessities (N) — cyan accent
+  {
+    id: 'mpi', label: 'Multidim. Poverty', unit: 'MPI index (0–1)',
+    pillar: 'N', pillarLabel: 'Basic Needs', pillarAccent: '#06b6d4',
+    pillarPage: 'necessities',
+    file: 'mpi', key: 'mpi',
+    threshold: 'Target: <0.010 (UNDP/Oxford)', source: 'UNDP / Oxford Poverty & HDI',
+    higherIsBetter: false,
+    classify: v => v < 0.010 ? 'on-target' : v < 0.100 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(3),
+  },
+
+  // Security (EcS) — teal accent
+  {
+    id: 'hale', label: 'Healthy Life Exp.', unit: 'years',
+    pillar: 'EcS', pillarLabel: 'Health & Security', pillarAccent: '#14b8a6',
+    pillarPage: 'security',
+    file: 'hale', key: 'value',
+    threshold: 'Target: >70 years (WHO)', source: 'WHO GHO',
+    higherIsBetter: true,
+    classify: v => v >= 70 ? 'on-target' : v >= 60 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(1) + ' yrs',
+  },
+  {
+    id: 'uhc_coverage', label: 'UHC Coverage', unit: 'score (0–100)',
+    pillar: 'EcS', pillarLabel: 'Health & Security', pillarAccent: '#14b8a6',
+    pillarPage: 'security',
+    file: 'uhc_coverage', key: 'value',
+    threshold: 'Target: >90 (WHO UHC index)', source: 'WHO / World Bank',
+    higherIsBetter: true,
+    classify: v => v >= 90 ? 'on-target' : v >= 70 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(0),
+  },
+  {
+    id: 'poverty_rate', label: 'Poverty Rate', unit: '% <$2.15/day',
+    pillar: 'EcS', pillarLabel: 'Health & Security', pillarAccent: '#14b8a6',
+    pillarPage: 'security',
+    file: 'poverty_rate', key: 'value',
+    threshold: 'Target: <10% (World Bank)', source: 'World Bank PovcalNet',
+    higherIsBetter: false,
+    classify: v => v <= 10 ? 'on-target' : v <= 20 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(1) + '%',
+  },
+
+  // Equity (Eq) — purple accent
+  {
+    id: 'gii', label: 'Gender Inequality', unit: 'GII index (0–1)',
+    pillar: 'Eq', pillarLabel: 'Gender & Equality', pillarAccent: '#e879f9',
+    pillarPage: 'equity',
+    file: 'gii', key: 'gii',
+    threshold: 'Target: <0.100 (UNDP)', source: 'UNDP HDR',
+    higherIsBetter: false,
+    classify: v => v < 0.100 ? 'on-target' : v < 0.400 ? 'caution' : 'overshoot',
+    fmt: v => v.toFixed(3),
+  },
+];
+
+// Zone colours
+const ZONE_COLORS = {
+  'on-target': '#22c55e',
+  'caution':   '#f59e0b',
+  'overshoot': '#ef4444',
+  'net-sink':  '#16a34a',
+  'no-data':   '#6b7280',
+};
+const ZONE_ORDER = ['on-target', 'caution', 'overshoot', 'net-sink', 'no-data'];
+const ZONE_LABELS = {
+  'on-target': 'On Target',
+  'caution':   'Caution',
+  'overshoot': 'Overshoot',
+  'net-sink':  'Net Sink',
+  'no-data':   'No data',
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// State
+// ─────────────────────────────────────────────────────────────────────────────
+let chart = null;
+let selectedMetric = null;
+let allEntries = [];  // full sorted dataset for current metric
+let activeZones = new Set(['on-target', 'caution', 'overshoot', 'net-sink', 'no-data']);
+let sortAlpha = false;
+const Cache = {};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Init
+// ─────────────────────────────────────────────────────────────────────────────
+async function init() {
+  buildMetricPicker();
+  initThemeToggle();
+  initZoneFilters();
+  initSortButton();
+}
+
+function initSortButton() {
+  const btn = document.getElementById('sortAlphaBtn');
+  btn.addEventListener('click', () => {
+    sortAlpha = !sortAlpha;
+    btn.classList.toggle('active', sortAlpha);
+    if (selectedMetric && allEntries.length) applyFilterAndRender();
+  });
+}
+
+function initZoneFilters() {
+  document.querySelectorAll('.zone-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const zone = btn.dataset.zone;
+      if (activeZones.has(zone)) {
+        // Don't allow deactivating all zones
+        if (activeZones.size === 1) return;
+        activeZones.delete(zone);
+        btn.classList.remove('active');
+        btn.classList.add('muted');
+      } else {
+        activeZones.add(zone);
+        btn.classList.add('active');
+        btn.classList.remove('muted');
+      }
+      if (selectedMetric && allEntries.length) applyFilterAndRender();
+    });
+  });
+}
+
+function buildMetricPicker() {
+  const panel = document.getElementById('pickerPanel');
+  // Remove existing cards but keep the title
+  const title = panel.querySelector('.picker-panel-title');
+  panel.innerHTML = '';
+  panel.appendChild(title);
+
+  // Group by pillar
+  const byPillar = {};
+  for (const m of METRICS) {
+    if (!byPillar[m.pillar]) byPillar[m.pillar] = { label: m.pillarLabel, accent: m.pillarAccent, metrics: [] };
+    byPillar[m.pillar].metrics.push(m);
+  }
+
+  for (const [pillar, group] of Object.entries(byPillar)) {
+    const g = document.createElement('div');
+    g.className = 'pillar-group';
+    g.innerHTML = `<div class="pillar-group-label" style="border-color:${group.accent}">${group.label}</div>`;
+    const grid = document.createElement('div');
+    grid.className = 'metric-cards';
+
+    for (const m of group.metrics) {
+      const card = document.createElement('div');
+      card.className = 'metric-card';
+      card.dataset.id = m.id;
+      card.style.borderLeftColor = group.accent;
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', m.label + ', ' + m.unit);
+      card.innerHTML = `
+        <div class="metric-card-row">
+          <div class="metric-swatch" style="background:${group.accent}"></div>
+          <div class="metric-card-name">${m.label}</div>
+        </div>
+        <div class="metric-card-unit">${m.unit}</div>
+      `;
+      card.addEventListener('click', () => selectMetric(m.id));
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectMetric(m.id); } });
+      grid.appendChild(card);
+    }
+    g.appendChild(grid);
+    panel.appendChild(g);
+  }
+}
+
+async function selectMetric(id) {
+  const m = METRICS.find(x => x.id === id);
+  if (!m) return;
+  selectedMetric = m;
+
+  // Update active card
+  document.querySelectorAll('.metric-card').forEach(c => c.classList.remove('active'));
+  const activeCard = document.querySelector(`.metric-card[data-id="${id}"]`);
+  if (activeCard) { activeCard.classList.add('active'); activeCard.scrollIntoView({ block: 'nearest' }); }
+
+  // Load data if needed
+  if (!Cache[m.file]) {
+    try {
+      const resp = await fetch(`data/${m.file}.json`);
+      Cache[m.file] = await resp.json();
+    } catch (e) {
+      console.error('Failed to load', m.file, e);
+      return;
+    }
+  }
+
+  renderChart(m, Cache[m.file]);
+}
+
+function renderChart(m, dataset) {
+  const rawData = dataset.data || {};
+
+  // Classify every country and store in allEntries
+  allEntries = [];
+  let totalWithData = 0;
+  const totalCountries = Object.keys(rawData).length;
+  for (const [iso3, row] of Object.entries(rawData)) {
+    const val = row[m.key];
+    if (val == null || !isFinite(val)) {
+      allEntries.push({ iso3, name: row.name || iso3, value: null, zone: 'no-data' });
+    } else {
+      totalWithData++;
+      const zone = m.classify(val, row);
+      allEntries.push({ iso3, name: row.name || iso3, value: val, zone });
+    }
+  }
+
+  // Sort: zone order first, then best→worst within zone (top = best)
+  // ECharts yAxis with inverse:true renders index-0 at top, so sort best first
+  allEntries.sort((a, b) => {
+    const zi = ZONE_ORDER.indexOf(a.zone);
+    const zj = ZONE_ORDER.indexOf(b.zone);
+    if (zi !== zj) return zi - zj;
+    if (a.value == null && b.value == null) return a.name.localeCompare(b.name);
+    if (a.value == null) return 1;
+    if (b.value == null) return -1;
+    return m.higherIsBetter ? b.value - a.value : a.value - b.value;
+  });
+
+  // Update meta bar
+  document.getElementById('metaTitle').textContent = m.label + ' · ' + m.unit;
+  document.getElementById('metaDetail').textContent = m.threshold + ' · ' + m.source;
+  document.getElementById('metaCount').textContent = `${totalWithData} / ${totalCountries} countries`;
+  document.getElementById('metaBar').style.display = 'flex';
+  document.getElementById('zoneLegend').style.display = 'flex';
+
+  applyFilterAndRender();
+}
+
+function applyFilterAndRender() {
+  const m = selectedMetric;
+  if (!m || !allEntries.length) return;
+
+  // Filter to active zones only, then optionally sort A→Z
+  const entries = allEntries.filter(e => activeZones.has(e.zone));
+  if (sortAlpha) entries.sort((a, b) => a.name.localeCompare(b.name));
+
+  const names = entries.map(e => e.name);
+  const values = entries.map(e => e.value);
+  const colors = entries.map(e => ZONE_COLORS[e.zone]);
+  const zones = entries.map(e => e.zone);
+  const total = entries.length;
+
+  // Dynamic bar size
+  const barSize = Math.max(14, Math.min(18, Math.floor(600 / total)));
+  const chartHeight = Math.max(500, total * (barSize + 4));
+
+  // Replace empty state with canvas
+  const container = document.getElementById('chartContainer');
+  let chartDiv = document.getElementById('rankedChart');
+  if (!chartDiv) {
+    container.innerHTML = '';
+    chartDiv = document.createElement('div');
+    chartDiv.id = 'rankedChart';
+    chartDiv.style.cssText = `width:100%;height:${chartHeight}px;`;
+    container.style.overflowY = 'auto';
+    container.appendChild(chartDiv);
+  } else {
+    chartDiv.style.height = chartHeight + 'px';
+    container.style.overflowY = 'auto';
+  }
+
+  if (!chart || !document.body.contains(chart.getDom())) {
+    chart = echarts.init(chartDiv, null, { renderer: 'canvas' });
+  } else {
+    chart.resize({ width: chartDiv.offsetWidth, height: chartHeight });
+  }
+
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  const textCol = isDark ? '#a8acc4' : '#555a6a';
+  const gridCol = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(20,23,31,0.06)';
+
+  const option = {
+    backgroundColor: 'transparent',
+    animation: true,
+    animationDuration: 400,
+    animationEasing: 'cubicOut',
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      backgroundColor: isDark ? 'rgba(20,23,31,0.95)' : 'rgba(255,255,255,0.97)',
+      borderColor: isDark ? '#2a3050' : '#dfe2e8',
+      textStyle: { color: isDark ? '#e8eaf0' : '#14171f', fontSize: 12, fontFamily: 'Space Grotesk' },
+      formatter(params) {
+        if (!params.length) return '';
+        const i = params[0].dataIndex;
+        const e = entries[i];
+        const valStr = e.value != null ? m.fmt(e.value) : 'No data';
+        const zoneStr = ZONE_LABELS[e.zone];
+        return `<strong>${e.name}</strong><br/>${m.label}: <strong>${valStr}</strong><br/>Zone: <strong style="color:${ZONE_COLORS[e.zone]}">${zoneStr}</strong>`;
+      }
+    },
+    grid: { left: 200, right: 70, top: 10, bottom: 10, containLabel: false },
+    xAxis: {
+      type: 'value',
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: { color: textCol, fontSize: 10 },
+      splitLine: { lineStyle: { color: gridCol, type: 'dashed' } },
+    },
+    yAxis: {
+      type: 'category',
+      data: names,
+      inverse: true,  // index-0 (best) renders at top
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: { color: isDark ? '#e8eaf0' : '#14171f', fontSize: 11, margin: 8, fontFamily: 'Space Grotesk', interval: 0 },
+    },
+    series: [{
+      type: 'bar',
+      data: values.map((v, i) => ({
+        value: v ?? 0,
+        itemStyle: {
+          color: colors[i],
+          opacity: zones[i] === 'no-data' ? 0.4 : 1,
+        },
+      })),
+      barWidth: barSize,
+      label: {
+        show: true,
+        position: 'right',
+        formatter(p) {
+          const e = entries[p.dataIndex];
+          return e.value != null ? m.fmt(e.value) : '–';
+        },
+        color: textCol,
+        fontSize: 10,
+        padding: [0, 4],
+        fontFamily: 'Space Grotesk',
+      },
+    }],
+  };
+
+  chart.setOption(option, true);
+
+  // Click → navigate to country pillar page
+  chart.off('click');
+  chart.on('click', params => {
+    const e = entries[params.dataIndex];
+    if (e && e.iso3) {
+      window.location.href = `${m.pillarPage}.html?country=${e.iso3}`;
+    }
+  });
+
+  // Resize observer
+  if (window._discoverResizeObs) window._discoverResizeObs.disconnect();
+  window._discoverResizeObs = new ResizeObserver(() => { if (chart) chart.resize(); });
+  window._discoverResizeObs.observe(chartDiv);
+}
+
+function initThemeToggle() {
+  const btn = document.getElementById('themeToggle');
+  const update = () => {
+    const dark = document.documentElement.getAttribute('data-theme') !== 'light';
+    btn.textContent = dark ? '☀️' : '🌙';
+  };
+  update();
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('bgdp-theme', next);
+    update();
+    // Re-render chart with new theme colours
+    if (selectedMetric && allEntries.length) {
+      applyFilterAndRender();
+    }
+  });
+}
+
+init();
+</script>
+</body>
+</html>
