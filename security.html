@@ -271,6 +271,8 @@
     .metric-card .metric-title { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); margin-bottom: 6px; text-align: center; }
     .metric-chart { width: 100%; height: 100px; position: relative; }
     .tooltip-target { font-size: 0.82rem; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+    .tooltip-tier { font-size: 0.72rem; font-weight: 700; color: var(--accent); margin-bottom: 6px; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.06em; }
+    .tier-badge { position: absolute; bottom: 8px; left: 10px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); opacity: 0.7; z-index: 2; }
     .card-corner { position: absolute; top: 10px; right: 10px; display: flex; align-items: center; gap: 6px; z-index: 2; }
     .card-corner .status-badge { font-size: 0.74rem; font-weight: 700; padding: 3px 9px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; }
     .status-green      { background: var(--green-bg); color: var(--green); }
@@ -478,12 +480,14 @@
             <button class="info-btn" data-tooltip="tooltip-hale" title="What does this mean?">i</button>
           </div>
           <div id="gauge-hale" class="metric-chart"></div>
+          <div class="tier-badge">Tier I</div>
           <div class="metric-tooltip" id="tooltip-hale">
             <div class="tooltip-header">
               <div class="tooltip-title">Healthy Life Expectancy</div>
               <button class="tooltip-close" data-tooltip="tooltip-hale">✕</button>
             </div>
             <div class="tooltip-body">
+              <p class="tooltip-tier">HLEG Tier I · WHO</p>
               <p class="tooltip-target">Target: 70 healthy years at birth</p>
               <p id="tooltip-hale-body">Select a country to see interpretation.</p>
             </div>
@@ -518,12 +522,14 @@
             <button class="info-btn" data-tooltip="tooltip-hhinc" title="What does this mean?">i</button>
           </div>
           <div id="gauge-hhinc" class="metric-chart"></div>
+          <div class="tier-badge">Tier I</div>
           <div class="metric-tooltip" id="tooltip-hhinc">
             <div class="tooltip-header">
               <div class="tooltip-title">Household Income (proxy)</div>
               <button class="tooltip-close" data-tooltip="tooltip-hhinc">✕</button>
             </div>
             <div class="tooltip-body">
+              <p class="tooltip-tier">HLEG Tier I · Household disposable income · SNA</p>
               <p class="tooltip-target">Target: $20k+/person (GDP/capita proxy)</p>
               <p id="tooltip-hhinc-body">Select a country to see interpretation.</p>
             </div>
@@ -538,12 +544,14 @@
             <button class="info-btn" data-tooltip="tooltip-lbw" title="What does this mean?">i</button>
           </div>
           <div id="gauge-lbw" class="metric-chart"></div>
+          <div class="tier-badge">Tier I</div>
           <div class="metric-tooltip" id="tooltip-lbw">
             <div class="tooltip-header">
               <div class="tooltip-title">Low Birthweight</div>
               <button class="tooltip-close" data-tooltip="tooltip-lbw">✕</button>
             </div>
             <div class="tooltip-body">
+              <p class="tooltip-tier">HLEG Tier I · UNICEF / WHO</p>
               <p class="tooltip-target">Danger threshold: 15% of live births</p>
               <p id="tooltip-lbw-body">Select a country to see interpretation.</p>
             </div>
@@ -558,12 +566,14 @@
             <button class="info-btn" data-tooltip="tooltip-gini" title="What does this mean?">i</button>
           </div>
           <div id="gauge-gini" class="metric-chart"></div>
+          <div class="tier-badge">Tier I</div>
           <div class="metric-tooltip" id="tooltip-gini">
             <div class="tooltip-header">
               <div class="tooltip-title">Gini Index (Income Inequality)</div>
               <button class="tooltip-close" data-tooltip="tooltip-gini">✕</button>
             </div>
             <div class="tooltip-body">
+              <p class="tooltip-tier">HLEG Tier I · World Bank</p>
               <p class="tooltip-target">Danger threshold: Gini 45+ (lower = more equal)</p>
               <p id="tooltip-gini-body">Select a country to see interpretation.</p>
             </div>
@@ -578,12 +588,14 @@
             <button class="info-btn" data-tooltip="tooltip-homicide" title="What does this mean?">i</button>
           </div>
           <div id="gauge-homicide" class="metric-chart"></div>
+          <div class="tier-badge">Tier I</div>
           <div class="metric-tooltip" id="tooltip-homicide">
             <div class="tooltip-header">
               <div class="tooltip-title">Homicide Rate</div>
               <button class="tooltip-close" data-tooltip="tooltip-homicide">✕</button>
             </div>
             <div class="tooltip-body">
+              <p class="tooltip-tier">HLEG Tier I · SDG 16.1.1 · UNODC / WHO</p>
               <p class="tooltip-target">Danger threshold: 10 per 100,000 (SDG 16.1.1)</p>
               <p id="tooltip-homicide-body">Select a country to see interpretation.</p>
             </div>
@@ -598,12 +610,14 @@
             <button class="info-btn" data-tooltip="tooltip-lifesat" title="What does this mean?">i</button>
           </div>
           <div id="gauge-lifesat" class="metric-chart"></div>
+          <div class="tier-badge">Tier I</div>
           <div class="metric-tooltip" id="tooltip-lifesat">
             <div class="tooltip-header">
               <div class="tooltip-title">Life Satisfaction (Cantril ladder)</div>
               <button class="tooltip-close" data-tooltip="tooltip-lifesat">✕</button>
             </div>
             <div class="tooltip-body">
+              <p class="tooltip-tier">HLEG Tier I · Gallup World Poll</p>
               <p class="tooltip-target">Target: 6.5+ (0–10 Cantril ladder)</p>
               <p id="tooltip-lifesat-body">Select a country to see interpretation.</p>
             </div>
@@ -618,12 +632,14 @@
             <button class="info-btn" data-tooltip="tooltip-trust" title="What does this mean?">i</button>
           </div>
           <div id="gauge-trust" class="metric-chart"></div>
+          <div class="tier-badge">Tier I</div>
           <div class="metric-tooltip" id="tooltip-trust">
             <div class="tooltip-header">
               <div class="tooltip-title">Social Trust (WVS)</div>
               <button class="tooltip-close" data-tooltip="tooltip-trust">✕</button>
             </div>
             <div class="tooltip-body">
+              <p class="tooltip-tier">HLEG Tier I · World Values Survey</p>
               <p class="tooltip-target">Target: 40%+ (WVS Wave 7 — ~66 country coverage)</p>
               <p id="tooltip-trust-body">Select a country to see interpretation.</p>
             </div>
@@ -638,12 +654,14 @@
             <button class="info-btn" data-tooltip="tooltip-govconf" title="What does this mean?">i</button>
           </div>
           <div id="gauge-govconf" class="metric-chart"></div>
+          <div class="tier-badge">Tier I</div>
           <div class="metric-tooltip" id="tooltip-govconf">
             <div class="tooltip-header">
               <div class="tooltip-title">Confidence in Civil Services</div>
               <button class="tooltip-close" data-tooltip="tooltip-govconf">✕</button>
             </div>
             <div class="tooltip-body">
+              <p class="tooltip-tier">HLEG Tier I · World Values Survey</p>
               <p class="tooltip-target">Target: 50%+ (WVS Wave 7 — ~65 country coverage)</p>
               <p id="tooltip-govconf-body">Select a country to see interpretation.</p>
             </div>
